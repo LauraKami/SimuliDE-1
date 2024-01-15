@@ -15,7 +15,7 @@ using namespace std;
 class ScriptPerif;
 class Mcu;
 
-class MAINMODULE_EXPORT ScriptCpu : public ScriptModule, public McuCpu
+class ScriptCpu : public ScriptModule, public McuCpu
 {
     public:
         ScriptCpu( eMcu* mcu );
@@ -42,7 +42,7 @@ class MAINMODULE_EXPORT ScriptCpu : public ScriptModule, public McuCpu
         virtual int getCpuReg( QString reg ) override;
         virtual QString getStrReg( QString ) override;
 
-        void addProperty( QString group, QString name, QString type );
+        void addProperty( QString group, QString name, QString type, QString unit );
         QString getProp( ComProperty* p );
         void setProp( ComProperty* p, QString val );
 
@@ -63,15 +63,18 @@ class MAINMODULE_EXPORT ScriptCpu : public ScriptModule, public McuCpu
         McuPort* getMcuPort( const string portName );
         McuPin*  getMcuPin( const string pinName );
 
-        string getPropStr( int index, const string p );               // Called from script:Get property p from linked component at index
-        void setLinkedValue( int index, double v, int i=0  );            // Called from script
+        string getPropStr( int index, const string p );               // Called from script: Get property p from linked component at index
+        void setPropStr( int index, const string p, const string v ); // Called from script: Set property p with value v in linked component at index
+        void setLinkedValue( int index, double v, int i=0  );         // Called from script
         void setLinkedString( int index, const string str, int i=0 ); // Called from script
-        void setLinkedVal( double v, int i=0 );                          // Called from C++
+        void setLinkedVal( double v, int i=0 );                       // Called from C++
         void setLinkedStr( QString s, int i );                        // Called from C++
 
         virtual void INTERRUPT( uint vector ) override;
 
     protected:
+        uint m_progWordMask;
+
         Mcu* m_mcuComp;
         asIScriptFunction* m_reset;
         asIScriptFunction* m_voltChanged;

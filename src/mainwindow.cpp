@@ -13,7 +13,6 @@
 #include <QLineEdit>
 #include <QTextStream>
 #include <QDebug>
-#include <QPluginLoader>
 #include <QStyleFactory>
 #include <QProcessEnvironment>
 
@@ -50,6 +49,10 @@ MainWindow::MainWindow()
     m_settings     = new QSettings( getConfigPath("simulide.ini"), QSettings::IniFormat, this );
     m_compSettings = new QSettings( getConfigPath("compList.ini"), QSettings::IniFormat, this );
 
+    m_userDir = m_settings->value( "userPath" ).toString();
+    if( m_userDir.isEmpty() || !QDir( m_userDir ).exists() )
+        m_userDir = getConfigPath("addons");
+
     // Fonts --------------------------------------
     QFontDatabase::addApplicationFont( ":/Ubuntu-R.ttf" );
     QFontDatabase::addApplicationFont( ":/Ubuntu-B.ttf" );
@@ -81,9 +84,6 @@ MainWindow::MainWindow()
     QApplication::setStyle( QStyleFactory::create("Fusion") ); //applyStyle();
     createWidgets();
 
-    m_userDir = m_settings->value( "userPath" ).toString();
-    if( m_userDir.isEmpty() || !QDir( m_userDir ).exists() )
-        m_userDir = getConfigPath("addons");
     if( !m_userDir.isEmpty() && QDir( m_userDir ).exists() )
     {
         ComponentSelector::self()->LoadCompSetAt( m_userDir );
@@ -94,6 +94,7 @@ MainWindow::MainWindow()
     QDir compSetDir = m_filesDir.absoluteFilePath("data");
     if( compSetDir.exists() ) ComponentSelector::self()->LoadCompSetAt( compSetDir );
 
+    m_circuit->newCircuit();
 
     readSettings();
 
@@ -285,12 +286,11 @@ void MainWindow::searchChanged()
     m_components->search( filter );
 }
 
-QString MainWindow::getHelp( QString name )
+QString MainWindow::getHelp( QString name, bool save )
 {
+    if( save && m_help.contains( name ) ) return m_help.value( name );
+
     QString help = tr("No help available");
-
-    if( m_help.contains( name ) ) return m_help.value( name );
-
     QString locale = loc();
     QString localeFolder = "";
 
@@ -301,25 +301,24 @@ QString MainWindow::getHelp( QString name )
     else locale = "";
 
     name= name.toLower().replace( " ", "" );
-    QString dfPath = getFilePath("data/help/"+localeFolder+name+locale+".txt");
+    QString dfPath = getDataFilePath("help/"+localeFolder+name+locale+".txt");
 
-    if( !QFileInfo::exists( dfPath ) ) dfPath = getFilePath( "data/help/"+name+".txt" );
-    if( !QFileInfo::exists( dfPath ) ) return help;
-
-    help.clear();
-    QStringList lines = fileToStringList( dfPath, "MainWindow::getHelp" );
-    for( QString line : lines )
+    if( !QFileInfo::exists( dfPath ) ) dfPath = getDataFilePath( "help/"+name+".txt" );
+    if( QFileInfo::exists( dfPath ) )
     {
-        if( line.startsWith("#include") )
+        help.clear();
+        QStringList lines = fileToStringList( dfPath, "MainWindow::getHelp" );
+        for( QString line : lines )
         {
-            QString file = line.remove("#include ");
-            line = getHelp( file );
+            if( line.startsWith("#include") )
+            {
+                QString file = line.remove("#include ");
+                line = getHelp( file );
+            }
+            help.append( line+"\n" );
         }
-        help.append( line+"\n" );
     }
-    //else qDebug() << "Warning: MainWindow::getHelp: File not found\n"<<dfPath;
-
-    m_help[name] = help;
+    if( save ) m_help[name] = help;
     return help;
 }
 
@@ -342,6 +341,25 @@ QString MainWindow::getUserFilePath( QString f )
 
 QString MainWindow::getFilePath( QString file )   { return m_filesDir.absoluteFilePath( file ); }
 QString MainWindow::getConfigPath( QString file ) { return m_configDir.absoluteFilePath( file ); }
+QString MainWindow::getDataFilePath( QString file )
+{
+    QString path;
+    if( Circuit::self() )
+    {
+        QString circPath = Circuit::self()->getFilePath();
+        if( !circPath.isEmpty() )
+        {
+            QDir circuitDir = QFileInfo( circPath ).absoluteDir();
+            path = circuitDir.absoluteFilePath("data/"+file );
+            if( QFileInfo::exists( path ) ) return path;          // File in Circuit data folder
+        }
+    }
+    path = MainWindow::self()->getUserFilePath( file );       // File in user data folder
+    if( path.isEmpty() || !QFileInfo::exists( path ) )
+        path = getFilePath("data/"+file );                    // File in SimulIDE data folder
+
+    return path;
+}
 QSettings* MainWindow::settings() { return m_settings; }
 QSettings* MainWindow::compSettings() { return m_compSettings; }
 

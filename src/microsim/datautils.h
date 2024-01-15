@@ -21,6 +21,12 @@ static inline uint8_t overrideBits( uint8_t val, regBits_t bits ) // Replace bit
     return (val & ~bits.mask) | (*(bits.reg) | bits.mask);
 }
 
+static inline void replaceBits( uint8_t val, regBits_t bits ) // Replace bits in register with value
+{
+    *bits.reg &= ~bits.mask;
+    *bits.reg |= val & bits.mask;
+}
+
 static inline uint8_t getRegBits( uint8_t val, regBits_t rb )
 {
     return (val & rb.mask);
@@ -56,9 +62,12 @@ static inline void clearRegBits( regBits_t bits ) // Clear bits in a Register
     *(bits.reg) &= ~bits.mask;
 }
 
-static inline void writeRegBits( regBits_t bits, bool value ) // Clear bits in a Register
+static inline void writeRegBits( regBits_t bits, bool value ) // Set/Clear bits in a Register
 {
     if( value ) setRegBits( bits );
     else        clearRegBits( bits );
 }
+
+void writeBitsToReg( regBits_t bits, bool value, DataSpace* mcu ); // Write bits in a Register calling watchers
+
 #endif

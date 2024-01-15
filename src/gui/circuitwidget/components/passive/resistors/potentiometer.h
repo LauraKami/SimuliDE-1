@@ -12,7 +12,7 @@
 
 class LibraryItem;
 
-class MAINMODULE_EXPORT Potentiometer : public Dialed, public eElement
+class Potentiometer : public Dialed, public eElement
 {
     public:
         Potentiometer( QString type, QString id );
@@ -21,7 +21,7 @@ class MAINMODULE_EXPORT Potentiometer : public Dialed, public eElement
  static Component* construct( QString type, QString id );
  static LibraryItem* libraryItem();
 
-        virtual void stamp() override;
+        virtual void initialize() override;
         virtual void updateStep() override;
 
         double getVal();

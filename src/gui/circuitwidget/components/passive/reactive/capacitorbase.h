@@ -8,15 +8,19 @@
 
 #include "reactive.h"
 
-class MAINMODULE_EXPORT CapacitorBase : public Reactive
+class CapacitorBase : public Reactive
 {
     public:
         CapacitorBase( QString type, QString id );
         ~CapacitorBase();
 
+        virtual void setCurrentValue( double c ) override;
+
     protected:
-        virtual double updtRes()  override { return m_tStep/m_value; }
+        virtual double updtRes()  override { return m_tStep/m_capacitance; }
         virtual double updtCurr() override { return m_volt*m_admit; }
+
+        double m_capacitance;
 };
 
 #endif

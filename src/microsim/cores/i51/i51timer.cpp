@@ -5,6 +5,7 @@
 
 #include "i51timer.h"
 #include "e_mcu.h"
+#include "mcupin.h"
 #include "simulator.h"
 #include "datautils.h"
 
@@ -18,7 +19,15 @@ I51Timer::I51Timer( eMcu* mcu, QString name)
     m_TxM  = getRegBits( "T"+n+"M0,T"+n+"M1", mcu );
     m_CTx  = getRegBits( "C/T"+n, mcu );
     m_GATE = getRegBits( "GATE"+n, mcu );
+
+    m_trEnabled = false;
+    if( n == "0" ) m_gatePin = mcu->getMcuPin("P32");
+    else if( n == "1" ) m_gatePin = mcu->getMcuPin("P33");
+    else m_gatePin = NULL;
+    //Ensure gate pin ok;
+    Q_ASSERT( m_gatePin != NULL );
 }
+
 I51Timer::~I51Timer(){}
 
 void I51Timer::initialize()
@@ -28,6 +37,18 @@ void I51Timer::initialize()
     m_ovfMatch = 0x1FFF;
     m_ovfPeriod = m_ovfMatch + 1;
     m_gate = 0;
+}
+
+void I51Timer::voltChanged()
+{
+    doUpdateEnable(); // check gate state;
+    McuTimer::voltChanged();  // External Clock Pin changed voltage
+}
+
+void I51Timer::enable( uint8_t en )
+{
+    m_trEnabled = en;
+    doUpdateEnable();
 }
 
 void I51Timer::configureA( uint8_t newTMOD ) // TxM0,TxM1
@@ -58,16 +79,17 @@ void I51Timer::configureA( uint8_t newTMOD ) // TxM0,TxM1
         m_ovfPeriod = m_ovfMatch+1;
     }
 
-    bool extClock = getRegBitsVal( newTMOD, m_CTx );
+    bool extClock = getRegBitsBool( newTMOD, m_CTx );
     if( extClock != m_extClock )
     {
-        m_extClock = extClock;
+        enableExtClock( extClock );
     }
-    bool gate = getRegBitsVal( newTMOD, m_GATE );
+    bool gate = getRegBitsBool( newTMOD, m_GATE );
     if( gate != m_gate )
     {
         m_gate = gate;
-        /// TODO
+        m_gatePin->changeCallBack( this, gate ); // Call voltchanged() or not
+        doUpdateEnable();
     }
 }
 
@@ -105,30 +127,34 @@ void I51Timer::updtCycles() // Recalculate ovf, comps, etc
 
 void I51Timer::updtCount( uint8_t )     // Write counter values to Ram
 {
-    if( m_running ) // If no running, values were already written at timer stop.
-    {
-        if( m_mode == 1 ) // 16 bits
-        {
-            McuTimer::updtCount();
-            return;
-        }
-        uint64_t timTime = m_ovfCycle-Simulator::self()->circTime(); // Next overflow time - current time
-        uint16_t countVal = timTime/m_mcu->psInst()/m_prescaler;
+    if( !m_running ) return; // If no running, values were already written at timer stop.
 
-        if( m_mode == 0 )  // 13 bits
-        {
-            COUNT_L = countVal & 0b00011111;
-            COUNT_H = (countVal>>5) & 0xFF;
-        }
-        else if( m_mode == 2 ) // 8 bits
-        {
-            COUNT_L = countVal & 0xFF;
-            //if( m_countH ) m_countH[0] = (countVal>>8) & 0xFF;
-        }
-        else                 // 8+8 bits
-        {
-            if     ( m_number == 0 ) COUNT_L = countVal & 0xFF;
-            else if( m_number == 1 ) COUNT_H = countVal & 0xFF;
-        }
+    if( m_mode == 1 ) // 16 bits
+    {
+        McuTimer::updtCount();
+        return;
     }
+    calcCounter();
+
+    if( m_mode == 0 )  // 13 bits
+    {
+        COUNT_L = m_countVal & 0b00011111;
+        COUNT_H = (m_countVal>>5) & 0xFF;
+    }
+    else if( m_mode == 2 ) // 8 bits
+    {
+        COUNT_L = m_countVal & 0xFF;
+        //if( m_countH ) m_countH[0] = (countVal>>8) & 0xFF;
+    }
+    else                 // 8+8 bits
+    {
+        if     ( m_number == 0 ) COUNT_L = m_countVal & 0xFF;
+        else if( m_number == 1 ) COUNT_H = m_countVal & 0xFF;
+    }
+}
+
+void I51Timer::doUpdateEnable()
+{
+    // getVoltage is only called when m_trEnabled is true and m_gate is true
+    McuTimer::enable( m_trEnabled && ( !m_gate || ( m_gatePin->getVoltage() > 2.5 ) ) );
 }

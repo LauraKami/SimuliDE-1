@@ -42,7 +42,7 @@
       <trunit type="rx" pin="PORTB1,PORTB2" configbitsA="TXCKSEL" register="RCREG" interrupt="USART_R" />
   </usart>
 
-  <!-- TODO vref name="Vref" configregsA="FVRCON" pinout=""-->
+  <vref name="Vref" configregsA="FVRCON" />
 
   <adc name="ADC" type="20" bits="10" configregsA="ADCON0" configregsB="ADCON1"
                   dataregs="ADRESL,ADRESH"
@@ -50,6 +50,10 @@
                   prescalers="2,8,32,0,4,16,64,0"
                   adcpins="PORTA0,PORTA1,PORTA2,PORTA3,PORTA4,PORTB6,PORTB7,PORTB5,PORTB4,PORTB3,PORTB2,PORTB1"
                   vrefpins="PORTA3,PORTA2"/>
+
+  <dac name="DAC" configregsA="DACCON0"
+                  dacreg="DACCON1"
+                  pins="PORTA3,PORTA2,PORTA2" />
 
   <comp name="COMP1" type="20" configregsA="CM1CON0" configregsB="CM1CON1"
                      interrupt="COMP1"

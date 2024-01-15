@@ -32,7 +32,7 @@ XorGate::XorGate( QString type, QString id )
 +QList<ComProperty*>({
 new BoolProp<XorGate>( "Invert_Inputs", tr("Invert Inputs"),"", this, &XorGate::invertInps, &XorGate::setInvertInps,propNoCopy )})
                     +IoComponent::outputProps()+IoComponent::outputType(),0 } );
-    addPropGroup( { tr("Edges"), Gate::edgeProps(),0 } );
+    addPropGroup( { tr("Timing"), Gate::edgeProps(),0 } );
 
     removeProperty("pd_n");
 }
@@ -96,4 +96,6 @@ void XorGate::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidge
     QPen pen3( Qt::blue, 0.5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
     p->setPen( pen3 );
     p->drawRect( m_area );*/
+
+    Component::paintSelected( p );
 }

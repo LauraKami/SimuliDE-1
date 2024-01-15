@@ -13,7 +13,7 @@
 class eElement;
 class IoPin;
 
-class MAINMODULE_EXPORT IoComponent : public Component
+class IoComponent : public Component
 {
     public:
         IoComponent( QString type, QString id );
@@ -73,9 +73,6 @@ class MAINMODULE_EXPORT IoComponent : public Component
         bool openCol() { return m_openCol; }
         void setOpenCol( bool op );
 
-        //bool rndPD() { return m_rndPD; }
-        //void setRndPD( bool r ) { m_rndPD = r; }
-
         void init( QStringList pins );
         void initPin( IoPin* pin );
 
@@ -85,7 +82,7 @@ class MAINMODULE_EXPORT IoComponent : public Component
 
         virtual void setHidden( bool hid, bool hidArea=false, bool hidLabel=false ) override;
 
-        virtual void paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidget *widget );
+        virtual void paint( QPainter* p, const QStyleOptionGraphicsItem*, QWidget* ) override;
 
     protected:
         IoPin* createPin( QString data, QString id );
@@ -96,26 +93,23 @@ class MAINMODULE_EXPORT IoComponent : public Component
         uint m_nextOutVal;
         std::queue<uint> m_outQueue;
         std::queue<uint64_t> m_timeQueue;
-        //uint m_nextOutDir;
 
         double m_propDelay; // Propagation delay
         double m_timeLH;    // Time for Output voltage to switch from 10% to 90% (1 gate)
         double m_timeHL;    // Time for Output voltage to switch from 90% to 10% (1 gate)
         double m_propSize;  // Nunmber of gates for total Propagation delay
-        //bool m_rndPD;         // Randomize Propagation Delay
 
-        double m_inHighV;  // currently in eClockedDevice
-        double m_inLowV;  // currently in eClockedDevice
+        double m_inHighV;   // currently in eClockedDevice
+        double m_inLowV;    // currently in eClockedDevice
         double m_ouHighV;
         double m_ouLowV;
 
-        double m_inImp;  // currently in eClockedDevice
+        double m_inImp;     // currently in eClockedDevice
         double m_ouImp;
 
         bool m_openCol;
         bool m_invOutputs;
         bool m_invInputs;
-        bool m_outsReady;
 
         uint m_width;
         uint m_height;

@@ -8,11 +8,11 @@
 
 #include "dialed.h"
 #include "dialwidget.h"
-#include "linkable.h"
+#include "linker.h"
 
 class LibraryItem;
 
-class MAINMODULE_EXPORT Dial : public Dialed, public Linkable
+class Dial : public Dialed, public Linker
 {
     public:
         Dial( QString type, QString id );
@@ -29,15 +29,16 @@ class MAINMODULE_EXPORT Dial : public Dialed, public Linkable
          int minVal() { return m_minVal; }
          virtual void setMinVal( int min );
 
+         int steps() { return m_steps; }
+         void setSteps( int s );
+
         bool slider() { return m_slider; }
         void setSlider( bool s );
-
-        //virtual void compSelected( Component* comp ) override;
 
         virtual void paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget ) override;
 
     public slots:
-        void slotLinkComp() { Linkable::startLinking(); }
+        void slotLinkComp() { Linker::startLinking(); }
 
     protected:
         virtual void contextMenuEvent( QGraphicsSceneContextMenuEvent* event ) override;
@@ -45,6 +46,7 @@ class MAINMODULE_EXPORT Dial : public Dialed, public Linkable
 
         int m_minVal;
         int m_maxVal;
+        int m_steps;
 };
 
 #endif

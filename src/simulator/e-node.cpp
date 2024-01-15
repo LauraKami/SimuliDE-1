@@ -4,7 +4,9 @@
  ***( see copyright.txt file at root folder )*******************************/
 
 #include "e-node.h"
+#include "pin.h"
 #include "e-pin.h"
+#include "connector.h"
 #include "e-element.h"
 #include "circmatrix.h"
 #include "simulator.h"
@@ -35,7 +37,8 @@ eNode::~eNode()
 
 void eNode::initialize()
 {
-    m_switched     = false;
+    m_voltChanged  = true; // Used for wire animation
+    //m_switched     = false;
     m_single       = false;
     m_changed      = false;
     m_currChanged  = false;
@@ -98,7 +101,7 @@ void eNode::stampAdmitance( ePin* epin, double admit ) // Be sure msg doesn't co
         conn = conn->next;
     }
 
-    if( admit == 0 ) m_switched = true;
+    //if( admit == 0 ) m_switched = true;
     m_admitChanged = true;
     changed();
 }
@@ -177,7 +180,7 @@ void eNode::stampMatrix()
     if( m_admitChanged )
     {
         m_totalAdmit = 0;
-        if( m_switched ) m_totalAdmit += 1e-12; // Weak connection to ground
+        //if( m_switched ) m_totalAdmit += 1e-12; // Weak connection to ground
 
         if( m_single ){
             Connection* conn = m_firstAdmit;
@@ -337,6 +340,20 @@ void eNode::addToNoLinList( eElement* el )
     newLinked->next = m_nonLinEl; // Prepend
     m_nonLinEl = newLinked;
     //qDebug() <<m_id<< el->getId();
+}
+
+void eNode::updateConnectors()
+{
+    if( !m_voltChanged ) return;
+    m_voltChanged = false;
+
+    for( ePin* epin : m_ePinList ){
+        Pin* pin = epin->getPin();
+        if( pin && pin->isVisible() ){
+            Connector* conn = pin->connector();
+            if( conn ) conn->updateLines();
+        }
+    }
 }
 
 void eNode::clearElmList( CallBackElement* first )

@@ -5,6 +5,7 @@
 
 #include "reactive.h"
 #include "simulator.h"
+#include "propdialog.h"
 #include "e-node.h"
 #include "pin.h"
 
@@ -14,8 +15,6 @@ Reactive::Reactive( QString type, QString id )
         : Comp2Pin( type, id )
         , eReactive( id )
 {
-    m_area = QRectF( -10, -10, 20, 20 );
-
     // Pin0--eReactive--ePin1--midEnode--ePin2--eResistor--Pin1
     m_ePin[0] = m_pin[0];
     setNumEpins( 3 );
@@ -51,46 +50,19 @@ void Reactive::stamp()
 
 void Reactive::updateStep()
 {
-    if( m_warning != m_stepError )
-    {
-        m_warning = m_stepError;
-        if( m_stepError ){
-            setToolTip(tr("\n  Warnig: Capacitor can't update fast enough  \n\n"
-                          "  Set auto step >= 1 for this capacitor  \n") );
-                          //"  Or set Reactive Step <= ")+QString::number( m_deltaTime )+" ps globally  \n");
-        }
-        else setToolTip("");
-    }
-    if( m_warning ) update();
-
     if( m_changed )
     {
         m_changed = false;
-        m_warning = false;
-        m_stepError = false;
-        m_reacStep = Simulator::self()->reactStep(); // Time in ps
         updtReactStep();
+        if( m_propDialog ) m_propDialog->updtValues();
     }
     update();
-    /*uint64_t reactStep = Simulator::self()->reactStep();
-    if( m_reacStep != reactStep )
-    {
-        m_reacStep = reactStep; // Time in ps
-        m_changed = true;
-    }
-    if( m_changed )
-    {
-        m_changed = false;
-        m_warning = false;
-        m_stepError = false;
-        updtReactStep();
-    }*/
 }
 
 void Reactive::setValue( double c )
 {
     m_value = c;
-    m_changed = true;
+    setCurrentValue( c );
 }
 
 void Reactive::setResist( double resist )
@@ -98,9 +70,13 @@ void Reactive::setResist( double resist )
     m_resistor->setResSafe( resist );
 }
 
-void Reactive::setAutoStep( int a )
+void Reactive::setReaStep( double r )
 {
-    if( a > 2 ) a = 2;
-    m_autoStep = a;
+    m_reacStep = r*1e12;
     m_changed = true;
+}
+
+void Reactive::setLinkedValue( double v, int i )
+{
+    setCurrentValue( m_value*v/1000 );
 }

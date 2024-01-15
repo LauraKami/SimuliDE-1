@@ -10,7 +10,7 @@
 
 class IoPin;
 
-class MAINMODULE_EXPORT Gate : public LogicComponent
+class Gate : public LogicComponent
 {
     public:
         Gate( QString type, QString id, int inputs );
@@ -22,15 +22,14 @@ class MAINMODULE_EXPORT Gate : public LogicComponent
         virtual void voltChanged() override;
         virtual void runEvent() override { IoComponent::runOutputs(); }
 
-        bool initState() { return m_initState; }
-        void setInitState( bool s) { m_initState = s; }
+        bool initHigh() { return m_initState; }
+        void setInitHigh( bool s) { m_initState = s; }
 
         void setNumInputs( int pins );
 
     protected:
         virtual bool calcOutput( int inputs );
 
-        bool m_out;
         bool m_initState;
 
         int m_minInputs;

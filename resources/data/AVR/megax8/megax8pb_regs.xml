@@ -33,7 +33,7 @@
                bits="TOV4,OCF4A,OCF4B,0,0,ICF4,0,0" />
 
     <register  name="PCIFR"   addr="0x001B"  reset=""  mask="" 
-               bits="PCIF0,PCIF1,PCIF2,0,0,0,0,0" />
+               bits="PCIF0,PCIF1,PCIF2,PCIF3,0,0,0,0" />
 
     <register  name="EIFR"    addr="0x001C"  reset=""  mask="" 
                bits="INTF0,INTF1,0,0,0,0,0,0" />
@@ -131,7 +131,7 @@
                bits="CAL0,CAL1,CAL2,CAL3,CAL4,CAL5,CAL6,CAL7" />
 
     <register  name="PCICR"   addr="0x0068"  reset=""  mask="" 
-               bits="PCIE0,PCIE1,PCIE2,0,0,0,0,0" />
+               bits="PCIE0,PCIE1,PCIE2,PCIE3,0,0,0,0" />
 
     <register  name="EICRA"   addr="0x0069"  reset=""  mask="" 
                bits="ISC00,ISC01,ISC10,ISC11,0,0,0,0" />
@@ -294,8 +294,7 @@
     <register  name="UBRR0H"  addr="0x00C5"  reset=""  mask="00001111" 
                bits="UBRR08,UBRR09,UBRR010,UBRR011,0,0,0,0" />
 
-    <register  name="UDR0"    addr="0x00C6"  reset=""  mask="" 
-               bits="UDR0_0,UDR0_1,UDR0_2,UDR0_3,UDR0_4,UDR0_5,UDR0_6,UDR0_7" />
+    <register  name="UDR0"    addr="0x00C6"  reset=""  mask="00000000" />
 
     <register  name="UCSR1A"  addr="0x00C8"  reset="00100000"  mask="01000011" 
                bits="MPCM1,U2X1,UPE1,DOR1,FE1,UDRE1,TXC1,RXC1" />
@@ -312,7 +311,7 @@
     <register  name="UBRR1H"  addr="0x00CD" 
                bits="UBRR18,UBRR19,UBRR110,UBR111,0,0,0,0" />
                
-    <register  name="UDR1"    addr="0x00CE"  reset=""  mask="" />
+    <register  name="UDR1"    addr="0x00CE"  reset=""  mask="00000000" />
 
     <register  name="TWBR1"    addr="0x00D8"  reset=""  mask=""  />
 

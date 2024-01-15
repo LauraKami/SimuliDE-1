@@ -25,7 +25,7 @@
 #include "simulator.h"
 #include "e-node.h"
 #include "shield.h"
-#include "linkable.h"
+#include "linker.h"
 
 Circuit* Circuit::m_pSelf = NULL;
 
@@ -69,6 +69,10 @@ Circuit::Circuit( qreal x, qreal y, qreal width, qreal height, CircuitView*  par
 
     connect( &m_bckpTimer, &QTimer::timeout,
                      this,&Circuit::saveBackup, Qt::UniqueConnection );
+
+    qDebug() << endl << "-------------------------------------------------";
+    qDebug() << "                   NEW CIRCUIT                   ";
+    qDebug() << "-------------------------------------------------"<<endl;
 }
 
 Circuit::~Circuit()
@@ -163,7 +167,7 @@ void Circuit::loadStrDoc( QString &doc )
 {
     QApplication::setOverrideCursor(Qt::WaitCursor);
 
-    QList<Linkable*> linkList;   // Linked  Component list
+    QList<Linker*> linkList;   // Linked  Component list
     QSet<Component*> compList;   // Pasting Component list
     QSet<Connector*> conList;    // Pasting Connector list
     QSet<Node*> nodeList;        // Pasting node list
@@ -221,7 +225,7 @@ void Circuit::loadStrDoc( QString &doc )
                 {
                     QString compName = prop.toString();
                     mComp = subci->getMainComp( compName );
-                    if( !mComp ) qDebug() << "ERROR: Could not create Main Component:"<< compName;
+                    if( !mComp ) qDebug() << "ERROR: Could not get Main Component:"<< compName;
                 }
                 else if( mComp ) mComp->setPropStr( propName, prop.toString() );
 
@@ -432,9 +436,8 @@ void Circuit::loadStrDoc( QString &doc )
                     comp->updtLabelPos();
                     comp->updtValLabelPos();
                     compList.insert( comp );
-                    if( comp->m_linkable )
-                    {
-                        Linkable* l = dynamic_cast<Linkable*>(comp);
+                    if( comp->m_linker ){
+                        Linker* l = dynamic_cast<Linker*>(comp);
                         if( l->hasLinks() ) linkList.append( l );
                     }
                 }
@@ -448,7 +451,7 @@ void Circuit::loadStrDoc( QString &doc )
     }
     else for( Component* comp : compList ) { comp->moveSignal(); }
 
-    for( Linkable* l : linkList )
+    for( Linker* l : linkList )
         l->createLinks( &compList );
 
     m_compList.unite( compList );
@@ -560,6 +563,7 @@ Component* Circuit::createItem( QString type, QString id, bool map )
         if( item->type() != type ) continue;
 
         comp = item->createItemFnPtr()( type, id );
+        break;
     }
     if( map ) m_compMap[id] = comp;
     return comp;
@@ -641,6 +645,7 @@ void Circuit::clearCircuit() // Remove everything ( Clear Circuit )
 
     for( Component* comp : m_compList )
     {
+        //if( comp->parentItem() ) continue; // Shields are deleted with parent if attached
         comp->remove();
         if( comp->scene() ) removeItem( comp );
         delete comp;
@@ -944,8 +949,8 @@ void Circuit::deleteNewConnector()
     cancelUndoStep();
 }
 
-void Circuit::updateConnectors()
-{ for( Connector* con : m_connList ) con->updateLines(); }
+/*void Circuit::updateConnectors()
+{ for( Connector* con : m_connList ) con->updateLines(); }*/
 
 void Circuit::addNode( Node* node )
 {
@@ -993,7 +998,7 @@ void Circuit::mousePressEvent( QGraphicsSceneMouseEvent* event )
         if( m_conStarted ) event->accept();
         QGraphicsScene::mousePressEvent( event );
 
-        if( !event->isAccepted() ) Linkable::stopLinking(); // Click in empty place
+        if( !event->isAccepted() ) Linker::stopLinking(); // Click in empty place
     }
     else if( event->button() == Qt::RightButton )
     {
@@ -1044,7 +1049,7 @@ void Circuit::keyPressEvent( QKeyEvent* event )
     }
     if( key == Qt::Key_Escape )
     {
-        Linkable::stopLinking();
+        Linker::stopLinking();
         return;
     }
     if( event->modifiers() & Qt::AltModifier ) // Create Component shortcut
@@ -1115,7 +1120,19 @@ void Circuit::keyPressEvent( QKeyEvent* event )
         }
         else if( key == Qt::Key_R )
         {
-            for( Component* com : m_compList ) if( com->isSelected() ) com->rotateCW();
+            if ( event->modifiers() & Qt::ShiftModifier ) {
+                for( Component* com : m_compList ) if( com->isSelected() ) com->rotateCCW();
+            } else {
+                for( Component* com : m_compList ) if( com->isSelected() ) com->rotateCW();
+            }
+        }
+        else if( key == Qt::Key_L )
+        {
+            if ( event->modifiers() & Qt::ShiftModifier ) {
+                for( Component* com : m_compList ) if( com->isSelected() ) com->slotV_flip();
+            } else {
+                for( Component* com : m_compList ) if( com->isSelected() ) com->slotH_flip();
+            }
         }
         else QGraphicsScene::keyPressEvent( event );
     }

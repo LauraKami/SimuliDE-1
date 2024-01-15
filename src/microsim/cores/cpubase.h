@@ -13,7 +13,7 @@
 #define REG_SPH      m_sph[0]
 #define STATUS(bit) (*m_STATUS & (1<<bit))
 
-class MAINMODULE_EXPORT CpuBase : public CoreBase
+class CpuBase : public CoreBase
 {
         friend class McuCreator;
 
@@ -30,6 +30,8 @@ class MAINMODULE_EXPORT CpuBase : public CoreBase
         virtual uint RET_ADDR() { return m_RET_ADDR; } // Used by Debugger: All CPUs should use or override this
 
         virtual uint getPC() { return m_PC; }
+
+        virtual void exitSleep() {;}
 
     protected:
         eMcu* m_mcu;

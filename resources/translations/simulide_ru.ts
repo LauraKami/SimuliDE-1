@@ -29,11 +29,15 @@
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Other Logic</source>
-        <translation>Другое (Логика)</translation>
+        <translation type="vanished">Другое (Логика)</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -137,15 +141,19 @@
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Gates</source>
-        <translation>Логические элементы</translation>
+        <translation type="vanished">Логические элементы</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
         <translation>Инвертировать входы</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -345,6 +353,10 @@ p, li { white-space: pre-wrap; }
         <source>Slovenčina</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished">Шрифт</translation>
+    </message>
 </context>
 <context>
     <name>AudioOut</name>
@@ -474,15 +486,19 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Converters</source>
-        <translation>Конвертеры</translation>
+        <translation type="vanished">Конвертеры</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
         <translation>Инвертировать входы</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -513,15 +529,19 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Converters</source>
-        <translation>Конвертеры</translation>
+        <translation type="vanished">Конвертеры</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
         <translation>Инвертировать входы</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -560,15 +580,19 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>Арифметика</translation>
+        <translation type="vanished">Арифметика</translation>
     </message>
     <message>
         <source>Binary Counter</source>
         <translation>Двоичный счетчик</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -610,15 +634,19 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Gates</source>
-        <translation>Логические элементы</translation>
+        <translation type="vanished">Логические элементы</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
         <translation>Инвертировать входы</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -671,7 +699,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Auto Step</source>
-        <translation>Авто шаг</translation>
+        <translation type="vanished">Авто шаг</translation>
+    </message>
+    <message>
+        <source>Reactive Step</source>
+        <translation type="unfinished">Реактивный шаг</translation>
     </message>
 </context>
 <context>
@@ -707,7 +739,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Load Circuit</source>
-        <translation>Загрузить схему</translation>
+        <translation type="vanished">Загрузить схему</translation>
     </message>
     <message>
         <source>Circuits (*.sim*);;All files (*.*)</source>
@@ -716,6 +748,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Bill Of Materials</source>
         <translation type="vanished">Список материалов</translation>
+    </message>
+    <message>
+        <source>Import Circuit</source>
+        <translation type="unfinished">Импортировать схему</translation>
     </message>
 </context>
 <context>
@@ -950,6 +986,10 @@ Can&apos;t find file:
         <source>Resume Simulation</source>
         <translation>Продолжить симуляцию</translation>
     </message>
+    <message>
+        <source>Stopped</source>
+        <translation type="unfinished">Остановлено</translation>
+    </message>
 </context>
 <context>
     <name>Clock</name>
@@ -1140,6 +1180,10 @@ Can&apos;t find file:
     <message>
         <source>For this file:</source>
         <translation>Для этого файла:</translation>
+    </message>
+    <message>
+        <source>Extra build arguments</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1402,15 +1446,19 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Other Logic</source>
-        <translation>Другое (Логика)</translation>
+        <translation type="vanished">Другое (Логика)</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
         <translation>Инвертировать входы</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1516,11 +1564,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Converters</source>
-        <translation>Конвертеры</translation>
+        <translation type="vanished">Конвертеры</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1551,11 +1603,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Converters</source>
-        <translation>Конвертеры</translation>
+        <translation type="vanished">Конвертеры</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1633,6 +1689,10 @@ Can&apos;t find file:
     <message>
         <source>Link to Component</source>
         <translation>Связать с компонентом</translation>
+    </message>
+    <message>
+        <source>Steps</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1748,7 +1808,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Load data</source>
@@ -1761,6 +1821,10 @@ Can&apos;t find file:
     <message>
         <source>Show Memory Table</source>
         <translation>Просмотр содержимого памяти</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1819,7 +1883,11 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Name Space:</source>
-        <translation>Пространство имен:</translation>
+        <translation type="vanished">Пространство имен:</translation>
+    </message>
+    <message>
+        <source>Space to Pin:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2300,7 +2368,7 @@ Can&apos;t find file:
     <name>FixedVolt</name>
     <message>
         <source>Fixed Volt.</source>
-        <translation>Постоянное напряжение</translation>
+        <translation type="vanished">Постоянное напряжение</translation>
     </message>
     <message>
         <source>Sources</source>
@@ -2313,6 +2381,10 @@ Can&apos;t find file:
     <message>
         <source>Voltage</source>
         <translation>Напряжение</translation>
+    </message>
+    <message>
+        <source>Fixed Voltage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2335,7 +2407,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Use Set/Reset Pins</source>
@@ -2344,6 +2416,10 @@ Can&apos;t find file:
     <message>
         <source>Set/Reset Inverted</source>
         <translation>Инвертировать Set/Reset</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2358,7 +2434,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Memory</source>
-        <translation>Память</translation>
+        <translation type="vanished">Память</translation>
     </message>
     <message>
         <source>FlipFlopD</source>
@@ -2377,7 +2453,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Memory</source>
-        <translation>Память</translation>
+        <translation type="vanished">Память</translation>
     </message>
 </context>
 <context>
@@ -2396,7 +2472,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Memory</source>
-        <translation>Память</translation>
+        <translation type="vanished">Память</translation>
     </message>
 </context>
 <context>
@@ -2411,7 +2487,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Memory</source>
-        <translation>Память</translation>
+        <translation type="vanished">Память</translation>
     </message>
 </context>
 <context>
@@ -2453,11 +2529,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>Арифметика</translation>
+        <translation type="vanished">Арифметика</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2496,7 +2576,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Load Functions</source>
@@ -2522,11 +2602,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>Арифметика</translation>
+        <translation type="vanished">Арифметика</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
         <translation>Инвертировать входы</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2652,7 +2736,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Memory</source>
-        <translation>Память</translation>
+        <translation type="vanished">Память</translation>
     </message>
 </context>
 <context>
@@ -2679,7 +2763,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Converters</source>
-        <translation>Конвертеры</translation>
+        <translation type="vanished">Конвертеры</translation>
     </message>
 </context>
 <context>
@@ -2733,7 +2817,11 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Auto Step</source>
-        <translation>Авто шаг</translation>
+        <translation type="vanished">Авто шаг</translation>
+    </message>
+    <message>
+        <source>Reactive Step</source>
+        <translation type="unfinished">Реактивный шаг</translation>
     </message>
 </context>
 <context>
@@ -3097,15 +3185,19 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Memory</source>
-        <translation>Память</translation>
+        <translation type="vanished">Память</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
         <translation>Инвертировать входы</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3389,6 +3481,20 @@ Can&apos;t find file:
     </message>
 </context>
 <context>
+    <name>LinkedComponent</name>
+    <message>
+        <source>Link to Component</source>
+        <translation type="obsolete">Связать с компонентом</translation>
+    </message>
+</context>
+<context>
+    <name>LinkerComponent</name>
+    <message>
+        <source>Link to Component</source>
+        <translation type="unfinished">Связать с компонентом</translation>
+    </message>
+</context>
+<context>
     <name>Lm555</name>
     <message>
         <source>lm555</source>
@@ -3400,7 +3506,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Other Logic</source>
-        <translation>Другое (Логика)</translation>
+        <translation type="vanished">Другое (Логика)</translation>
     </message>
 </context>
 <context>
@@ -3466,7 +3572,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Gate Delay </source>
@@ -3479,6 +3585,10 @@ Can&apos;t find file:
     <message>
         <source>Fall Time</source>
         <translation>Время спада</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3786,7 +3896,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Load data</source>
@@ -3806,7 +3916,11 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Memory</source>
-        <translation>Память</translation>
+        <translation type="vanished">Память</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3824,11 +3938,11 @@ Can&apos;t find file:
     <name>Meters</name>
     <message>
         <source>Ampmeter</source>
-        <translation>Амперметр</translation>
+        <translation type="vanished">Амперметр</translation>
     </message>
     <message>
         <source>Voltmeter</source>
-        <translation>Вольтметр</translation>
+        <translation type="vanished">Вольтметр</translation>
     </message>
 </context>
 <context>
@@ -3906,11 +4020,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Converters</source>
-        <translation>Конвертеры</translation>
+        <translation type="vanished">Конвертеры</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4019,15 +4137,19 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Gates</source>
-        <translation>Логические элементы</translation>
+        <translation type="vanished">Логические элементы</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
         <translation>Инвертировать входы</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4089,7 +4211,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Filter</source>
-        <translation>Фильтр</translation>
+        <translation type="vanished">Фильтр</translation>
     </message>
 </context>
 <context>
@@ -4128,6 +4250,10 @@ Can&apos;t find file:
     <message>
         <source>Samples</source>
         <translation>Образцы</translation>
+    </message>
+    <message>
+        <source>Admittance to ground</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4681,7 +4807,7 @@ Not valid Package file:
 
   Set auto step &gt;= 1 for this capacitor  
 </source>
-        <translation>
+        <translation type="vanished">
   Внимание: конденсатор не может быстро обновляться  
 
  Установите Авто шаг &gt;=1 для этого конденсатора  </translation>
@@ -4746,7 +4872,11 @@ Not valid Package file:
     </message>
     <message>
         <source>Auto Step</source>
-        <translation>Авто шаг</translation>
+        <translation type="vanished">Авто шаг</translation>
+    </message>
+    <message>
+        <source>Reactive Step</source>
+        <translation type="unfinished">Реактивный шаг</translation>
     </message>
 </context>
 <context>
@@ -4983,6 +5113,14 @@ Not valid Package file:
         <source>BIN</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Пауза</translation>
+    </message>
+    <message>
+        <source>Resume</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SerialPort</name>
@@ -5027,6 +5165,37 @@ Not valid Package file:
     <message>
         <source>Main</source>
         <translation>Основные</translation>
+    </message>
+    <message>
+        <source>Auto Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SerialTerm</name>
+    <message>
+        <source>Serial Terminal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Main</source>
+        <translation type="unfinished">Основные</translation>
+    </message>
+    <message>
+        <source>Baudrate</source>
+        <translation type="unfinished">Baudrate</translation>
+    </message>
+    <message>
+        <source>Data Bits</source>
+        <translation type="unfinished">Биты данных</translation>
+    </message>
+    <message>
+        <source>Stop Bits</source>
+        <translation type="unfinished">Стоп биты</translation>
+    </message>
+    <message>
+        <source>Open Serial Monitor.</source>
+        <translation type="unfinished">Открыть монитор порта.</translation>
     </message>
 </context>
 <context>
@@ -5135,7 +5304,19 @@ Not valid Package file:
     </message>
     <message>
         <source>Other Logic</source>
-        <translation>Другое (Логика)</translation>
+        <translation type="vanished">Другое (Логика)</translation>
+    </message>
+    <message>
+        <source>Main</source>
+        <translation type="unfinished">Основные</translation>
+    </message>
+    <message>
+        <source>Show Point Pin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Enable Pin</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5208,15 +5389,19 @@ Not valid Package file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation>Арифметика</translation>
+        <translation type="vanished">Арифметика</translation>
     </message>
     <message>
         <source>Shift Register</source>
         <translation>Регистр сдвига</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5543,7 +5728,11 @@ Do you want to save your changes?
     </message>
     <message>
         <source>Select Main Components</source>
-        <translation>Выбрать основной компонент</translation>
+        <translation type="vanished">Выбрать основной компонент</translation>
+    </message>
+    <message>
+        <source>Select Exposed Components</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5597,7 +5786,19 @@ Do you want to save your changes?
     </message>
     <message>
         <source>_Switches</source>
-        <translation>_Перекл.</translation>
+        <translation type="vanished">_Перекл.</translation>
+    </message>
+    <message>
+        <source>_Lines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exclusive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Common Pin</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5648,7 +5849,7 @@ Do you want to save your changes?
     </message>
     <message>
         <source>Link to Component</source>
-        <translation>Связать с компонентом</translation>
+        <translation type="vanished">Связать с компонентом</translation>
     </message>
 </context>
 <context>
@@ -5913,6 +6114,10 @@ Do you want to save your changes?
         <source>Dial Step</source>
         <translation>Шаг приращения</translation>
     </message>
+    <message>
+        <source>Dial</source>
+        <translation type="unfinished">Регулятор</translation>
+    </message>
 </context>
 <context>
     <name>VoltReg</name>
@@ -5954,6 +6159,10 @@ Do you want to save your changes?
     <message>
         <source>Voltage Source</source>
         <translation>Источник напряжения</translation>
+    </message>
+    <message>
+        <source>Min. Voltage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6021,7 +6230,7 @@ Do you want to save your changes?
     </message>
     <message>
         <source>Wave Gen.</source>
-        <translation>Генератор</translation>
+        <translation type="vanished">Генератор</translation>
     </message>
     <message>
         <source>Sources</source>
@@ -6087,6 +6296,14 @@ Do you want to save your changes?
         <source>Wav files (*.wav);;All files (*.*)</source>
         <translation>Wav файлы (*.wav);;Все файлы (*.*)</translation>
     </message>
+    <message>
+        <source>Phase shift</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wave Generator</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>XorGate</name>
@@ -6116,15 +6333,19 @@ Do you want to save your changes?
     </message>
     <message>
         <source>Edges</source>
-        <translation>Фронты</translation>
+        <translation type="vanished">Фронты</translation>
     </message>
     <message>
         <source>Gates</source>
-        <translation>Логические элементы</translation>
+        <translation type="vanished">Логические элементы</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
         <translation>Инвертировать входы</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6207,7 +6428,7 @@ Do you want to save your changes?
     <name>manCompDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Диалог</translation>
+        <translation type="vanished">Диалог</translation>
     </message>
     <message>
         <source>Name</source>

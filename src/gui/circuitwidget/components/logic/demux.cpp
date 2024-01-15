@@ -60,7 +60,7 @@ Demux::Demux( QString type, QString id )
     }, groupNoCopy } );
 
     addPropGroup( { tr("Electric"), IoComponent::inputProps()+IoComponent::outputProps()+IoComponent::outputType(),0 } );
-    addPropGroup( { tr("Edges")   , IoComponent::edgeProps(),0 } );
+    addPropGroup( { tr("Timing")  , IoComponent::edgeProps(),0 } );
 }
 Demux::~Demux(){}
 
@@ -165,4 +165,6 @@ void Demux::paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidget 
         QPointF( w,-h-6 )};
 
     p->drawPolygon(points, 4);
+
+    Component::paintSelected( p );
 }

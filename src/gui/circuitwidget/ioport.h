@@ -12,11 +12,13 @@
 #include "iopin.h"
 #include "e-element.h"
 
+#include "scriptarray.h"
+
 class IoPin;
 class Component;
 class asIScriptEngine;
 
-class MAINMODULE_EXPORT IoPort :public eElement
+class IoPort :public eElement
 {
         friend class McuCreator;
 
@@ -46,11 +48,10 @@ class MAINMODULE_EXPORT IoPort :public eElement
         // ----------------
         struct outState_t{
             uint64_t time;
-            uint     state;
+            uint64_t state;
         };
-        void trigger();
-        void addOutState( uint64_t t, uint s ) { m_outVector.emplace_back( outState_t{t, s} ); }
-        void setOutVector( std::vector<outState_t> v ) { m_outVector = v; }
+        void trigger( uint n=0 );
+        void addSequence( CScriptArray* t );
 
  static void registerScript( asIScriptEngine* engine );
 
@@ -73,7 +74,8 @@ class MAINMODULE_EXPORT IoPort :public eElement
         std::vector<IoPin*> m_pins;
 
         uint m_index;
-        std::vector<outState_t> m_outVector;
+        std::vector<outState_t>* m_outVector;
+        std::vector<std::vector<outState_t>> m_outVectors;
 };
 
 #endif

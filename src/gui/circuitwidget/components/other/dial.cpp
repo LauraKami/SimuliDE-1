@@ -42,10 +42,11 @@ Dial::Dial( QString type, QString id )
     m_area     = m_areaComp;
 
     m_graphical = true;
-    m_linkable  = true;
+    m_linker    = true;
 
     m_minVal = 0;
     m_maxVal = 1000;
+    m_steps  = 1000;
 
     setValLabelPos( 15,-20, 0 );
     setLabelPos(-16,-40, 0);
@@ -56,7 +57,8 @@ Dial::Dial( QString type, QString id )
 
     addPropGroup( { tr("Main"), {
 new IntProp<Dial>( "Min_Val", tr("Minimum Value"), "", this, &Dial::minVal, &Dial::setMinVal ),
-new IntProp<Dial>( "Max_Val", tr("Maximum Value"), "", this, &Dial::maxVal, &Dial::setMaxVal )
+new IntProp<Dial>( "Max_Val", tr("Maximum Value"), "", this, &Dial::maxVal, &Dial::setMaxVal ),
+new IntProp<Dial>( "Steps"  , tr("Steps")        , "", this, &Dial::steps,  &Dial::setSteps )
     },0 } );
     addPropGroup( { tr("Dial"), Dialed::dialProps(), groupNoCopy } );
     addPropGroup( { "Hidden", {
@@ -70,9 +72,9 @@ void Dial::updateStep()
     if( !m_needUpdate ) return;
     m_needUpdate = false;
 
-    int v = m_dialW.value();
-    int range = m_maxVal - m_minVal;
-    v = m_minVal + v*range/1000;
+    double v = m_dialW.value();
+    double range = m_maxVal - m_minVal;
+    v = m_minVal + v*range/(m_steps-1);
     for( int i=0; i<m_linkedComp.size(); ++i )
     {
         Component* comp = m_linkedComp.at( i );
@@ -98,6 +100,18 @@ void Dial::setMaxVal( int max )
     m_needUpdate = true;
 }
 
+void Dial::setSteps( int s )
+{
+    if( s < 2 ) s = 2;
+    if( m_steps == s ) return;
+    m_steps = s;
+    m_dialW.dial()->setMaximum( s-1 );
+
+    int single = s/40;
+    if( single < 1 ) single = 1;
+    m_dialW.dial()->setSingleStep( single );
+}
+
 /*void Dial::compSelected( Component* comp )
 {
 
@@ -118,11 +132,13 @@ void Dial::contextMenuEvent( QGraphicsSceneContextMenuEvent* event )
     event->accept();
     QMenu* menu = new QMenu();
 
-    QAction* linkCompAction = menu->addAction( QIcon(":/subcl.png"),tr("Link to Component") );
-    QObject::connect( linkCompAction, &QAction::triggered, [=](){ slotLinkComp(); } );
+    if( !parentItem() )
+    {
+        QAction* linkCompAction = menu->addAction( QIcon(":/subcl.png"),tr("Link to Component") );
+        QObject::connect( linkCompAction, &QAction::triggered, [=](){ slotLinkComp(); } );
 
-    menu->addSeparator();
-
+        menu->addSeparator();
+    }
     Component::contextMenu( event, menu );
     menu->deleteLater();
 }
@@ -133,4 +149,6 @@ void Dial::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* 
 
     Component::paint( p, option, widget );
     p->drawRect( m_area );
+
+    Component::paintSelected( p );
 }

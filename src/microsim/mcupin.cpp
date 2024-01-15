@@ -5,6 +5,7 @@
 
 #include "mcupin.h"
 #include "mcuport.h"
+#include "e_mcu.h"
 #include "datautils.h"
 #include "mcuinterrupts.h"
 #include "simulator.h"
@@ -30,8 +31,7 @@ McuPin::McuPin( McuPort* port, int i, QString id, Component* mcu )
     m_changeCB = true;  // Always call VoltChanged()
     m_pinState = input_low;
 
-    setOutHighV( 5 );
-    initialize();
+    McuPin::initialize();
 }
 McuPin::~McuPin() {}
 
@@ -41,6 +41,11 @@ void McuPin::initialize()
     m_dirCtrl = false;
     m_isAnalog = false;
     //m_portState = false;
+
+    double vdd = m_port->getMcu()->vdd();
+    m_outHighV = vdd;
+    m_inpHighV = vdd/2;
+    m_inpLowV  = vdd/2;
 
     IoPin::initialize();
 }
@@ -113,6 +118,12 @@ void McuPin::setDirection( bool out )
     setPinMode( m_portMode );
 }
 
+void McuPin::setOpenColl( bool o )
+{
+    m_openColl = o;
+    setDirection( m_isOut );
+}
+
 void McuPin::controlPin( bool outCtrl, bool dirCtrl )
 {
     if( !dirCtrl && m_dirCtrl ) // External control is being released
@@ -140,8 +151,8 @@ void McuPin::setPullup( bool up )
         m_inpState = up;
         uint8_t val = up ? m_pinMask : 0;
         m_port->pinChanged( m_pinMask, val );
-        if     ( m_pinMode == openCo ) setPinState( up? open_high  : open_low  ); // High : Low colors
-        else if( m_pinMode == input  ) setPinState( up? input_high : input_low ); // High : Low colors
+        //if     ( m_pinMode == openCo ) setPinState( up? open_high  : open_low  ); // High : Low colors
+        //else if( m_pinMode == input  ) setPinState( up? input_high : input_low ); // High : Low colors
     }
 }
 

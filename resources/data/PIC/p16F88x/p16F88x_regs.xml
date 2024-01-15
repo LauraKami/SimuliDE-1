@@ -37,7 +37,7 @@
                   bits="RX9D,OERR,FERR,ADEN,CREN,SREN,RX9,SPEN"/>
                   
         <register name="TXREG"   addr="0x19" bits=""/>
-        <register name="RCREG"   addr="0x1A" bits=""/>
+        <register name="RCREG"   addr="0x1A" mask="00000000" bits=""/>
         
         <register name="CCPR2L"  addr="0x1B" bits=""/>
         <register name="CCPR2H"  addr="0x1C" bits=""/>
@@ -80,13 +80,13 @@
                   bits="SCS,LTS,HTS,OSTS,IRCF0,IRCF1,IRCF2"/>
                   
         <register name="OSCTUNE" addr="0x90" />
-        <register name="SSPCON2" addr="0x91" 
+        <register name="SSPCON2" addr="0x91"  mask="10111111"
                   bits="SEN,RSEN,PEN,RCEN,ACKEN,ACKDT,ACKSTAT,GCEN" />
                   
         <register name="PR2"     addr="0x92" bits="" reset="11111111"/>
         <register name="SSPADD"  addr="0x93" />
         <register name="SSPSTAT" addr="0x94" 
-                  bits="BF,UA,READ_WRITE,I2C_START,I2C_STOP,DATA_ADDRESS,CKE,SMP" />
+                  bits="BF,UA,RW,S,P,DA,CKE,SMP" />
                   
         <register name="WPUB"    addr="0x95" reset="11111111" bits=""/>
         <register name="IOCB"    addr="0x96" bits=""/>

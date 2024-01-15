@@ -8,7 +8,7 @@
 
 #include "component.h"
 
-class MAINMODULE_EXPORT Shape : public Component
+class Shape : public Component
 {
     public:
         Shape( QString type, QString id );
@@ -35,7 +35,6 @@ class MAINMODULE_EXPORT Shape : public Component
 
         double opac() { return m_opac; }
         void setOpac( double op );
-
 
         QString colorStr() { return m_color.name(); }
         void setColorStr( QString n ) { setColor( QColor(n) ); }

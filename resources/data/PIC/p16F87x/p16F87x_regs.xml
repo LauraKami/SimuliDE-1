@@ -25,7 +25,7 @@
                   bits="RX9D,OERR,FERR,ADEN,CREN,SREN,RX9,SPEN"/>
                   
         <register name="TXREG"   addr="0x19" bits=""/>
-        <register name="RCREG"   addr="0x1A" bits=""/>
+        <register name="RCREG"   addr="0x1A" mask="00000000" bits=""/>
         
         <register name="CCPR2L"  addr="0x1B" bits=""/>
         <register name="CCPR2H"  addr="0x1C" bits=""/>
@@ -56,8 +56,8 @@
         <register name="PIE2"    addr="0x8D" 
                   bits="CCP2IE,0,0,BCLIE,EEIE,0,0,0"/>
                   
-        <register name="PCON"    addr="0x8E" 
-                  bits="BOR,POR,0,OSCF" reset="00001000"/>
+        <register name="PCON"    addr="0x8E" reset="00001000"
+                  bits="BOR,POR,0,OSCF" />
                   
         <register name="SSPCON2" addr="0x91" mask="10111111"
                   bits="SEN,RSEN,PEN,RCEN,ACKEN,ACKDT,ACKSTAT,GCEN" />

@@ -48,7 +48,7 @@ new BoolProp<Buffer>("Tristate", tr("Tristate"),"", this
                      , &Buffer::tristate, &Buffer::setTristate, propNoCopy )
                     })
     ,0} );
-    addPropGroup( { tr("Edges") , Gate::edgeProps(),0 } );
+    addPropGroup( { tr("Timing"), Gate::edgeProps(),0 } );
 
     removeProperty("pd_n");
 }
@@ -86,4 +86,6 @@ void Buffer::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget
         QPointF( 8,-1 )             };
 
     p->drawPolygon( points, 4 );
+
+    Component::paintSelected( p );
 }

@@ -35,6 +35,7 @@
 #include "avradc.h"
 #include "avrtwi.h"
 #include "avrspi.h"
+#include "avrusi.h"
 #include "avrwdt.h"
 #include "avreeprom.h"
 #include "avrcomparator.h"
@@ -53,6 +54,7 @@
 #include "pictwi.h"
 #include "picspi.h"
 #include "picadc.h"
+#include "picdac.h"
 #include "piccomparator.h"
 #include "picvref.h"
 #include "picwdt.h"
@@ -63,7 +65,6 @@
 
 #include "i51core.h"
 #include "i51timer.h"
-#include "i51interrupt.h"
 #include "i51usart.h"
 #include "i51port.h"
 
@@ -159,11 +160,13 @@ int McuCreator::processFile( QString fileName, bool main )
         else if( part == "ccpunit" )    createCcpUnit( &el );
         else if( part == "msspunit" )   createMsspUnit( &el );
         else if( part == "usart" )      createUsart( &el );
-        else if( part == "adc" )        createAdc( &el );
-        else if( part == "comp" )       createAcomp( &el );
-        else if( part == "vref" )       createVref( &el );
         else if( part == "twi" )        createTwi( &el );
         else if( part == "spi" )        createSpi( &el );
+        else if( part == "usi" )        createUsi( &el );
+        else if( part == "adc" )        createAdc( &el );
+        else if( part == "dac" )        createDac( &el );
+        else if( part == "comp" )       createAcomp( &el );
+        else if( part == "vref" )       createVref( &el );
         else if( part == "wdt" )        createWdt( &el );
         else if( part == "rom" )        createEeprom( &el );
         else if( part == "sleep" )      createSleep( &el );
@@ -222,8 +225,9 @@ int McuCreator::processFile( QString fileName, bool main )
                         {
                             QString name = el.attribute("name");
                             QString type = el.attribute("type");
+                            QString unit = el.attribute("unit");
 
-                            cpu->addProperty( group, name, type );
+                            cpu->addProperty( group, name, type, unit );
                         }
                         node = node.nextSibling();
                     }
@@ -342,7 +346,7 @@ void McuCreator::createEeprom( QDomElement* e )
             eeprom->m_addressH = mcu->getReg( highByte );
             watchRegNames( highByte, R_WRITE, eeprom, &McuEeprom::addrWriteH, mcu );
     }   }
-    if( e->hasAttribute("interrupt") ) setInterrupt( e->attribute("interrupt"), eeprom );
+    setInterrupt( e->attribute("interrupt"), eeprom );
 }
 
 void McuCreator::createDataBlock( QDomElement* d )
@@ -429,12 +433,13 @@ void McuCreator::getRegisters( QDomElement* e, uint16_t offset )
                     {
                         bitName = bitList.value( i );
                         if( bitName == "0" ) continue;
+
                         for( QString alias : bitName.split("|") ) // Bit name variations: alias first used bit name
                         {                                         // Example tiny WDTCR.WDTIE is 328 WDTCSR.WDIE
                             mcu->m_bitMasks.insert( alias, 1<<i );
                             mcu->m_bitRegs.insert( alias, regAddr );
                     }   }
-                    if( !stReg.isEmpty() && ( regName == stReg ) )
+                    if( !stReg.isEmpty() && ( regName == stReg ) ) // Status Register
                     {
                         mcu->m_sregAddr = regAddr;
                         mcu->setStatusBits( bitList );
@@ -513,7 +518,8 @@ void McuCreator::createIoPort( QDomElement* p )
 
     port->createPins( m_mcuComp, p->attribute("pins"), 0xFFFFFFFF );
 
-    QDomNode node = p->firstChild();
+    /// Scripts register outVectors by now
+    /*QDomNode node = p->firstChild();
     while( !node.isNull() )
     {
         QDomElement el = node.toElement();
@@ -525,7 +531,7 @@ void McuCreator::createIoPort( QDomElement* p )
             port->addOutState( time, state );
         }
         node = node.nextSibling();
-    }
+    }*/
 }
 
 void McuCreator::createMcuPort( QDomElement* p )
@@ -730,8 +736,8 @@ void McuCreator::createTimer( QDomElement* t )
 
         if( list.size() > 1 ) timer->m_topReg0H = mcu->getReg( list.value(1) );
     }
-    if( t->hasAttribute("interrupt") ) setInterrupt( t->attribute("interrupt"), timer );
-    if( t->hasAttribute("prescalers") ) setPrescalers( t->attribute("prescalers"), timer );
+    setInterrupt( t->attribute("interrupt"), timer );
+    setPrescalers( t->attribute("prescalers"), timer );
     if( t->hasAttribute("prselect") ) timer->m_prSelBits = getRegBits( t->attribute("prselect"), mcu );
 
     QDomNode node = t->firstChild();
@@ -778,7 +784,7 @@ void McuCreator::createTimer( QDomElement* t )
             }
             else setConfigRegs( &el, ocUnit );
 
-            if( el.hasAttribute("interrupt") ) setInterrupt( el.attribute("interrupt"), ocUnit );
+            setInterrupt( el.attribute("interrupt"), ocUnit );
         }
         else if( el.tagName() == "icunit" )
         {
@@ -800,7 +806,7 @@ void McuCreator::createTimer( QDomElement* t )
                 QString configBits = el.attribute("configbits");
                 watchBitNames( configBits, R_WRITE, icUnit, &McuIcUnit::configure, mcu );
             }
-            if( el.hasAttribute("interrupt") ) setInterrupt( el.attribute("interrupt"), icUnit );
+            setInterrupt( el.attribute("interrupt"), icUnit );
         }
         node = node.nextSibling();
 }   }
@@ -857,8 +863,7 @@ void McuCreator::createCcpUnit( QDomElement* c )
         watchRegNames( highByte, R_WRITE, ccpUnit, &PicCcpUnit::ccprWriteH, mcu );
     }
     setConfigRegs( c, ccpUnit );
-
-    if( c->hasAttribute("interrupt") ) setInterrupt( c->attribute("interrupt"), ccpUnit );
+    setInterrupt( c->attribute("interrupt"), ccpUnit );
 }
 
 void McuCreator::createMsspUnit( QDomElement* c )
@@ -904,7 +909,7 @@ void McuCreator::createUsart( QDomElement* u )
     mcu->m_modules.emplace_back( usartM );
 
     setConfigRegs( u, usartM );
-    if( u->hasAttribute("interrupt") ) setInterrupt( u->attribute("interrupt"), usartM );
+    setInterrupt( u->attribute("interrupt"), usartM );
 
     QDomNode node = u->firstChild();
     while( !node.isNull() )
@@ -942,7 +947,7 @@ void McuCreator::createUsart( QDomElement* u )
                     QString enable = el.attribute( "enable" );
                     watchBitNames( enable, R_WRITE, trUnit, &UartTR::enable, mcu );
                 }
-                if( el.hasAttribute("interrupt") ) setInterrupt( el.attribute("interrupt"), trUnit );
+                setInterrupt( el.attribute("interrupt"), trUnit );
             }
         }
         node = node.nextSibling();
@@ -983,8 +988,8 @@ void McuCreator::createAdc( QDomElement* e )
         QString configRegs = e->attribute("multiplex");
         watchRegNames( configRegs, R_WRITE, adc, &McuAdc::setChannel, mcu );
     }
-    if( e->hasAttribute("interrupt") ) setInterrupt( e->attribute("interrupt"), adc );
-    if( e->hasAttribute("prescalers") ) setPrescalers( e->attribute("prescalers"), adc );
+    setInterrupt( e->attribute("interrupt"), adc );
+    setPrescalers( e->attribute("prescalers"), adc );
 
     QStringList pins = e->attribute("adcpins").remove(" ").split(",");
     for( QString pinName : pins )
@@ -999,6 +1004,34 @@ void McuCreator::createAdc( QDomElement* e )
         {
             McuPin* pin = mcu->getMcuPin( pinName );
             if( pin ) adc->m_refPin.emplace_back( pin );
+    }   }
+}
+
+void McuCreator::createDac( QDomElement* e )
+{
+    McuDac* dac = NULL;
+    QString name = e->attribute( "name" );
+
+    if( m_core == "Pic14e") dac = new PicDac( mcu, name );
+    else return;
+
+    mcu->m_modules.emplace_back( dac );
+
+    setConfigRegs( e, dac );
+
+    if( e->hasAttribute("dacreg") )
+    {
+        QString dacReg = e->attribute("dacreg");
+        dac->m_dacReg = mcu->getReg( dacReg );
+        watchRegNames( dacReg, R_WRITE, dac, &McuDac::outRegChanged, mcu );
+    }
+    if( e->hasAttribute("pins") )
+    {
+        QStringList pins = e->attribute("pins").remove(" ").split(",");
+        for( QString pinName : pins )
+        {
+            McuPin* pin = mcu->getMcuPin( pinName );
+            if( pin ) dac->m_pins.emplace_back( pin );
     }   }
 }
 
@@ -1023,7 +1056,7 @@ void McuCreator::createAcomp( QDomElement* e )
         McuPin* pin = mcu->getMcuPin( pinName );
         if( pin ) comp->m_pins.emplace_back( pin );
     }
-    if( e->hasAttribute("interrupt") ) setInterrupt( e->attribute("interrupt"), comp );
+    setInterrupt( e->attribute("interrupt"), comp );
 }
 
 void McuCreator::createVref( QDomElement* e )
@@ -1031,7 +1064,7 @@ void McuCreator::createVref( QDomElement* e )
     QString name = e->attribute( "name" );
     McuVref* vref = NULL;
     if     ( m_core == "Pic14" )  vref = new PicVref( mcu, name );
-    else if( m_core == "Pic14e" ) vref = new PicVref( mcu, name );
+    else if( m_core == "Pic14e" ) vref = new PicVrefE( mcu, name );
     if( !vref ) return;
 
     mcu->m_modules.emplace_back( vref );
@@ -1060,26 +1093,32 @@ void McuCreator::createTwi( QDomElement* e )
 
     setConfigRegs( e, m_twi );
 
-    QString dataReg = e->attribute("dataregs");
-    m_twi->m_dataReg = mcu->getReg( dataReg );
-    watchRegNames( dataReg, R_WRITE, m_twi, &McuTwi::writeTwiReg, mcu );
-    if( m_core == "Pic14")
-        watchRegNames( dataReg, R_READ, m_twi, &McuTwi::readTwiReg, mcu ); //
-
-    QString addrReg = e->attribute("addressreg");
-    m_twi->m_addrReg = mcu->getReg( addrReg );
-    watchRegNames( addrReg, R_WRITE, m_twi, &McuTwi::writeAddrReg, mcu );
-
-    QString statReg = e->attribute("statusreg");
-    m_twi->m_statReg = mcu->getReg( statReg );
-    watchRegNames( statReg, R_WRITE, m_twi, &McuTwi::writeStatus, mcu );
-
-    if( e->hasAttribute("interrupt") ) setInterrupt( e->attribute("interrupt"), m_twi );
-    if( e->hasAttribute("prescalers") ) setPrescalers( e->attribute("prescalers"), m_twi );
+    if( e->hasAttribute("dataregs") )
+    {
+        QString dataReg = e->attribute("dataregs");
+        m_twi->m_dataReg = mcu->getReg( dataReg );
+        watchRegNames( dataReg, R_WRITE, m_twi, &McuTwi::writeTwiReg, mcu );
+        if( m_core == "Pic14")
+            watchRegNames( dataReg, R_READ, m_twi, &McuTwi::readTwiReg, mcu ); //
+    }
+    if( e->hasAttribute("addressreg") )
+    {
+        QString addrReg = e->attribute("addressreg");
+        m_twi->m_addrReg = mcu->getReg( addrReg );
+        watchRegNames( addrReg, R_WRITE, m_twi, &McuTwi::writeAddrReg, mcu );
+    }
+    if( e->hasAttribute("statusreg") )
+    {
+        QString statReg = e->attribute("statusreg");
+        m_twi->m_statReg = mcu->getReg( statReg );
+        watchRegNames( statReg, R_WRITE, m_twi, &McuTwi::writeStatus, mcu );
+    }
+    setInterrupt( e->attribute("interrupt"), m_twi );
+    setPrescalers( e->attribute("prescalers"), m_twi );
 
     QStringList pins = e->attribute("pins").remove(" ").split(",");
-    m_twi->setSdaPin( mcu->getMcuPin( pins.value(0) ) );
-    m_twi->setSclPin( mcu->getMcuPin( pins.value(1) ) );
+    m_twi->setSdaPin( mcu->getIoPin( pins.value(0) ) );
+    m_twi->setSclPin( mcu->getIoPin( pins.value(1) ) );
 }
 
 void McuCreator::createSpi( QDomElement* e )
@@ -1099,26 +1138,56 @@ void McuCreator::createSpi( QDomElement* e )
 
     setConfigRegs( e, m_spi );
 
-    if(  e->hasAttribute("dataregs") )
+    if( e->hasAttribute("dataregs") )
     {
         QString dataReg = e->attribute("dataregs");
         m_spi->m_dataReg = mcu->getReg( dataReg );
         watchRegNames( dataReg, R_WRITE, m_spi, &McuSpi::writeSpiReg, mcu );
     }
-    if(  e->hasAttribute("statusreg") )
+    if( e->hasAttribute("statusreg") )
     {
         QString statReg = e->attribute("statusreg");
         m_spi->m_statReg = mcu->getReg( statReg );
         watchRegNames( statReg, R_WRITE, m_spi, &McuSpi::writeStatus, mcu );
     }
-    if( e->hasAttribute("interrupt")  ) setInterrupt(  e->attribute("interrupt") , m_spi );
-    if( e->hasAttribute("prescalers") ) setPrescalers( e->attribute("prescalers"), m_spi );
+    setInterrupt(  e->attribute("interrupt") , m_spi );
+    setPrescalers( e->attribute("prescalers"), m_spi );
 
     QStringList pins = e->attribute("pins").remove(" ").split(",");
-    m_spi->setMosiPin( mcu->getMcuPin( pins.value(0) ) );
-    m_spi->setMisoPin( mcu->getMcuPin( pins.value(1) ) );
-    m_spi->setSckPin(  mcu->getMcuPin( pins.value(2) ) );
-    m_spi->setSsPin(   mcu->getMcuPin( pins.value(3) ) );
+    m_spi->setMosiPin( mcu->getIoPin( pins.value(0) ) );
+    m_spi->setMisoPin( mcu->getIoPin( pins.value(1) ) );
+    m_spi->setSckPin(  mcu->getIoPin( pins.value(2) ) );
+    m_spi->setSsPin(   mcu->getIoPin( pins.value(3) ) );
+}
+
+void McuCreator::createUsi( QDomElement* e )
+{
+    QString name = e->attribute( "name" );
+    AvrUsi* usi = nullptr;
+    if( m_core == "AVR" ) usi = new AvrUsi( mcu, name );
+    else return;
+
+    mcu->m_modules.emplace_back( usi );
+
+    setConfigRegs( e, usi );
+
+    /*    if(  e->hasAttribute("dataregs") )
+    {
+        QString dataReg = e->attribute("dataregs");
+        usi->m_dataReg = mcu->getReg( dataReg );
+        watchRegNames( dataReg, R_WRITE, usi, &AvrUsi::writeSpiReg, mcu );
+    }
+    if(  e->hasAttribute("statusreg") )
+    {
+        QString statReg = e->attribute("statusreg");
+        usi->m_statusReg = mcu->getReg( statReg );
+        watchRegNames( statReg, R_WRITE, usi, &AvrUsi::writeStatus, mcu );
+    }*/
+
+    setInterrupt( e->attribute("interrupt") , usi );
+    usi->m_startInte = mcu->m_interrupts.m_intList.value( "USISTA" );
+
+    usi->setPins( e->attribute("pins").remove(" ") );
 }
 
 void McuCreator::createWdt( QDomElement* e )
@@ -1134,9 +1203,8 @@ void McuCreator::createWdt( QDomElement* e )
     mcu->m_wdt = wdt;
 
     setConfigRegs( e, wdt );
-
-    if( e->hasAttribute("interrupt") ) setInterrupt( e->attribute("interrupt"), wdt );
-    if( e->hasAttribute("prescalers") ) setPrescalers( e->attribute("prescalers"), wdt );
+    setInterrupt( e->attribute("interrupt"), wdt );
+    setPrescalers( e->attribute("prescalers"), wdt );
 }
 
 void McuCreator::createSleep( QDomElement* e )
@@ -1218,9 +1286,9 @@ void McuCreator::createInterrupt( QDomElement* el )
     uint16_t intVector  = el->attribute("vector").toUInt(0,0);
 
     Interrupt* iv = NULL;
-    if     ( m_core == "8051" )  iv = I51Interrupt::getInterrupt( intName, intVector, mcu );
+    //if     ( m_core == "8051" )  iv = I51Interrupt::getInterrupt( intName, intVector, mcu );
     //else if( m_core == "AVR" )   iv = AVRInterrupt::getInterrupt( intName, intVector, mcu );
-    else if( m_core == "Pic14" ) iv = new PicInterrupt( intName, intVector, mcu );
+    if     ( m_core == "Pic14" ) iv = new PicInterrupt( intName, intVector, mcu );
     else if( m_core == "Pic14e") iv = new Pic14eInterrupt( intName, intVector, mcu );
     else                         iv = new Interrupt( intName, intVector, mcu );
     if( !iv ) return;
@@ -1247,9 +1315,14 @@ void McuCreator::createInterrupt( QDomElement* el )
         watchBitNames( intFlag, R_WRITE, iv, &Interrupt::flagCleared, mcu );
     }
     if( el->hasAttribute("clear") ) // If clear="1" Clear flag by writting 1 to it
-    {                               // If clear="0" deactivate autoclear
+    {
         uint8_t val = el->attribute("clear").toUInt();
-        if( val ) watchBitNames( intFlag, R_WRITE, iv, &Interrupt::writeFlag, mcu );
+        if( val ) watchRegister( iv->m_flagReg, R_WRITE, iv, &Interrupt::writeFlag, mcu );
+    }
+    if( el->hasAttribute("autoclear") ) // If autoclear="0" deactivate autoclear
+    {
+        uint8_t val = el->attribute("autoclear").toUInt();
+        if( val ) iv->m_autoClear = true;
         else      iv->m_autoClear = false;
     }
     if( el->hasAttribute("pin") )
@@ -1263,7 +1336,9 @@ void McuCreator::createInterrupt( QDomElement* el )
 
 void McuCreator::setInterrupt( QString intName, McuModule* module )
 {
+    if( intName.isEmpty() ) return;
     Interrupt* inte = mcu->m_interrupts.m_intList.value( intName );
+    if( !inte ) qDebug() << "    Error: Interrupt not found: " << intName << endl;
     module->setInterrupt( inte );
 }
 
@@ -1305,6 +1380,7 @@ void McuCreator::setConfigRegs( QDomElement* u, McuModule* module )
 
 void McuCreator::setPrescalers( QString pr, McuPrescaled* module )
 {
+    if( pr.isEmpty() ) return;
     QStringList prescalers = pr.remove(" ").split(",");
     module->m_prescList.resize( prescalers.size() );
 

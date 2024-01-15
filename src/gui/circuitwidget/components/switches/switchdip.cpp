@@ -17,6 +17,7 @@
 #include "pin.h"
 
 #include "intprop.h"
+#include "boolprop.h"
 
 #define tr(str) simulideTr("SwitchDip",str)
 
@@ -38,9 +39,12 @@ SwitchDip::SwitchDip( QString type, QString id )
          , eElement( id )
 {
     m_graphical = true;
-    m_changed = true;
+    m_changed   = true;
 
-    m_color = QColor( 50, 50, 70 );
+    m_commonPin = false;
+    m_exclusive = false;
+
+    m_color = QColor( 100, 100, 120 );
     m_size = 0;
     m_state = 0;
     setSize( 8 );
@@ -49,8 +53,9 @@ SwitchDip::SwitchDip( QString type, QString id )
     Simulator::self()->addToUpdateList( this );
 
     addPropGroup( { tr("Main"), {
-new IntProp<SwitchDip>("Size", tr("Size"),tr("_Lines"), this
-                      , &SwitchDip::size, &SwitchDip::setSize, propNoCopy,"uint" )
+new IntProp <SwitchDip>("Size"     , tr("Size"),tr("_Lines"), this, &SwitchDip::size     , &SwitchDip::setSize, propNoCopy,"uint" ),
+new BoolProp<SwitchDip>("Exclusive", tr("Exclusive"),""     , this, &SwitchDip::exclusive, &SwitchDip::setExclusive ),
+new BoolProp<SwitchDip>("CommonPin", tr("Common Pin"),""    , this, &SwitchDip::commonPin, &SwitchDip::setCommonPin ),
     }, groupNoCopy } );
 
     addPropGroup( {"Hidden", {
@@ -61,16 +66,18 @@ SwitchDip::~SwitchDip(){}
 
 void SwitchDip::stamp()
 {
+    eNode* node0 = m_pin[0]->getEnode();
     for( int i=0; i<m_size; i++ )
     {
         int pin1 = i*2;
         int pin2 = pin1+1;
 
-        eNode* node0 = m_pin[pin1]->getEnode();
+        if( m_commonPin ) m_pin[pin1]->setEnode( node0 );
+        else              node0 = m_pin[pin1]->getEnode();
         eNode* node1 = m_pin[pin2]->getEnode();
 
-        if( node0 ) node0->setSwitched( true );
-        if( node1 ) node1->setSwitched( true );
+        //if( node0 ) node0->setSwitched( true );
+        //if( node1 ) node1->setSwitched( true );
 
         m_pin[pin1]->setEnodeComp( node1 );
         m_pin[pin2]->setEnodeComp( node0 );
@@ -85,36 +92,47 @@ void SwitchDip::updateStep()
     m_changed = false;
 
     int i = 0;
-    for( QPushButton* button : m_buttons ) 
+    for( QPushButton* button : m_buttons )
     {
+        bool   state = m_state & 1<<i;
         double admit = 0;
-        if( button->isChecked()  ) admit = 1e3;
-        
+
+        if( state  )
+        {
+            button->setIcon( QIcon(":/switchbut.png") );
+            admit = 1e3;
+        }else{
+            button->setIcon( QIcon(":/stop.svg") );
+        }
+        button->setChecked( state );
+
         int pin = i*2;
         m_pin[pin]->stampAdmitance( admit );
         m_pin[pin+1]->stampAdmitance( admit );
+
        i++;
     }
 }
 
 void SwitchDip::onbuttonclicked()
 {
-    m_changed = true;
-
     int i = 0;
-    for( QPushButton* button : m_buttons ) 
+    for( QPushButton* button : m_buttons )
     {
-        if( button->isChecked()  ) 
+        bool state = button->isChecked();
+        if( m_exclusive )
         {
-            button->setIcon(QIcon(":/switchbut.png"));
-            m_state |= 1<<i;
-        }else{
-            button->setIcon(QIcon(":/stop.svg"));
-            m_state &= ~(1<<i);
+            if( state == (bool)(m_state & 1<<i) )
+                state = false;
         }
+
+        if( state  )  m_state |= 1<<i;
+        else          m_state &= ~(1<<i);
+
         i++;
     }
-    update();
+    m_changed = true;
+    if( !Simulator::self()->isRunning() ) updateStep();
 }
 
 void SwitchDip::setState( int state )
@@ -122,7 +140,7 @@ void SwitchDip::setState( int state )
     if( m_state == state ) return;
     m_state = state;
 
-    for( QPushButton* button : m_buttons ) 
+    for( QPushButton* button : m_buttons )
     {
         bool switchState = state&1;
         state >>= 1;
@@ -133,6 +151,7 @@ void SwitchDip::setState( int state )
         else               button->setIcon(QIcon(":/stop.svg"));
     }
     m_changed = true;
+    if( !Simulator::self()->isRunning() ) updateStep();
 }
 
 void SwitchDip::createSwitches( int c )
@@ -149,6 +168,7 @@ void SwitchDip::createSwitches( int c )
         button->setMaximumSize( 6, 6 );
         button->setGeometry(-6,-6, 6, 6);
 
+        button->setCursor( Qt::PointingHandCursor );
         button->setCheckable( true );
         button->setChecked( true );
         button->setIcon(QIcon(":/switchbut.png"));
@@ -189,10 +209,11 @@ void SwitchDip::deleteSwitches( int d )
 
 void SwitchDip::setSize( int size )
 {
+    if( size < 1 ) size = 1;
+    if( m_size == size ) return;
+
     if( Simulator::self()->isRunning() )  CircuitWidget::self()->powerCircOff();
-    
-    if( size == 0 ) size = 8;
-    
+
     if     ( size < m_size ) deleteSwitches( m_size-size );
     else if( size > m_size ) createSwitches( size-m_size );
     
@@ -201,14 +222,50 @@ void SwitchDip::setSize( int size )
     Circuit::self()->update();
 }
 
+void SwitchDip::setExclusive( bool e )
+{
+    if( m_exclusive == e ) return;
+    m_exclusive = e;
+    if( e ) m_state = 0;
+    m_changed = true;
+    if( !Simulator::self()->isRunning() ) updateStep();
+}
+
+void SwitchDip::setCommonPin( bool c )
+{
+    if( m_commonPin == c ) return;
+    m_commonPin = c;
+
+    for( int i=2; i<m_size*2; i+=2 )
+    {
+        if( c ) m_pin[i]->removeConnector();
+        m_pin[i]->setVisible( !c );
+    }
+}
+
+void SwitchDip::setHidden( bool hid, bool hidArea, bool hidLabel )
+{
+    Component::setHidden( hid, hidArea, hidLabel );
+    { for( int i=2; i<m_size*2; i+=2 )  m_pin[i]->setVisible( !m_commonPin && !hid ); }
+}
+
+void SwitchDip::setLinkedValue( double v, int i )
+{
+    if( i == 0 ) { int p = v; m_state = 1<<p; }
+    else         m_state = v;
+    m_changed = true;
+}
+
 void SwitchDip::remove()
 {
     deleteSwitches( m_size );
     Component::remove();
 }
 
-void SwitchDip::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
+void SwitchDip::paint( QPainter* p, const QStyleOptionGraphicsItem* o, QWidget* w )
 {
-    Component::paint( p, option, widget );
+    Component::paint( p, o, w );
     p->drawRoundRect( m_area, 4, 4 );
+
+    Component::paintSelected( p );
 }

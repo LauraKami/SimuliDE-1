@@ -22,6 +22,7 @@
 #include "simulator.h"
 #include "itemlibrary.h"
 #include "circuitwidget.h"
+#include "infowidget.h"
 #include "mainwindow.h"
 #include "componentselector.h"
 #include "mcumonitor.h"
@@ -30,7 +31,6 @@
 #include "mcuintosc.h"
 #include "utils.h"
 #include "watcher.h"
-#include "linkable.h"
 
 #include "stringprop.h"
 #include "doubleprop.h"
@@ -96,7 +96,7 @@ Mcu::Mcu( QString type, QString id )
     m_autoLoad = false;
     m_scripted = false;
     m_resetPol = false;
-    m_linkable = true;
+    m_linker   = true;
 
     m_serialMon = -1;
 
@@ -165,6 +165,12 @@ Mcu::Mcu( QString type, QString id )
 
         QFile dataFile( m_dataFile );
         QFile pkgeFile( m_pkgeFile );
+        if( !pkgeFile.exists() )   // Check if package file exist, if not try LS or no LS
+        {
+            if     ( m_pkgeFile.endsWith("_LS.package")) m_pkgeFile.replace( "_LS.package", ".package" );
+            else if( m_pkgeFile.endsWith(".package"))    m_pkgeFile.replace( ".package", "_LS.package" );
+            pkgeFile.setFileName( m_pkgeFile );
+        }
         if( !dataFile.exists() || !pkgeFile.exists() )
         {
             MessageBoxNB( "Mcu::Mcu", "                               \n"+
@@ -243,7 +249,8 @@ if( hi.propList.size() > 0 ) addPropGroup( hi );
 Mcu::~Mcu()
 {
     if( m_mcuMonitor ) delete m_mcuMonitor;
-    if( m_pSelf == this ) m_pSelf= NULL;
+    if( m_pSelf == this ) m_pSelf = NULL;
+    InfoWidget::self()->updtMcu();
 }
 
 bool Mcu::setPropStr( QString prop, QString val )
@@ -262,6 +269,8 @@ void Mcu::initialize()
 
 void Mcu::stamp()
 {
+    m_eMcu.reset();
+
     if( m_resetPin ){
         m_resetPin->changeCallBack( this );
 
@@ -272,7 +281,7 @@ void Mcu::stamp()
         }
         m_resetPin->warning( !m_resetPin->connector() );
     }
-    else m_eMcu.hardReset( false );
+    else m_eMcu.start();
 
     if( m_autoLoad )
     { if( !m_eMcu.m_firmware.isEmpty() ) load( m_eMcu.m_firmware ); }
@@ -432,9 +441,12 @@ bool Mcu::load( QString fileName )
         return false;
 
     for( int i=0; i<size; ++i ) m_eMcu.setFlashValue( i, pgm.at(i) );
-    qDebug() << "Firmware succesfully loaded\n";
+    qDebug() << "Firmware successfully loaded\n";
 
-    m_eMcu.m_firmware = circuitDir.relativeFilePath( cleanPathAbs );
+    QString firmware = circuitDir.relativeFilePath( cleanPathAbs );
+    if( m_eMcu.m_firmware != firmware ) Circuit::self()->setChanged();
+    m_eMcu.m_firmware = firmware;
+
     m_lastFirmDir = QFileInfo( cleanPathAbs ).absolutePath();
     if( m_propDialog ) m_propDialog->updtValues();
 
@@ -444,7 +456,7 @@ bool Mcu::load( QString fileName )
     return true;
 }
 
-void Mcu::contextMenuEvent( QGraphicsSceneContextMenuEvent* event )
+/*void Mcu::contextMenuEvent( QGraphicsSceneContextMenuEvent* event )
 {
     if( !acceptedMouseButtons() ) event->ignore();
     else{
@@ -453,15 +465,15 @@ void Mcu::contextMenuEvent( QGraphicsSceneContextMenuEvent* event )
         contextMenu( event, menu );
         Component::contextMenu( event, menu );
         menu->deleteLater();
-}   }
+}   }*/
 
-void Mcu::contextMenu( QGraphicsSceneContextMenuEvent*, QMenu* menu )
+void Mcu::contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu )
 {
     QAction* mainAction = menu->addAction( QIcon(":/subc.png"),tr("Main Mcu") );
     QObject::connect( mainAction, &QAction::triggered
                       , [=](){ slotmain(); } );
 
-    if( m_scriptLink )
+    if( m_scriptLink && !parentItem() )
     {
         QAction* linkCompAction = menu->addAction( QIcon(":/subcl.png"),tr("Link to Component") );
         QObject::connect( linkCompAction, &QAction::triggered, [=](){ slotLinkComp(); } );
@@ -505,33 +517,32 @@ void Mcu::contextMenu( QGraphicsSceneContextMenuEvent*, QMenu* menu )
         QObject::connect( sm, QOverload<int>::of(&QSignalMapper::mapped), [=](int n){ slotOpenTerm(n);} );
     }
     menu->addSeparator();
+    Component::contextMenu( event, menu );
 }
 
 void Mcu::slotmain()
 {
     m_pSelf = this;
     m_eMcu.setMain();
+    InfoWidget::self()->updtMcu();
     Circuit::self()->update();
 }
 
 void Mcu::slotLinkComp()
 {
-    Linkable::startLinking();
+    Linker::startLinking();
 }
 
 void Mcu::slotOpenMcuMonitor()
 {
-    if( !m_mcuMonitor )
-    {
-        m_mcuMonitor = new MCUMonitor( CircuitWidget::self(), &m_eMcu );
-        m_mcuMonitor->setWindowTitle( idLabel() );
-    }
+    if( !m_mcuMonitor ) m_mcuMonitor = new MCUMonitor( CircuitWidget::self(), &m_eMcu );
+    m_mcuMonitor->setWindowTitle( findIdLabel() );
     m_mcuMonitor->show();
 }
 
 void Mcu::slotOpenTerm( int num )
 {
-    m_eMcu.m_usarts.at(num-1)->openMonitor( idLabel(), num );
+    m_eMcu.m_usarts.at(num-1)->openMonitor( findIdLabel(), num );
     m_serialMon = num;
 }
 
@@ -543,6 +554,16 @@ int Mcu::serialMon()
 }
 
 void Mcu::setSerialMon( int s ) { if( s>=0 ) slotOpenTerm( s ); }
+
+QString Mcu::findIdLabel() /// FIXME: move to Component??
+{
+    QString label = idLabel();
+    if( this->parentItem() ){
+        Component* comp = qgraphicsitem_cast<Component*>( this->parentItem() );
+        label = comp->idLabel();
+    }
+    return label;
+}
 
 void Mcu::setLinkedValue( double v, int i )
 {
@@ -595,7 +616,7 @@ bool Mcu::rstPinEnabled()
     return (m_resetPin == m_portRstPin);
 }
 
-void Mcu::enableRstPin( bool en )
+void Mcu::enableRstPin( bool en ) // Called from Property or cfg word
 {
     if( !m_portRstPin ) return;
 

@@ -40,7 +40,7 @@ void MechContact::stamp()
     for( uint i=m_pin0; i<m_ePin.size(); ++i )
     {
         eNode* enode = m_ePin[i]->getEnode();
-        if( enode ) enode->setSwitched( true );
+        //if( enode ) enode->setSwitched( true );
     }
     setSwitch( m_nClose );
 }
@@ -192,5 +192,7 @@ void MechContact::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QW
         pen.setWidth( 1 );
         p->setPen( pen );
         p->drawLine( 0, 4-4*m_pin0, 0, -3*m_pin0-16*m_numPoles+8 );
-}   }
+    }
+    Component::paintSelected( p );
+}
 

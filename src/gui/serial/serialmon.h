@@ -19,18 +19,21 @@ class SerialMonitor : public QDialog, private Ui::SerialMonitor, public Updatabl
     Q_OBJECT
 
     public:
-        SerialMonitor( QWidget* parent, UsartModule* usart );
+        SerialMonitor( QWidget* parent, UsartModule* usart, bool send=false );
 
         virtual void updateStep() override;
 
         void printIn( int value );
         void printOut( int value );
 
+        void activateSend();
+
     public slots:
         void on_text_returnPressed();
         void on_value_returnPressed();
         void on_printBox_currentIndexChanged( int index );
         void on_addCrButton_clicked() { m_addCR = addCrButton->isChecked(); }
+        void on_pauseButton_clicked();
         void on_clearIn_clicked() { m_uartInPanel.clear(); }
         void on_clearOut_clicked() { m_uartOutPanel.clear(); }
 
@@ -47,6 +50,7 @@ class SerialMonitor : public QDialog, private Ui::SerialMonitor, public Updatabl
 
         int  m_printMode;
         bool m_addCR;
+        bool m_paused;
 
         QByteArray m_outBuffer;
 };

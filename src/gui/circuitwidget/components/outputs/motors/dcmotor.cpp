@@ -31,7 +31,7 @@ LibraryItem* DcMotor::libraryItem()
 }
 
 DcMotor::DcMotor( QString type, QString id )
-       : Component( type, id )
+       : LinkerComponent( type, id )
        , eResistor( id )
 {
     m_graphical = true;
@@ -46,13 +46,15 @@ DcMotor::DcMotor( QString type, QString id )
     m_pin.resize( 2 );
     m_ePin[0] = m_pin[0] = new Pin( 180, QPoint(-40,0), m_id+"-lPin", 0, this);
     m_pin[0]->setLength( 4 );
-    m_pin[0]->setFontSize( 5 );
-    m_pin[0]->setLabelText("➕");
+    m_pin[0]->setFontSize( 9 );
+    m_pin[0]->setSpace( 1.7 );
+    m_pin[0]->setLabelText("+");
 
     m_ePin[1] =m_pin[1] = new Pin( 0, QPoint(40,0), m_id+"-rPin", 1, this);
     m_pin[1]->setLength( 4 );
-    m_pin[1]->setFontSize( 5 );
-    m_pin[1]->setLabelText("➖");
+    m_pin[1]->setFontSize( 9 );
+    m_pin[1]->setSpace( 1.7 );
+    m_pin[1]->setLabelText("–");  // U+2013
 
     setShowId( true );
     setLabelPos(-22,-48, 0);
@@ -97,6 +99,13 @@ void DcMotor::updateStep()
     m_ang += m_motStPs*m_delta;
     m_ang = remainder( m_ang, (16.0*360.0) );
 
+    if(  m_linkedComp.size() )
+    {
+        double val = m_ang*1000/(16.0*360.0);
+        if( val > 0 ) val = 1000-val;
+        else          val = -val;
+        for( Component* comp : m_linkedComp ) comp->setLinkedValue( val ); // 0-1000
+    }
     m_delta = 0;
     m_updtTime = 0;
     update();
@@ -124,7 +133,8 @@ void DcMotor::setRpm( int rpm )
     update();
 }
 
-void DcMotor::paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidget *widget )
+
+void DcMotor::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
 {
     Component::paint( p, option, widget );
 
@@ -166,4 +176,6 @@ void DcMotor::paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidge
 
         p->setBrush( QColor(200, 100, 70) );
         p->drawPie(-20,-20, 40, 40, -16*90, exedd*16*180 );
-}   }
+    }
+    Component::paintSelected( p );
+}

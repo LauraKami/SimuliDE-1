@@ -30,7 +30,7 @@ class PropDialog;
 class QDomElement;
 class QGraphicsItemGroup;
 
-class MAINMODULE_EXPORT CompBase
+class CompBase
 {
     public:
         CompBase( QString type, QString id );
@@ -57,6 +57,8 @@ class MAINMODULE_EXPORT CompBase
 
         QString itemType()  { return m_type; }
         void setItemType( QString ) {;}
+
+        virtual bool isHidden() { return false;}
 
     protected:
         QString m_id;

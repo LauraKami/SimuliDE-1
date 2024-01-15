@@ -12,6 +12,8 @@
 #include "iopin.h"
 #include "ledbase.h"
 
+#include "boolprop.h"
+
 #define tr(str) simulideTr("SevenSegmentBCD",str)
 
 Component* SevenSegmentBCD::construct( QString type, QString id )
@@ -23,7 +25,7 @@ LibraryItem* SevenSegmentBCD::libraryItem()
         tr("7 Seg BCD"),
         "Other Logic",
         "7segbcd.png",
-        "7-Seg BCD", /// FIXME: only charaters in Component type
+        "7-Seg BCD", /// FIXME: only alphanumeric in Component type
         SevenSegmentBCD::construct );
 }
 
@@ -34,16 +36,17 @@ SevenSegmentBCD::SevenSegmentBCD( QString type, QString id )
 
     m_width  = 4;
     m_height = 6;
-    m_color = Qt::black;
-    m_intensity = 255;
+    m_color  = Qt::black;
 
     QStringList pinList;
 
     pinList // Inputs:
-            << "ID04  "
-            << "ID03  "
-            << "ID02  "
-            << "ID01  "
+            << "ID041"
+            << "ID032"
+            << "ID024"
+            << "ID018"
+            << "IU04E"
+            << "IU01."
             ;
     init( pinList );
     for( uint i=0; i<m_inPin.size(); ++i )
@@ -52,13 +55,28 @@ SevenSegmentBCD::SevenSegmentBCD( QString type, QString id )
         m_inPin[i]->setSpace( 1 );
         m_inPin[i]->setFontSize( 4 );
         m_inPin[i]->setLabelColor( QColor( 250, 250, 200 ) );
-        m_inPin[i]->setLabelText( QString::number( pow(2,i) ) );
-        m_inPin[i]->setLabelPos();
     }
+
+    m_showEnablePin = false;
+    m_enablePin = m_inPin[4];
+    m_enablePin->setInverted( true );
+    m_enablePin->setVisible( false );
+
+    m_showDotPin = false;
+    m_dotPin = m_inPin[5];
+    m_dotPin->setVisible( false );
+
     setLabelPos(-16,-40, 0);
-        
+
+    addPropGroup( { tr("Main"), {
+new BoolProp<SevenSegmentBCD>("Show_Point_Pin", tr("Show Point Pin"),"", this
+                      , &SevenSegmentBCD::isShowDotPin, &SevenSegmentBCD::setShowDotPin, propNoCopy ),
+new BoolProp<SevenSegmentBCD>("Show_Enable_Pin", tr("Show Enable Pin"),"", this
+                      , &SevenSegmentBCD::isShowEnablePin, &SevenSegmentBCD::setShowEnablePin, propNoCopy )
+    },groupNoCopy} );
+
     Simulator::self()->addToUpdateList( this );
-    
+
     initialize();
 }
 SevenSegmentBCD::~SevenSegmentBCD(){}
@@ -66,9 +84,37 @@ SevenSegmentBCD::~SevenSegmentBCD(){}
 void SevenSegmentBCD::updateStep()
 {
     if( !m_changed ) return;
+    m_changed = false;
+
+    if( !m_linked ){
+        if( m_enablePin->getInpState() ){
+            BcdBase::voltChanged();
+            if( m_dotPin->getInpState() ) m_digit |= 0x80;
+        }
+        else m_digit = 0;
+    }
 
     update();
-    m_changed = false;
+}
+
+void SevenSegmentBCD::voltChanged() { m_changed = true; }
+
+void SevenSegmentBCD::setShowEnablePin( bool show )
+{
+    if( m_showEnablePin == show ) return;
+    m_showEnablePin = show;
+
+    if( !show ) m_enablePin->removeConnector();
+    m_enablePin->setVisible( show );
+}
+
+void SevenSegmentBCD::setShowDotPin( bool show )
+{
+    if( m_showDotPin == show) return;
+    m_showDotPin = show;
+
+    if( !show ) m_dotPin->removeConnector();
+    m_dotPin->setVisible( show );
 }
 
 void SevenSegmentBCD::setLinked( bool l )
@@ -94,20 +140,20 @@ void SevenSegmentBCD::paint( QPainter* p, const QStyleOptionGraphicsItem* option
     Component::paint( p, option, widget );
     p->drawRect( m_area );
 
-    const int mg =  6;// Margin around number
+    const int mg =  6; // Margin around number
     const int ds =  1; // "Slope"
-    const int tk =  4; // Line thick
+    const int tk =  4; // Line thickness
     const int x1 =  m_area.x()+mg;
     const int x2 = -m_area.x()-mg;
     const int y1 =  m_area.y()+mg;
     const int y2 = -m_area.y()-mg;
 
     QPen pen;
-    pen.setWidth(tk);
-    QColor color = LedBase::getColor( (LedBase::LedColor)0, m_intensity );
+    pen.setWidth( tk );
+    QColor color = LedBase::getColor( (LedBase::LedColor)0, 255 );
     pen.setColor( color );
-    pen.setCapStyle(Qt::RoundCap);
-    p->setPen(pen);
+    pen.setCapStyle( Qt::RoundCap );
+    p->setPen( pen );
 
     if( m_digit & 1<<0 ) p->drawLine( x1+tk+ds, y1,    x2-tk+ds, y1    );
     if( m_digit & 1<<1 ) p->drawLine( x2+ds,    y1+tk, x2,      -tk    );
@@ -122,4 +168,5 @@ void SevenSegmentBCD::paint( QPainter* p, const QStyleOptionGraphicsItem* option
         p->setBrush( QColor( 250, 250, 100) );
         p->drawPie( x2+ds, y2-ds, tk, tk, 0, 16*360 );
     };
+    Component::paintSelected( p );
 }

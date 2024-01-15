@@ -38,7 +38,8 @@ LibraryItem* Ds18b20::libraryItem()
 Ds18b20::Ds18b20( QString type, QString id )
        : Component( type, id )
        , eElement( id )
-{    
+{
+    m_graphical = true;
     m_area = QRect(-28,-16, 56, 32 );
 
     srand( time(0) );
@@ -67,6 +68,7 @@ Ds18b20::Ds18b20( QString type, QString id )
     u_button->setGeometry(-5,-5, 9, 9 );
     u_button->setCheckable( false );
     u_button->setIcon(QIcon(":/su.png"));
+    u_button->setCursor( Qt::PointingHandCursor );
 
     QGraphicsProxyWidget* proxy = Circuit::self()->addWidget( u_button );
     proxy->setParentItem( this );
@@ -77,6 +79,7 @@ Ds18b20::Ds18b20( QString type, QString id )
     d_button->setGeometry(-5,-5, 9, 9 );
     d_button->setCheckable( false );
     d_button->setIcon( QIcon(":/giu.png") );
+    d_button->setCursor( Qt::PointingHandCursor );
 
     proxy = Circuit::self()->addWidget( d_button );
     proxy->setParentItem( this );
@@ -532,4 +535,6 @@ void Ds18b20::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidge
     p->setFont( m_font );
     p->setPen( QColor(0, 0, 0) );
     p->drawText(-23, -3, QString::number( m_temp )+"°C" );
+
+    Component::paintSelected( p );
 }

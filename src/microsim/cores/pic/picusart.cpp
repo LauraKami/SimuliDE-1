@@ -15,6 +15,10 @@
 PicUsart::PicUsart( eMcu* mcu,  QString name, int number )
         : McuUsart( mcu, name, number )
 {
+    m_sleepMode = 0xFF;
+    m_sender->setSleepMode( 0xFF );
+    m_receiver->setSleepMode( 0xFF );
+
     m_enabled = false;
     m_SPBRG  = NULL;
     m_SPBRGL = NULL;
@@ -47,6 +51,8 @@ PicUsart::PicUsart( eMcu* mcu,  QString name, int number )
     m_rxEn = getRegBits( "CREN", mcu );
     m_TX9  = getRegBits( "TX9", mcu );
     m_RX9  = getRegBits( "RX9", mcu );
+    m_ADDEN = getRegBits( "ADDEN", mcu );
+
     m_TXIF = getRegBits( "TXIF", mcu );
     m_TRMT = getRegBits( "TMRT", mcu );
     m_RCIF = getRegBits( "RCIF", mcu );
@@ -91,6 +97,9 @@ void PicUsart::configureB( uint8_t newRCSTA ) // RCSTA changed
 
     bool rxEn = getRegBitsVal( newRCSTA, m_rxEn );
     if( rxEn != m_receiver->isEnabled() ) m_receiver->enable( rxEn );
+
+    bool adden = getRegBitsBool( newRCSTA, m_ADDEN );
+    m_receiver->ignoreData( adden );
 }
 
 void PicUsart::setSPBRGL(  uint8_t val )
@@ -112,17 +121,6 @@ void PicUsart::setBaurrate( uint8_t )
     uint16_t SPBRG = *m_SPBRGL;
     if( m_SPBRGH ) SPBRG |= (uint16_t)*m_SPBRGH << 8;
     setPeriod( mult*(SPBRG+1)*m_mcu->psInst() ); // period in picoseconds
-}
-
-uint8_t PicUsart::getBit9Tx()
-{
-    return getRegBitsVal( *m_TXSTA, m_bit9Tx );
-}
-
-void PicUsart::setBit9Rx( uint8_t bit )
-{
-    if( bit ) setRegBits( m_bit9Rx );
-    else      clearRegBits( m_bit9Rx );
 }
 
 void PicUsart::sendByte(  uint8_t data )
@@ -149,17 +147,18 @@ void PicUsart::bufferEmpty()
     setRegBits( m_TRMT ); // Set TMRT bit
 }
 
-void PicUsart::overrunError()
+void PicUsart::setRxFlags( uint16_t frame )
 {
-    setRegBits( m_OERR );
+    if( m_dataBits == 9 ) setBit9Rx( ( frame & (1<<8) ) ? 1 : 0 );
+
+    writeRegBits( m_FERR, frame & frameError );  // frameError
+    writeRegBits( m_OERR, frame & dataOverrun ); // overrun error
+    //writeRegBits(     , frame & parityError);  // parityError
 }
 
-void PicUsart::parityError()
+void PicUsart::sleep( int mode )
 {
-    //setRegBits( );
-}
-
-void PicUsart::frameError()
-{
-    setRegBits( m_FERR );
+    McuModule::sleep( mode );
+    if( m_sleeping ) m_sender->pauseEvents();
+    else             m_sender->resumeEvents();
 }

@@ -16,6 +16,7 @@
 #include "datalawidget.h"
 #include "tunnel.h"
 #include "e-node.h"
+#include "iopin.h"
 
 #include "stringprop.h"
 #include "doubleprop.h"
@@ -55,9 +56,11 @@ LAnalizer::LAnalizer( QString type, QString id )
     m_display->setTracks( 8 );
 
     m_pin.resize(8);
+    m_inPin.resize(8);
     for( int i=0; i<8; ++i )
     {
-        m_pin[i] = new Pin( 180, QPoint( -80-8,-64+16*i ), id+"-Pin"+QString::number(i), 0, this );
+        m_pin[i] = m_inPin[i] = new IoPin( 180, QPoint(-80-8,-64+16*i ), id+"-Pin"+QString::number(i), 0, this, undef_mode );
+        m_inPin[i]->setInputAdmit( m_inputAdmit );
         LaChannel* ch = new LaChannel( this, id+"Chan"+QString::number(i) );
 
         ch->m_channel = i;
@@ -74,6 +77,8 @@ LAnalizer::LAnalizer( QString type, QString id )
         m_dataWidget->setColor( i, m_color[i%4] );
     }
     m_updtCount = 0;
+    m_thresholdR = 0;
+    m_thresholdF = 0;
 
     setThresholdR( 2.5 );
     setThresholdF( 2.5 );
@@ -91,15 +96,11 @@ new IntProp <LAnalizer>("TimeStep"  ,tr("Base Time Step") ,"_ps", this, &LAnaliz
 new BoolProp<LAnalizer>("AutoExport",tr("Export at pause"),""   , this, &LAnalizer::autoExport, &LAnalizer::setAutoExport ),
     },0} );
 
-    addProperty("Hidden",
-new DoubProp<LAnalizer>("TresholdR","TresholdR","V", this, &LAnalizer::thresholdR, &LAnalizer::setThresholdR )
-     );
-    addProperty("Hidden",
-new StrProp<LAnalizer>("Bus" ,"Bus" , "", this, &LAnalizer::busStr,  &LAnalizer::setBusStr )
-    );
-    addProperty("Hidden",
-new DoubProp<LAnalizer>("TresholdF","TresholdF","V", this, &LAnalizer::thresholdF, &LAnalizer::setThresholdF )
-    );
+    addPropGroup( { "Hidden1", {
+new DoubProp<LAnalizer>("TresholdR","","V", this, &LAnalizer::thresholdR, &LAnalizer::setThresholdR ),
+new StrProp <LAnalizer>("Bus"      ,"", "", this, &LAnalizer::busStr,     &LAnalizer::setBusStr ),
+new DoubProp<LAnalizer>("TresholdF","","V", this, &LAnalizer::thresholdF, &LAnalizer::setThresholdF )
+    }, groupHidden } );
 }
 LAnalizer::~LAnalizer()
 {
@@ -157,6 +158,11 @@ void LAnalizer::updateStep()
         m_risEdge = 0;
     }
     m_display->update(); //redrawScreen();
+
+    if( m_changed ){
+        m_changed = false;
+        for( IoPin* pin : m_inPin ) pin->stampAdmitance( m_inputAdmit );
+    }
 }
 
 void LAnalizer::expand( bool e )
@@ -223,26 +229,6 @@ void LAnalizer::setThresholdR( double thr )
     m_laWidget->updateThresholdR( thr );
 }
 
-QString LAnalizer::busStr()
-{
-    QString list;
-    QString bus;
-    for( int i=0; i<8; ++i ){
-        bus = m_channel[i]->isBus()? "true":"false";
-        list.append( bus ).append(",");
-    }
-    return list;
-}
-
-void LAnalizer::setBusStr( QString hc )
-{
-    QStringList list = hc.split(",");
-    for( int i=0; i<8; ++i ){
-        if( i == list.size() ) break;
-        bool bus = (list.at(i) == "true")? true:false;
-        m_laWidget->setIsBus( i, bus );
-}   }
-
 void LAnalizer::setThresholdF( double thr )
 {
     if( thr > m_thresholdR ) thr = m_thresholdR;
@@ -279,6 +265,26 @@ void LAnalizer::setTrigger( int ch )
     for( int i=0; i<8; i++ ) m_channel[i]->m_pauseOnCond = pauseOnCond;
 }
 
+QString LAnalizer::busStr()
+{
+    QString list;
+    QString bus;
+    for( int i=0; i<8; ++i ){
+        bus = m_channel[i]->isBus()? "true":"false";
+        list.append( bus ).append(",");
+    }
+    return list;
+}
+
+void LAnalizer::setBusStr( QString hc )
+{
+    QStringList list = hc.split(",");
+    for( int i=0; i<8; ++i ){
+        if( i == list.size() ) break;
+        bool bus = (list.at(i) == "true")? true:false;
+        m_laWidget->setIsBus( i, bus );
+}   }
+
 void LAnalizer::setConds( QString conds )
 {
     m_laWidget->setConds( conds );
@@ -314,12 +320,12 @@ void LAnalizer::dumpData( const QString &fn )
 
     uint64_t endTime = m_display->endTime()+m_timePos;
     uint64_t lastTime = (endTime-startTime)/m_timeStep;
-    uint64_t pTime;
+    uint64_t pTime = 0;
     double pVal=-1;
 
     QString varDef;
     QString dumpVars = "\n$dumpvars\n";
-    uint64_t gcd = 0;
+    uint64_t gcd = 1;  // Problems in Pulseview using gcd
 
     for( uint ch=0; ch<8; ++ch )
     {
@@ -355,15 +361,15 @@ void LAnalizer::dumpData( const QString &fn )
             pVal = val;
             time = (time-startTime)/m_timeStep;
 
-            if( gcd > 0 ) gcd = getGcd( gcd, time ); // Get Greatest Common Denominator
-            else          gcd = time;
+            //if( gcd > 0 ) gcd = getGcd( gcd, time ); // Get Greatest Common Denominator
+            //else          gcd = time;
 
             samples.insert( time, { val, ch } );
             if( time == lastTime ) break;            // All samples before endTime already registered
         }
     }
     dumpVars += "$end\n";
-    if( gcd < 1 ) gcd = 1; // This should not happen
+    //if( gcd < 1 ) gcd = 1; // This should not happen
 
     out <<"$timescale "<< gcd*m_timeStep <<"ps $end"<< endl<< endl;
     out << varDef;

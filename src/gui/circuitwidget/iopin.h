@@ -23,7 +23,7 @@ enum pinMode_t{
 class eNode;
 class asIScriptEngine;
 
-class MAINMODULE_EXPORT IoPin : public Pin, public eElement
+class IoPin : public Pin, public eElement
 {
         friend class Function;
     public:
@@ -41,9 +41,10 @@ class MAINMODULE_EXPORT IoPin : public Pin, public eElement
         void setPinMode( pinMode_t mode );
         void setPinMode( uint mode ) { setPinMode( (pinMode_t) mode ); }
 
-        void  setInputHighV( double volt ) { m_inpHighV = volt; }
-        void  setInputLowV( double volt ) { m_inpLowV = volt; }
-        virtual void  setInputImp( double imp );
+        void setInputHighV( double volt ) { m_inpHighV = volt; }
+        void setInputLowV( double volt )  { m_inpLowV  = volt; }
+        void setInputImp( double imp );
+        void setInputAdmit( double a ) { m_admit = a; }
 
         double outHighV() { return m_outHighV; }
         void  setOutHighV( double v ) { m_outHighV = v; }
@@ -54,8 +55,8 @@ class MAINMODULE_EXPORT IoPin : public Pin, public eElement
         void startLH();
         void startHL();
 
-        virtual void  setOutputImp( double imp );
-        virtual void  setImp( double imp );
+        virtual void setOutputImp( double imp );
+        virtual void setImpedance( double imp );
 
         virtual bool getInpState();
         virtual bool getOutState() { if( m_step ) return m_nextState; return m_outState; }
@@ -97,15 +98,15 @@ class MAINMODULE_EXPORT IoPin : public Pin, public eElement
             double gndAdmit = m_gndAdmit + m_gndAdmEx;
             m_admit         = vddAdmit+gndAdmit;
 
-            ///m_outVolt = m_outHighV*vddAdmit/m_admit;
-            ///ePin::stampAdmitance( m_admit );
-            ///stampVolt( m_outVolt );
+            m_outVolt = m_outHighV*vddAdmit/m_admit;
+            ePin::stampAdmitance( m_admit );
+            stampVolt( m_outVolt );
             /// Optimized to:
-            double current = m_outHighV*vddAdmit;
+            /*double current = m_outHighV*vddAdmit;
             if( m_enode ){
                 m_enode->stampAdmitance( this, m_admit  );
                 m_enode->stampCurrent( this, current );
-            }else m_outVolt = current/m_admit;          // Used by getVoltage()
+            }else m_outVolt = current/m_admit;          // Used by getVoltage()*/
         }
         inline void stampAll();
         inline void stampVolt( double v) { ePin::stampCurrent( v*m_admit ); }

@@ -4,6 +4,7 @@
  ***( see copyright.txt file at root folder )*******************************/
 
 #include "picadc.h"
+#include "picvref.h"
 #include "mcupin.h"
 #include "e_mcu.h"
 #include "datautils.h"
@@ -71,6 +72,8 @@ void PicAdc::sleep( int mode )
 {
     McuModule::sleep( mode );
     m_sleeping = m_sleeping && !m_adcClock; // Only sleep if running on system clock
+    if( m_sleeping ) pauseEvents();
+    else             resumeEvents();
 }
 
 //------------------------------------------------------
@@ -117,7 +120,7 @@ void PicAdc00::configureB( uint8_t newADCON1 ) // ADCON1
 
 void PicAdc00::updtVref()
 {
-    m_vRefP = 5;
+    m_vRefP = m_mcu->vdd();
     m_vRefN = 0;
 
     switch( m_mode ){
@@ -161,7 +164,7 @@ void PicAdc1::updtANSEL()
 
 void PicAdc1::updtVref()
 {
-    m_vRefP = (m_mode & 1) ? m_pRefPin->getVoltage() : 5;
+    m_vRefP = (m_mode & 1) ? m_pRefPin->getVoltage() : m_mcu->vdd();
     if( m_nRefPin ) m_vRefN = (m_mode & 0b00000010) ? m_nRefPin->getVoltage() : 0;
 }
 
@@ -223,7 +226,7 @@ void PicAdc11::setANSEL( uint8_t newANSEL )
 }
 
 //------------------------------------------------------
-//-- PIC ADC Type 2 p16f1826 ---------------------------
+//-- PIC ADC Type 20 p16f1826 --------------------------
 
 PicAdc20::PicAdc20( eMcu* mcu, QString name )
         : PicAdc( mcu, name )
@@ -231,6 +234,8 @@ PicAdc20::PicAdc20( eMcu* mcu, QString name )
     m_ADSC = getRegBits( "ADCS0,ADCS1,ADCS2", mcu );
     m_CHS  = getRegBits( "CHS0,CHS1,CHS2,CHS3,CHS4", mcu );
     m_ADXREF = getRegBits( "ADPREF0,ADPREF1,ADNREF", mcu );
+
+    m_fvr = (PicVrefE*)mcu->vrefModule();
 }
 PicAdc20::~PicAdc20(){}
 
@@ -254,10 +259,10 @@ void PicAdc20::configureB( uint8_t newADCON1 )
 
 void PicAdc20::updtVref()
 {
-    m_vRefP = 5;  // VREF+ is connected to VDD
+    m_vRefP = m_mcu->vdd();  // VREF+ is connected to VDD
     switch ( m_mode ) {
     case 2: m_vRefP = m_pRefPin->getVoltage(); break; // VREF+ is connected to external VREF+ pin
-    case 3: m_vRefP = 1.024;                break; /// TODO // VREF+ is connected to internal Fixed Voltage Reference (FVR) module
+    case 3: m_vRefP = m_fvr->getDacVref();     break; // VREF+ is connected to internal Fixed Voltage Reference (FVR) module
     }
     m_vRefN = (m_mode & 0b00000100) ? m_nRefPin->getVoltage() : 0;
 }

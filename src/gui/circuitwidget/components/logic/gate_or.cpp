@@ -39,7 +39,7 @@ new IntProp <OrGate>( "Num_Inputs", tr("Input Size"),"_Inputs", this
                     })
 +IoComponent::outputProps()+IoComponent::outputType(),0 } );
 
-    addPropGroup( { tr("Edges")   , Gate::edgeProps(),0 } );
+    addPropGroup( { tr("Timing"), Gate::edgeProps(),0 } );
 
     removeProperty("pd_n");
 }
@@ -101,4 +101,6 @@ void OrGate::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget
     QPen pen3( Qt::blue, 0.5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
     p->setPen( pen3 );
     p->drawRect( m_area );*/
+
+    Component::paintSelected( p );
 }

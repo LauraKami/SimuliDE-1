@@ -33,8 +33,7 @@ void eMosfet::stamp()
     m_gateV = 0;
     m_lastCurrent = 0;
 
-    m_kRDSon = m_RDSon*(10-m_threshold);
-    m_Gth    = m_threshold-m_threshold/4;
+    updateValues();
     m_accuracy = 5e-6;
 
     if( (m_ePin[0]->isConnected())
@@ -60,25 +59,25 @@ void eMosfet::voltChanged()
     double Vds = Vd-Vs;
 
     if( m_Pchannel ){ Vgs = -Vgs; Vds = -Vds; }
-    if( m_depletion ) Vgs = -Vgs;
     
     double gateV = Vgs - m_Gth;
     
     if( gateV < 0 ) gateV = 0;
 
-    double admit = m_depletion ? 1/m_RDSon : cero_doub;
-    double maxCurrDS = Vds*m_admit;
+    double admit = cero_doub;
     double current = 0;
     
     if( gateV > 0 )
     {
-        admit = m_depletion ? cero_doub : 1/m_RDSon;
+        admit = 1/m_RDSon;
+        double maxCurrDS = Vds*admit;
         double satK = 1+Vds/100;
+
         if( Vds > gateV ) Vds =gateV;
 
         double DScurrent = (gateV*Vds-qPow(Vds,2)/2)*satK/m_kRDSon;
         if( DScurrent > maxCurrDS ) DScurrent = maxCurrDS;
-        current = m_depletion ? DScurrent : (maxCurrDS-DScurrent);
+        current = maxCurrDS-DScurrent;
     }
     if( m_Pchannel ) current = -current;
     
@@ -113,3 +112,8 @@ void eMosfet::setThreshold( double th )
     m_changed = true;
 }
 
+void eMosfet::updateValues()
+{
+    m_kRDSon = m_RDSon*(10-m_threshold);
+    m_Gth    = m_depletion ? -m_threshold-m_threshold/4 : m_threshold-m_threshold/4;
+}

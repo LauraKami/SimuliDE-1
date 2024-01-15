@@ -8,7 +8,7 @@
 
 #include "board.h"
 
-class MAINMODULE_EXPORT ShieldSubc : public BoardSubc
+class ShieldSubc : public BoardSubc
 {
     public:
         ShieldSubc( QString type, QString id );
@@ -22,6 +22,7 @@ class MAINMODULE_EXPORT ShieldSubc : public BoardSubc
 
         virtual void remove() override;
 
+        virtual void contextMenuEvent( QGraphicsSceneContextMenuEvent* event ) override;
         virtual void contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu ) override;
 
     public slots:

@@ -13,10 +13,10 @@
 #include "usartmodule.h"
 
 class LibraryItem;
-class QPushButton;
+class CustomButton;
 class QGraphicsProxyWidget;
 
-class MAINMODULE_EXPORT SerialPort : public Component, public UsartModule, public eElement
+class SerialPort : public Component, public UsartModule, public eElement
 {
     public:
         SerialPort( QString type, QString id );
@@ -28,6 +28,9 @@ class MAINMODULE_EXPORT SerialPort : public Component, public UsartModule, publi
         virtual void stamp() override;
         virtual void updateStep() override;
         virtual void runEvent() override;
+
+        bool autoOpen() { return m_autoOpen; }
+        void setAutoOpen( bool a ) { m_autoOpen = a; }
 
         QString port(){return m_portName;}
         void setPort( QString name ){ m_portName = name; update();}
@@ -60,19 +63,21 @@ class MAINMODULE_EXPORT SerialPort : public Component, public UsartModule, publi
         void readData();
 
     protected:
+        virtual void setflip() override;
         virtual void contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu );
 
     private:
         void open();
         void close();
 
-        QPushButton* m_button;
+        CustomButton* m_button;
         QGraphicsProxyWidget* m_proxy;
 
         QSerialPort* m_serial;
 
         bool m_receiving;
         bool m_sending;
+        bool m_autoOpen;
 
         QByteArray m_serData;
         QByteArray m_uartData;

@@ -48,8 +48,9 @@ void IoPin::initialize()
 {
     m_step = 0;
     m_steps = Simulator::self()->slopeSteps();
-    m_inpState = false;
-    m_outState = false;
+
+    m_inpState  = false;
+    m_outState  = false;
     m_nextState = false;
 }
 
@@ -68,18 +69,20 @@ void IoPin::updateStep()
 {
     if( m_unused ) return;
 
-    if( m_stateZ ) setPinState( undef_state );
+    if( m_stateZ ) m_pinState = undef_state;
     else{
+        bool state = getInpState();
+        if( m_inverted ) state = !state;
         switch( m_pinMode ) // Pin colors in animation
         {
-            case undef_mode: return;
-            case input:  setPinState( m_inpState? input_high : input_low  ); break;
+            case undef_mode: m_pinState = undef_state; break;
+            case input:  m_pinState = state? input_high : input_low; break;
             case openCo:{
                     pinState_t low = m_outState ? driven_low : open_low;
-                    setPinState( m_inpState? open_high  : low );
+                    m_pinState = state? open_high  : low ;
                 }break;
-            case output: setPinState( m_outState? out_high : out_low ); break;
-            case source: break;
+            case output:
+            case source: m_pinState = state? out_high : out_low; break;
         }
     }
     update();
@@ -212,7 +215,7 @@ void IoPin::setStateZ( bool z )
     m_stateZ = z;
     if( z ){
         m_outVolt = m_outLowV;
-        setImp( m_openImp );
+        setImpedance( m_openImp );
     }else {
         pinMode_t pm = m_pinMode; // Force old pinMode
         m_pinMode = undef_mode;
@@ -234,7 +237,7 @@ void IoPin::setPullup( bool up )
     if( m_pinMode < output ) updtState();
 }
 
-void IoPin::setImp( double imp )
+void IoPin::setImpedance( double imp )
 {
     m_admit = 1/imp;
     stampAll();
@@ -309,8 +312,8 @@ void IoPin::registerScript( asIScriptEngine* engine )
                                    , asMETHODPR( IoPin, setVoltage, (double), void)
                                    , asCALL_THISCALL );
 
-    engine->RegisterObjectMethod("IoPin", "void setImp( double imp )"
-                                   , asMETHODPR( IoPin, setImp, (double), void)
+    engine->RegisterObjectMethod("IoPin", "void setImpedance( double imp )"
+                                   , asMETHODPR( IoPin, setImpedance, (double), void)
                                    , asCALL_THISCALL );
 
     engine->RegisterObjectMethod("IoPin", "void changeCallBack(eElement@ p, bool s)"

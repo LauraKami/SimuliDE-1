@@ -10,7 +10,7 @@
 
 class LibraryItem;
 
-class MAINMODULE_EXPORT Header : public ConnBase
+class Header : public ConnBase
 {
     public:
         Header( QString type, QString id );
@@ -21,6 +21,8 @@ class MAINMODULE_EXPORT Header : public ConnBase
 
         bool pointDown() { return m_pointDown; }
         void setPointDown( bool down );
+
+        virtual void updatePins() override;
 
     private:
         virtual void updatePixmap() override;

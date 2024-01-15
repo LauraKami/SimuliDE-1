@@ -8,7 +8,7 @@
 
 #include "logiccomponent.h"
 
-class MAINMODULE_EXPORT FlipFlopBase : public LogicComponent
+class FlipFlopBase : public LogicComponent
 {
     public:
         FlipFlopBase( QString type, QString id );
@@ -21,6 +21,7 @@ class MAINMODULE_EXPORT FlipFlopBase : public LogicComponent
         void usePinsRS( bool rs );
 
         virtual void stamp() override;
+        virtual void updateStep() override;
         virtual void voltChanged() override;
         virtual void runEvent() override{ IoComponent::runOutputs(); }
 

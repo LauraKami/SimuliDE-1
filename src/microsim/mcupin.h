@@ -13,7 +13,7 @@ class McuPort;
 class eMcu;
 class Interrupt;
 
-class MAINMODULE_EXPORT McuPin : public IoPin
+class McuPin : public IoPin
 {
     friend class McuPort;
     friend class McuCreator;
@@ -50,6 +50,8 @@ class MAINMODULE_EXPORT McuPin : public IoPin
         virtual void ConfExtInt( uint8_t bits );
 
         void setExtInt( uint mode );
+
+        void setOpenColl( bool o );
 
         static void registerScript( asIScriptEngine* engine );
 

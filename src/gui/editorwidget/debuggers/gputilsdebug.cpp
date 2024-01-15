@@ -5,6 +5,7 @@
 
 #include <QProcess>
 #include <QFileInfo>
+#include <QDir>
 
 //#include <QDebug>
 
@@ -36,11 +37,15 @@ bool GputilsDebug::getVariables( BaseDebugger* debugger )
     gpvc += ".exe";
 #endif
     if( !debugger->checkCommand( gpvc ) )
-        debugger->outPane()->appendLine( "\nWarning: gpvc executable not detected:\n"+gpvc );
+    {
+        gpvc = "gpvc";
+        if( !debugger->checkCommand( gpvc ) )
+            debugger->outPane()->appendLine( "\nWarning: gpvc executable not detected:\n"+gpvc );
+    }
 
     debugger->outPane()->appendText( "\nSearching for variables... " );
     gpvc    = addQuotes( gpvc );
-    codPath = addQuotes( codPath );
+    codPath = addQuotes( QDir::toNativeSeparators( codPath ) );
 
     QProcess getVars( NULL );      // Get var addresses from Symbol Table
     getVars.setWorkingDirectory( debugger->buildPath() );
@@ -103,7 +108,7 @@ bool GputilsDebug::mapFlashToSource( BaseDebugger* debugger )
 #endif
 
     gpvc    = addQuotes( gpvc );
-    codPath = addQuotes( codPath );
+    codPath = addQuotes( QDir::toNativeSeparators( codPath ) );
 
     QProcess flashToLine( NULL );      // Get var addresses from Symbol Table
     flashToLine.setWorkingDirectory( debugger->buildPath() );
@@ -137,7 +142,7 @@ bool GputilsDebug::mapFlashToSource( BaseDebugger* debugger )
             debugger->setLineToFlash( {debugger->file(), lineN }, addr );
             continue;
         }
-        if( line.startsWith( ";") && line.contains(".line") )
+        if( line.startsWith(";") && line.contains(".line") )
         {
             QStringList words = line.split("\"");
             QString file = getFileName( words.at(1) );
@@ -155,7 +160,7 @@ bool GputilsDebug::mapFlashToSource( BaseDebugger* debugger )
     return true;
 }
 
-bool GputilsDebug::mapFlashToAsm( BaseDebugger* debugger )
+/*bool GputilsDebug::mapFlashToAsm( BaseDebugger* debugger )
 {
     QString gpvc    = debugger->toolPath()+"gpvc";
     QString codPath = debugger->buildPath()+debugger->fileName()+".cod";
@@ -170,7 +175,7 @@ bool GputilsDebug::mapFlashToAsm( BaseDebugger* debugger )
 #endif
 
     gpvc    = addQuotes( gpvc );
-    codPath = addQuotes( codPath );
+    codPath = addQuotes( QDir::toNativeSeparators( codPath ) );
 
     QProcess flashToLine( NULL );      // Get var addresses from Symbol Table
     flashToLine.setWorkingDirectory( debugger->buildPath() );
@@ -219,4 +224,4 @@ bool GputilsDebug::mapFlashToAsm( BaseDebugger* debugger )
                 readAddr = true;
     }   }   }
     return true;
-}
+}*/

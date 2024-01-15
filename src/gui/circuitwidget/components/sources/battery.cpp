@@ -56,10 +56,14 @@ void Battery::stamp()
 {
     eResistor::stamp();
 
-    m_pin[0]->createCurrent();
-    m_pin[1]->createCurrent();
-    m_pin[0]->stampCurrent( m_volt*m_admit );
-    m_pin[1]->stampCurrent(-m_volt*m_admit );
+    m_connected = m_pin[0]->isConnected() && m_pin[1]->isConnected();
+
+    if( m_connected ){
+        m_pin[0]->createCurrent();
+        m_pin[1]->createCurrent();
+        m_pin[0]->stampCurrent( m_volt*m_admit );
+        m_pin[1]->stampCurrent(-m_volt*m_admit );
+    }
 }
 
 void Battery::updateStep()
@@ -67,6 +71,7 @@ void Battery::updateStep()
     if( !m_changed ) return;
     m_changed = false;
 
+    if( !m_connected ) return;
     stampAdmit();
     m_pin[0]->stampCurrent( m_volt*m_admit );
     m_pin[1]->stampCurrent(-m_volt*m_admit );
@@ -98,4 +103,6 @@ void Battery::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidge
     p->drawLine(-2,-3,-2, 3 );
     p->drawLine( 3,-8, 3, 8 );
     p->drawLine( 8,-3, 8, 3 );
+
+    Component::paintSelected( p );
 }

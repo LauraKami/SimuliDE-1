@@ -21,7 +21,7 @@ class McuSpi;
 class ScriptPerif;
 class Display;
 
-class MAINMODULE_EXPORT McuCreator
+class McuCreator
 {
     public:
         McuCreator();
@@ -49,11 +49,13 @@ class MAINMODULE_EXPORT McuCreator
         static void createCcpUnit( QDomElement* c );
         static void createMsspUnit( QDomElement* c );
         static void createUsart( QDomElement* u );
-        static void createAdc( QDomElement* e );
-        static void createAcomp( QDomElement* e );
-        static void createVref( QDomElement* e );
         static void createTwi( QDomElement* e );
         static void createSpi( QDomElement* e );
+        static void createUsi( QDomElement* e );
+        static void createAdc( QDomElement* e );
+        static void createDac( QDomElement* e );
+        static void createAcomp( QDomElement* e );
+        static void createVref( QDomElement* e );
         static void createWdt( QDomElement* e );
         static void createSleep( QDomElement* e );
         static void createDisplay( QDomElement* e );

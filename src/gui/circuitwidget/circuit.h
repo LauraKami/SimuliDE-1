@@ -20,7 +20,7 @@ class SubPackage;
 class Simulator;
 class Node;
 
-class MAINMODULE_EXPORT Circuit : public QGraphicsScene
+class Circuit : public QGraphicsScene
 {
     friend class SubCircuit;
     friend class Simulator;
@@ -83,7 +83,7 @@ class MAINMODULE_EXPORT Circuit : public QGraphicsScene
         void newconnector( Pin* startpin, bool save=true );
         void closeconnector( Pin* endpin, bool save=false );
         void deleteNewConnector();
-        void updateConnectors();
+        //void updateConnectors();
         Connector* getNewConnector() { return m_newConnector; }
 
         void addNode( Node* node );
@@ -94,7 +94,7 @@ class MAINMODULE_EXPORT Circuit : public QGraphicsScene
         QHash<QString, CompBase*>* compMap() { return &m_compMap;}
 
         Component* getCompById( QString id );
-        QString origId( QString name ) { return m_idMap.value( name ); }
+        QString origId( QString name ) { return m_idMap.value( name ); } // used by Shield
 
         bool is_constarted() { return m_conStarted ; }
 

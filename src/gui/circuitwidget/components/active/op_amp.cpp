@@ -116,7 +116,7 @@ void OpAmp::updateStep()
     if( !m_changed ) return;
     m_changed = false;
 
-    m_output->setImp( m_outImp );
+    m_output->setImpedance( m_outImp );
     voltChanged();
 }
 
@@ -242,11 +242,13 @@ void OpAmp::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget*
     pen.setWidth(2);
     p->setPen(pen);
 
-    static const QPointF points[4] = {
+ static const QPointF points[4] = {
         QPointF(-16,-16 ),
         QPointF(-16, 16 ),
         QPointF( 16,  1 ),
         QPointF( 16, -1 )            };
 
     p->drawPolygon(points, 4);
+
+    Component::paintSelected( p );
 }

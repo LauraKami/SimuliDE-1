@@ -3,6 +3,8 @@
  *                                                                         *
  ***( see copyright.txt file at root folder )*******************************/
 
+#include <QtMath>
+
 #include "csource.h"
 #include "simulator.h"
 #include "circuitwidget.h"
@@ -88,6 +90,7 @@ void Csource::stamp()
     m_pin[2]->createCurrent();
     m_pin[3]->createCurrent();
 
+    m_lastCurr = 0;
     m_changed = true;
     updateStep();
 }
@@ -105,10 +108,10 @@ void Csource::updateStep()
 
     udtProperties();
 
-    m_pin[0]->setEnabled( m_controlPins );
-    m_pin[0]->setVisible( m_controlPins );
-    m_pin[1]->setEnabled( m_controlPins );
-    m_pin[1]->setVisible( m_controlPins );
+    m_pin[0]->setEnabled( m_controlPins && !m_linked );
+    m_pin[0]->setVisible( m_controlPins && !m_linked );
+    m_pin[1]->setEnabled( m_controlPins && !m_linked );
+    m_pin[1]->setVisible( m_controlPins && !m_linked );
 
     if( m_currControl )
     {
@@ -138,8 +141,8 @@ void Csource::updateStep()
 
         if( m_currSource )
         {
-            m_pin[2]->stampCurrent( m_curr );
-            m_pin[3]->stampCurrent(-m_curr );
+            m_pin[2]->stampCurrent(-m_curr );
+            m_pin[3]->stampCurrent( m_curr );
         }else{
             m_pin[2]->stampCurrent( m_volt/cero_doub );
             m_pin[3]->stampCurrent(-m_volt/cero_doub );
@@ -156,18 +159,27 @@ void Csource::updateStep()
 void Csource::setVoltage( double v )
 {
     double curr = v;
+    //if( qFabs( curr - m_lastCurr ) < 1e-5 ) return;
+    m_lastCurr = curr;
 
-    if( m_currControl )              curr *= m_admit;
-    if( !m_currSource && curr != 0 ) curr /= cero_doub;
+    if( m_currSource   ) curr = -curr;      // Current source
+    else if( curr != 0 ) curr /= cero_doub; // Voltage source
+    if( m_currControl  ) curr *= m_admit;   // Current controlled
 
     curr *= m_gain;
     m_pin[2]->stampCurrent( curr );
     m_pin[3]->stampCurrent(-curr );
 }
 
+void Csource::setLinked( bool l )
+{
+    Component::setLinked( l );
+    setControlPins( m_controlPins );
+}
 
 void Csource::setLinkedValue( double v, int i )
 {
+    if( m_currControl ) v /= m_admit;
     setVoltage( v );
 }
 
@@ -210,6 +222,10 @@ void Csource::setCurrSource( bool c )
 
 void Csource::setControlPins( bool set )
 {
+    int length = (set || m_linked) ? 8 : 10;
+    m_pin[2]->setLength( length );
+    m_pin[3]->setLength( length );
+
     m_controlPins = set;
     m_changed = true;
     if( !Simulator::self()->isRunning() ) updateStep();
@@ -236,19 +252,9 @@ void Csource::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidge
 {
     Component::paint( p, option, widget );
 
-    QPainterPath path;
-    QVector<QPointF> points;
-    points << QPointF(-8, 0 )
-           << QPointF( 0,-13 )
-           << QPointF( 8, 0 )
-           << QPointF( 0, 13 );
-
-    path.addPolygon( QPolygonF(points) );
-    path.closeSubpath();
-
     QPen pen = p->pen();
 
-    if( m_controlPins )
+    if( m_controlPins && !m_linked )
     {
         pen.setWidth(1);
         p->setPen(pen);
@@ -256,7 +262,23 @@ void Csource::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidge
     }
     pen.setWidth(2);
     p->setPen(pen);
-    p->drawPath( path );
+
+    if( !m_controlPins && !m_linked )
+    {
+        p->drawEllipse(-10,-10, 20, 20 );
+    }
+    else{
+        QPainterPath path;
+        QVector<QPointF> points;
+        points << QPointF(-8, 0 )
+               << QPointF( 0,-13 )
+               << QPointF( 8, 0 )
+               << QPointF( 0, 13 );
+
+        path.addPolygon( QPolygonF(points) );
+        path.closeSubpath();
+        p->drawPath( path );
+    }
 
     pen.setWidth(1);
     p->setPen(pen);
@@ -270,7 +292,7 @@ void Csource::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidge
         p->drawLine( 0,-6, 0,-2 );
         p->drawLine(-2, 4, 2, 4 );
     }
-    if( m_currControl && m_controlPins )
+    if( m_currControl && m_controlPins && !m_linked )
     {
         pen.setWidthF(0.6);
         p->setPen(pen);
@@ -278,4 +300,5 @@ void Csource::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidge
         p->drawLine(-13, 5,-12, 7 );
         p->drawLine(-11, 5,-12, 7 );
     }
+    Component::paintSelected( p );
 }

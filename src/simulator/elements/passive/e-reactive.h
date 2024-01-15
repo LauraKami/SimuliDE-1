@@ -8,7 +8,7 @@
 
 #include "e-resistor.h"
 
-class MAINMODULE_EXPORT eReactive : public eResistor
+class eReactive : public eResistor
 {
     public:
         eReactive( QString id );
@@ -41,12 +41,8 @@ class MAINMODULE_EXPORT eReactive : public eResistor
         double m_tStep;
 
         uint64_t m_reacStep;
-        uint64_t m_lastTime;
-        uint64_t m_deltaTime;
+        uint64_t m_timeStep;
 
-        int m_autoStep;
-
-        bool m_stepError;
         bool m_running;
 };
 

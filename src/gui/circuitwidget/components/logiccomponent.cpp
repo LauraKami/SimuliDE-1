@@ -57,7 +57,11 @@ void LogicComponent::remove()
 }
 
 void LogicComponent::setOePin( IoPin* pin )
-{ pin->setInverted( true ); m_oePin = pin; }
+{
+    m_oePin = pin;
+    pin->setInverted( true );
+    m_oePin->setLabelText("OE ");
+}
 
 bool LogicComponent::outputEnabled()
 {
@@ -67,7 +71,7 @@ bool LogicComponent::outputEnabled()
     if     ( volt > m_inHighV ) m_outEnable = false;   // Active Low
     else if( volt < m_inLowV )  m_outEnable = true;
 
-    m_oePin->setPinState( m_outEnable? input_low:input_high ); // Low-High colors
+    //m_oePin->setPinState( m_outEnable? input_low:input_high ); // Low-High colors
     return m_outEnable;
 }
 
@@ -84,12 +88,7 @@ void LogicComponent::setTristate( bool t )  // Activate or deactivate OE Pin
 {
     if( !m_oePin ) return;
 
-    if( !t )
-    {
-        m_oePin->removeConnector();
-        m_oePin->setLabelText( "" );
-    }
-    else m_oePin->setLabelText( "OE " );
+    if( !t ) m_oePin->removeConnector();
 
     m_oePin->setVisible( t );
     m_tristate = t;

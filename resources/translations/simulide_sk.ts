@@ -25,7 +25,11 @@
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -121,10 +125,14 @@
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -315,6 +323,10 @@ p, li { white-space: pre-wrap; }
         <source>简体中文</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished">Písmo</translation>
+    </message>
 </context>
 <context>
     <name>AudioOut</name>
@@ -428,10 +440,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -455,7 +471,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Decoder (4 to 10/16)</source>
@@ -467,6 +483,10 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Invert Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -502,10 +522,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Binary Counter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -544,10 +568,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -597,11 +625,15 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Auto Step</source>
-        <translation>Automatický krok</translation>
+        <translation type="vanished">Automatický krok</translation>
     </message>
     <message>
         <source>_Steps</source>
         <translation type="vanished">_Kroky</translation>
+    </message>
+    <message>
+        <source>Reactive Step</source>
+        <translation type="unfinished">Veľkosť kroku</translation>
     </message>
 </context>
 <context>
@@ -637,7 +669,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Load Circuit</source>
-        <translation>Otvoriť obvod</translation>
+        <translation type="vanished">Otvoriť obvod</translation>
     </message>
     <message>
         <source>Circuits (*.sim*);;All files (*.*)</source>
@@ -646,6 +678,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Bill Of Materials</source>
         <translation type="vanished">Zoznam materiálov</translation>
+    </message>
+    <message>
+        <source>Import Circuit</source>
+        <translation type="unfinished">Importovať obvod</translation>
     </message>
 </context>
 <context>
@@ -809,7 +845,7 @@ Chcete uložiť zmeny?
     </message>
     <message>
         <source>Stopped</source>
-        <translation type="vanished">Zastavená</translation>
+        <translation>Zastavená</translation>
     </message>
     <message>
         <source>Paused</source>
@@ -1054,6 +1090,10 @@ Nemožno nájsť súbor:
     </message>
     <message>
         <source>For this file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extra build arguments</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1314,10 +1354,14 @@ Nemožno nájsť súbor:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1412,7 +1456,7 @@ Nemožno nájsť súbor:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Encoder (10/16 to 4)</source>
@@ -1420,6 +1464,10 @@ Nemožno nájsť súbor:
     </message>
     <message>
         <source>Encoder(10/16 to 4)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1447,7 +1495,11 @@ Nemožno nájsť súbor:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1520,6 +1572,10 @@ Nemožno nájsť súbor:
     </message>
     <message>
         <source>Link to Component</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Steps</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1628,7 +1684,7 @@ Nemožno nájsť súbor:
     </message>
     <message>
         <source>Edges</source>
-        <translation type="unfinished">Hrany</translation>
+        <translation type="obsolete">Hrany</translation>
     </message>
     <message>
         <source>Load data</source>
@@ -1640,6 +1696,10 @@ Nemožno nájsť súbor:
     </message>
     <message>
         <source>Show Memory Table</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1674,10 +1734,6 @@ Nemožno nájsť súbor:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Name Space:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Pin Angle:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1695,6 +1751,10 @@ Nemožno nájsť súbor:
     </message>
     <message>
         <source>Bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Space to Pin:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2156,7 +2216,7 @@ Súbor nemožno nájsť:
     <name>FixedVolt</name>
     <message>
         <source>Fixed Volt.</source>
-        <translation>Zdroj napätia (On/Off)</translation>
+        <translation type="vanished">Zdroj napätia (On/Off)</translation>
     </message>
     <message>
         <source>Main</source>
@@ -2165,6 +2225,10 @@ Súbor nemožno nájsť:
     <message>
         <source>Voltage</source>
         <translation>Napätie</translation>
+    </message>
+    <message>
+        <source>Fixed Voltage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2187,7 +2251,7 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Use Set/Reset Pins</source>
@@ -2196,6 +2260,10 @@ Súbor nemožno nájsť:
     <message>
         <source>Set/Reset Inverted</source>
         <translation>Invertovať piny Set/Reset</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2261,7 +2329,11 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2292,7 +2364,7 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Load Functions</source>
@@ -2326,6 +2398,10 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source> Function:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2497,11 +2573,15 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Auto Step</source>
-        <translation>Automatický krok</translation>
+        <translation type="vanished">Automatický krok</translation>
     </message>
     <message>
         <source>_Steps</source>
         <translation type="vanished">_krokov</translation>
+    </message>
+    <message>
+        <source>Reactive Step</source>
+        <translation type="unfinished">Veľkosť kroku</translation>
     </message>
 </context>
 <context>
@@ -2848,10 +2928,14 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3120,6 +3204,13 @@ Súbor nemožno nájsť:
     </message>
 </context>
 <context>
+    <name>LinkerComponent</name>
+    <message>
+        <source>Link to Component</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LogicComponent</name>
     <message>
         <source>None</source>
@@ -3174,7 +3265,7 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Edges</source>
-        <translation type="unfinished">Hrany</translation>
+        <translation type="obsolete">Hrany</translation>
     </message>
     <message>
         <source>Gate Delay </source>
@@ -3187,6 +3278,10 @@ Súbor nemožno nájsť:
     <message>
         <source>Fall Time</source>
         <translation type="unfinished">Čas dobehu</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3486,7 +3581,7 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Load data</source>
@@ -3503,6 +3598,10 @@ Súbor nemožno nájsť:
     <message>
         <source>Asynchronous</source>
         <translation>Asynchrónne</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3593,7 +3692,11 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3690,10 +3793,14 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3753,7 +3860,7 @@ Súbor nemožno nájsť:
     </message>
     <message>
         <source>Filter</source>
-        <translation>Filter</translation>
+        <translation type="vanished">Filter</translation>
     </message>
 </context>
 <context>
@@ -3792,6 +3899,10 @@ Súbor nemožno nájsť:
     <message>
         <source>Samples</source>
         <translation>Vzorky</translation>
+    </message>
+    <message>
+        <source>Admittance to ground</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4348,14 +4459,6 @@ Neplatný súbor balíka:
   Nastavte automatický krok &gt;= 1 pre tento kondenzátor  
 </translation>
     </message>
-    <message>
-        <source>
-  Warnig: Capacitor can&apos;t update fast enough  
-
-  Set auto step &gt;= 1 for this capacitor  
-</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Rectangle</name>
@@ -4412,7 +4515,7 @@ Neplatný súbor balíka:
     </message>
     <message>
         <source>Auto Step</source>
-        <translation>Automatický krok</translation>
+        <translation type="vanished">Automatický krok</translation>
     </message>
     <message>
         <source>_Poles</source>
@@ -4421,6 +4524,10 @@ Neplatný súbor balíka:
     <message>
         <source>_Steps</source>
         <translation type="vanished">_krokov</translation>
+    </message>
+    <message>
+        <source>Reactive Step</source>
+        <translation type="unfinished">Veľkosť kroku</translation>
     </message>
 </context>
 <context>
@@ -4553,6 +4660,14 @@ Neplatný súbor balíka:
         <source>BIN</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pauza</translation>
+    </message>
+    <message>
+        <source>Resume</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SerialPort</name>
@@ -4593,6 +4708,37 @@ Neplatný súbor balíka:
     <message>
         <source>Main</source>
         <translation type="unfinished">Základné</translation>
+    </message>
+    <message>
+        <source>Auto Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SerialTerm</name>
+    <message>
+        <source>Serial Terminal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Main</source>
+        <translation type="unfinished">Základné</translation>
+    </message>
+    <message>
+        <source>Baudrate</source>
+        <translation type="unfinished">Prenosová rýchlosť</translation>
+    </message>
+    <message>
+        <source>Data Bits</source>
+        <translation type="unfinished">Počet dátových bitov</translation>
+    </message>
+    <message>
+        <source>Stop Bits</source>
+        <translation type="unfinished">Počet stop bitov</translation>
+    </message>
+    <message>
+        <source>Open Serial Monitor.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4687,6 +4833,18 @@ Neplatný súbor balíka:
         <source>7 Seg BCD</source>
         <translation>7 Seg. BCD</translation>
     </message>
+    <message>
+        <source>Main</source>
+        <translation type="unfinished">Základné</translation>
+    </message>
+    <message>
+        <source>Show Point Pin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Enable Pin</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Shape</name>
@@ -4754,10 +4912,14 @@ Neplatný súbor balíka:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Shift Register</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5021,7 +5183,7 @@ Chcete uložiť zmeny?
 %2.</translation>
     </message>
     <message>
-        <source>Select Main Components</source>
+        <source>Select Exposed Components</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5072,7 +5234,19 @@ Chcete uložiť zmeny?
     </message>
     <message>
         <source>_Switches</source>
-        <translation>_spínačov</translation>
+        <translation type="vanished">_spínačov</translation>
+    </message>
+    <message>
+        <source>_Lines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exclusive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Common Pin</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5115,10 +5289,6 @@ Chcete uložiť zmeny?
     </message>
     <message>
         <source>Font Color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Link to Component</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5341,6 +5511,10 @@ Chcete uložiť zmeny?
         <source>Dial Step</source>
         <translation>Krok</translation>
     </message>
+    <message>
+        <source>Dial</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>VoltReg</name>
@@ -5377,6 +5551,10 @@ Chcete uložiť zmeny?
     </message>
     <message>
         <source>Voltage Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Min. Voltage</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5441,7 +5619,7 @@ Chcete uložiť zmeny?
     </message>
     <message>
         <source>Wave Gen.</source>
-        <translation>Generátor signálov</translation>
+        <translation type="vanished">Generátor signálov</translation>
     </message>
     <message>
         <source>Main</source>
@@ -5507,6 +5685,14 @@ Chcete uložiť zmeny?
         <source>Wav files (*.wav);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Phase shift</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wave Generator</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>XorGate</name>
@@ -5532,10 +5718,14 @@ Chcete uložiť zmeny?
     </message>
     <message>
         <source>Edges</source>
-        <translation>Hrany</translation>
+        <translation type="vanished">Hrany</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

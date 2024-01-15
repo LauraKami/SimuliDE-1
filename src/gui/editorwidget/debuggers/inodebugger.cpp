@@ -5,7 +5,7 @@
 
 #include <QApplication>
 #include <QSettings>
-#include <QDebug>
+//#include <QDebug>
 
 #include "inodebugger.h"
 #include "outpaneltext.h"
@@ -83,14 +83,17 @@ void InoDebugger::setToolPath( QString path )
         m_outPane->appendLine( "Found Arduino Version 1" );
     }
     else{
-        builder = "resources/app/node_modules/arduino-ide-extension/build/arduino-cli";
+        builder = "arduino-cli";
         #ifndef Q_OS_UNIX
         builder += ".exe";
         #endif
-        if( QFile::exists( path+builder) )
+
+        builder = findFile( path+"resources/app/", builder );
+
+        if( QFile::exists( builder) )
         {
             m_version = 2;
-            QString command = path+builder;
+            QString command = builder;
             command = addQuotes( command );
             command += " config dump";
 
@@ -111,6 +114,8 @@ void InoDebugger::setToolPath( QString path )
                 QStringList dirList = toolDir.entryList( QDir::Dirs, QDir::Name | QDir::Reversed );
                 if( !dirList.isEmpty() ) m_toolPath += dirList[0]+"/bin/";
             }
+            QDir pathDir( path );
+            builder = pathDir.relativeFilePath( builder );
             m_outPane->appendLine( "Found Arduino Version 2" );
         }
         else{                                          // Executable not found
@@ -190,11 +195,12 @@ int InoDebugger::compile( bool debug )
         QString userLibrar;
         QString userHardwa = "";
 
-        if( ! m_sketchBook.isEmpty() ){
+        if( !m_sketchBook.isEmpty() ){
             if( m_inclPath.isEmpty() ) userLibrar = addQuotes( m_sketchBook+"/libraries" );
             else                       userLibrar = addQuotes( m_inclPath );
 
-            userHardwa = addQuotes( m_sketchBook+"/hardware" );
+            if( QDir( m_sketchBook+"/hardware" ).exists() )
+                userHardwa = addQuotes( m_sketchBook+"/hardware" );
         }
 
         command += " -compile";
@@ -215,7 +221,7 @@ int InoDebugger::compile( bool debug )
     {
         command += " compile";
         command += " --no-color";
-        if( debug ) command += " --optimize-for-debug";
+        /// if( debug ) command += " --optimize-for-debug"; // Maybe problems in Arduino 2.2.1: Mapping Flash to Source... 0 lines mapped
         command += " --fqbn="+boardName;
         command += " --build-path "+cBuildPath;
         command += " --build-cache-path "+cCachePath;

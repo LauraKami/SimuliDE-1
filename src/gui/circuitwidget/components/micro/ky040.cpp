@@ -45,6 +45,7 @@ KY040::KY040( QString type, QString id )
      : Component( type, id )
      , eElement( id )
 {
+    m_graphical = true;
     m_changed = false;
     m_area = QRect( -WIDTH/2, -HEIGHT/2 + GAP, WIDTH, HEIGHT );
 
@@ -190,4 +191,6 @@ void KY040::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget*
     
     p->setBrush(QColor( 50, 50, 70 ));
     p->drawRoundedRect( m_area, 2, 2 );
+
+    Component::paintSelected( p );
 }

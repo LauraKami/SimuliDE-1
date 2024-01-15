@@ -65,15 +65,19 @@ void Interrupt::flagCleared( uint8_t )  // Interrupt flag was cleared by softwar
 void Interrupt::writeFlag( uint8_t v ) // Clear Interrupt flag by writting 1 to it
 {
     if( v & m_flagMask ){
-        clearFlag();
-        m_mcu->m_regOverride = m_ram[m_flagReg];
+        int overrided = m_mcu->m_regOverride;
+        if( overrided > 0 ) v = overrided;      // Get previous overrides
+        m_mcu->m_regOverride = v & ~m_flagMask; // Clear flag
+        flagCleared();
     }
 }
 
 void Interrupt::raise( uint8_t v )
 {
-    if( v && !m_raised ){
+    if( v ){
+        if( m_raised ) return;
         m_raised = true;
+
         m_ram[m_flagReg] |= m_flagMask; // Set Interrupt flag
 
         if( m_enabled )
@@ -81,7 +85,7 @@ void Interrupt::raise( uint8_t v )
             m_interrupts->addToPending( this ); // Add to pending interrupts
             if( m_intPin ) m_intPin->setOutState( false );
 
-            if( m_mcu->isSleeping()
+            if( m_mcu->state() == mcuSleeping
              && (m_wakeup & m_mcu->sleepMode()) )
                 m_mcu->sleep( false ); // Exit sleep
         }

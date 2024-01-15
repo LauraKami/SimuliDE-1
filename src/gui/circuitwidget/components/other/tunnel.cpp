@@ -6,7 +6,7 @@
 #include <QInputDialog>
 
 #include "tunnel.h"
-#include "linkable.h"
+#include "linker.h"
 #include "itemlibrary.h"
 #include "propdialog.h"
 #include "circuitwidget.h"
@@ -40,8 +40,6 @@ Tunnel::Tunnel( QString type, QString id )
       : Component( type, id )
 {
     m_size = 20;
-    m_area = QRect( -m_size-8-4, -4, m_size+4, 8 );
-    m_rotated = false;
     m_blocked = false;
     m_packed  = false;
     m_show    = false;
@@ -54,6 +52,7 @@ Tunnel::Tunnel( QString type, QString id )
     m_pin[0]->setSpace( 4 );
 
     setLabelPos(-16,-24, 0);
+    setRotated( false );
 
     addPropGroup( { tr("Main"), {
 new StrProp <Tunnel>("Name" , tr("Id") ,"", this, &Tunnel::name,  &Tunnel::setName ),
@@ -253,7 +252,7 @@ QRectF Tunnel::boundingRect() const
 
 void Tunnel::mousePressEvent( QGraphicsSceneMouseEvent* event )
 {
-    if( !Linkable::m_selecComp )  // Used when linking or creating Boards to set this as main component
+    if( !Linker::m_selecComp )  // Used when linking or creating Boards to set this as main component
         Component::mousePressEvent( event ); // Tunnel should not be linked or main component
 }
 
@@ -293,6 +292,7 @@ void Tunnel::paint( QPainter* p, const QStyleOptionGraphicsItem *option, QWidget
         p->fillRect( boundingRect(), Qt::darkBlue );
         p->setOpacity( 1 );
     }
+    Component::paintSelected( p );
 }
 
 eNode* Tunnel::getEnode( QString n )

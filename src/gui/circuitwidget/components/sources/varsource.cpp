@@ -4,7 +4,6 @@
  ***( see copyright.txt file at root folder )*******************************/
 
 #include <QGraphicsProxyWidget>
-#include <QPushButton>
 #include <QDial>
 #include <QPainter>
 
@@ -27,6 +26,7 @@ VarSource::VarSource( QString type, QString id )
 
     m_graphical = true;
     m_changed = false;
+    m_minValue = 0.0;
     m_outValue = 5.0;
 
     m_voltw.setFixedSize( WIDTH-4, HEIGHT-4 );
@@ -77,16 +77,17 @@ void VarSource::onbuttonclicked()
 
 void VarSource::dialChanged( int val )
 {
-    m_outValue = double( m_maxValue*val/1000 );
+    m_outValue = m_minValue+(m_maxValue-m_minValue)*double(val)/1000.0;
     updateButton();
     m_changed = true;
 }
 
 void VarSource::setVal( double val )
 {
-    if( val > m_maxValue ) m_maxValue = val;
-    else if( val < 0 ) val = 0;
-    m_voltw.setValue( val*1000/m_maxValue );
+    if     ( val > m_maxValue ) m_maxValue = val;
+    else if( val < m_minValue ) m_minValue = val;
+
+    m_voltw.setValue( val*1000/(m_maxValue-m_minValue) );
     m_outValue = val;
     m_changed = true;
     updateButton();
@@ -95,9 +96,19 @@ void VarSource::setVal( double val )
 
 void VarSource::setMaxValue( double v )
 {
+    if( v < m_minValue ) v = m_minValue+1e-3;
     m_maxValue = v;
     if( m_outValue > v ) m_outValue = v;
-    m_voltw.setValue( m_outValue*1000/m_maxValue );
+    m_voltw.setValue( m_outValue*1000/(m_maxValue-m_minValue) );
+    m_changed = true;
+}
+
+void VarSource::setMinValue( double v )
+{
+    if( v > m_maxValue ) v = m_maxValue-1e-3;
+    m_minValue = v;
+    if( m_outValue > v ) m_outValue = v;
+    m_voltw.setValue( m_outValue*1000/(m_maxValue-m_minValue) );
     m_changed = true;
 }
 
@@ -119,4 +130,6 @@ void VarSource::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWid
     p->drawRoundedRect( m_area, 2, 2 );
 
     //p->fillRect( m_area, Qt::darkGray );
+
+    Component::paintSelected( p );
 }

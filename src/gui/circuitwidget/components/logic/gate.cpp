@@ -30,7 +30,7 @@ QList<ComProperty*> Gate::edgeProps()
 {
     QList<ComProperty*> edge = IoComponent::edgeProps();
     edge.prepend(
-new BoolProp<Gate>( "initHigh", tr("Initial High State"),"", this, &Gate::initState, &Gate::setInitState ) );
+new BoolProp<Gate>( "initHigh", tr("Initial High State"),"", this, &Gate::initHigh, &Gate::setInitHigh ) );
 
     return edge;
 }
@@ -41,7 +41,7 @@ void Gate::stamp()
     for( uint i=0; i<m_inPin.size(); ++i ) m_inPin[i]->changeCallBack( this );
 
     m_outPin[0]->setOutState( m_initState );
-    m_out = m_initState;
+
     m_nextOutVal = m_outValue = m_initState;
 }
 
@@ -59,8 +59,6 @@ void Gate::voltChanged()
     bool out = calcOutput( inputs ); // In each gate type
 
     m_nextOutVal = out? 1:0;
-    if( m_out == out && !m_tristate ) return;
-    m_out = out;
 
     scheduleOutPuts( this );
 }

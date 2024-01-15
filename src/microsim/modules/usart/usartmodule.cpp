@@ -69,10 +69,10 @@ void UsartModule::byteReceived( uint8_t data )
     if( m_monitor ) m_monitor->printIn( data );
 }
 
-void UsartModule::openMonitor( QString id, int num )
+void UsartModule::openMonitor(QString id, int num, bool send )
 {
     if( !m_monitor )
-        m_monitor = new SerialMonitor( CircuitWidget::self(), this );
+        m_monitor = new SerialMonitor( CircuitWidget::self(), this, send );
 
     if( num > 0 ) id.append(" - Uart"+QString::number(num) );
     m_monitor->setWindowTitle( id );
@@ -85,10 +85,6 @@ void UsartModule::monitorClosed()
     m_serialMon = false;
 }
 
-void UsartModule::uartIn( uint8_t value ) // Data sent from external source (Serial Monitor)
-{
-    m_receiver->queueData( value );
-}
 //---------------------------------------
 //---------------------------------------
 
@@ -106,7 +102,6 @@ UartTR::~UartTR( ){}
 void UartTR::initialize()
 {
     m_enabled = false;
-    m_runHardware = false;
 }
 
 void UartTR::configureA( uint8_t val ) // Select Pin
@@ -138,5 +133,3 @@ void UartTR::setPins( QList<IoPin*> pinList )
     m_pinList = pinList;
     m_ioPin = pinList.at(0);
 }
-
-

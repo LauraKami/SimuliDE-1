@@ -15,6 +15,7 @@
 #include "watcher.h"
 #include "console.h"
 #include "mcu.h"
+#include "utils.h"
 
 #include "scriptprop.h"
 
@@ -25,6 +26,13 @@ ScriptCpu::ScriptCpu( eMcu* mcu )
          , McuCpu( mcu )
 {
     m_watcher = NULL;
+
+    m_progWordMask = 0;
+    for( uint i=0; i<mcu->wordSize(); ++i )
+    {
+        m_progWordMask <<= 8;
+        m_progWordMask |= 0xFF;
+    }
 
     // Script functions
     m_reset       = NULL;
@@ -131,6 +139,10 @@ ScriptCpu::ScriptCpu( eMcu* mcu )
 
     m_aEngine->RegisterObjectMethod("ScriptCpu", "string getPropStr( int index, const string p )"
                                    , asMETHODPR( ScriptCpu, getPropStr, (int,const string), string)
+                                   , asCALL_THISCALL );
+
+    m_aEngine->RegisterObjectMethod("ScriptCpu", "void setPropStr( int index, const string p,const string v )"
+                                   , asMETHODPR( ScriptCpu, setPropStr, (int,const string,const string), void)
                                    , asCALL_THISCALL );
 
     m_aEngine->RegisterObjectMethod("ScriptCpu", "void setLinkedValue( int index, double v, int i )"
@@ -282,6 +294,7 @@ void ScriptCpu::extClock( bool clkState )
 
 void ScriptCpu::command( QString c )
 {
+    if( c.isEmpty() ) return;
     if( !m_command ) return;
 
     prepare( m_command );
@@ -347,9 +360,9 @@ QString ScriptCpu::getStrReg( QString val )
     return QString::fromStdString( str );
 }
 
-void ScriptCpu::addProperty( QString group, QString name, QString type )
+void ScriptCpu::addProperty( QString group, QString name, QString type, QString unit )
 {
-    ComProperty* p = new ScriptProp<ScriptCpu>( name, name, "", this
+    ComProperty* p = new ScriptProp<ScriptCpu>( name, name, unit, this
                                               , &ScriptCpu::getProp, &ScriptCpu::setProp, type );
     m_scriptProps.push_back( p );
 
@@ -413,11 +426,16 @@ void ScriptCpu::setProp( ComProperty* p, QString val )
         std::string str = val.toStdString();
         m_context->SetArgObject( 0, &str );
     }
-    else if( type == "int"    ) m_context->SetArgDWord(  0, val.toInt() );
-    else if( type == "uint"   ) m_context->SetArgDWord(  0, val.toUInt() );
-    else if( type == "double" ) m_context->SetArgDouble( 0, val.toDouble() );
     else if( type == "bool"   ) m_context->SetArgByte(   0, val == "true" );
-
+    else{
+        double multiplier = 1;
+        QStringList l = val.split(" ");
+        val = l.first();
+        if( l.size() > 1 ) multiplier = getMultiplier( l.at(1) );
+        if     ( type == "int"    ) m_context->SetArgDWord(  0, val.toInt()*multiplier );
+        else if( type == "uint"   ) m_context->SetArgDWord(  0, val.toUInt()*multiplier );
+        else if( type == "double" ) m_context->SetArgDouble( 0, val.toDouble()*multiplier );
+    }
     execute();
 }
 
@@ -425,8 +443,8 @@ void ScriptCpu::addEvent( uint time ) { Simulator::self()->addEvent( time, this 
 void ScriptCpu::cancelEvents()        { Simulator::self()->cancelEvents( this ); }
 uint64_t ScriptCpu::circTime()        { return Simulator::self()->circTime(); }
 
-int  ScriptCpu::readPGM( uint addr )         { if( addr < m_progSize       ) return m_progMem[addr]; return -1; }
-void ScriptCpu::writePGM( uint addr, int v ) { if( addr < m_progSize       ) m_progMem[addr] = v; }
+int  ScriptCpu::readPGM( uint addr )         { if( addr < m_progSize       ) return m_progMem[addr] & m_progWordMask ; return -1; }
+void ScriptCpu::writePGM( uint addr, int v ) { if( addr < m_progSize       ) m_progMem[addr] = v & m_progWordMask; }
 int  ScriptCpu::readRAM( uint addr )         { if( addr <= m_dataMemEnd    ) return m_dataMem[addr]; return -1; }
 void ScriptCpu::writeRAM( uint addr, int v ) { SET_RAM( addr, v ); }
 int  ScriptCpu::readROM( uint addr )         { if( addr < m_mcu->romSize() ) return m_mcu->getRomValue( addr ); return -1; }
@@ -471,8 +489,16 @@ string ScriptCpu::getPropStr( int index, const string p  )
     Component* comp = m_mcuComp->getLinkedComp( index );
     if( !comp ) return "";
 
-    QString propValue = comp->getPropStr( QString::fromStdString( p) );
+    QString propValue = comp->getPropStr( QString::fromStdString(p) );
     return propValue.toStdString();
+}
+
+void ScriptCpu::setPropStr( int index, const string p, const string v ) // Script should call this in updateStep()
+{
+    Component* comp = m_mcuComp->getLinkedComp( index );
+    if( !comp ) return;
+
+    comp->setPropStr( QString::fromStdString(p), QString::fromStdString(v) );
 }
 
 void ScriptCpu::setLinkedValue( int index, double v, int i )
@@ -496,7 +522,7 @@ void ScriptCpu::setLinkedVal( double v, int i )
     if( !m_setLinkedVal ) return;
 
     prepare( m_setLinkedVal);
-    m_context->SetArgDWord( 0, v );
+    m_context->SetArgDouble( 0, v );
     m_context->SetArgDWord( 1, i );
     execute();
 }

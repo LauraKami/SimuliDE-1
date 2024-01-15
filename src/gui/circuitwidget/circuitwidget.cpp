@@ -20,7 +20,7 @@
 #include "about.h"
 #include "utils.h"
 
-CircuitWidget*  CircuitWidget::m_pSelf = 0l;
+CircuitWidget* CircuitWidget::m_pSelf = 0l;
 
 CircuitWidget::CircuitWidget( QWidget *parent  )
              : QWidget( parent )
@@ -77,8 +77,7 @@ CircuitWidget::CircuitWidget( QWidget *parent  )
     
     m_lastCircDir = MainWindow::self()->settings()->value("lastCircDir").toByteArray();
     if( m_lastCircDir.isEmpty() )  m_lastCircDir = appPath + "..share/simulide/examples";
-    
-    newCircuit();
+
     m_infoWidget->setRate();
 }
 CircuitWidget::~CircuitWidget() { }
@@ -372,13 +371,14 @@ void CircuitWidget::powerCircOn()
     pauseSimAct->setIcon( QIcon(":/pausesim.png") );
     pauseSimAct->setEnabled( true );
     MainWindow::self()->setState("▶");
+    setMsg( " "+tr("Running")+" ", 0 );
+
     Simulator::self()->startSim();
 }
 
 void CircuitWidget::powerCircOff()
 {
-    if( Simulator::self()->isPaused()
-     || Simulator::self()->isRunning() ) Simulator::self()->stopSim();
+    if( Simulator::self()->isRunning() ) Simulator::self()->stopSim();
 
     powerCircAct->setIcon( QIcon(":/poweroff.png") );
     powerCircAct->setText(tr("Start Simulation"));
@@ -387,11 +387,15 @@ void CircuitWidget::powerCircOff()
     pauseSimAct->setEnabled( false );
     pauseSimAct->setText(tr("Pause Simulation"));
     MainWindow::self()->setState("■");
+    setMsg( " "+tr("Stopped")+" ", 1 );
+
+    m_infoWidget->setRate( 0, 0 );
+    Circuit::self()->update();
 }
 
-void CircuitWidget::powerCircDebug( bool paused )
+void CircuitWidget::powerCircDebug()
 {
-    Simulator::self()->startSim( paused );
+    if( Simulator::self()->isRunning() ) Simulator::self()->stopSim();
 
     powerCircAct->setIcon( QIcon(":/powerdeb.png") );
     powerCircAct->setIconText("Debug");
@@ -401,6 +405,8 @@ void CircuitWidget::powerCircDebug( bool paused )
     setMsg( " "+tr("Debug")+"❚❚", 3 );
 
     m_infoWidget->setRate(-1 );  //m_rateLabel->setText( tr("Speed: Debugger") );
+
+    Simulator::self()->startSim( true );
 }
 
 void CircuitWidget::pauseDebug()

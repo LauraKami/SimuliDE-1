@@ -58,9 +58,10 @@ void Console::updateStep()
     if( m_sendCommand )
     {
         m_sendCommand = false;
-
-        m_cpu->command( m_command );
-        m_command = "";
+        if( !m_command.isEmpty() ){
+            m_cpu->command( m_command );
+            m_command = "";
+        }
     }
 }
 
@@ -92,7 +93,10 @@ void Console::keyPressEvent( QKeyEvent* e )
         }break;*/
         case Qt::Key_Up:
         case Qt::Key_Down: break;
-        case Qt::Key_Return: m_sendCommand = true; break;
+        case Qt::Key_Return:{
+            m_sendCommand = true;
+            QPlainTextEdit::keyPressEvent(e);
+        }break;
         default:{
             if( m_command.isEmpty() ){
                 QTextCharFormat tf = currentCharFormat();

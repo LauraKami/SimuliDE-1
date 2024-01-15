@@ -18,7 +18,7 @@
     EXCEPTION_ILLEGAL_OPCODE     // for the single 'reserved' opcode in the architecture
 };*/
 
-class MAINMODULE_EXPORT I51Core : public McuCpu, public eElement
+class I51Core : public McuCpu, public eElement
 {
     public:
         I51Core( eMcu* mcu );
@@ -163,7 +163,7 @@ class MAINMODULE_EXPORT I51Core : public McuCpu, public eElement
             addr = checkAddr( addr );
             return McuCpu::GET_RAM( addr );
         }
-        inline void SET_RAM( uint16_t addr , uint8_t val ) override
+        inline void SET_RAM( uint16_t addr, uint8_t val ) override
         {
             addr = checkAddr( addr );
             McuCpu::SET_RAM( addr, val );
@@ -173,7 +173,7 @@ class MAINMODULE_EXPORT I51Core : public McuCpu, public eElement
         inline uint8_t popStack8();
 
         inline void addFlags( uint8_t value1, uint8_t value2, uint8_t acc );
-        inline void subFlags( uint8_t value1, uint8_t value2 );
+        inline void subFlags( uint8_t value1, uint8_t value2, uint8_t acc );
 
         // Instructions --------------------------------
         inline void JMP();

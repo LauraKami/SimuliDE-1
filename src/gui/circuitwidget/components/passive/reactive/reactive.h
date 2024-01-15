@@ -9,7 +9,7 @@
 #include "e-reactive.h"
 #include "comp2pin.h"
 
-class MAINMODULE_EXPORT Reactive : public Comp2Pin, public eReactive
+class Reactive : public Comp2Pin, public eReactive
 {
     public:
         Reactive( QString type, QString id );
@@ -25,8 +25,12 @@ class MAINMODULE_EXPORT Reactive : public Comp2Pin, public eReactive
         double resist() { return m_resistor->res(); }
         void setResist( double resist );
 
-        int autoStep() { return m_autoStep; }
-        void setAutoStep( int a );
+        double reaStep() { return m_reacStep*1e-12; }
+        void setReaStep( double r );
+
+        virtual void setCurrentValue( double c ){;}
+
+        virtual void setLinkedValue( double v, int i=0 ) override;
 
     private:
         eNode* m_midEnode;

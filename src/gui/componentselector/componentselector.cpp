@@ -57,13 +57,16 @@ void ComponentSelector::LoadLibraryItems()
     {
         QString category = item->category();
 
-        QString icon = ":/"+item->iconfile();
+        QString icon = item->iconfile();
+        QString iconFile = MainWindow::self()->getDataFilePath("images/"+icon );
+        if( !QFile::exists( iconFile ) ) iconFile = ":/"+icon; // Image not in simulide data folder, use hardcoded image
+
         if( item->createItemFnPtr() )
         {
             QTreeWidgetItem* catItem = getCategory( category );
-            if( catItem ) addItem( item->name(), catItem, icon, item->type() );
+            if( catItem ) addItem( item->name(), catItem, iconFile, item->type() );
         }
-        else addCategory( item->name(), item->type(), category, icon );
+        else addCategory( item->name(), item->type(), category, iconFile );
     }
 }
 
@@ -92,13 +95,14 @@ void ComponentSelector::LoadCompSetAt( QDir compSetDir )
 
             for( QString compName : dirList )
             {
+                QString ico;
                 QString path = compName+"/"+compName;
                 QString type;
-                if     ( compSetDir.exists( path+".sim1") ) type = "Subcircuit";
-                else if( compSetDir.exists( path+".mcu")  ) type = "MCU";
+                if     ( compSetDir.exists( path+".sim1") ) { ico = ":/subc.png"; type = "Subcircuit";}
+                else if( compSetDir.exists( path+".mcu")  ) { ico = ":/ic2.png"; type = "MCU";}
                 if( !type.isEmpty() )
                 {
-                    addItem( compName, catItem, "subc", type );
+                    addItem( compName, catItem, ico, type );
                     m_dirFileList[ compName ] = compSetDir.absoluteFilePath( compName );
                 }
             }
@@ -134,7 +138,7 @@ void ComponentSelector::loadXml( const QString &setFile )
             {
                 icon = reader.attributes().value("icon").toString();
                 if( !icon.startsWith(":/") )
-                    icon.prepend( MainWindow::self()->getFilePath("data/images") + "/");
+                    icon = MainWindow::self()->getDataFilePath("images/"+icon);
             }
 
             QString category = reader.attributes().value("category").toString();
@@ -166,17 +170,19 @@ void ComponentSelector::loadXml( const QString &setFile )
                     {
                         icon = reader.attributes().value("icon").toString();
                         if( !icon.startsWith(":/") )
-                            icon.prepend( MainWindow::self()->getFilePath("data/images") + "/");
+                            icon = MainWindow::self()->getDataFilePath("images/"+icon);
                     }
                     QString name = reader.attributes().value("name").toString();
-                    if( m_components.contains( name ) ) continue;
-                    m_components.append( name );
+                    if( !m_components.contains( name ) )
+                    {
+                        m_components.append( name );
 
-                    m_xmlFileList[ name ] = setFile;   // Save xml File used to create this item
-                    if( reader.attributes().hasAttribute("info") )
-                        name += "???"+reader.attributes().value("info").toString();
+                        m_xmlFileList[ name ] = setFile;   // Save xml File used to create this item
+                        if( reader.attributes().hasAttribute("info") )
+                            name += "???"+reader.attributes().value("info").toString();
 
-                    if( catItem ) addItem( name, catItem, icon, type );
+                        if( catItem ) addItem( name, catItem, icon, type );
+                    }
                     reader.skipCurrentElement();
     }   }   }   }
     QString compSetName = setFile.split( "/").last();

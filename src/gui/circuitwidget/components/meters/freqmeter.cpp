@@ -36,6 +36,7 @@ FreqMeter::FreqMeter( QString type, QString id )
 {
     m_area = QRectF( -32, -10, 85, 20 );
     m_color = Qt::black;
+    m_graphical = true;
 
     m_ePin.resize( 1 );
     m_pin.resize( 1 );
@@ -171,5 +172,7 @@ void FreqMeter::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWid
 {
     Component::paint( p, option, widget );
     p->setBrush( Qt::black);
-    p->drawRect( m_area );
+    p->drawRoundedRect( m_area, 1, 1);
+
+    Component::paintSelected( p );
 }

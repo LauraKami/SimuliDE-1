@@ -81,7 +81,7 @@ new DoubProp<Potentiometer>( "Value_Ohm" , tr("Current Value"),"Ω", this, &Pote
 }
 Potentiometer::~Potentiometer() {}
 
-void Potentiometer::stamp()
+void Potentiometer::initialize()
 {
     m_midEnode = m_pinM.getEnode();  // Get eNode from middle Pin
     if( !m_midEnode ) m_midEnode = new eNode( m_id+"-mideNode" ); // Not connected: Create mid eNode
@@ -113,7 +113,7 @@ void Potentiometer::updateStep()
     m_resB.setRes( res2 );
 
     if( m_propDialog ) m_propDialog->updtValues();
-    else if( m_showProperty == "Value_Ohm" ) setValLabelText( getPropStr( "Value_Ohm" ) );
+    else setValLabelText( getPropStr( showProp() ) );
 }
 
 double Potentiometer::getVal() { return m_resist*m_dialW.value()/1000; }
@@ -158,4 +158,6 @@ void Potentiometer::paint( QPainter* p, const QStyleOptionGraphicsItem* option, 
 
     p->drawLine( 0, 6,-3, 9 );
     p->drawLine( 0, 6, 3, 9 );
+
+    Component::paintSelected( p );
 }

@@ -24,7 +24,7 @@ enum pinState_t{
 class Connector;
 class LaChannel;
 
-class MAINMODULE_EXPORT Pin : public QGraphicsItem, public ePin, public Updatable
+class Pin : public QGraphicsItem, public ePin, public Updatable
 {
     Q_INTERFACES(QGraphicsItem)
 
@@ -85,7 +85,7 @@ class MAINMODULE_EXPORT Pin : public QGraphicsItem, public ePin, public Updatabl
 
         void moveBy( int dx, int dy );
 
-        void remove();
+        void connectorRemoved();
 
         void registerEnode( eNode* enode, int n=-1 );
         void registerPinsW( eNode* enode, int n=-1 );
@@ -98,11 +98,13 @@ class MAINMODULE_EXPORT Pin : public QGraphicsItem, public ePin, public Updatabl
 
         void setDataChannel( LaChannel* ch ) { m_dataCannel = ch; }
 
-        inline void setPinState( pinState_t st ) { m_pinState = st; /*m_PinChanged = true;*/ }
+        //inline void setPinState( pinState_t st ) { m_pinState = st; /*m_PinChanged = true;*/ }
 
         void warning( bool w );
         void animate( bool an );
         virtual void updateStep() override;
+
+        virtual Pin* getPin() override { return this; }
 
         virtual void paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget ) override;
 

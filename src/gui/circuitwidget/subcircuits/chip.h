@@ -11,7 +11,7 @@
 
 class QDomElement;
 
-class MAINMODULE_EXPORT Chip : public Component, public eElement
+class Chip : public Component, public eElement
 {
     public:
         Chip( QString type, QString id );
@@ -28,7 +28,6 @@ class MAINMODULE_EXPORT Chip : public Component, public eElement
         bool logicSymbol() { return m_isLS; }
         virtual void setLogicSymbol( bool ls );
 
-        QString background() { return m_background; }
         virtual void setBackground( QString bck ) override;
 
         QString name() { return m_name; }
@@ -58,6 +57,8 @@ class MAINMODULE_EXPORT Chip : public Component, public eElement
         virtual void initChip();
         virtual void initPackage( QDomElement root );
 
+        virtual void findHelp() override;
+
         int m_width;
         int m_height;
         
@@ -71,12 +72,12 @@ class MAINMODULE_EXPORT Chip : public Component, public eElement
 
         QString m_name;
         QString m_pkgeFile;     // file containig package defs
+        QString m_dataFile;
 
         QList<Pin*> m_unusedPins;
 
         std::vector<std::vector<int>>* m_backData;
-        //QImage*  m_backImage;
-        QPixmap* m_backPixmap;
+
         QGraphicsTextItem m_label;
 };
 

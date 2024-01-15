@@ -18,7 +18,7 @@ struct sample_t{
     uint channel;
 };
 
-class MAINMODULE_EXPORT LAnalizer : public PlotBase
+class LAnalizer : public PlotBase
 {
     public:
         LAnalizer( QString type, QString id );
@@ -51,11 +51,11 @@ class MAINMODULE_EXPORT LAnalizer : public PlotBase
         double thresholdR() { return m_thresholdR; }
         void setThresholdR( double thr );
 
-        QString busStr();
-        void setBusStr( QString b );
-
         double thresholdF() { return m_thresholdF; }
         void setThresholdF( double thr );
+
+        QString busStr();
+        void setBusStr( QString b );
 
         virtual void setConds( QString conds ) override;
 

@@ -11,16 +11,16 @@
 PicVref::PicVref( eMcu* mcu, QString name )
        : McuVref( mcu, name )
 {
-    m_VREN = getRegBits( "VREN", mcu );
-    m_VROE = getRegBits( "VROE", mcu );
-    m_VRR  = getRegBits( "VRR", mcu );
-    m_VR   = getRegBits( "VR0,VR1,VR2,VR3", mcu );
+    m_VREN = getRegBits("VREN", mcu );
+    m_VROE = getRegBits("VROE", mcu );
+    m_VRR  = getRegBits("VRR" , mcu );
+    m_VR   = getRegBits("VR0,VR1,VR2,VR3", mcu );
 }
 PicVref::~PicVref(){}
 
 void PicVref::initialize()
 {
-    m_vref = 5.0/4; //setMode( 0 );
+    m_vref = m_mcu->vdd()/4; //setMode( 0 );
 }
 
 void PicVref::configureA( uint8_t newVRCON )
@@ -35,8 +35,9 @@ void PicVref::configureA( uint8_t newVRCON )
         m_vrr = vrr;
 
         if( m_enabled ){
-            if( vrr ) m_vref = 5.0*mode/24; /// TODO: get Vdd or use VrefP
-            else      m_vref = 5.0/4+5.0*mode/32;
+            double vdd = m_mcu->vdd();
+            if( vrr ) m_vref = vdd*mode/24; /// TODO: get Vdd or use VrefP
+            else      m_vref = vdd/4+vdd*mode/32;
         }
         else m_vref = 0;
     }
@@ -64,3 +65,54 @@ void PicVref::configureA( uint8_t newVRCON )
 {
     m_mode = mode;
 }*/
+
+//-------------------------------------------------------------
+// Type 0: 16f1826 FVR  ---------------------------------------
+
+PicVrefE::PicVrefE( eMcu* mcu, QString name )
+        : McuVref( mcu, name )
+{
+    m_FVREN  = getRegBits("FVREN", mcu );
+    m_ADFVR  = getRegBits("ADFVR0,ADFVR1", mcu );   // ADC Vref
+    m_CDAFVR = getRegBits("CDAFVR0,CDAFVR1", mcu ); // DAC Vref
+}
+PicVrefE::~PicVrefE(){}
+
+void PicVrefE::configureA( uint8_t newFVRCON )
+{
+    m_enabled = getRegBitsVal( newFVRCON, m_FVREN );
+
+    double vdd = m_mcu->vdd();
+    uint8_t adfvr = getRegBitsVal( newFVRCON, m_ADFVR );
+    switch( adfvr ) {
+        case 0: m_adcVref = 0.000; break;
+        case 1: m_adcVref = 1.024; break;
+        case 2: m_adcVref = 2.048; break;
+        case 3: m_adcVref = 4.096; break;
+    }
+    if( m_adcVref > vdd ) m_adcVref = vdd;
+
+    uint8_t cdafvr = getRegBitsVal( newFVRCON, m_CDAFVR );
+    switch( cdafvr ) {
+        case 0: m_dacVref = 0.000; break;
+        case 1: m_dacVref = 1.024; break;
+        case 2: m_dacVref = 2.048; break;
+        case 3: m_dacVref = 4.096; break;
+    }
+    if( m_dacVref > vdd ) m_dacVref = vdd;
+
+    if( !m_callBacks.isEmpty() )
+    { for( McuModule* mod : m_callBacks ) mod->callBack(); }
+}
+
+double PicVrefE::getAdcVref()
+{
+    if( m_enabled ) return m_adcVref;
+    else            return 0;
+}
+
+double PicVrefE::getDacVref()
+{
+    if( m_enabled ) return m_dacVref;
+    else            return 0;
+}

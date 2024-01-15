@@ -10,7 +10,7 @@
 
 class LibraryItem;
 
-class MAINMODULE_EXPORT Image : public Shape
+class Image : public Shape
 {
     public:
         Image( QString type, QString id );
@@ -20,7 +20,7 @@ class MAINMODULE_EXPORT Image : public Shape
  static LibraryItem* libraryItem();
 
         virtual void setBackground( QString bck ) override;
-        QString background();
+        virtual QString background() override;
 
         virtual void paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget ) override;
 

@@ -24,7 +24,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -100,7 +100,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -266,6 +266,10 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AudioOut</name>
@@ -366,7 +370,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -393,7 +397,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -428,7 +432,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -455,7 +459,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -504,7 +508,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Auto Step</source>
+        <source>Reactive Step</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -539,11 +543,11 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Load Circuit</source>
+        <source>Circuits (*.sim*);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Circuits (*.sim*);;All files (*.*)</source>
+        <source>Import Circuit</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -726,6 +730,10 @@ Can&apos;t find file:
         <source>&amp;%1 %2</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Clock</name>
@@ -892,6 +900,10 @@ Can&apos;t find file:
         <source>For this file:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Extra build arguments</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Component</name>
@@ -1056,7 +1068,7 @@ Can&apos;t find file:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1146,7 +1158,7 @@ Can&apos;t find file:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1169,7 +1181,7 @@ Can&apos;t find file:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1239,6 +1251,10 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Link to Component</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Steps</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1346,10 +1362,6 @@ Can&apos;t find file:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Load data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1361,6 +1373,10 @@ Can&apos;t find file:
         <source>Show Memory Table</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EditDialog</name>
@@ -1370,10 +1386,6 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Pin Id:   </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Name Space:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1410,6 +1422,10 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edit Pin </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Space to Pin:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1812,15 +1828,15 @@ Do you want to save your changes?
 <context>
     <name>FixedVolt</name>
     <message>
-        <source>Fixed Volt.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Main</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fixed Voltage</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1851,7 +1867,7 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1905,11 +1921,11 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Full Adder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Full Adder</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1944,10 +1960,6 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Load Functions</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1966,6 +1978,10 @@ Do you want to save your changes?
     </message>
     <message>
         <source> Function:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2128,7 +2144,7 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Auto Step</source>
+        <source>Reactive Step</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2440,7 +2456,7 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2701,6 +2717,13 @@ Do you want to save your changes?
     </message>
 </context>
 <context>
+    <name>LinkerComponent</name>
+    <message>
+        <source>Link to Component</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LogicComponent</name>
     <message>
         <source>None</source>
@@ -2754,10 +2777,6 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Gate Delay </source>
         <translation type="unfinished"></translation>
     </message>
@@ -2767,6 +2786,10 @@ Do you want to save your changes?
     </message>
     <message>
         <source>Fall Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3028,10 +3051,6 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Load data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3041,6 +3060,10 @@ Do you want to save your changes?
     </message>
     <message>
         <source>Show Memory Table</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3109,7 +3132,7 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3190,7 +3213,7 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3243,10 +3266,6 @@ Do you want to save your changes?
         <source>Oscope</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Filter</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>PathVal</name>
@@ -3283,6 +3302,10 @@ Do you want to save your changes?
     </message>
     <message>
         <source>Samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Admittance to ground</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3677,17 +3700,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>Reactive</name>
-    <message>
-        <source>
-  Warnig: Capacitor can&apos;t update fast enough  
-
-  Set auto step &gt;= 1 for this capacitor  
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Rectangle</name>
     <message>
         <source>Rectangle</source>
@@ -3741,7 +3753,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Auto Step</source>
+        <source>Reactive Step</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3863,6 +3875,14 @@ p, li { white-space: pre-wrap; }
         <source> Output</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resume</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SerialPort</name>
@@ -3897,6 +3917,37 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Serial Monitor.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SerialTerm</name>
+    <message>
+        <source>Serial Terminal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Main</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Baudrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data Bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop Bits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3988,6 +4039,18 @@ p, li { white-space: pre-wrap; }
         <source>7 Seg BCD</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Main</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Point Pin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Enable Pin</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Shape</name>
@@ -4054,7 +4117,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4282,7 +4345,7 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select Main Components</source>
+        <source>Select Exposed Components</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4328,7 +4391,15 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>_Switches</source>
+        <source>_Lines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exclusive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Common Pin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4372,10 +4443,6 @@ Do you want to save your changes?
     </message>
     <message>
         <source>Fixed_Width</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Link to Component</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4586,6 +4653,10 @@ Do you want to save your changes?
         <source>Dial Step</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Dial</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>VoltReg</name>
@@ -4618,6 +4689,10 @@ Do you want to save your changes?
     </message>
     <message>
         <source>Max. Voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Min. Voltage</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4656,10 +4731,6 @@ Do you want to save your changes?
 </context>
 <context>
     <name>WaveGen</name>
-    <message>
-        <source>Wave Gen.</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Sine</source>
         <translation type="unfinished"></translation>
@@ -4740,6 +4811,14 @@ Do you want to save your changes?
         <source>Wav files (*.wav);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Phase shift</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wave Generator</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>XorGate</name>
@@ -4756,7 +4835,7 @@ Do you want to save your changes?
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edges</source>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

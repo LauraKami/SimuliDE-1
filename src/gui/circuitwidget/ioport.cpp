@@ -30,6 +30,9 @@ void IoPort::reset()
         pin->setOutState( 0 );
         pin->setPinMode( input );
     }
+
+    for( std::vector<outState_t> v : m_outVectors ) v.clear();
+    m_outVectors.clear();
 }
 
 void IoPort::runEvent()
@@ -44,16 +47,20 @@ void IoPort::runEvent()
     if( m_index > 0 ) nextStep();
 }
 
-void IoPort::trigger()
+void IoPort::trigger( uint n )
 {
-    if( m_index == 0 ) nextStep();
+    if( m_index != 0 ) return;             // Last sequence not finished
+    if( n >= m_outVectors.size() ) return; // Out of bonds
+
+    m_outVector = &m_outVectors.at(n);
+    nextStep();
 }
 
 void IoPort::nextStep()
 {
-    outState_t outState = m_outVector.at( m_index );
+    outState_t outState = m_outVector->at( m_index );
     m_index++;
-    if( m_index >= m_outVector.size() ) m_index = 0;
+    if( m_index >= m_outVector->size() ) m_index = 0;
 
     m_nextState = outState.state;
     uint64_t time = outState.time;
@@ -149,7 +156,7 @@ IoPin* IoPort::createPin( int i, QString id, Component* comp )
 {
     IoPin* pin = new IoPin( 0, QPoint(0,0), comp->getUid()+"-"+id, i, comp, input );
     pin->setOutHighV( 5 );
-    pin->setPinState( input_low );
+    //pin->setPinState( input_low );
     return pin;
 }
 
@@ -183,6 +190,22 @@ IoPin* IoPort::getPin( QString pinName )
 
 // ---- Script Engine -------------------
 #include "angelscript.h"
+
+void IoPort::addSequence( CScriptArray* t )
+{
+    std::vector<outState_t> outVector;
+    for( uint i=0; i<t->GetSize(); ++i )
+    {
+        CScriptArray* pulse = (CScriptArray*)t->At(i);
+        if( pulse->GetSize() < 2 ) continue;
+
+        uint64_t* time  = (uint64_t*)pulse->At(0);
+        uint64_t* state = (uint64_t*)pulse->At(1);
+        outVector.emplace_back( outState_t{*time, *state} );
+    }
+    if( outVector.size() ) m_outVectors.emplace_back( outVector );
+}
+
 void IoPort::registerScript( asIScriptEngine* engine )
 {
     engine->RegisterObjectType("IoPort", 0, asOBJ_REF | asOBJ_NOCOUNT );
@@ -203,15 +226,15 @@ void IoPort::registerScript( asIScriptEngine* engine )
                                    , asMETHODPR( IoPort, setOutState, (uint), void)
                                    , asCALL_THISCALL );
 
-    engine->RegisterObjectMethod("IoPort", "void addOutState( uint64 t, uint s )"
-                                   , asMETHODPR( IoPort, addOutState, (uint64_t t, uint s), void)
+    engine->RegisterObjectMethod("IoPort", "void addSequence( array<array<uint64>>@ t )"
+                                   , asMETHODPR( IoPort, addSequence, (CScriptArray*), void)
                                    , asCALL_THISCALL );
 
     engine->RegisterObjectMethod("IoPort", "void changeCallBack(eElement@ s, bool s)"
                                    , asMETHODPR( IoPort, changeCallBack, (eElement*, bool), void)
                                    , asCALL_THISCALL );
 
-    engine->RegisterObjectMethod("IoPort", "void trigger()"
-                                   , asMETHODPR( IoPort, trigger, (), void)
+    engine->RegisterObjectMethod("IoPort", "void trigger(uint n)"
+                                   , asMETHODPR( IoPort, trigger, (uint), void)
                                    , asCALL_THISCALL );
 }

@@ -75,7 +75,8 @@ void MemTable::setCellValue( int address, int val )
                        +"\nOct: "+decToBase( val,  8, 3*m_cellBytes )
                        +"\nBin: "+decToBase( val,  2, 8*m_cellBytes );
 
-        QToolTip::showText( QCursor::pos(), values );
+        if( QToolTip::text() != values )
+            QToolTip::showText( QCursor::pos(), values, 0, {}, 100000 );
     }
 
     item->setData( 0, valToHex( val, m_cellBytes ) );
@@ -191,16 +192,6 @@ void MemTable::setAddrSelected( int addr, bool jump )
     int col = addr%16;
     cellClicked( row, col );
     if( jump ) table->scrollToItem( table->item( row, col ) );
-}
-
-void MemTable::setCanSaveLoad(bool val)
-{
-    m_canSaveLoad=val;
-}
-
-bool MemTable::canSaveLoad()
-{
-    return m_canSaveLoad;
 }
 
 void MemTable::on_table_itemChanged( QTableWidgetItem* item )

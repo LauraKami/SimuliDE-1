@@ -10,7 +10,7 @@
 #include "voltwidget.h"
 #include "e-element.h"
 
-class MAINMODULE_EXPORT VarSource : public Component, public eElement
+class VarSource : public Component, public eElement
 {
     public:
         VarSource( QString type, QString id );
@@ -21,6 +21,9 @@ class MAINMODULE_EXPORT VarSource : public Component, public eElement
 
         double maxValue() { return m_maxValue; }
         void setMaxValue( double v );
+
+        double minValue() { return m_minValue; }
+        void setMinValue( double v );
 
         bool running();
         void setRunning( bool r );
@@ -40,6 +43,7 @@ class MAINMODULE_EXPORT VarSource : public Component, public eElement
         virtual void setflip() override;
         
         double m_maxValue;
+        double m_minValue;
         double m_outValue;
 
         QString m_unit;

@@ -17,7 +17,7 @@
 #include "subcircuit.h"
 #include "utils.h"
 #include "e-diode.h"
-#include "linkable.h"
+#include "linker.h"
 
 #define tr(str) QCoreApplication::translate("CircuitView",str)
 
@@ -97,10 +97,14 @@ void CircuitView::dragEnterEvent( QDragEnterEvent* event )
             SubCircuit* subC = static_cast<SubCircuit*>( m_enterItem );
             if( subC->subcType() < Chip::Board ) subC->setLogicSymbol( true );
         }
-        m_enterItem->setPos( mapToScene( event->pos() ) );
+        m_circuit->clearSelection();
         m_circuit->addItem( m_enterItem );
         m_circuit->compList()->insert( m_enterItem );
         m_circuit->saveCompChange( m_enterItem->getUid(), COMP_STATE_NEW, "" );
+
+        m_enterItem->setPos( mapToScene( event->pos() ) );
+        m_enterItem->setSelected( true );
+
         this->setFocus();
     }
 }
@@ -196,8 +200,8 @@ void CircuitView::overrideCursor( const QCursor &cursor )
 
 void CircuitView::contextMenuEvent( QContextMenuEvent* event )
 {
-    if( Linkable::m_selecComp ){ // Cancel link to components
-        Linkable::stopLinking();
+    if( Linker::m_selecComp ){ // Cancel link to components
+        Linker::stopLinking();
         return;
     }
     QGuiApplication::restoreOverrideCursor();

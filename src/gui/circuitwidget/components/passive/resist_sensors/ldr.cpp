@@ -58,7 +58,7 @@ void Ldr::updateStep()
     double res = double(m_r1)*pow( m_value, -m_gamma );
     eResistor::setRes( res );
     if( m_propDialog ) m_propDialog->updtValues();
-    else if( m_showProperty == "Lux" ) setValLabelText( getPropStr( "Lux" ) );
+    else setValLabelText( getPropStr( showProp() ) );
 }
 
 void Ldr::setR1( int r1 )
@@ -88,4 +88,6 @@ void Ldr::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* w
     p->drawLine( 1,-11, 5,-7 );
     p->drawLine( 5, -7, 5,-9 );
     p->drawLine( 5, -7, 3,-7 );
+
+    Component::paintSelected( p );
 }

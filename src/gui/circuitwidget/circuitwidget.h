@@ -19,7 +19,7 @@ class AboutDialog;
 class AppDialog;
 class InfoWidget;
 
-class MAINMODULE_EXPORT CircuitWidget : public QWidget
+class CircuitWidget : public QWidget
 {
     Q_OBJECT
 
@@ -36,7 +36,7 @@ class MAINMODULE_EXPORT CircuitWidget : public QWidget
 
         void powerCircOn();
         void powerCircOff();
-        void powerCircDebug( bool paused );
+        void powerCircDebug();
         void pauseDebug();
         void resumeDebug();
 

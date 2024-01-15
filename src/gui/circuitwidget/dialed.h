@@ -10,7 +10,7 @@
 #include "e-element.h"
 #include "dialwidget.h"
 
-class MAINMODULE_EXPORT Dialed : public Component
+class Dialed : public Component
 {
     public:
         Dialed( QString type, QString id );
@@ -22,7 +22,7 @@ class MAINMODULE_EXPORT Dialed : public Component
         void setSlider( bool s );
 
         double scale() { return m_dialW.scale(); }
-        void setScale( double s ) { m_dialW.setScale(s); updateProxy(); }
+        void setScale( double s );
 
         virtual void setHidden( bool hid, bool hidArea=false, bool hidLabel=false ) override;
 

@@ -10,7 +10,6 @@
 #include "simulator.h"
 #include "editorwindow.h"
 #include "circuit.h"
-#include "matrixsolver.h"
 #include "updatable.h"
 #include "outpaneltext.h"
 #include "mainwindow.h"
@@ -49,6 +48,7 @@ Simulator::Simulator( QObject* parent )
     m_warnings[100] = "AVR crashed !!!";
 
     resetSim();
+    CircuitWidget::self()->setMsg( " "+tr("Stopped")+" ", 1 );
 
     m_RefTimer.start();
 }
@@ -60,13 +60,13 @@ Simulator::~Simulator()
 
 inline void Simulator::solveMatrix()
 {
-    while( m_changedNode )
-    {
+    while( m_changedNode ){
         m_changedNode->stampMatrix();
         m_changedNode = m_changedNode->nextCH;
     }
-    if( !m_matrix->solveMatrix() ) // m_matrix sets the eNode voltages
-        m_warning = 2;             // Warning if diagonal element = 0.
+    //if( !m_matrix->solveMatrix() ) // m_matrix sets the eNode voltages
+    //    m_warning = 2;             // Warning if diagonal element = 0.
+    m_matrix->solveMatrix(); // m_matrix sets the eNode voltages
 }
 
 void Simulator::timerEvent( QTimerEvent* e )  //update at m_timerTick_ms rate (50 ms, 20 Hz max)
@@ -74,7 +74,7 @@ void Simulator::timerEvent( QTimerEvent* e )  //update at m_timerTick_ms rate (5
     e->accept();
 
     if( m_state == SIM_WAITING ) return;
-    uint64_t guiTime = m_RefTimer.nsecsElapsed();
+    uint64_t currentTime = m_RefTimer.nsecsElapsed();
 
     if( m_error )
     {
@@ -111,17 +111,20 @@ void Simulator::timerEvent( QTimerEvent* e )  //update at m_timerTick_ms rate (5
     // Get Simulation times
     m_realPsPF = m_circTime-m_tStep;
     m_tStep    = m_circTime;
-    m_refTime  = m_RefTimer.nsecsElapsed();
 
     if( m_state == SIM_RUNNING ) // Run Circuit in a parallel thread
         m_CircuitFuture = QtConcurrent::run( this, &Simulator::runCircuit );
 
     if( Circuit::self()->animate() ) // Moved here to be in parallel with runCircuit thread
     {
-        if( (m_RefTimer.nsecsElapsed()-guiTime) > 2e8 ) // Animate at 5 FPS
-            Circuit::self()->updateConnectors();
+        if( (currentTime-m_updtTime) >= 2e8 ){ // Animate at 5 FPS
+            //Circuit::self()->updateConnectors();
+            for( eNode* node : m_eNodeList) node->updateConnectors();
+            m_updtTime = currentTime;
+        }
     }
     // Calculate Real Simulation Speed
+    m_refTime  = m_RefTimer.nsecsElapsed();
     uint64_t deltaRefTime = m_refTime-m_lastRefT;
     if( deltaRefTime >= 1e9 )               // We want steps per 1 Sec = 1e9 ns
     {
@@ -135,7 +138,7 @@ void Simulator::timerEvent( QTimerEvent* e )  //update at m_timerTick_ms rate (5
     }
     InfoWidget::self()->setCircTime( m_tStep );
 
-    m_guiTime += m_RefTimer.nsecsElapsed()-guiTime; // Time in this function
+    m_guiTime += m_RefTimer.nsecsElapsed()-currentTime; // Time in this function
 }
 
 void Simulator::runCircuit()
@@ -214,6 +217,7 @@ void Simulator::resetSim()
     m_tStep    = 0;
     m_lastRefT = 0;
     m_circTime = 1;
+    m_updtTime = 0;
     m_NLstep   = 0;
     ///m_pauseCirc = false;
     m_realPsPF = 1;
@@ -223,8 +227,6 @@ void Simulator::resetSim()
     m_changedNode = NULL;
     m_voltChanged = NULL;
     m_nonLinear = NULL;
-
-    CircuitWidget::self()->setMsg( " "+tr("Stopped")+" ", 1 );
 }
 
 void Simulator::createNodes()
@@ -303,23 +305,38 @@ void Simulator::startSim( bool paused )
 
     double sps100 = 100*(double)m_psPerSec/1e12; // Speed %
 
-    qDebug()  << "\nFPS:  " << m_fps      << "\tFrames per Sec"
-              << "\nSpeed:" << sps100     << "%"
-//              << "\nStep: " << m_stepSize << "\tpicoseconds"
-              << "\nSpeed:" << m_psPerSec << "\tps per Sec"
-              << "\nps/Fr:" << m_psPF     << "\tps per Frame"
-              << "\nNonLi:" << m_maxNlstp << "\tMax Iterations";
+    qDebug()  << "\nSpeed:" <<         sps100      << "%"
+              << "\nSpeed:" << (double)m_psPerSec  << "\tps per Sec"
+              << "\nFPS:  " <<         m_fps       << "\tFrames per Sec"
+              << "\nFrame:" << (double)m_psPF      << "\tps per Frame"
+              << "\nNonLi:" << (double)m_maxNlstp  << "\tMax Iterations"
+              << "\nReact:" << (double)m_reactStep << "\tps Reactive step";
 
     qDebug() << "\n    Simulation Running... \n";
 
-    initTimer();
-    if( paused ) pauseSim();
+    if( paused ) // We are debugging
+    {
+        m_oldState = SIM_RUNNING;
+        m_state    = SIM_PAUSED;
+    }
+    else m_state = SIM_RUNNING;
+
+    if( m_timerId != 0 ) this->killTimer( m_timerId );               // Stop Timer
+    m_refTime  = m_RefTimer.nsecsElapsed();
+    m_loopTime = m_refTime;
+    m_timerId = this->startTimer( m_timerTick_ms, Qt::PreciseTimer ); // Init Timer
 }
 
 void Simulator::stopSim()
 {
-    stopTimer();
+    if( m_timerId != 0 ){                   // Stop Timer
+        this->killTimer( m_timerId );
+        m_timerId = 0;
+    }
+    m_state = SIM_STOPPED;
     if( !m_CircuitFuture.isFinished() ) m_CircuitFuture.waitForFinished();
+
+    qDebug() << "\n    Simulation Stopped ";
 
     for( eNode* node  : m_eNodeList  )  node->setVolt( 0 );
     for( eElement* el : m_elementList ) el->initialize();
@@ -327,6 +344,7 @@ void Simulator::stopSim()
 
     clearEventList();
     m_changedNode = NULL;
+    if( EditorWindow::self()->debugState() > DBG_STOPPED ) EditorWindow::self()->stop();
 }
 
 void Simulator::pauseSim() // Only pause simulation, don't update UI
@@ -342,7 +360,7 @@ void Simulator::resumeSim()
     m_state = m_oldState;
 }
 
-void Simulator::stopTimer()
+/*void Simulator::stopTimer()
 {
     if( m_timerId == 0 ) return;
     this->killTimer( m_timerId );
@@ -353,9 +371,9 @@ void Simulator::stopTimer()
     Circuit::self()->update();
     qDebug() << "\n    Simulation Stopped ";
     m_state = SIM_STOPPED;
-}
+}*/
 
-void Simulator::initTimer()
+/*void Simulator::initTimer()
 {
     if( m_timerId != 0 ) return;
     CircuitWidget::self()->setMsg( " "+tr("Running")+" ", 0 );
@@ -363,7 +381,7 @@ void Simulator::initTimer()
     m_loopTime = m_refTime;
     m_timerId = this->startTimer( m_timerTick_ms, Qt::PreciseTimer );
     m_state = SIM_RUNNING;
-}
+}*/
 
 void Simulator::setFps( uint64_t fps )
 {
@@ -371,7 +389,7 @@ void Simulator::setFps( uint64_t fps )
     setPsPerSec( m_psPerSec );
 }
 
-void Simulator::setStepsPerSec( uint64_t sps ) // Only used by Load Circuit (old circuits)
+void Simulator::setStepsPerSec( uint64_t sps )
 {
     if( sps < 1 ) sps = 1;
 

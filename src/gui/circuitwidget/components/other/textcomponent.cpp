@@ -6,7 +6,6 @@
 #include <QCursor>
 #include <QPainter>
 #include <QTextDocument>
-#include <QMenu>
 #include <QGuiApplication>
 
 #include "textcomponent.h"
@@ -37,11 +36,9 @@ LibraryItem* TextComponent::libraryItem()
 }
 
 TextComponent::TextComponent( QString type, QString id )
-             : Component( type, id )
-             , Linkable()
+             : LinkerComponent( type, id )
 {
     m_graphical = true;
-    m_linkable  = true;
     m_changed   = false;
     m_opac = 1;
     m_color = QColor( 255, 255, 220 );
@@ -94,9 +91,6 @@ new StrProp <TextComponent>("Font_Color" , tr("Font Color"),""       , this, &Te
 new BoolProp<TextComponent>("Fixed_Width", tr("Fixed_Width"),""      , this, &TextComponent::fixedW   , &TextComponent::setFixedW ),
 new StrProp <TextComponent>("Text"       , tr("Text")        ,""     , this, &TextComponent::getText  , &TextComponent::setText,0,"textEdit" )
     }, groupNoCopy} );
-    addPropGroup( { "Hidden", {
-new StrProp<TextComponent>( "Links", "Links","", this, &TextComponent::getLinks , &TextComponent::setLinks )
-    }, groupHidden | groupNoCopy} );
 }
 TextComponent::~TextComponent()
 {
@@ -213,14 +207,14 @@ void TextComponent::setText( QString text )
 void TextComponent::createLinks( QSet<Component*>* compList )
 {
     m_changed = true;
-    Linkable::createLinks( compList );
+    Linker::createLinks( compList );
     if( !Simulator::self()->isRunning() ) updateStep();
 }
 
 void TextComponent::compSelected( Component* comp )
 {
     m_changed = true;
-    Linkable::compSelected( comp );
+    Linker::compSelected( comp );
     if( !Simulator::self()->isRunning() ) updateStep();
 }
 
@@ -236,22 +230,6 @@ void TextComponent::setLinkedValue( double v, int i )
 
     if( i == 0 ) setText( str );
     else         setText( m_textString+"/n"+str );
-}
-
-void TextComponent::contextMenuEvent( QGraphicsSceneContextMenuEvent* event )
-{
-    if( !acceptedMouseButtons() ) { event->ignore(); return; }
-
-    event->accept();
-    QMenu* menu = new QMenu();
-
-    QAction* linkCompAction = menu->addAction( QIcon(":/subcl.png"),tr("Link to Component") );
-    QObject::connect( linkCompAction, &QAction::triggered, [=](){ slotLinkComp(); } );
-
-    menu->addSeparator();
-
-    Component::contextMenu( event, menu );
-    menu->deleteLater();
 }
 
 void TextComponent::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
@@ -271,4 +249,5 @@ void TextComponent::paint( QPainter* p, const QStyleOptionGraphicsItem* option, 
         p->setBrush( Qt::transparent );
         p->drawRect( m_area );
     }
+    Component::paintSelected( p );
 }

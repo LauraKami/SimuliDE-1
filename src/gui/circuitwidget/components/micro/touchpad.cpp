@@ -33,20 +33,22 @@ LibraryItem* TouchPad::libraryItem()
 }
 
 TouchPad::TouchPad( QString type, QString id )
-     : Component( type, id )
-     , eElement( id )
-     , m_resXA( id+"-resXA" )
-     , m_resXB( id+"-resXB" )
-     , m_resYA( id+"-resYA" )
-     , m_resYB( id+"-resYB" )
-     , m_resTouch( id+"-resTouch" )
-     , m_ePinXA( id+"-ePinXA", 1 )
-     , m_ePinXB( id+"-ePinXB", 1 )
-     , m_ePinYA( id+"-ePinYA", 1 )
-     , m_ePinYB( id+"-ePinYB", 1 )
-     , m_ePinTA( id+"-ePinTA", 1 )
-     , m_ePinTB( id+"-ePinTB", 1 )
+        : Component( type, id )
+        , eElement( id )
+        , m_resXA( id+"-resXA" )
+        , m_resXB( id+"-resXB" )
+        , m_resYA( id+"-resYA" )
+        , m_resYB( id+"-resYB" )
+        , m_resTouch( id+"-resTouch" )
+        , m_ePinXA( id+"-ePinXA", 1 )
+        , m_ePinXB( id+"-ePinXB", 1 )
+        , m_ePinYA( id+"-ePinYA", 1 )
+        , m_ePinYB( id+"-ePinYB", 1 )
+        , m_ePinTA( id+"-ePinTA", 1 )
+        , m_ePinTB( id+"-ePinTB", 1 )
 {
+    m_graphical = true;
+
     m_eNodeX = NULL;
     m_eNodeY = NULL;
 
@@ -259,7 +261,10 @@ void TouchPad::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidg
     p->setBrush( Qt::transparent );
     p->drawRoundedRect( QRect(-m_width/2,-m_height-2, m_width, m_height ), 2, 2 );
 
-    p->setBrush( QColor(50, 70, 100) );
-    p->drawRoundedRect( QRect(-20,-2, 40, 18 ), 2, 2 );
+    if( !m_hidden ){
+        p->setBrush( QColor(50, 70, 100) );
+        p->drawRoundedRect( QRect(-20,-2, 40, 18 ), 2, 2 );
+    }
+    Component::paintSelected( p );
 }
 

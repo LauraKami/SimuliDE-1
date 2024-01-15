@@ -17,9 +17,9 @@ class eNode;
 class Label;
 class Connector;
 class ConnectorLine;
-class Linkable;
+class Linker;
 
-class MAINMODULE_EXPORT Component : public CompBase, public QGraphicsItem, public Updatable
+class Component : public CompBase, public QGraphicsItem, public Updatable
 {
     Q_INTERFACES( QGraphicsItem )
 
@@ -88,6 +88,18 @@ class MAINMODULE_EXPORT Component : public CompBase, public QGraphicsItem, publi
         double circRot() { return m_circRot; }
         void   setCircRot( double rot ) { m_circRot = rot; }
 
+        int  boardVflip() { return m_boardVflip; }
+        void setBoardVflip( int vf ) { m_boardVflip = vf; }
+
+        int  boardHflip() { return m_boardHflip; }
+        void setBoardHflip( int hf ) { m_boardHflip = hf; }
+
+        int  circVflip() { return m_circVflip; }
+        void setCircVflip( int vf ) { m_circVflip = vf; }
+
+        int  circHflip() { return m_circHflip; }
+        void setCircHflip( int hf ) { m_circHflip = hf; }
+
         int  hflip() { return m_Hflip; }
         virtual void setHflip( int hf );
 
@@ -101,10 +113,11 @@ class MAINMODULE_EXPORT Component : public CompBase, public QGraphicsItem, publi
 
         //QString print();
 
-        bool isHidden() { return m_hidden; }
+        virtual bool isHidden() override { return m_hidden; }
         virtual void setHidden( bool hid, bool hidArea=false, bool hidLabel=false );
 
-        virtual void setBackground( QString bck ) { m_background = bck;}
+        virtual QString background() { return m_background; }
+        virtual void setBackground( QString bck );
 
         virtual void registerEnode( eNode*, int n=-1 ) {;}
 
@@ -127,12 +140,13 @@ class MAINMODULE_EXPORT Component : public CompBase, public QGraphicsItem, publi
 
         virtual void paint( QPainter* painter, const QStyleOptionGraphicsItem*, QWidget* ) override;
 
+        virtual QVariant itemChange( GraphicsItemChange change, const QVariant &value ) override;
         // Link components
         virtual void setLinkedValue( double v, int i=0 ){;}
         virtual void setLinkedString( QString str, int i=0 ){;}
         virtual void setLinked( bool l ){ m_linked = l;}
 
-        bool m_linkable;
+        bool m_linker;
         int m_linkNumber;
 
  static bool m_boardMode;
@@ -140,13 +154,13 @@ class MAINMODULE_EXPORT Component : public CompBase, public QGraphicsItem, publi
     public slots:
         virtual void contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu );
         void rotateCW();
+        void rotateCCW();
+        void slotH_flip();
+        void slotV_flip();
 
     protected slots:
         virtual void slotProperties();
-        void rotateCCW();
         void rotateHalf();
-        void slotH_flip();
-        void slotV_flip();
         void slotRemove();
         void slotGroup();
         void slotCopy();
@@ -158,6 +172,10 @@ class MAINMODULE_EXPORT Component : public CompBase, public QGraphicsItem, publi
         void mouseReleaseEvent( QGraphicsSceneMouseEvent* event ) override;
         void contextMenuEvent( QGraphicsSceneContextMenuEvent* event ) override;
         void mouseDoubleClickEvent( QGraphicsSceneMouseEvent* event ) override;
+
+        void paintSelected( QPainter* );
+
+        virtual void findHelp(){;}
 
         bool m_isMainComp;
         bool m_graphical;
@@ -173,6 +191,10 @@ class MAINMODULE_EXPORT Component : public CompBase, public QGraphicsItem, publi
         QPointF m_circPos;
         double  m_boardRot;
         double  m_circRot;
+        int     m_boardHflip;
+        int     m_boardVflip;
+        int     m_circHflip;
+        int     m_circVflip;
 
         QString m_showProperty; // Property shown in val Label
 
@@ -184,6 +206,7 @@ class MAINMODULE_EXPORT Component : public CompBase, public QGraphicsItem, publi
  static int m_error;
 
         QString m_background;   // BackGround Image path
+        QPixmap* m_backPixmap;  // Background Pixmap
 
         QColor  m_color;
         QRectF  m_area;         // bounding rect

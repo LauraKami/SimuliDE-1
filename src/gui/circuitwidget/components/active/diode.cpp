@@ -4,6 +4,7 @@
  ***( see copyright.txt file at root folder )*******************************/
 
 #include <QPainter>
+#include <QMenu>
 
 #include "diode.h"
 #include "itemlibrary.h"
@@ -30,10 +31,17 @@ LibraryItem* Diode::libraryItem()
 }
 
 Diode::Diode( QString type, QString id, bool zener )
-     : Comp2Pin( type, id )
+     : LinkerComponent( type, id )
      , eDiode( id )
 {
-    m_area = QRect(-12, -8, 24, 16 );
+    m_area = QRect(-10, -8, 20, 16 );
+
+    m_pin.resize(2);
+    m_pin[0] = new Pin( 180, QPoint(-16, 0 ), id+"-lPin", 0, this);
+    m_pin[1] = new Pin( 0,   QPoint( 16, 0 ), id+"-rPin", 1, this);
+
+    setValLabelPos(-16, 6, 0 );
+    setLabelPos(-16,-24, 0 );
 
     m_enumUids = m_enumNames = m_diodes.keys();
 
@@ -124,7 +132,11 @@ void Diode::voltChanged()
     eDiode::voltChanged();
     if( !m_converged ) return;
 
-    for( Component* comp : m_linkedComp ) comp->setLinkedValue( m_current );
+    if( !m_linkedComp.isEmpty() )
+    {
+        double current = m_resistor->current();
+        for( Component* comp : m_linkedComp ) comp->setLinkedValue( current );
+    }
 }
 
 void Diode::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
@@ -147,4 +159,6 @@ void Diode::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget*
     if( m_isZener ){
         p->drawLine( 7,-6, 4,-6 );
         p->drawLine( 7, 6, 10, 6 );
-}  }
+    }
+    Component::paintSelected( p );
+}

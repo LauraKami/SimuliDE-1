@@ -26,14 +26,13 @@ IoComponent::IoComponent( QString type, QString id)
     m_inImp = 1e9;
     m_ouImp = 40;
 
-    //m_rndPD = false;
-    m_invInputs = false;
-    m_invOutputs  = false;
+    m_invInputs  = false;
+    m_invOutputs = false;
 
-    m_propSize = 1;
+    m_propSize  = 1;
     m_propDelay = 10*1000; // 10 ns
-    m_timeLH = 3000;
-    m_timeHL = 4000;
+    m_timeLH    = 3000;
+    m_timeHL    = 4000;
 }
 IoComponent::~IoComponent(){}
 
@@ -78,7 +77,6 @@ void IoComponent::initState()
         m_outPin[i]->setStateZ( false );
         m_outPin[i]->setOutState( false );
     }
-    m_outsReady = true;
     m_nextOutVal = m_outValue = 0;
     while( !m_outQueue.empty()  ) m_outQueue.pop();
     while( !m_timeQueue.empty() ) m_timeQueue.pop();
@@ -86,11 +84,11 @@ void IoComponent::initState()
 
 void IoComponent::runOutputs()
 {
-    if( m_outQueue.empty() ) m_outValue = m_nextOutVal;
-    else{
-        m_outValue = m_outQueue.front();
-        m_outQueue.pop();
+    m_outValue = m_outQueue.front();
+    m_outQueue.pop();
 
+    if( !m_timeQueue.empty() )
+    {
         uint64_t nextTime = m_timeQueue.front()-Simulator::self()->circTime();
         m_timeQueue.pop();
         Simulator::self()->addEvent( nextTime, m_eElement );
@@ -101,30 +99,24 @@ void IoComponent::runOutputs()
         bool state = m_outValue & (1<<i);
         m_outPin[i]->scheduleState( state, 0 );
     }
-    m_outsReady = m_outQueue.empty();
 }
 
 void IoComponent::scheduleOutPuts( eElement* el )
 {
-    uint64_t delay = m_propDelay*m_propSize;
-
-    if( m_outsReady ) // Event when outputs already dispatched
+    if(  m_outQueue.empty() )
     {
         if( m_nextOutVal == m_outValue ) return;
+        Simulator::self()->addEvent( m_propDelay*m_propSize, el );
     }
-    else             // New Event while previous Event not dispatched
+    else          // New Event while previous Event not dispatched
     {
-        if( m_outQueue.empty() ) { if( m_nextOutVal == m_outValue ) return; }
-        else                     { if( m_nextOutVal == m_outQueue.back() ) return; }
-
-        uint64_t nextTime = Simulator::self()->circTime()+delay;
+        if( m_nextOutVal == m_outQueue.back() ) return;
+        uint64_t nextTime = Simulator::self()->circTime()+m_propDelay*m_propSize;
         m_timeQueue.push( nextTime );
-        m_outQueue.push( m_nextOutVal );
 
         m_eElement = el;
     }
-    if( delay ) Simulator::self()->addEvent( delay, el );
-    else runOutputs();
+    m_outQueue.push( m_nextOutVal );
 }
 
 void IoComponent::setInputHighV( double volt )
@@ -392,10 +384,12 @@ void IoComponent::setNumPins( std::vector<IoPin*>* pinList, uint pins
             pinList->at(i) = new IoPin( angle, QPoint( x, y ), pinId, i, this, mode );
             initPin( pinList->at(i) );
             if( mode == output && m_invOutputs ) pinList->at(i)->setInverted( true );
+            if( mode == input && m_invInputs ) pinList->at(i)->setInverted( true );
 
             if( !label.isEmpty() ) pinList->at(i)->setLabelText( label+num );
             pinList->at(i)->setLabelColor( QColor( 0, 0, 0 ) );
     }   }
+    setflip();
     Circuit::self()->update();
 }
 
@@ -438,8 +432,10 @@ void IoComponent::setHidden( bool hid, bool hidArea, bool hidLabel )
     Component::setHidden( hid, hidArea, hidLabel );
 }
 
-void IoComponent::paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidget *widget )
+void IoComponent::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
 {
     Component::paint( p, option, widget );
     p->drawRect( m_area );
+
+    Component::paintSelected( p );
 }

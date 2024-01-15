@@ -7,6 +7,7 @@
 
 #include "subcircuit.h"
 #include "itemlibrary.h"
+#include "mainwindow.h"
 #include "componentselector.h"
 #include "circuitwidget.h"
 #include "simulator.h"
@@ -16,7 +17,7 @@
 #include "e-node.h"
 #include "utils.h"
 #include "mcu.h"
-#include "linkable.h"
+#include "linker.h"
 
 #include "logicsubc.h"
 #include "board.h"
@@ -80,8 +81,7 @@ Component* SubCircuit::construct( QString type, QString id )
                 if( element.attribute("name") == name )
                 {
                     if( element.hasAttribute("folder") ) folder = element.attribute("folder");
-                    QFileInfo fi( dataFile );
-                    m_subcDir = fi.absolutePath()+"/"+folder+"/"+name;
+                    m_subcDir = MainWindow::self()->getDataFilePath( folder+"/"+name );
                     found = true;
                 }
                 if( found ) break;
@@ -164,16 +164,16 @@ SubCircuit::SubCircuit( QString type, QString id )
 {
     m_lsColor = QColor( 235, 240, 255 );
     m_icColor = QColor( 20, 30, 60 );
-    //m_mainComponent = NULL;
 }
 SubCircuit::~SubCircuit(){}
 
-void SubCircuit::loadSubCircuit( QString fileName )
+void SubCircuit::loadSubCircuit( QString file )
 {
-    QString doc = fileToString( fileName, "SubCircuit::loadSubCircuit" );
+    m_dataFile = file;
+    QString doc = fileToString( file, "SubCircuit::loadSubCircuit" );
 
     QString oldFilePath = Circuit::self()->getFilePath();
-    Circuit::self()->setFilePath( fileName );             // Path to find subcircuits/Scripted in our data folder
+    Circuit::self()->setFilePath( file );             // Path to find subcircuits/Scripted in our data folder
 
     QStringList graphProps;
     for( propGroup pg : m_propGroups ) // Create list of "Graphical" poperties (We don't need them)
@@ -187,7 +187,7 @@ void SubCircuit::loadSubCircuit( QString fileName )
     numId = numId.split("-").last();
     Circuit* circ = Circuit::self();
 
-    QList<Linkable*> linkList;   // Linked  Component list
+    QList<Linker*> linkList;   // Linked  Component list
 
     QVector<QStringRef> docLines = doc.splitRef("\n");
     for( QStringRef line : docLines )
@@ -270,17 +270,18 @@ void SubCircuit::loadSubCircuit( QString fileName )
                     if( m_subcType >= Board && comp->isGraphical() )
                     {
                         QPointF pos = comp->boardPos();
-                        if( pos == QPointF( -1e6, -1e6 ) ) // Don't show Components not placed
+                        if( pos == QPointF(-1e6,-1e6 ) ) // Don't show Components not placed
                         {
                             pos = QPointF( 0, 0 );
                             comp->setVisible( false );
                         }
                         comp->moveTo( pos );
                         comp->setRotation( comp->boardRot() );
+                        comp->setHflip( comp->boardHflip() );
+                        comp->setVflip( comp->boardVflip() );
                         if( !this->collidesWithItem( comp ) ) // Don't show Components out of Board
                         {
-                            pos = QPointF( 0, 0 );
-                            comp->moveTo( pos );
+                            comp->moveTo( QPointF( 0, 0 ) );
                             comp->setVisible( false );
                         }
                         comp->setHidden( true, true, true ); // Boards: hide non graphical
@@ -301,9 +302,8 @@ void SubCircuit::loadSubCircuit( QString fileName )
 
                     m_compList.insert( comp );
 
-                    if( comp->m_linkable )
-                    {
-                        Linkable* l = dynamic_cast<Linkable*>(comp);
+                    if( comp->m_linker ){
+                        Linker* l = dynamic_cast<Linker*>(comp);
                         if( l->hasLinks() ) linkList.append( l );
                     }
 
@@ -316,8 +316,7 @@ void SubCircuit::loadSubCircuit( QString fileName )
                 }   }
                 else qDebug() << "SubCircuit:"<<m_name<<m_id<< "ERROR Creating Component: "<<type<<uid<<label;
     }   }   }
-    for( Linkable* l : linkList )
-        l->createLinks( &m_compList );
+    for( Linker* l : linkList ) l->createLinks( &m_compList );
 
     Circuit::self()->setFilePath( oldFilePath ); // Restore original filePath
 }
@@ -346,11 +345,9 @@ Pin* SubCircuit::addPin( QString id, QString type, QString label, int pos, int x
         m_pinTunnels.insert( pId, tunnel );
 
         Pin* pin = tunnel->getPin();
-        /// pin->setObjectName( pId );
         pin->setId( pId );
         pin->setInverted( type == "inverted" || type == "inv" );
         addSignalPin( pin );
-        /// connect( this, &SubCircuit::moved, pin, &Pin::isMoved, Qt::UniqueConnection );
 
         tunnel->setRotated( angle >= 180 );      // Our Pins at left side
         if     ( angle == 180) tunnel->setRotation( 0 );
@@ -434,7 +431,7 @@ void SubCircuit::setLogicSymbol( bool ls )
 
 Component* SubCircuit::getMainComp( QString name )
 {
-    if( name.isEmpty() ) return m_mainComponents.value( m_mainComponents.keys().first() );
+    if( name.isEmpty() && m_mainComponents.size() ) return m_mainComponents.value( m_mainComponents.keys().first() );
     return m_mainComponents.value(name);
 }
 
@@ -452,8 +449,8 @@ void SubCircuit::contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu
     for( Component* mainComp : m_mainComponents.values() )
     {
         QString compType = mainComp->getUid();
-        int pos = compType.indexOf("_")+1;
-        int len = compType.lastIndexOf("-")-pos;
+        int pos  = compType.indexOf("_")+1;
+        int len  = compType.lastIndexOf("-")-pos;
         compType = compType.mid( pos, len );
 
         QMenu* submenu = menu->addMenu( QIcon(":/subc.png"), compType );

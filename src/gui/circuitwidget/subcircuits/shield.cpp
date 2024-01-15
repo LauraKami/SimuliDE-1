@@ -45,9 +45,11 @@ void ShieldSubc::setBoard( BoardSubc* board )
     {
         m_boardId = board->getUid();
         board->attachShield( this );
+        //Circuit::self()->compList()->remove( this );
     }else{
         m_boardId = "";
         m_board->detachShield( this );
+        //Circuit::self()->compList()->insert( this );
     }
     setParentItem( board );
     m_attached = board  ? true : false;
@@ -77,24 +79,26 @@ void ShieldSubc::slotAttach()
     QList<QGraphicsItem*> list = this->collidingItems();
     for( QGraphicsItem* it : list )
     {
-        if( it->type() == UserType+1 )    // Component found
+        if( it->parentItem() ) continue;
+        if( it->type() != UserType+1 ) continue;    // not a Component
+
+        Component* comp =  qgraphicsitem_cast<Component*>( it );
+
+        if( comp->itemType() == "Subcircuit" )
         {
-            Component* comp =  qgraphicsitem_cast<Component*>( it );
-            if( comp->itemType() == "Subcircuit" )
-            {
-                BoardSubc* board =  (BoardSubc*)comp;
-                if( board->subcType() < Board ) continue;
+            BoardSubc* board =  (BoardSubc*)comp;
+            if( board->subcType() < Board ) continue;
 
-                if( Simulator::self()->isRunning() ) CircuitWidget::self()->powerCircOff();
-                /// FIXME UNDOREDO: Circuit::self()->saveState();
+            if( Simulator::self()->isRunning() ) CircuitWidget::self()->powerCircOff();
+            /// FIXME UNDOREDO: Circuit::self()->saveState();
 
-                m_circPos = this->pos();
-                m_board = board;
-                attachToBoard();
-                setBoard( board );
-                this->moveTo( m_boardPos );
-                break;
-}   }   }   }
+            m_circPos = this->pos();
+            m_board = board;
+            attachToBoard();
+            setBoard( board );
+            this->moveTo( m_boardPos );
+            break;
+}   }   }
 
 void ShieldSubc::attachToBoard()
 {
@@ -123,6 +127,14 @@ void ShieldSubc::renameTunnels()
     for( Tunnel* tunnel : m_subcTunnels ) tunnel->setName( m_id+"-"+tunnel->tunnelUid() );
 }
 
+void ShieldSubc::contextMenuEvent( QGraphicsSceneContextMenuEvent* event )
+{
+    event->accept();
+    QMenu* menu = new QMenu();
+    contextMenu( event, menu );
+    menu->deleteLater();
+}
+
 void ShieldSubc::contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu )
 {
         event->accept();
@@ -137,5 +149,5 @@ void ShieldSubc::contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu
         }
 
         if( m_board ) m_board->contextMenu( event, menu );
-        else          Component::contextMenu( event, menu );
+        else          SubCircuit::contextMenu( event, menu );
 }

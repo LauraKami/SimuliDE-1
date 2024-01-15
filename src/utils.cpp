@@ -85,7 +85,7 @@ void MessageBoxNB( const QString &title, const QString &message )
 
 //---------------------------------------------------
 
-QString addQuotes( const QString &string )
+QString addQuotes( QString string )
 {
     return "\""+string+"\"";
 }
@@ -96,24 +96,25 @@ QString remQuotes( QString string )
     return string;
 }
 
-QString getBareName( const QString &filepath ) // File name without extension
+QString getBareName( QString filepath ) // File name without extension
 {
     return QFileInfo( filepath ).completeBaseName();
 }
-QString getFileName( const QString &filepath ) // Filename with extension
+QString getFileName( QString filepath ) // Filename with extension
 {
     return QFileInfo( filepath ).fileName();
 }
-QString getFileDir( const QString &filepath ) // File directory with end "/"
+QString getFileDir( QString filepath ) // File directory with end "/"
 {
     return QFileInfo( filepath ).absolutePath()+"/";
 }
-QString getFileExt( const QString &filepath ) // File extension with "."
+QString getFileExt( QString filepath ) // File extension with "."
 {
     return "."+QFileInfo( filepath ).suffix();
 }
-QString changeExt( const QString &filepath, const QString &ext )
+QString changeExt( QString filepath, QString ext )
 {
+    if( !ext.startsWith(".") ) ext.prepend(".");
     return getFileDir( filepath )+getBareName( filepath )+ext;
 }
 
@@ -125,8 +126,26 @@ QString getDirDialog( QString msg, QString oldPath )
                          , QFileDialog::ShowDirsOnly
                          | QFileDialog::DontResolveSymlinks);
 
-    if( !path.isEmpty() && !path.endsWith(QDir::separator()) ) path += QDir::separator();
+    if( !path.isEmpty() && !path.endsWith("/") ) path += "/";
     return path;
+}
+
+QString findFile( QString dir, QString fileName )
+{
+    QDir pathDir( dir );
+    for( QFileInfo fileInfo : pathDir.entryInfoList() )
+    {
+        if( fileInfo.isFile() )
+        {
+            if( fileInfo.fileName() == fileName ) return fileInfo.absoluteFilePath();
+        }
+        else if( !fileInfo.fileName().endsWith(".") )
+        {
+            QString found = findFile( fileInfo.absoluteFilePath(), fileName );
+            if( !found.isEmpty() ) return found;
+        }
+    }
+    return "";
 }
 
 //---------------------------------------------------

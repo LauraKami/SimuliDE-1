@@ -214,8 +214,8 @@ void I51Core::readOperand()
     }
 }
 
-void I51Core::operRgx() { m_op0 = m_dataMem[m_RxAddr]; }               //
-void I51Core::operInd() { m_op0 = m_dataMem[ checkAddr( I_RX_VAL ) ]; }//
+void I51Core::operRgx() { m_op0 = GET_RAM( m_RxAddr ); }               //
+void I51Core::operInd() { m_op0 = GET_RAM(  checkAddr( I_RX_VAL ) ); }//
 void I51Core::operI08() { m_dataEvent.append( aIMME | aORIG ); }       // m_op0 = data
 void I51Core::operDir() { m_dataEvent.append( aDIRE | aORIG ); }       // m_op0 = GET_RAM( data );
 void I51Core::operACC() { m_op0 = ACC; }                               //
@@ -236,13 +236,13 @@ void I51Core::pushStack8( uint8_t value )
 {
     REG_SPL++;
     uint16_t address = checkAddr( REG_SPL );
-    m_dataMem[address] = value;
+    SET_RAM( address, value );
 }
 
 uint8_t I51Core::popStack8()
 {
     uint16_t address = checkAddr( REG_SPL );
-    uint8_t value = m_dataMem[address];
+    uint8_t value = GET_RAM( address );
     REG_SPL--;
     return value;
 }
@@ -255,12 +255,12 @@ void I51Core::addFlags( uint8_t value1, uint8_t value2, uint8_t acc )
     write_S_Bit( OV, (((value1 & 127)+(value2 & 127 ) + acc )^c ) & 1<<7); // Overflow: overflow from 6th or 7th bit, but not both
 }
 
-void I51Core::subFlags( uint8_t value1, uint8_t value2 )
+void I51Core::subFlags( uint8_t value1, uint8_t value2, uint8_t acc  )
 {
-    uint8_t c = ((value1-value2)>>1) & 1<<7; //Carry: overflow from 7th bit to 8th bit
+    uint8_t c = ((value1-value2-acc)>>1) & 1<<7; //Carry: overflow from 7th bit to 8th bit
     write_S_Bit( Cy, c );                                             // Carry: overflow from 7th bit to 8th bit
-    write_S_Bit( AC, ((value1 & 0x0F)-(value2 & 0x0F)) & 1<<4 );
-    write_S_Bit( OV, (((value1 & 127)-(value2 & 127)) ^ c ) & 1<<7);
+    write_S_Bit( AC, ((value1 & 0x0F)-(value2 & 0x0F) - acc ) & 1<<4 );
+    write_S_Bit( OV, (((value1 & 127)-(value2 & 127) - acc ) ^ c ) & 1<<7);
 }
 
 // INSTRUCTIONS -----------------------------
@@ -411,11 +411,11 @@ void I51Core::DAa()
 void I51Core::INCd()
 {
     //SET_REG16_LH( GET_REG16_LH( REG_DPL ) + 1);
-    SET_RAM( REG_DPL, m_dataMem[REG_DPL]+1);
-    if( !m_dataMem[REG_DPL] ) SET_RAM( REG_DPH, m_dataMem[REG_DPH]+1 );
+    SET_RAM( REG_DPL, GET_RAM( REG_DPL )+1);
+    if( !GET_RAM( REG_DPL ) ) SET_RAM( REG_DPH, GET_RAM( REG_DPH )+1 );
 }
-void I51Core::INC() { m_dataMem[m_opAddr]++; }
-void I51Core::DEC() { m_dataMem[m_opAddr]--; }
+void I51Core::INC() { SET_RAM(m_opAddr, GET_RAM( m_opAddr )+1); }
+void I51Core::DEC() { SET_RAM(m_opAddr, GET_RAM( m_opAddr )-1); }
 
 void I51Core::ADD() { addFlags( m_op0, ACC, 0 ); ACC += m_op0; }
 void I51Core::ADDC()
@@ -424,9 +424,9 @@ void I51Core::ADDC()
     addFlags( m_op0, ACC, carry );
     ACC += m_op0 + carry;
 }
-void I51Core::ORLm() { SET_RAM( m_opAddr, m_dataMem[m_opAddr] | m_op0 ); }
-void I51Core::ANLm() { SET_RAM( m_opAddr, m_dataMem[m_opAddr] & m_op0 ); }
-void I51Core::XRLm() { SET_RAM( m_opAddr, m_dataMem[m_opAddr] ^ m_op0 ); }
+void I51Core::ORLm() { SET_RAM( m_opAddr, GET_RAM( m_opAddr ) | m_op0 ); }
+void I51Core::ANLm() { SET_RAM( m_opAddr, GET_RAM( m_opAddr ) & m_op0 ); }
+void I51Core::XRLm() { SET_RAM( m_opAddr, GET_RAM( m_opAddr ) ^ m_op0 ); }
 
 void I51Core::ORLa() { ACC |= m_op0; }
 void I51Core::ANLa() { ACC &= m_op0; }
@@ -434,33 +434,33 @@ void I51Core::XRLa() { ACC ^= m_op0; }
 
 void I51Core::SUBB()
 {
-    if( STATUS(Cy) ) ACC--;
-    subFlags( ACC, m_op0 );
-    ACC -= m_op0;
+    uint8_t carry = STATUS(Cy) ? 1 : 0;
+    subFlags( ACC, m_op0, carry);
+    ACC -= m_op0 + carry;
 }
 
 void I51Core::XCH() //
 {
     uint8_t a = ACC ;
-    ACC = m_dataMem[m_opAddr];
+    ACC = GET_RAM( m_opAddr );
     SET_RAM( m_opAddr, a );
 }
 
 void I51Core::XCHD()
 {
-    uint8_t value = m_dataMem[m_opAddr];
-    m_dataMem[m_opAddr] = (value & 0xF0) | (ACC & 0x0F);
+    uint8_t value = GET_RAM( m_opAddr );
+    SET_RAM( m_opAddr, (value & 0xF0) | (ACC & 0x0F) );
     ACC = (ACC & 0xF0) | (value & 0x0F);
 }
 
 void I51Core::DIVab()
 {
     uint A = ACC;
-    uint B = m_dataMem[REG_B];
+    uint B = GET_RAM( REG_B );
 
     if( B ){
         ACC = A/B;
-        m_dataMem[REG_B] = A % B;
+        SET_RAM( REG_B, A % B );
         clear_S_Bit( OV );
     }
     else set_S_Bit( OV );
@@ -470,15 +470,15 @@ void I51Core::DIVab()
 
 void I51Core::MULab()
 {
-    uint res = ACC*m_dataMem[REG_B];
+    uint res = ACC*GET_RAM( REG_B );
     ACC = res & 0xFF;
-    m_dataMem[REG_B] = res >> 8;
+    SET_RAM( REG_B, res >> 8 );
 
-    write_S_Bit( OV, m_dataMem[REG_B] );
+    write_S_Bit( OV, GET_RAM( REG_B ) );
     clear_S_Bit( Cy );
 }
 
-void I51Core::MOVr()  { m_dataMem[m_opAddr] = m_op0; }
+void I51Core::MOVr()  { SET_RAM( m_opAddr, m_op0 ); }
 void I51Core::MOVm()  { SET_RAM( m_opAddr, m_op0 ); }
 
 void I51Core::MOVa()  { ACC = m_op0; }
@@ -629,7 +629,7 @@ void I51Core::Decode()
             case 0x82: addrBit();            break;   // 2-2 ANLc  C  <- C&b
             case 0x83:                       break;   // 1-2 MOVCp Ac += (PC)
             case 0x84:                       break;   // 1-4 DIVab Ac <- Ac/B
-            case 0x85: addrDir(); operDir(); break;   // 3-2 MOVm  Di <- Di
+            case 0x85: operDir(); addrDir(); break;   // 3-2 MOVm  Di <- Di ( 0x85 source addr, dest addr )
             case 0x86:
             case 0x87: addrDir(); operInd(); break;   // 2-2 MOVm Di <- In  @Indirect
 

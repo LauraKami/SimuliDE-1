@@ -10,7 +10,7 @@
 #include "e-element.h"
 #include "pin.h"
 
-class MAINMODULE_EXPORT ConnBase : public Component, public eElement
+class ConnBase : public Component, public eElement
 {
     public:
         ConnBase( QString type, QString id );
@@ -25,6 +25,8 @@ class MAINMODULE_EXPORT ConnBase : public Component, public eElement
 
         void createPins( int c );
         void deletePins( int d );
+
+        virtual void updatePins(){;}
 
         virtual void paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget ) override;
 

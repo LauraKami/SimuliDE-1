@@ -15,7 +15,7 @@ enum wgmMode_t{
     wgmFAST,
 };
 
-class MAINMODULE_EXPORT AvrTimer : public McuTimer
+class AvrTimer : public McuTimer
 {
     friend class McuCreator;
 
@@ -52,7 +52,7 @@ class MAINMODULE_EXPORT AvrTimer : public McuTimer
         McuOcUnit* m_OCC;
 };
 
-class MAINMODULE_EXPORT AvrTimer8bit : public AvrTimer
+class AvrTimer8bit : public AvrTimer
 {
     public:
         AvrTimer8bit( eMcu* mcu, QString name );
@@ -65,7 +65,7 @@ class MAINMODULE_EXPORT AvrTimer8bit : public AvrTimer
 
 };
 
-class MAINMODULE_EXPORT AvrTimer800 : public AvrTimer8bit
+class AvrTimer800 : public AvrTimer8bit
 {
     public:
         AvrTimer800( eMcu* mcu, QString name );
@@ -75,7 +75,7 @@ class MAINMODULE_EXPORT AvrTimer800 : public AvrTimer8bit
         virtual void configureClock() override;
 };
 
-class MAINMODULE_EXPORT AvrTimer801 : public McuTimer
+class AvrTimer801 : public McuTimer
 {
     public:
         AvrTimer801( eMcu* mcu, QString name );
@@ -89,7 +89,7 @@ class MAINMODULE_EXPORT AvrTimer801 : public McuTimer
         void configureClock();
 };
 
-class MAINMODULE_EXPORT AvrTimer810 : public AvrTimer
+class AvrTimer810 : public AvrTimer
 {
     public:
         AvrTimer810( eMcu* mcu, QString name );
@@ -107,19 +107,20 @@ class MAINMODULE_EXPORT AvrTimer810 : public AvrTimer
         regBits_t m_CTC1;
         regBits_t m_PWM1A;
         regBits_t m_PWM1B;
+        regBits_t m_PSR1;
 
         McuPin* m_oc1AiPin;
         McuPin* m_oc1BiPin;
 };
 
-class MAINMODULE_EXPORT AvrTimer820 : public AvrTimer8bit
+class AvrTimer820 : public AvrTimer8bit
 {
     public:
         AvrTimer820( eMcu* mcu, QString name );
         ~AvrTimer820();
 };
 
-class MAINMODULE_EXPORT AvrTimer821 : public AvrTimer8bit
+class AvrTimer821 : public AvrTimer8bit
 {
     public:
         AvrTimer821( eMcu* mcu, QString name );
@@ -129,11 +130,13 @@ class MAINMODULE_EXPORT AvrTimer821 : public AvrTimer8bit
 };
 
 
-class MAINMODULE_EXPORT AvrTimer16bit : public AvrTimer
+class AvrTimer16bit : public AvrTimer
 {
     public:
         AvrTimer16bit( eMcu* mcu, QString name );
         ~AvrTimer16bit();
+
+        virtual void runEvent() override;
 
         virtual void topReg0Changed( uint8_t val ) override;
         void ICRXLchanged( uint8_t val );
@@ -143,6 +146,8 @@ class MAINMODULE_EXPORT AvrTimer16bit : public AvrTimer
         virtual void updtWgm() override;
         virtual void configureClock() override;
         void setICRX( QString reg );
+
+        bool m_useICR;
 
         uint8_t* m_topReg1L;
         uint8_t* m_topReg1H;

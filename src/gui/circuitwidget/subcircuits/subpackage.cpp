@@ -50,6 +50,8 @@ LibraryItem* SubPackage::libraryItem()
 SubPackage::SubPackage( QString type, QString id )
           : Chip( type, id )
 {
+    m_linkCursor = QCursor( QPixmap(":/expose.png"), 10, 10 );
+
     m_subcType = Chip::None;
     m_width  = 4;
     m_height = 8;
@@ -68,6 +70,7 @@ SubPackage::SubPackage( QString type, QString id )
 
     m_boardModeAction = new QAction( tr("Board Mode") );
     m_boardModeAction->setCheckable( true );
+    QObject::connect( m_boardModeAction, &QAction::triggered, [=](){ boardModeSlot(); } );
     m_boardMode = false;
     
     setAcceptHoverEvents( true );
@@ -96,16 +99,17 @@ void SubPackage::setSubcTypeStr( QString s )
     subcType_t type = (subcType_t)index;
     if( m_subcType == type ) return;
 
+    SubPackage* currentBoard = Circuit::self()->getBoard();
     if( type >= Board )
     {
-        if( Circuit::self()->getBoard() ) // Only one board Package can be in the circuit
+        if( currentBoard && currentBoard != this ) // Only one board Package can be in the circuit
         {
             qDebug() << "SubPackage::setSubcTypeStr: ERROR: Only one Board allowed";
             return;
         }
         Circuit::self()->setBoard( this );
     }
-    else if( Circuit::self()->getBoard() == this ) Circuit::self()->setBoard( NULL );
+    else if( currentBoard == this ) Circuit::self()->setBoard( NULL );
 
     m_subcType = type;
 
@@ -186,7 +190,6 @@ void SubPackage::mousePressEvent( QGraphicsSceneMouseEvent* event )
 
         m_eventPin = new PackagePin( m_angle, QPoint(m_p1X,m_p1Y ), "name", 0, this );
         ///m_eventPin->setEnabled( false );
-        m_eventPin->setFlag( QGraphicsItem::ItemStacksBehindParent, false );
         m_eventPin->setPinId( "Id" );
         m_eventPin->setLabelColor( color );
         m_eventPin->setLabelPos();
@@ -214,7 +217,6 @@ void SubPackage::contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu
     {
         m_boardModeAction->setChecked( m_boardMode );
         menu->addAction( m_boardModeAction );
-        QObject::connect( m_boardModeAction, &QAction::triggered, [=](){ boardModeSlot(); } );
     }
     QAction* mainCompAction = menu->addAction( QIcon(":/subcl.png"),tr("Select Exposed Components") );
     QObject::connect( mainCompAction, &QAction::triggered, [=](){ mainComp(); } );
@@ -225,6 +227,7 @@ void SubPackage::contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu
 void SubPackage::compSelected( Component* comp )
 {
     if( comp) comp->setMainComp( !comp->isMainComp() );
+    else      Linker::compSelected( comp );
 }
 
 void SubPackage::boardModeSlot()
@@ -246,20 +249,32 @@ void SubPackage::setBoardMode( bool mode )
     for( Component* comp : *Circuit::self()->compList() )
     {
         if( comp->itemType() == "Package" ) continue;
-        if( mode )
+
+        if( mode )   // We are in Board mode
         {
             comp->setCircPos( comp->pos() );
             comp->setCircRot( comp->rotation() );
-            if( comp->boardRot() != -1e+6 )  // Board Position already defined
+            comp->setCircHflip( comp->hflip() );
+            comp->setCircVflip( comp->vflip() );
+
+            if( comp->boardRot() != -1e+6 )  // Board Rotation already defined
             {
                 comp->setPos( comp->boardPos() + this->pos() );
                 comp->setRotation( comp->boardRot() );
-        }   }
-        else{
+                comp->setHflip( comp->boardHflip() );
+                comp->setVflip( comp->boardVflip() );
+            }
+        }else        // We are in Circuit mode
+        {
             comp->setBoardPos( comp->pos()-this->pos() );
             comp->setBoardRot( comp->rotation() );
+            comp->setBoardHflip( comp->hflip() );
+            comp->setBoardVflip( comp->vflip() );
+
             comp->setPos( comp->circPos() );
             comp->setRotation( comp->circRot() );
+            comp->setHflip( comp->circHflip() );
+            comp->setVflip( comp->circVflip() );
         }
         comp->setHidden( mode, false, mode );
     }
@@ -273,12 +288,11 @@ void SubPackage::remove()
         = QMessageBox::warning( 0l, "SubPackage::remove",
                                tr("\nPackage has been modified.\n"
                                   "Do you want to save your changes?\n"),
-                               QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+                               QMessageBox::Save | QMessageBox::Discard );
                                
-        if     ( ret == QMessageBox::Save ) slotSave();
-        else if( ret == QMessageBox::Cancel ) return;
+        if( ret == QMessageBox::Save ) slotSave();
     }
-    Component::remove();
+    Circuit::self()->compRemoved( true );
 }
 
 void SubPackage::setWidth( int width )
@@ -319,7 +333,6 @@ Pin* SubPackage::addPin( QString id, QString type, QString label, int pos, int x
     pin->setSpace( space );
     pin->setLabelText( label );
     pin->setInverted( type == "inverted" || type == "inv" );
-    //pin->setFlag( QGraphicsItem::ItemStacksBehindParent, false );
 
     m_pkgePins.append( pin );
     return pin;
@@ -348,7 +361,7 @@ void SubPackage::deleteEventPin()
     m_changed = true;
 
     m_pkgePins.removeOne( m_eventPin );
-    m_signalPin.removeOne( m_eventPin );
+    //m_signalPin.removeOne( m_eventPin ); // ToDelete
     delete m_eventPin;
     m_eventPin = NULL;
     
@@ -414,7 +427,6 @@ void SubPackage::pointPin( bool point )
     else if( m_angle == 90 )  m_eventPin->moveBy( 0,-deltaL );// Top
     else if( m_angle == 270 ) m_eventPin->moveBy( 0, deltaL );// Bottom
 
-    m_eventPin->setFlag( QGraphicsItem::ItemStacksBehindParent, false );
     Circuit::self()->update();
     m_changed = true;
 }

@@ -26,6 +26,7 @@ enum{
 
 enum mcuState_t{
     mcuStopped=0,
+    mcuError,
     mcuRunning,
     mcuSleeping
 };
@@ -39,7 +40,7 @@ class ConfigWord;
 class McuComp;
 class CpuBase;
 
-class MAINMODULE_EXPORT eMcu : public DataSpace, public eIou
+class eMcu : public DataSpace, public eIou
 {
         friend class McuCreator;
         friend class McuCpu;
@@ -55,8 +56,8 @@ class MAINMODULE_EXPORT eMcu : public DataSpace, public eIou
         virtual void voltChanged() override;
         virtual void runEvent() override;
 
-        inline bool isSleeping() { return m_state == mcuSleeping; }
-        inline int  sleepMode()  { return m_sleepModule->mode(); }
+        inline mcuState_t state() { return m_state; }
+        inline int sleepMode() { return m_sleepModule->mode(); }
 
         void stepCpu();
 
@@ -78,8 +79,11 @@ class MAINMODULE_EXPORT eMcu : public DataSpace, public eIou
 
         void hardReset( bool r );
         void sleep( bool s );
+        void start();
 
         QString getFileName() { return m_firmware; }
+
+        double vdd() { return m_vdd; }
 
         double freq() { return m_freq; }
         void setFreq( double freq );
@@ -140,6 +144,8 @@ class MAINMODULE_EXPORT eMcu : public DataSpace, public eIou
         McuWdt*     m_wdt;
         McuIntOsc*  m_intOsc;
         McuComp*    m_comparator;
+
+        double m_vdd;
 
         double m_freq;         // Clock Frequency in MegaHerzs
         double m_cPerInst;     // Clock ticks per Instruction Cycle

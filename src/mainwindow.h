@@ -12,7 +12,6 @@
 class ComponentSelector;
 class CircuitWidget;
 class EditorWindow;
-class QPluginLoader;
 class FileWidget;
 class QVBoxLayout;
 class QLineEdit;
@@ -35,7 +34,7 @@ enum Langs {
     Turkish
 };
 
-class MAINMODULE_EXPORT MainWindow : public QMainWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -68,11 +67,11 @@ class MAINMODULE_EXPORT MainWindow : public QMainWindow
         int autoBck() { return m_autoBck; }
         void setAutoBck( int secs ) { m_autoBck = secs; }
 
-        QString getFilePath( QString file );
-        QString getConfigPath( QString file );
+        QString getHelp( QString name, bool save=true );
 
-        QString getHelp( QString name );
-
+        QString getFilePath( QString file );              // Get file path in SimulIDE folders
+        QString getConfigPath( QString file );            // Get file path in config folder
+        QString getDataFilePath( QString file );          // Get file path in data folder, first user folder, if not SimulIDE folder
         QString getUserFilePath( QString f );             // Get file path in user folder
         QString userPath() { return m_userDir; }          // User folder path
         void setUserPath( QString p ) { m_userDir = p; }
@@ -114,11 +113,10 @@ class MAINMODULE_EXPORT MainWindow : public QMainWindow
         QString m_file;
         QString m_userDir;
 
-        QHash<QString, QPluginLoader*>  m_plugins;
-        QHash<QString, QString>  m_help;
+        QHash<QString, QString> m_help;
         
         CircuitWidget* m_circuit;
-        ComponentSelector*  m_components;
+        ComponentSelector* m_components;
         QWidget*      m_componentWidget;
         QVBoxLayout*  m_componentWidgetLayout;
         QLineEdit*    m_searchComponent;

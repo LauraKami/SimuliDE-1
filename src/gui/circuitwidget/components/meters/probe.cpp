@@ -43,10 +43,10 @@ Probe::Probe( QString type, QString id )
     m_voltIn = 0;
 
     m_pin.resize(1); // Create Input Pin
-    m_pin[0] = m_inputPin = new IoPin( 180, QPoint(-22,0), id+"-inpin", 0, this, input);
+    m_pin[0] = m_inputPin = new IoPin( 180, QPoint(-22,0), id+"-inpin", 0, this, undef_mode );
     m_inputPin->setLength( 14 );
     m_inputPin->setBoundingRect( QRect(-1, -1, 2, 2) );
-    m_inputPin->setImp( 1e9 );
+    m_inputPin->setImpedance( 1e9 );
 
     setValLabelPos( 16, 0, 45 ); // x, y, rot
     setShowVal( true );
@@ -100,7 +100,9 @@ void Probe::setVolt( double volt )
     if( !m_showVal ) return;
     if( qFabs(volt) < 0.01 ) volt = 0;
     
-    setValLabelText( QString("%1 V").arg(float(int( volt*100+0.5 ))/100) );
+    float v = ( volt > 0 ) ? 0.5 : -0.5;
+    v = float(int( v+volt*100 ))/100;
+    setValLabelText( QString("%1 V").arg(v) );
 }
 
 void Probe::rotateAngle( double a )
@@ -125,4 +127,6 @@ void Probe::paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidget 
     else                              p->setBrush( QColor( 230, 230, 255 ) );
 
     p->drawEllipse( QRect(-8,-8, 16, 16 ) );
+
+    Component::paintSelected( p );
 }

@@ -11,7 +11,7 @@
 class CustomButton;
 class QGraphicsProxyWidget;
 
-class MAINMODULE_EXPORT SwitchBase : public MechContact
+class SwitchBase : public MechContact
 {
     public:
         SwitchBase( QString type, QString id );
@@ -30,11 +30,12 @@ class MAINMODULE_EXPORT SwitchBase : public MechContact
         
         CustomButton* button() { return m_button; }
 
-    public slots:
         virtual void onbuttonclicked();
         virtual void keyEvent( QString key, bool pressed ){;}
 
     protected:
+        //virtual void setflip() override;
+
         QString m_key;
         
         CustomButton* m_button;

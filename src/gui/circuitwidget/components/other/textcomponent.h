@@ -2,11 +2,11 @@
 #define TEXTCOMPONENT_H
 
 #include "component.h"
-#include "linkable.h"
+#include "linkercomponent.h"
 
 class LibraryItem;
 
-class MAINMODULE_EXPORT TextComponent : public Component, public Linkable
+class TextComponent : public LinkerComponent
 {
     public:
         TextComponent( QString type, QString id );
@@ -59,10 +59,6 @@ class MAINMODULE_EXPORT TextComponent : public Component, public Linkable
 
     public slots:
         void updateGeometry(int, int, int);
-        void slotLinkComp() { Linkable::startLinking(); }
-
-    protected:
-        virtual void contextMenuEvent( QGraphicsSceneContextMenuEvent* event ) override;
 
     private:
         QGraphicsTextItem* m_text;

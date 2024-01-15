@@ -69,7 +69,7 @@ new IntProp<Mux>("Address_Bits" , tr("Address Size") ,"_bits", this
         +IoComponent::outputProps()
     ,0 } );
 
-    addPropGroup( { tr("Edges"), IoComponent::edgeProps(),0 } );
+    addPropGroup( { tr("Timing"), IoComponent::edgeProps(),0 } );
 }
 Mux::~Mux(){}
 
@@ -173,4 +173,6 @@ void Mux::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* w
         QPointF( w,-h+2 )};
 
     p->drawPolygon(points, 4);
+
+    Component::paintSelected( p );
 }

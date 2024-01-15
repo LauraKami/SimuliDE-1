@@ -9,12 +9,12 @@
 
 #include <QPainter>
 #include <QGraphicsProxyWidget>
-#include <QToolButton>
 
 #include "ky023.h"
 #include "iopin.h"
 #include "simulator.h"
 #include "circuit.h"
+#include "custombutton.h"
 #include "itemlibrary.h"
 
 #define WIDTH 40
@@ -42,17 +42,18 @@ KY023::KY023( QString type, QString id )
      : Component( type, id )
      , eElement( id )
 {
+    m_graphical = true;
+
     m_area = QRect( -WIDTH/2, -HEIGHT/2 + GAP, WIDTH, HEIGHT );
 
     m_joystickW.setupWidget();
     m_joystickW.setFixedSize( JOYSTICK_SIZE, JOYSTICK_SIZE );
-    /// onvaluechanged(500, 500);
     
     m_proxy = Circuit::self()->addWidget( &m_joystickW );
     m_proxy->setParentItem( this );
     m_proxy->setPos( QPoint(-WIDTH/2 + (WIDTH - JOYSTICK_SIZE) / 2, -HEIGHT/2+2 + 2*GAP) );
     
-    m_button = new QToolButton();
+    m_button = new CustomButton();
     m_button->setMaximumSize( 10,10 );
     m_button->setGeometry(-10,-10,10,10);
     
@@ -130,4 +131,6 @@ void KY023::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget*
     
     p->setBrush(QColor( 50, 50, 70 ));
     p->drawRoundedRect( m_area, 2, 2 );
+
+    Component::paintSelected( p );
 }

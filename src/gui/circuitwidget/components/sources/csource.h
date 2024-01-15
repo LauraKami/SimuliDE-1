@@ -11,7 +11,7 @@
 
 class LibraryItem;
 
-class MAINMODULE_EXPORT Csource : public Component, public eResistor
+class Csource : public Component, public eResistor
 {
     public:
         Csource( QString type, QString id );
@@ -44,6 +44,7 @@ class MAINMODULE_EXPORT Csource : public Component, public eResistor
 
         void setVoltage( double v );
 
+        virtual void setLinked( bool l ) override;
         virtual void setLinkedValue( double v, int i=0 ) override;
 
         //virtual QPainterPath shape() const;
@@ -58,6 +59,8 @@ class MAINMODULE_EXPORT Csource : public Component, public eResistor
         double m_volt;
         double m_curr;
         double m_gain;
+
+        double m_lastCurr;
 
         bool m_controlPins;
         bool m_currSource;

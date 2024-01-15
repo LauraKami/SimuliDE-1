@@ -120,6 +120,7 @@ void CircMatrix::analyze()
 
 bool CircMatrix::solveMatrix()
 {
+    bool ok = true;
     for( int i=0; i<m_bList.size(); ++i )
     {
         if( !m_admitChanged[i] && !m_currChanged[i] ) continue;
@@ -127,71 +128,51 @@ bool CircMatrix::solveMatrix()
         m_eNodeActive = &(m_eNodeActList[i]);
         int n = m_eNodeActive->size();
 
-        if( n == 2 )
-        {
-            double a00 = *m_aList[i][0][0];
-            double a01 = *m_aList[i][0][1];
-            double a10 = *m_aList[i][1][0];
-            double a11 = *m_aList[i][1][1];
+        if( m_admitChanged[i] ) factorMatrix( n, i );
+        if( !luSolve( n, i ) ) ok = false;
 
-            double det = ( a00 * a11 ) - ( a01 * a10 );
-            if( det == 0 ) return false;
-
-            double bi0 = *m_bList[i][0];
-            double bi1 = *m_bList[i][1];
-
-            double b0 = ( bi0 * a11 ) - ( a01 * bi1 );
-            double b1 = ( a00 * bi1 ) - ( bi0 * a10 );
-
-            m_eNodeActive->at(0)->setVolt( b0 / det );
-            m_eNodeActive->at(1)->setVolt( b1 / det );
-        }
-        else{
-            if( m_admitChanged[i] ) factorMatrix( n, i );
-            if( !luSolve( n, i )  ) return false;
-        }
         m_currChanged[i]  = false;
         m_admitChanged[i] = false;
     }
-    return true;
+    return ok;
 }
 
-void CircMatrix::factorMatrix( int n, int group ) // factors a matrix into upper and lower triangular matrices by gaussian elimination.
+void CircMatrix::factorMatrix( int n, int group ) // Factor matrix into Lower/Upper triangular
 {
-    dp_matrix_t&  ap  = m_aList[group];
-    d_matrix_t& a = m_aFaList[group];
+    dp_matrix_t& ap = m_aList[group];
+    d_matrix_t&   a = m_aFaList[group];
 
     /*std::cout << "\nAdmitance Matrix:\n"<< std::endl;
     for( int i=0; i<n; i++ )
     {
-        for( int j=0; j<n; ++j ) { std::cout << std::setw(15); std::cout << a[i][j]; }
+        for( int j=0; j<n; ++j ) { std::cout << std::setw(15); std::cout << *ap[i][j]; }
         std::cout << std::endl;
     }*/
 
-    int i,j,k;
+    int row,col,k;
 
-    for( j=0; j<n; ++j ) // use Crout's method; loop through the columns
+    for( col=0; col<n; ++col )              // Crout's method: loop through columns
     {
-        for( i=0; i<j; ++i ) // calculate upper triangular elements for this column
+        for( row=0; row<col; ++row )        // Upper triangular elements
         {
-            double q = *(ap[i][j]);
-            for( k=0; k<i; ++k ) q -= a[i][k]*a[k][j];
-            a[i][j] = q;
+            double q = *(ap[row][col]);
+            for( k=0; k<row; ++k ) q -= a[row][k]*a[k][col];
+            a[row][col] = q;
         }
-        for( i=j; i<n; ++i ) // calculate lower triangular elements for this column
+        for( row=col; row<n; ++row )        // Lower triangular elements
         {
-            double q = *(ap[i][j]);
-            for( k=0; k<j; ++k ) q -= a[i][k]*a[k][j];
-            a[i][j] = q;
+            double q = *(ap[row][col]);
+            for( k=0; k<col; ++k ) q -= a[row][k]*a[k][col];
+            a[row][col] = q;
         }
-        if( j != n-1 )               // Normalize this column respect to a[j][j]
+        if( col != n-1 )                    // Normalize column respect to diagonal
         {
-            double div = a[j][j];
-            if( div != 0.0 )         //a[j][j] = div = 1e-18; // avoid zeros in a[j][j]
-                for( i=j+1; i<n; ++i ) a[i][j] /= div;
+            double div = a[col][col];
+            if( div == 0 ) continue;
+            for( row=col+1; row<n; ++row ) a[row][col] /= div;
         }
     }
-    /*std::cout << "\nFactored Matrix: << std::endl;
+    /*std::cout << "\nFactored Matrix:\n" << std::endl;
     for( int i=0; i<n; i++ )
     {
         for( int j=0; j<n; j++ ) { std::cout << std::setw(15); std::cout << a[i][j]; }
@@ -199,10 +180,17 @@ void CircMatrix::factorMatrix( int n, int group ) // factors a matrix into upper
     }*/
 }
 
-bool CircMatrix::luSolve( int n, int group ) // Solves the set of n linear equations using a LU factorization previously performed by solveMatrix.
-{                                            // On input, b[0..n-1] is the right hand side of the equations, and on output, contains the solution.
+bool CircMatrix::luSolve( int n, int group ) // Solves the system to get voltages for each node
+{
     const d_matrix_t&  a  = m_aFaList[group];
     const dp_vector_t& bp = m_bList[group];
+
+    /*std::cout << "\nCurrent vector:\n" << std::endl;
+    for( int i=0; i<n; i++ )
+    {
+        std::cout << std::setw(15); std::cout << *bp[i];
+        std::cout << std::endl;
+    }*/
 
     d_vector_t b;
     b.resize( n , 0 );
@@ -213,14 +201,14 @@ bool CircMatrix::luSolve( int n, int group ) // Solves the set of n linear equat
     {
         tot = *(bp[i]);
         b[i] = tot;
-        if( tot != 0 ) break; // find first nonzero b element
+        if( tot != 0 ) break; // First nonzero b element
     }
 
     int bi = i++;
     for( ; i<n; ++i )
     {
         tot = *(bp[i]);
-        for( int j=bi; j<i; ++j ) tot -= a[i][j]*b[j]; // forward substitution using the lower triangular matrix
+        for( int j=bi; j<i; ++j ) tot -= a[i][j]*b[j]; // Forward substitution from lower triangular matrix
         b[i] = tot;
     }
     bool isOk = true;
@@ -228,7 +216,7 @@ bool CircMatrix::luSolve( int n, int group ) // Solves the set of n linear equat
     for( i=n-1; i>=0; --i )
     {
         tot = b[i];
-        for( int j=i+1; j<n; ++j ) tot -= a[i][j]*b[j]; // back-substitution using the upper triangular matrix
+        for( int j=i+1; j<n; ++j ) tot -= a[i][j]*b[j]; // Back substitution from upper triangular matrix
 
         double div = a[i][i];
         double volt = 0;
@@ -236,7 +224,7 @@ bool CircMatrix::luSolve( int n, int group ) // Solves the set of n linear equat
         else isOk = false;
 
         b[i] = volt;
-        m_eNodeActive->at(i)->setVolt( volt );      // Set Node Voltages
+        m_eNodeActive->at(i)->setVolt( volt );         // Set Node Voltages
     }
     return isOk;
 }

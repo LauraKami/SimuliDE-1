@@ -38,6 +38,7 @@ Dht22::Dht22( QString type, QString id )
 {
     m_area = QRect(-28,-20, 56, 40 );
 
+    m_graphical = true;
     m_temp = 22.5;
     m_humi = 68.5;
     m_tempInc = 0.5;
@@ -70,12 +71,14 @@ Dht22::Dht22( QString type, QString id )
     m_button->setIcon(QIcon(":/up.png"));
 
     QPushButton* u_button = new QPushButton();
+    u_button->setCursor( Qt::PointingHandCursor );
     u_button->setMaximumSize( 9, 9 );
     u_button->setGeometry(-5,-5, 9, 9);
     u_button->setCheckable( false );
     u_button->setIcon(QIcon(":/su.png"));
 
     QPushButton* d_button = new QPushButton();
+    d_button->setCursor( Qt::PointingHandCursor );
     d_button->setMaximumSize( 9, 9 );
     d_button->setGeometry(-5,-5, 9, 9);
     d_button->setCheckable( false );
@@ -275,4 +278,6 @@ void Dht22::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget*
     p->setPen( QColor(0, 0, 0) );
     p->drawText( -16, 1, QString::number( m_temp )+"°C" );
     p->drawText( -16,12, QString::number( m_humi )+" %" );
+
+    Component::paintSelected( p );
 }

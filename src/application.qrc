@@ -35,10 +35,11 @@
         <file alias="qt_tr.qm">../resources/qm/qt_tr.qm</file>
         <file alias="qt_zh_CN.qm">../resources/qm/qt_zh_CN.qm</file>
         <file alias="qt_sk.qm">../resources/qm/qt_sk.qm</file>
+        
+        <file alias="simulide.png">../resources/icons/simulide.png</file>
 
         <file alias="null.png">../src/icons/components/null.png</file>
-        
-        <file alias="simulide.png">../src/icons/simulide.png</file>
+
         <file alias="null-0.png">../src/icons/components/null-0.png</file>
         <file alias="new.svg">../src/icons/mainwindow/new.svg</file>
         <file alias="open.svg">../src/icons/mainwindow/open.svg</file>
@@ -104,6 +105,7 @@
         <file alias="zoomone.svg">../src/icons/mainwindow/zoomone.svg</file>
 
         <file alias="link.png">../src/icons/mainwindow/link.png</file>
+        <file alias="expose.png">../src/icons/mainwindow/expose.png</file>
     
         <file alias="csource.png">../src/icons/components/csource.png</file>
         <file alias="led.png">../src/icons/components/led.png</file>
@@ -181,7 +183,7 @@
         <file alias="line.png">../src/icons/components/line.png</file>
         <file alias="rectangle.png">../src/icons/components/rectangle.png</file>
         <file alias="ws2812.png">../src/icons/components/ws2812.png</file>
-        <file alias="image.png">../src/icons/components/image.png</file>
+        <file alias="img.png">../src/icons/components/img.png</file>
         <file alias="tunnel.png">../src/icons/components/tunnel.png</file>
         <file alias="joystick.png">../src/icons/components/joystick.png</file>
         <file alias="rotencod.png">../src/icons/components/rotencod.png</file>
@@ -233,6 +235,7 @@
         <file alias="esp01.png">../src/icons/components/esp01.png</file>
         <file alias="esp01_ico.png">../src/icons/components/esp01_ico.png</file>
         <file alias="serialport.png">../src/icons/components/serialport.png</file>
+        <file alias="serialterm.png">../src/icons/components/serialterm.png</file>
         <file alias="touch.png">../src/icons/components/touch.png</file>
         
         <file alias="up.png">../src/icons/components/up.png</file>

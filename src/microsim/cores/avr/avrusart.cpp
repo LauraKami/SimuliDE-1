@@ -20,7 +20,7 @@ AvrUsart::AvrUsart( eMcu* mcu,  QString name, int number )
     n.toInt( &ok );
     if( !ok ) n = "";
     m_UCSRnA = mcu->getReg( "UCSR"+n+"A" );
-    m_UCSRnB = mcu->getReg( "UCSR"+n+"B" );
+    //m_UCSRnB = mcu->getReg( "UCSR"+n+"B" );
     m_u2xn   = getRegBits( "U2X"+n, mcu );
 
     m_bit9Tx = getRegBits( "TXB8"+n, mcu );
@@ -49,6 +49,7 @@ AvrUsart::AvrUsart( eMcu* mcu,  QString name, int number )
     m_RXC   = getRegBits( "RXC"+n, mcu );
     m_FE    = getRegBits( "FE"+n, mcu );
     m_DOR   = getRegBits( "DOR"+n, mcu );
+    m_MPCM  = getRegBits( "MPCM"+n, mcu );
 
     if( n == "" ) m_UPE = getRegBits( "PE", mcu );
     else          m_UPE = getRegBits( "UPE"+n, mcu );
@@ -57,6 +58,9 @@ AvrUsart::~AvrUsart(){}
 
 void AvrUsart::configureA( uint8_t newUCSRnA )
 {
+    bool mpcm = getRegBitsBool( newUCSRnA, m_MPCM );
+    m_receiver->ignoreData( mpcm );
+
     bool speedx2 = getRegBitsBool( newUCSRnA, m_u2xn ); // Double Speed?
     if( speedx2 == m_speedx2 ) return;
     m_speedx2 = speedx2;
@@ -148,17 +152,6 @@ void AvrUsart::setBaurrate( uint8_t )
     setPeriod( period );
 }
 
-uint8_t AvrUsart::getBit9Tx()
-{
-    return getRegBitsVal( *m_UCSRnB, m_bit9Tx );
-}
-
-void AvrUsart::setBit9Rx( uint8_t bit )
-{
-    *m_UCSRnB &= ~m_bit9Rx.mask;
-    if( bit ) *m_UCSRnB |= m_bit9Rx.mask;
-}
-
 void AvrUsart::sendByte(  uint8_t data ) // Buffer is being written
 {
     if( !m_sender->isEnabled() ) return;
@@ -179,17 +172,11 @@ void AvrUsart::frameSent( uint8_t data )
         m_sender->startTransmission();        // Buffer contains data, send it
 }
 
-void AvrUsart::overrunError()
+void AvrUsart::setRxFlags( uint16_t frame )
 {
-    setRegBits( m_DOR );
-}
+    if( m_dataBits == 9 ) setBit9Rx( ( frame & (1<<8) ) ? 1 : 0 );
 
-void AvrUsart::parityError()
-{
-    setRegBits( m_UPE );
-}
-
-void AvrUsart::frameError()
-{
-    setRegBits( m_FE );
+    writeRegBits( m_FE, frame & frameError );   // frameError
+    writeRegBits( m_DOR, frame & dataOverrun ); // overrun error
+    writeRegBits( m_UPE, frame & parityError ); // parityError
 }

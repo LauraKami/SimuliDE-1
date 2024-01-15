@@ -29,7 +29,7 @@ class Socket;
 class eNode;
 class CircMatrix;
 
-class MAINMODULE_EXPORT Simulator : public QObject
+class Simulator : public QObject
 {
         friend class eNode;
 
@@ -114,8 +114,8 @@ class MAINMODULE_EXPORT Simulator : public QObject
 
         inline void clearEventList();
 
-        inline void stopTimer();
-        inline void initTimer();
+        //inline void stopTimer();
+        //inline void initTimer();
 
         eElement* m_firstEvent;
 
@@ -168,6 +168,7 @@ class MAINMODULE_EXPORT Simulator : public QObject
         uint64_t m_lastRefT;
         uint64_t m_loopTime;
         uint64_t m_guiTime;
+        uint64_t m_updtTime;
         double   m_simLoad;
 
         QElapsedTimer m_RefTimer;

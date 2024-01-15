@@ -11,13 +11,11 @@
 class ConnectorLine;
 class Pin;
 
-class MAINMODULE_EXPORT Connector : public CompBase
+class Connector : public CompBase
 {
     public:
         Connector( QString type, QString id, Pin* startpin, Pin* endpin = NULL );
         ~Connector();
-
-        QString itemID() { return m_id; }
 
         QString pListStr() { return m_pointList.join(","); }
         QStringList pointList() { refreshPointList(); return m_pointList; }

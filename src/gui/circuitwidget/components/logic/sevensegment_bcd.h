@@ -10,7 +10,7 @@
 
 class LibraryItem;
 
-class MAINMODULE_EXPORT SevenSegmentBCD : public BcdBase
+class SevenSegmentBCD : public BcdBase
 {
     public:
         SevenSegmentBCD( QString type, QString id );
@@ -20,14 +20,25 @@ class MAINMODULE_EXPORT SevenSegmentBCD : public BcdBase
  static LibraryItem* libraryItem();
 
         virtual void updateStep() override;
+        virtual void voltChanged() override;
+
+        bool isShowEnablePin() { return m_showEnablePin; }
+        void setShowEnablePin( bool show );
+
+        bool isShowDotPin() { return m_showDotPin; }
+        void setShowDotPin( bool show );
 
         virtual void setLinked( bool l ) override;
         virtual void setLinkedValue( double v, int i=0  ) override;
-        
+
         void paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget ) override;
 
     private:
-        int m_intensity;
+        bool m_showEnablePin;
+        bool m_showDotPin;
+
+        IoPin *m_dotPin;
+        IoPin *m_enablePin;
 };
 
 #endif

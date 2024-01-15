@@ -9,6 +9,7 @@
 #include "stepper.h"
 #include "simulator.h"
 #include "connector.h"
+#include "itemlibrary.h"
 
 #include "doubleprop.h"
 #include "boolprop.h"
@@ -30,7 +31,7 @@ LibraryItem* Stepper::libraryItem()
 }
 
 Stepper::Stepper( QString type, QString id )
-       : Component( type, id )
+       : LinkerComponent( type, id )
        , eElement( (id+"-eElement") )
        , m_resA1( (id+"-eEresistorA1") )
        , m_resA2( (id+"-eEresistorA2") )
@@ -54,7 +55,13 @@ Stepper::Stepper( QString type, QString id )
     m_Ppos = 4;
     m_steps = 32;
     m_stpang = 360*8/m_steps;
-        
+
+    m_pin.emplace_back( &m_pinA1 );
+    m_pin.emplace_back( &m_pinA2 );
+    m_pin.emplace_back( &m_pinCo );
+    m_pin.emplace_back( &m_pinB1 );
+    m_pin.emplace_back( &m_pinB2 );
+
     m_pinA1.setLabelText( " A+" );
     m_pinA2.setLabelText( " A-" );
     m_pinCo.setLabelText( " Co" );
@@ -104,6 +111,11 @@ void Stepper::stamp()
 
 void Stepper::updateStep()
 {
+    if(  m_linkedComp.size() )
+    {
+        double val = (16.0*360.0-m_ang)*1000/(16.0*360.0);
+        for( Component* comp : m_linkedComp ) comp->setLinkedValue( val ); // 0-1000
+    }
     if( m_changed )
     {
         m_changed = false;
@@ -161,8 +173,10 @@ void Stepper::voltChanged()
 
 void Stepper::setSteps( int steps ) //" 4, 8,16,32"
 {
+    int remainder =  ( steps > m_steps && steps % 4 ) ? 4 : 0;
     m_steps = steps/4;
     m_steps *= 4;
+    m_steps += remainder;
     if( m_steps < 4 ) m_steps = 4;
     m_stpang = 360*8/m_steps;
     m_ang  = 0;
@@ -182,27 +196,22 @@ void Stepper::setBipolar( bool bi )
 {
     m_bipolar = bi;
     m_pinCo.removeConnector();
-    m_pinCo.setVisible( !bi );
+    m_pinCo.setVisible( !bi && !m_hidden );
 }
 
-void Stepper::remove()
+void Stepper::setHidden( bool hid, bool hidArea, bool hidLabel )
 {
-    m_pinA1.removeConnector();
-    m_pinA2.removeConnector();
-    m_pinCo.removeConnector();
-    m_pinB1.removeConnector();
-    m_pinB2.removeConnector();
-    
-    Component::remove();
+    Component::setHidden( hid, hidArea, hidLabel );
+    m_pinCo.setVisible( !m_bipolar && !m_hidden );
 }
 
-void Stepper::paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidget *widget )
+void Stepper::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
 {
     p->setRenderHint( QPainter::Antialiasing );
     Component::paint( p, option, widget );
 
     //p->setBrush( QColor(250, 210, 230) );
-    p->drawRoundRect(-64,-40, 25, 80 );
+    if( !m_hidden ) p->drawRoundRect(-64,-40, 25, 80 );
 
     p->setBrush( QColor(50, 70, 100) ); 
     p->drawRoundRect(-48,-48, 96, 96 );
@@ -222,4 +231,6 @@ void Stepper::paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidge
 
     //p->setBrush( QColor(50, 70, 100) );
     p->drawEllipse(-25,-25, 50, 50);
+
+    Component::paintSelected( p );
 }

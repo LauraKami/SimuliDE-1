@@ -33,6 +33,7 @@ Lamp::Lamp( QString type, QString id )
     , eResistor( id )
 {
     m_area = QRect(-10,-10, 20, 20 );
+    m_graphical = true;
 
     m_maxCurrent = 0.2;
     setRes( 5 );
@@ -161,4 +162,6 @@ void Lamp::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* 
 
     p->drawLine(-5,-5, 5, 5 );
     p->drawLine(-5, 5, 5,-5 );
+
+    Component::paintSelected( p );
 }

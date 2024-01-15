@@ -10,7 +10,7 @@
 
 #include "e_mcu.h"
 #include "chip.h"
-#include "linkable.h"
+#include "linker.h"
 
 enum deviceType_t{
     typeNONE=0,
@@ -23,7 +23,7 @@ class LibraryItem;
 class MCUMonitor;
 class ScriptCpu;
 
-class MAINMODULE_EXPORT Mcu : public Chip, public Linkable
+class Mcu : public Chip, public Linker
 {
         friend class McuCreator;
 
@@ -88,6 +88,7 @@ class MAINMODULE_EXPORT Mcu : public Chip, public Linkable
         CpuBase* cpu() { return m_eMcu.cpu(); }
 
         void reset() { m_eMcu.hardReset( true ); }
+        void crash( bool c) { m_crashed = c; update(); }
 
         bool load( QString fileName );
 
@@ -119,7 +120,9 @@ class MAINMODULE_EXPORT Mcu : public Chip, public Linkable
  static Mcu* m_pSelf;
 
         virtual void contextMenu( QGraphicsSceneContextMenuEvent* e, QMenu* m ) override;
-        virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent* e) override;
+        //virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent* e) override;
+
+        QString findIdLabel();
 
         //deviceType_t m_deviceType;
 
@@ -132,7 +135,6 @@ class MAINMODULE_EXPORT Mcu : public Chip, public Linkable
         int m_serialMon;
 
         QString m_lastFirmDir;  // Last firmware folder used
-        QString m_dataFile;
         QString m_device;       // Name of device
 
         eMcu m_eMcu;

@@ -23,7 +23,7 @@ Component* FixedVolt::construct( QString type, QString id )
 LibraryItem* FixedVolt::libraryItem()
 {
     return new LibraryItem(
-        tr("Fixed Volt."),
+        tr("Fixed Voltage"),
         "Sources",
         "voltage.png",
         "Fixed Voltage",
@@ -123,4 +123,6 @@ void FixedVolt::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWid
     else                        p->setBrush( QColor( 230, 230, 255 ) );
 
     p->drawRoundedRect( QRectF( -8, -8, 16, 16 ), 2, 2);
+
+    Component::paintSelected( p );
 }

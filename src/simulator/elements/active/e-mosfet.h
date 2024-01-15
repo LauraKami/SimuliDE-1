@@ -8,7 +8,7 @@
 
 #include "e-resistor.h"
 
-class MAINMODULE_EXPORT eMosfet : public eResistor
+class eMosfet : public eResistor
 {
     public:
         eMosfet( QString id );
@@ -30,6 +30,8 @@ class MAINMODULE_EXPORT eMosfet : public eResistor
         void setThreshold( double th );
         
     protected:
+        void updateValues();
+
         double m_accuracy;
         double m_lastCurrent;
         double m_threshold;

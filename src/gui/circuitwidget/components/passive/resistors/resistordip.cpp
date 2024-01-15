@@ -40,6 +40,9 @@ ResistorDip::ResistorDip( QString type, QString id )
            : Component( type, id )
            , eElement( id )
 {
+    m_pullUp = false;
+    m_puVolt = 5;
+
     m_size = 0;
     setSize( 8 );
 
@@ -47,8 +50,9 @@ ResistorDip::ResistorDip( QString type, QString id )
     setValLabelPos( 5,-26, 90 );
     m_valLabel->setAcceptedMouseButtons( 0 );
 
-    m_pullUp = false;
-    m_puVolt = 5;
+    QFont font = m_valLabel->font();
+    font.setPixelSize( 6 );
+    m_valLabel->setFont( font );
 
     Simulator::self()->addToUpdateList( this );
 
@@ -103,6 +107,8 @@ void ResistorDip::createResistors( int c )
         m_resistor[i]->setEpin( 0, m_pin[index] );
 
         m_pin[index+1] = new Pin( 0, QPoint( 16,-32+8+i*8 ), reid+"-ePin"+QString::number(index+1), 0, this);
+        m_pin[index+1]->setEnabled( !m_pullUp ); //
+        m_pin[index+1]->setVisible( !m_pullUp ); //
         m_resistor[i]->setEpin( 1, m_pin[index+1] );
 }   }
 
@@ -170,8 +176,10 @@ void ResistorDip::remove()
     Component::remove();
 }
 
-void ResistorDip::paint( QPainter *p, const QStyleOptionGraphicsItem *option, QWidget *widget )
+void ResistorDip::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
 {
     Component::paint( p, option, widget );
     p->drawRoundRect( QRect( -9, -28, 18, m_size*8 ), 2, 2 );
+
+    Component::paintSelected( p );
 }

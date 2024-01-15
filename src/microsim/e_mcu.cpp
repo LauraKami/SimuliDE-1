@@ -4,6 +4,7 @@
  ***( see copyright.txt file at root folder )*******************************/
 
 #include "e_mcu.h"
+#include "mcu.h"
 #include "cpubase.h"
 #include "mcuconfigword.h"
 #include "mcuport.h"
@@ -32,6 +33,8 @@ eMcu::eMcu( Mcu* comp, QString id )
     m_vrefModule = NULL;
     m_sleepModule = NULL;
 
+    m_vdd= 5;
+
     m_freq = 0;
     m_cPerInst = 1;
 
@@ -58,8 +61,8 @@ eMcu::~eMcu()
 
 void eMcu::stamp()
 {
-    reset();
-    m_state = mcuRunning;
+    //reset();
+    //m_state = mcuStopped;
     m_clkState = false;
 }
 
@@ -84,7 +87,7 @@ void eMcu::voltChanged()  // External clock
 
 void eMcu::runEvent()
 {
-    if( m_state == mcuStopped || m_state == mcuSleeping ) return;
+    if( m_state != mcuRunning ) return;
 
     if( m_debugging )
     {
@@ -106,7 +109,8 @@ void eMcu::stepCpu()
         if( m_state == mcuRunning ) m_cpu->runStep();
         m_interrupts.runInterrupts();
     }else{
-        m_state = mcuStopped; /// TODO: Crash
+        m_state = mcuError;
+        m_component->crash( true );
         qDebug() << "eMcu::stepCpu: Error PC =" << m_cpu->getPC() << "PGM size =" << m_flashSize;
         qDebug() << "MCU stopped";
     }
@@ -127,6 +131,8 @@ void eMcu::setDebugging( bool d )
 
 void eMcu::reset()
 {
+    m_component->crash( false );
+    m_state = mcuStopped;
     m_cycle = 0;
     cyclesDone = 0;
 
@@ -140,7 +146,7 @@ void eMcu::reset()
     if( m_cpu ) m_cpu->reset(); // Must be after all modules reset
     else qDebug() << "ERROR: eMcu::reset NULL Cpu";
 
-    for( McuPort*  mcuPort : m_mcuPorts ) mcuPort->readPort( 0 ); // Update Pin Input register
+    for( McuPort* mcuPort : m_mcuPorts ) mcuPort->readPort( 0 ); // Update Pin Input register
 
     if( !m_saveEepr )
         for( uint i=0; i<m_romSize; ++i ) setRomValue( i, 0xFF );
@@ -148,16 +154,23 @@ void eMcu::reset()
 
 void eMcu::hardReset( bool r )
 {
-    Simulator::self()->cancelEvents( this );
-    if( m_clkPin ) m_clkPin->changeCallBack( this, !r );  // External clock
+    bool isReset = (m_state == mcuStopped);
+    if( r == isReset ) return;
 
-    if( r ){
-        reset();
-        m_state = mcuStopped;
-    }else{
-        m_state = mcuRunning;
-        if( m_freq > 0 ) Simulator::self()->addEvent( m_psTick, this );
-    }
+    Simulator::self()->cancelEvents( this );
+    if( m_clkPin ) m_clkPin->changeCallBack( this, false );  // External clock
+
+    if( r ) reset();
+    else    start();
+}
+
+void eMcu::start()
+{
+    if( m_state == mcuRunning ) return;
+    m_state = mcuRunning;
+
+    if     ( m_clkPin   ) m_clkPin->changeCallBack( this, true );  // External clock
+    else if( m_freq > 0 ) Simulator::self()->addEvent( m_psTick, this );
 }
 
 void eMcu::sleep( bool s )
@@ -235,7 +248,7 @@ McuPin* eMcu::getMcuPin( QString pinName )
 
 IoPin*  eMcu::getIoPin( QString pinName )
 {
-    if( pinName.isEmpty() ) return NULL;
+    if( pinName.isEmpty() || pinName == "0" ) return NULL;
     IoPin* pin = eIou::getIoPin( pinName );
 
     if( !pin ) pin = getMcuPin( pinName );

@@ -11,8 +11,9 @@
 #include "e-node.h"
 
 class eElement;
+class Pin;
 
-class MAINMODULE_EXPORT ePin
+class ePin
 {
     public:
         ePin( QString id, int index );
@@ -38,10 +39,11 @@ class MAINMODULE_EXPORT ePin
 
         void createCurrent();
         inline void stampCurrent( double data ) { if( m_enode ) m_enode->stampCurrent( this, data ); }
-
         
         QString getId()  { return m_id; }
         void setId( QString id );
+
+        virtual Pin* getPin(){ return nullptr; }
 
         void setIndex( int i ) { m_index = i; }
 

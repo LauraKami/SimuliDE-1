@@ -14,7 +14,7 @@
 #include "circuit.h"
 #include "utils.h"
 #include "propdialog.h"
-#include "linkable.h"
+#include "linker.h"
 
 #include "doubleprop.h"
 #include "boolprop.h"
@@ -36,6 +36,7 @@ Component::Component( QString type, QString id )
     m_Vflip  = 1;
     m_color  = QColor( Qt::white );
 
+    m_backPixmap = NULL;
     //m_group = NULL;
 
     m_showId     = false;
@@ -46,16 +47,20 @@ Component::Component( QString type, QString id )
     m_crashed    = false;
     m_warning    = false;
     m_graphical  = false;
-    m_linkable   = false;
+    m_linker     = false;
     m_linked     = false;
     m_background = "";
     m_showProperty = "";
     m_linkNumber = -1;
 
-    m_boardPos = QPointF( -1e6, -1e6 );
+    m_boardPos = QPointF(-1e6,-1e6 );
     m_boardRot = -1e6;
     m_circPos  = QPointF(0, 0);
     m_circRot  = 0;
+    m_boardHflip = 1;
+    m_boardVflip = 1;
+    m_circHflip = 1;
+    m_circVflip = 1;
 
     QFont font;
     font.setFamily( MainWindow::self()->defaultFontName() );
@@ -111,7 +116,9 @@ new IntProp  <Component>("valLabRot","","", this, &Component::getValRot, &Compon
 new PointProp<Component>("boardPos", "","", this, &Component::boardPos, &Component::setBoardPos ),
 new PointProp<Component>("circPos" , "","", this, &Component::circPos,  &Component::setCircPos ),
 new DoubProp <Component>("boardRot", "","", this, &Component::boardRot, &Component::setBoardRot ),
-new DoubProp <Component>("circRot" , "","", this, &Component::circRot,  &Component::setCircRot )
+new DoubProp <Component>("circRot" , "","", this, &Component::circRot,  &Component::setCircRot ),
+new IntProp  <Component>("boardHflip" ,"","", this, &Component::boardHflip,  &Component::setBoardHflip ),
+new IntProp  <Component>("boardVflip" ,"","", this, &Component::boardVflip,  &Component::setBoardVflip ),
     }, groupHidden | groupNoCopy } );
 }
 Component::~Component(){}
@@ -164,6 +171,16 @@ void Component::substitution( QString &propName ) // static, Old: TODELETE
    /// else if( propName == "Inverted")    propName = "InvertOuts";
 }
 
+QVariant Component::itemChange( GraphicsItemChange change, const QVariant &value )
+{
+    if( m_linker && change == QGraphicsItem::ItemSelectedChange && value == false ) // Hide linked Components
+    {
+        Linker* linker = dynamic_cast<Linker*>(this);
+        linker->showLinked( false );
+    }
+    return QGraphicsItem::itemChange( change, value );
+}
+
 void Component::mousePressEvent( QGraphicsSceneMouseEvent* event )
 {
     if( this->parentItem() )
@@ -175,16 +192,24 @@ void Component::mousePressEvent( QGraphicsSceneMouseEvent* event )
     if( event->button() == Qt::LeftButton )
     {
         event->accept();
-        if( Linkable::m_selecComp ){
-            Linkable::m_selecComp->compSelected( this );
+        if( Linker::m_selecComp ){
+            Linker::m_selecComp->compSelected( this );
         }
-        else if( event->modifiers() & Qt::ControlModifier ) setSelected( !isSelected() );
+        else if( event->modifiers() & Qt::ControlModifier )
+        {
+            setSelected( !isSelected() );
+        }
         else{
             QList<QGraphicsItem*> itemlist = Circuit::self()->selectedItems();
             if( !isSelected() )     // Unselect everything and select this
             {
                 for( QGraphicsItem* item : itemlist ) item->setSelected( false );
                 setSelected( true );
+                if( m_linker && isSelected() ) // Show/Hide linked Components (we are not linking right now)
+                {
+                    Linker* linker = dynamic_cast<Linker*>(this);
+                    linker->showLinked( true );
+                }
             }
             else{                   // Deselect childs
                 for( QGraphicsItem* item : itemlist )
@@ -302,9 +327,8 @@ void Component::contextMenuEvent( QGraphicsSceneContextMenuEvent* event )
     {
         Component* parentComp = static_cast<Component*>( this->parentItem() );
         parentComp->contextMenuEvent( event );
-        return;
     }
-    if( !acceptedMouseButtons() ) event->ignore();
+    else if( !acceptedMouseButtons() ) event->ignore();
     else{
         event->accept();
         QMenu* menu = new QMenu();
@@ -342,16 +366,16 @@ void Component::contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu 
     QAction* rotateCWAction = menu->addAction( QIcon( ":/rotatecw.svg"),tr("Rotate CW")+"\tCtrl+R" );
     QObject::connect( rotateCWAction, &QAction::triggered, [=](){ rotateCW(); } );
 
-    QAction* rotateCCWAction = menu->addAction(QIcon( ":/rotateccw.svg"),tr("Rotate CCW") );
+    QAction* rotateCCWAction = menu->addAction(QIcon( ":/rotateccw.svg"),tr("Rotate CCW")+"\tCtrl+Shift+R" );
     QObject::connect( rotateCCWAction, &QAction::triggered, [=](){ rotateCCW(); } );
 
     QAction* rotateHalfAction = menu->addAction(QIcon(":/rotate180.svg"),tr("Rotate 180") );
     QObject::connect( rotateHalfAction, &QAction::triggered, [=](){ rotateHalf(); } );
     
-    QAction* H_flipAction = menu->addAction(QIcon(":/hflip.svg"),tr("Horizontal Flip") );
+    QAction* H_flipAction = menu->addAction(QIcon(":/hflip.svg"),tr("Horizontal Flip")+"\tCtrl+L" );
     QObject::connect( H_flipAction, &QAction::triggered, [=](){ slotH_flip(); } );
     
-    QAction* V_flipAction = menu->addAction(QIcon(":/vflip.svg"),tr("Vertical Flip") );
+    QAction* V_flipAction = menu->addAction(QIcon(":/vflip.svg"),tr("Vertical Flip")+"\tCtrl+Shift+L" );
     QObject::connect( V_flipAction, &QAction::triggered, [=](){ slotV_flip(); } );
 
     menu->exec(event->screenPos());
@@ -408,16 +432,12 @@ void Component::slotProperties()
 {
     if( !m_propDialog )
     {
-        if(( m_help == "" )&&( m_type != "Connector" )&&( m_type != "Node" ))
+        if( m_help == "" )
         {
             QString name = m_type;
 
-            if( ( m_type == "Subcircuit" )
-              ||( m_type == "MCU" )
-              ||( m_type == "PIC" ))
-            { name = m_id.split("-").first(); }
-
-            m_help = MainWindow::self()->getHelp( name );
+            if( m_type == "Subcircuit"|| m_type == "MCU" ) findHelp();
+            else m_help = MainWindow::self()->getHelp( name, false );
         }
         m_propDialog = new PropDialog( CircuitWidget::self(), m_help );
         m_propDialog->setComponent( this );
@@ -559,6 +579,15 @@ void Component::setHidden( bool hid, bool hidArea, bool hidLabel )
     }
 }
 
+void Component::setBackground( QString bck )
+{
+    m_background = MainWindow::self()->getDataFilePath("images")+"/"+bck;
+    if( !QFile::exists( m_background ) ) m_background = ":/"+bck; // Image not in simulide data folder, use hardcoded image
+
+    m_backPixmap = new QPixmap( m_background );
+    m_background = bck;
+}
+
 /*QString Component::print()
 {
     if( !m_printable ) return "";
@@ -570,20 +599,8 @@ void Component::setHidden( bool hid, bool hidArea, bool hidLabel )
     return str;
 }*/
 
-void Component::paint( QPainter* p, const QStyleOptionGraphicsItem*, QWidget* )
+void Component::paintSelected( QPainter* p )
 {
-    QPen pen( Qt::black, 1.5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
-    QColor color;
-
-    if( isSelected() )
-    {
-        //pen.setColor( Qt::darkGray);
-        //color = Qt::darkGray;
-        p->setOpacity( 0.5 );
-        p->fillRect( boundingRect(), Qt::darkGray  );
-    }
-    color = m_color;
-
     if( m_warning || m_crashed )
     {
         double speed=0, opaci=1;
@@ -599,20 +616,35 @@ void Component::paint( QPainter* p, const QStyleOptionGraphicsItem*, QWidget* )
         if( m_opCount > 0.6 ) m_opCount = 0.0;
         p->setOpacity( m_opCount+opaci );
     }
-    else if( Linkable::m_selecComp && m_linkNumber >= 0 ){ // This Component is linked
+    if( isSelected() )
+    {
+        //pen.setColor( Qt::darkGray);
+        //color = Qt::darkGray;
+        p->setOpacity( 0.5 );
+        p->fillRect( boundingRect(), Qt::darkGray  );
+    }
+    else if( /*Linker::m_selecComp &&*/ m_linkNumber >= 0 ){ // This Component is linked
         p->setOpacity( 0.3 );
         p->fillRect( boundingRect(), Qt::blue  );
         p->setOpacity( 1 );
         p->drawText( boundingRect(), Qt::AlignCenter, QString::number(m_linkNumber) );
-        p->setOpacity( 0.12 );
     }
     else if( !m_hidden )
     {
         if( m_isMainComp ){
-            p->fillRect( boundingRect(), Qt::yellow  );
             p->setOpacity( 0.5 );
+            p->fillRect( boundingRect(), Qt::yellow  );
         }
     }
+}
+
+void Component::paint( QPainter* p, const QStyleOptionGraphicsItem*, QWidget* )
+{
+    QPen pen( Qt::black, 1.5, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
+    QColor color;
+
+    color = m_color;
+
     //p->drawPath( shape() );
     p->setBrush( color );
     p->setPen( pen );

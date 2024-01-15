@@ -11,7 +11,7 @@
 
 class McuTimer;
 
-class MAINMODULE_EXPORT PicUsart : public McuUsart
+class PicUsart : public McuUsart
 {
     public:
         PicUsart( eMcu* mcu, QString name, int number );
@@ -19,20 +19,18 @@ class MAINMODULE_EXPORT PicUsart : public McuUsart
 
         virtual void configureA( uint8_t newTXSTA ) override;
         virtual void configureB( uint8_t newRCSTA ) override;
-        virtual uint8_t getBit9Tx() override;
-        virtual void setBit9Rx( uint8_t bit ) override;
 
         virtual void sendByte( uint8_t data ) override;
         virtual void bufferEmpty() override;
         virtual void frameSent( uint8_t data ) override;
 
-        virtual void overrunError() override;
-        virtual void parityError() override;
-        virtual void frameError() override;
+        virtual void setRxFlags( uint16_t frame ) override;
 
-        void setSPBRGL(  uint8_t val );
-        void setSPBRGH(  uint8_t val );
+        void setSPBRGL( uint8_t val );
+        void setSPBRGH( uint8_t val );
         void setBaurrate( uint8_t val=0 );
+
+        virtual void sleep( int mode ) override;
 
     private:
         bool m_enabled;
@@ -46,9 +44,6 @@ class MAINMODULE_EXPORT PicUsart : public McuUsart
         uint8_t*  m_SPBRGL;
         uint8_t*  m_SPBRGH;
 
-        regBits_t m_bit9Tx;
-        regBits_t m_bit9Rx;
-
         regBits_t m_txEn;
         regBits_t m_rxEn;
 
@@ -59,6 +54,7 @@ class MAINMODULE_EXPORT PicUsart : public McuUsart
         regBits_t m_SPEN;
         regBits_t m_TX9;
         regBits_t m_RX9;
+        regBits_t m_ADDEN;
         regBits_t m_FERR;
         regBits_t m_OERR;
         regBits_t m_SYNC;

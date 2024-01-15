@@ -18,9 +18,13 @@ AppDialog::AppDialog( QWidget* parent )
     //this->setWindowFlags( Qt::Dialog | Qt::WindowTitleHint );
 
     // App Settings
+    double scale = MainWindow::self()->fontScale();
     language->setCurrentIndex( (int)MainWindow::self()->lang() );
+    language->setMaximumWidth( 100*scale );
     fontName->setCurrentText( MainWindow::self()->defaultFontName() );
-    fontScale->setValue( MainWindow::self()->fontScale() );
+    fontName->setMaximumWidth( 100*scale );
+    fontScale->setValue( scale );
+    fontScale->setMaximumWidth( 100*scale );
     userPath->setText( MainWindow::self()->userPath() );
 
     // Circuit Settings
@@ -78,8 +82,7 @@ void AppDialog::on_tabList_currentChanged( int )
 }
 void AppDialog::updtHelp()
 {
-    if( m_showHelp )
-    {
+    if( m_showHelp ){
         if( !helpText->isVisible() ) mainLayout->addWidget( helpText );
     }
     else mainLayout->removeWidget( helpText );

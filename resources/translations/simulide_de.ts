@@ -29,11 +29,15 @@
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Other Logic</source>
         <translation type="obsolete">weitere Logikkomponenten</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -121,7 +125,7 @@
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Gates</source>
@@ -130,6 +134,10 @@
     <message>
         <source>Invert Inputs</source>
         <translation type="unfinished">Eingänge invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -393,6 +401,10 @@ p, li { white-space: pre-wrap; }
         <source>Slovenčina</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished">Schriftart</translation>
+    </message>
 </context>
 <context>
     <name>AppProp</name>
@@ -617,7 +629,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Converters</source>
@@ -626,6 +638,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Invert Inputs</source>
         <translation type="unfinished">Eingänge invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -656,7 +672,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Converters</source>
@@ -665,6 +681,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Invert Inputs</source>
         <translation type="unfinished">Eingänge invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -703,7 +723,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Arithmetic</source>
@@ -711,6 +731,10 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Binary Counter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -749,7 +773,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Gates</source>
@@ -758,6 +782,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Invert Inputs</source>
         <translation type="unfinished">Eingänge invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -809,7 +837,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Auto Step</source>
+        <source>Reactive Step</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -939,7 +967,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Load Circuit</source>
-        <translation>Schaltung laden</translation>
+        <translation type="vanished">Schaltung laden</translation>
     </message>
     <message>
         <source>Circuits (*.sim*);;All files (*.*)</source>
@@ -948,6 +976,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Bill Of Materials</source>
         <translation type="vanished">Stückliste (BOM)</translation>
+    </message>
+    <message>
+        <source>Import Circuit</source>
+        <translation type="unfinished">Schaltung importieren</translation>
     </message>
 </context>
 <context>
@@ -1192,6 +1224,10 @@ Can&apos;t find file:
         <source>Resume Simulation</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Clock</name>
@@ -1389,6 +1425,10 @@ Can&apos;t find file:
     </message>
     <message>
         <source>For this file:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extra build arguments</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1648,7 +1688,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Other Logic</source>
@@ -1657,6 +1697,10 @@ Can&apos;t find file:
     <message>
         <source>Invert Inputs</source>
         <translation type="unfinished">Eingänge invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1758,11 +1802,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Converters</source>
         <translation type="obsolete">Wandler</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1793,11 +1841,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Converters</source>
         <translation type="obsolete">Wandler</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1871,6 +1923,10 @@ Can&apos;t find file:
     <message>
         <source>Link to Component</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Steps</source>
+        <translation type="unfinished">Schritte</translation>
     </message>
 </context>
 <context>
@@ -1986,7 +2042,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation type="unfinished">Flankenparameter</translation>
+        <translation type="obsolete">Flankenparameter</translation>
     </message>
     <message>
         <source>Load data</source>
@@ -1999,6 +2055,10 @@ Can&apos;t find file:
     <message>
         <source>Show Memory Table</source>
         <translation type="unfinished">Speicher Tabelle anzeigen</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2052,7 +2112,7 @@ Can&apos;t find file:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Name Space:</source>
+        <source>Space to Pin:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2521,7 +2581,7 @@ Can&apos;t find file:
     <name>FixedVolt</name>
     <message>
         <source>Fixed Volt.</source>
-        <translation>Festspannung</translation>
+        <translation type="vanished">Festspannung</translation>
     </message>
     <message>
         <source>Sources</source>
@@ -2534,6 +2594,10 @@ Can&apos;t find file:
     <message>
         <source>Voltage</source>
         <translation>Spannung</translation>
+    </message>
+    <message>
+        <source>Fixed Voltage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2560,7 +2624,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Use Set/Reset Pins</source>
@@ -2569,6 +2633,10 @@ Can&apos;t find file:
     <message>
         <source>Set/Reset Inverted</source>
         <translation type="unfinished">Set/Reset invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2678,11 +2746,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Arithmetic</source>
         <translation type="obsolete">Arithmetik</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2721,7 +2793,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Load Functions</source>
@@ -2752,6 +2824,10 @@ Can&apos;t find file:
     <message>
         <source>Invert Inputs</source>
         <translation type="unfinished">Eingänge invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2941,7 +3017,7 @@ Can&apos;t find file:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Auto Step</source>
+        <source>Reactive Step</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3302,7 +3378,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Memory</source>
@@ -3311,6 +3387,10 @@ Can&apos;t find file:
     <message>
         <source>Invert Inputs</source>
         <translation type="unfinished">Eingänge invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3586,6 +3666,13 @@ Can&apos;t find file:
     </message>
 </context>
 <context>
+    <name>LinkerComponent</name>
+    <message>
+        <source>Link to Component</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Lm555</name>
     <message>
         <source>lm555</source>
@@ -3663,7 +3750,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation type="unfinished">Flankenparameter</translation>
+        <translation type="obsolete">Flankenparameter</translation>
     </message>
     <message>
         <source>Gate Delay </source>
@@ -3676,6 +3763,10 @@ Can&apos;t find file:
     <message>
         <source>Fall Time</source>
         <translation type="unfinished">Abfallzeit</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3999,7 +4090,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Load data</source>
@@ -4020,6 +4111,10 @@ Can&apos;t find file:
     <message>
         <source>Memory</source>
         <translation type="obsolete">Speicher</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4114,11 +4209,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Converters</source>
         <translation type="obsolete">Wandler</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4219,7 +4318,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Gates</source>
@@ -4228,6 +4327,10 @@ Can&apos;t find file:
     <message>
         <source>Invert Inputs</source>
         <translation type="unfinished">Eingänge invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4289,7 +4392,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Filter</source>
-        <translation>Filter</translation>
+        <translation type="vanished">Filter</translation>
     </message>
 </context>
 <context>
@@ -4327,6 +4430,10 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Samples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Admittance to ground</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4839,17 +4946,6 @@ Keine valide Package Datei:
     </message>
 </context>
 <context>
-    <name>Reactive</name>
-    <message>
-        <source>
-  Warnig: Capacitor can&apos;t update fast enough  
-
-  Set auto step &gt;= 1 for this capacitor  
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Rectangle</name>
     <message>
         <source>Rectangle</source>
@@ -4907,7 +5003,7 @@ Keine valide Package Datei:
         <translation type="unfinished">Widerstand</translation>
     </message>
     <message>
-        <source>Auto Step</source>
+        <source>Reactive Step</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5141,6 +5237,14 @@ Keine valide Package Datei:
         <source>BIN</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished">Pausieren</translation>
+    </message>
+    <message>
+        <source>Resume</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SerialPort</name>
@@ -5185,6 +5289,37 @@ Keine valide Package Datei:
     <message>
         <source>Main</source>
         <translation type="unfinished">Hauptparameter</translation>
+    </message>
+    <message>
+        <source>Auto Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SerialTerm</name>
+    <message>
+        <source>Serial Terminal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Main</source>
+        <translation type="unfinished">Hauptparameter</translation>
+    </message>
+    <message>
+        <source>Baudrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data Bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop Bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Serial Monitor.</source>
+        <translation type="unfinished">Seriellen Monitor öffnen</translation>
     </message>
 </context>
 <context>
@@ -5295,6 +5430,18 @@ Keine valide Package Datei:
         <source>Other Logic</source>
         <translation type="obsolete">weitere Logikkomponenten</translation>
     </message>
+    <message>
+        <source>Main</source>
+        <translation type="unfinished">Hauptparameter</translation>
+    </message>
+    <message>
+        <source>Show Point Pin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Enable Pin</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Shape</name>
@@ -5366,7 +5513,7 @@ Keine valide Package Datei:
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Arithmetic</source>
@@ -5374,6 +5521,10 @@ Keine valide Package Datei:
     </message>
     <message>
         <source>Shift Register</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5734,7 +5885,7 @@ Sollen die Änderungen gespeichert werden?
 %2.</translation>
     </message>
     <message>
-        <source>Select Main Components</source>
+        <source>Select Exposed Components</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5788,7 +5939,15 @@ Sollen die Änderungen gespeichert werden?
         <translation>Größe</translation>
     </message>
     <message>
-        <source>_Switches</source>
+        <source>_Lines</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exclusive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Common Pin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5836,10 +5995,6 @@ Sollen die Änderungen gespeichert werden?
     </message>
     <message>
         <source>Font Color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Link to Component</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6093,6 +6248,10 @@ Sollen die Änderungen gespeichert werden?
         <source>Dial Step</source>
         <translation>Schrittweite</translation>
     </message>
+    <message>
+        <source>Dial</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>VoltReg</name>
@@ -6138,6 +6297,10 @@ Sollen die Änderungen gespeichert werden?
     <message>
         <source>Current Value</source>
         <translation type="unfinished">aktueller Wert</translation>
+    </message>
+    <message>
+        <source>Min. Voltage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6201,7 +6364,7 @@ Sollen die Änderungen gespeichert werden?
     </message>
     <message>
         <source>Wave Gen.</source>
-        <translation>Funktionsgenerator</translation>
+        <translation type="vanished">Funktionsgenerator</translation>
     </message>
     <message>
         <source>Sources</source>
@@ -6267,6 +6430,14 @@ Sollen die Änderungen gespeichert werden?
         <source>Floating</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Phase shift</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wave Generator</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>XorGate</name>
@@ -6292,7 +6463,7 @@ Sollen die Änderungen gespeichert werden?
     </message>
     <message>
         <source>Edges</source>
-        <translation>Flankenparameter</translation>
+        <translation type="vanished">Flankenparameter</translation>
     </message>
     <message>
         <source>Gates</source>
@@ -6301,6 +6472,10 @@ Sollen die Änderungen gespeichert werden?
     <message>
         <source>Invert Inputs</source>
         <translation type="unfinished">Eingänge invertieren</translation>
+    </message>
+    <message>
+        <source>Timing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

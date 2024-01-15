@@ -9,12 +9,11 @@
 #include "datachannel.h"
 #include "oscope.h"
 
-class MAINMODULE_EXPORT OscopeChannel : public DataChannel
+class OscopeChannel : public DataChannel
 {
         friend class Oscope;
 
     public:
-
         OscopeChannel( Oscope* oscope, QString id );
         ~OscopeChannel();
 

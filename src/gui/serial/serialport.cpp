@@ -4,7 +4,6 @@
  ***( see copyright.txt file at root folder )*******************************/
 
 #include <QGraphicsProxyWidget>
-#include <QPushButton>
 #include <QPainter>
 #include <QMenu>
 
@@ -18,6 +17,7 @@
 #include "iopin.h"
 #include "utils.h"
 #include "mainwindow.h"
+#include "custombutton.h"
 
 #include "stringprop.h"
 #include "boolprop.h"
@@ -44,6 +44,7 @@ SerialPort::SerialPort( QString type, QString id )
           , eElement( (id+"-eElement") )
 {
     m_area = QRect(-34, -16, 160, 32 );
+    m_graphical = true;
     setLabelPos(-20,-32 );
 
     m_pin.resize(2);
@@ -61,11 +62,12 @@ SerialPort::SerialPort( QString type, QString id )
 
     m_serial = new QSerialPort( /*this*/ );
     m_receiving = false;
+    m_autoOpen  = false;
 
     m_flowControl = QSerialPort::NoFlowControl;
     setBaudRate( 9600 );
 
-    m_button = new QPushButton( );
+    m_button = new CustomButton( );
     m_button->setMaximumSize( 36, 20 );
     m_button->setGeometry(-36,-20, 36, 20 );
     m_button->setCheckable( true );
@@ -80,14 +82,14 @@ SerialPort::SerialPort( QString type, QString id )
     m_proxy->setParentItem( this );
     m_proxy->setPos( QPoint(-4,-10) );
 
-    QObject::connect( m_button, &QPushButton::clicked  , [=](){ onbuttonclicked(); });
+    QObject::connect( m_button, &CustomButton::clicked  , [=](){ onbuttonclicked(); });
     QObject::connect( m_serial, &QSerialPort::readyRead, [=](){ readData(); } );
 
     Simulator::self()->addToUpdateList( this );
 
     addPropGroup( { tr("Main"), {
-//new BoolProp  <Chip>( "Logic_Symbol","","", this, &Chip::logicSymbol, &Chip::setLogicSymbol ),
-new StrProp<SerialPort>( "Port", tr("Port Name"),"", this, &SerialPort::port,  &SerialPort::setPort ),
+new BoolProp<SerialPort>( "Auto", tr("Auto Open"),"", this, &SerialPort::autoOpen, &SerialPort::setAutoOpen ),
+new StrProp <SerialPort>( "Port", tr("Port Name"),"", this, &SerialPort::port    , &SerialPort::setPort ),
     }, 0 } );
 
     addPropGroup( { "Config", {
@@ -109,6 +111,8 @@ void SerialPort::stamp()
     m_receiver->enable( true );
     m_sending = false;
     m_receiving = false;
+
+    if( m_autoOpen && !m_serial->isOpen() ) m_button->click();
 }
 
 void SerialPort::updateStep()
@@ -168,6 +172,13 @@ void SerialPort::close()
 void SerialPort::readData()
 {
     m_uartData += m_serial->readAll();
+}
+
+void SerialPort::setflip()
+{
+    Component::setflip();
+    m_proxy->setPos( QPoint( -4 + ( m_Hflip>0 ? 0 : m_button->width() ), -10 + ( m_Vflip>0 ? 0 : m_button->height() ) ) );
+    m_proxy->setTransform( QTransform::fromScale( m_Hflip, m_Vflip ) );
 }
 
 void SerialPort::byteReceived( uint8_t byte )
@@ -254,6 +265,8 @@ void SerialPort::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWi
     font.setPixelSize(11);
     p->setFont( font );
     p->drawText( 40, 5, m_portName );
+
+    Component::paintSelected( p );
 }
 
 //#include "moc_serialport.cpp"

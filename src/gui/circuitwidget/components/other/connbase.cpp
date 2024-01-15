@@ -93,10 +93,9 @@ void ConnBase::setSize( int size )
         m_pin[i] = m_sockPins[i-m_size];
         m_pin[i]->setIndex( i );
     }
-
     m_connPins.resize( size );
-    
     m_area = QRectF(-4, -28, 8, m_size*8 );
+    updatePins();
 
     Circuit::self()->update();
 }
@@ -105,10 +104,13 @@ void ConnBase::setHidden( bool hid, bool hidArea, bool hidLabel )
 {
     Component::setHidden( hid, hidArea, hidLabel );
 
+    Component* parentComp = static_cast<Component*>( parentItem() );
+    if( !parentComp ) return;
+
     for( int i=0; i<m_size; i++ )
     {
         m_sockPins[i]->setVisible( true );
-        Component* parentComp = static_cast<Component*>( parentItem() );
+
         if( hid ) parentComp->addSignalPin( m_sockPins[i] );// connect(    parentComp, &Component::moved, m_sockPins[i], &Pin::isMoved, Qt::UniqueConnection );
         else      parentComp->remSignalPin( m_sockPins[i] );// disconnect( parentComp, &Component::moved, m_sockPins[i], &Pin::isMoved );
     }
@@ -132,4 +134,5 @@ void ConnBase::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidg
         //else                p->setBrush( Qt::black );
         //p->drawRoundRect(-2,-28+2+i*8, 3, 4, 1, 1 );
     }
+    Component::paintSelected( p );
 }

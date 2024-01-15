@@ -232,24 +232,31 @@ void Chip::setBackground( QString bck )
         m_color = QColor( rgb.at(0).toInt(), rgb.at(1).toInt(), rgb.at(2).toInt() );
     }
     else if( bck != "" ){
-        QString pixmapPath = MainWindow::self()->getFilePath("data/images")+"/"+bck;
-        if( QFile::exists( pixmapPath ) )              // Image in simulide data folder
-            m_backPixmap = new QPixmap( pixmapPath );
-        else                                           // Image in Circuit data folder
-        {
-            QDir    circuitDir = QFileInfo( Circuit::self()->getFilePath() ).absoluteDir();
-            QString pixmapPath = circuitDir.absoluteFilePath( "data/"+m_name+"/"+bck );
-            if( QFile::exists( pixmapPath ) ) m_backPixmap = new QPixmap( pixmapPath );
+        QDir dir = QFileInfo( m_pkgeFile ).absoluteDir();
+        QString pixmapPath = dir.absoluteFilePath( bck );  // Image in subcircuit folder
+
+        if( !QFile::exists( pixmapPath ) ){
+            dir = QFileInfo( Circuit::self()->getFilePath() ).absoluteDir();
+            pixmapPath = dir.absoluteFilePath( bck );    // Image in circuit/data folder
         }
+        if( !QFile::exists( pixmapPath ) ) pixmapPath = MainWindow::self()->getDataFilePath("images/"+bck );
+        if( QFile::exists( pixmapPath ) ) m_backPixmap = new QPixmap( pixmapPath );
     }
     update();
+}
+
+void Chip::findHelp()
+{
+    QString helpFile = changeExt( m_dataFile, "txt" );
+    if( QFileInfo::exists( helpFile ) ) m_help = fileToString( helpFile, "Chip::findHelp" );
+    else                                m_help = MainWindow::self()->getHelp( m_name, false );
 }
 
 void Chip::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
 {
     Component::paint( p, option, widget );
 
-    if( m_backPixmap ) p->drawPixmap( m_area.x(), m_area.y(),m_width*8, m_height*8, *m_backPixmap );
+    if( m_backPixmap ) p->drawPixmap( QRect(m_area.x(), m_area.y(), m_width*8, m_height*8), *m_backPixmap );
     else{
         p->drawRoundedRect( m_area, 1, 1);
         if( m_backData  )
@@ -261,9 +268,14 @@ void Chip::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* 
             p->drawRoundedRect( mW, mH, w, h, 1, 1);
             p->drawImage( mW, +mH, *m_backImage ); // Image centered*/
 
-            for( int x=0; x<m_width; x++ )
-                for( int y=0; y<m_height; y++ )
-                    p->fillRect( x, y, 1, 1, QColor(m_backData->at(x).at(y) ) );
+            int w = m_backData->size();
+            int h = m_backData->at(0).size();
+            int mW = m_area.x()+(m_width*8 - w)/2;
+            int mH = m_area.y()+(m_height*8 - h)/2;
+
+            for( int x=0; x<w; x++ )
+                for( int y=0; y<h; y++ )
+                    p->fillRect( QRectF( mW+x, mH+y, 1, 1), QColor(m_backData->at(x).at(y) ) );
         }
         else if( !m_isLS && m_background.isEmpty() )
         {
@@ -272,4 +284,5 @@ void Chip::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* 
             else                      p->drawArc( boundingRect().width()/2-6, -4, 8, 8, 0, -2880 /* -16*180 */ );
         }
     }
+    Component::paintSelected( p );
 }

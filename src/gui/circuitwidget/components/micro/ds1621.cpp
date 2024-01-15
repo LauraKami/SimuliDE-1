@@ -37,6 +37,8 @@ DS1621::DS1621( QString type, QString id )
       : IoComponent( type, id )
       , TwiModule( id )
 {
+    m_graphical = true;
+
     m_width  = 7;
     m_height = 4;
 
@@ -64,6 +66,7 @@ DS1621::DS1621( QString type, QString id )
     u_button->setGeometry(-5,-5, 9, 9);
     u_button->setCheckable( false );
     u_button->setIcon(QIcon(":/su.png"));
+    u_button->setCursor( Qt::PointingHandCursor );
 
     QGraphicsProxyWidget* proxy = Circuit::self()->addWidget( u_button );
     proxy->setParentItem( this );
@@ -74,6 +77,7 @@ DS1621::DS1621( QString type, QString id )
     d_button->setGeometry(-5,-5, 9, 9);
     d_button->setCheckable( false );
     d_button->setIcon(QIcon(":/giu.png"));
+    d_button->setCursor( Qt::PointingHandCursor );
 
     proxy = Circuit::self()->addWidget( d_button );
     proxy->setParentItem( this );
@@ -280,4 +284,6 @@ void DS1621::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget
     p->setPen( QColor(0, 0, 0) );
     //p->drawText(-9, -3, "°C" );
     p->drawText(-9, -3, QString::number( m_temp )+"°C" );
+
+    Component::paintSelected( p );
 }

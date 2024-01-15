@@ -18,6 +18,8 @@ McuIntOsc::McuIntOsc( eMcu* mcu, QString name )
     m_clkOut   = false;
     m_extClock = false;
 
+    m_multiplier = 1;
+
     m_clkOutPin = NULL;
     m_clkInPin  = NULL;
 
@@ -49,6 +51,11 @@ void McuIntOsc::runEvent()
     Simulator::self()->addEvent( m_psInst, this );
 }
 
+bool McuIntOsc::extClock()
+{
+    return m_extClock;
+}
+
 void McuIntOsc::enableExtOsc( bool en ) // From Mcu, AVR or PIC with no cfg word
 {
     m_extClock = en;
@@ -77,7 +84,8 @@ void McuIntOsc::configPins( bool inIo, bool outIo, bool clkOut )
 {
     m_clkInIO  = inIo;
     m_clkOutIO = outIo;
-    if( m_clkInPin) m_clkInPin->setUnused( !inIo );
+    m_extClock = !m_clkInIO || !m_clkOutIO;
+    if( m_clkInPin ) m_clkInPin->setUnused( !inIo );
 
     setClockOut( clkOut );
 }

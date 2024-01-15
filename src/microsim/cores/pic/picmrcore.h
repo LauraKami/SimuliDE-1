@@ -12,7 +12,7 @@ enum {
     C=0,DC,Z,PD,TO,RP0,RP1,IRP
 };
 
-class MAINMODULE_EXPORT PicMrCore : public McuCpu
+class PicMrCore : public McuCpu
 {
     public:
         PicMrCore( eMcu* mcu );
@@ -78,6 +78,8 @@ class MAINMODULE_EXPORT PicMrCore : public McuCpu
 
         uint8_t add( uint8_t val1, uint8_t val2 );
         uint8_t sub( uint8_t val1, uint8_t val2 );
+
+        virtual void exitSleep() override;
 
         // Miscellaneous instructions
         inline void RETURN();

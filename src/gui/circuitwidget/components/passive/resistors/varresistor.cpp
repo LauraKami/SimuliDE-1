@@ -38,6 +38,7 @@ new DoubProp<VarResistor>( "Max_Resistance", tr("Maximum Resistance"), "Ω", thi
 new DoubProp<VarResistor>( "Value_Ohm"     , tr("Current Value")     , "Ω", this, &VarResistor::getVal, &VarResistor::setVal ),
 new DoubProp<VarResistor>( "Dial_Step"     , tr("Dial Step")         , "Ω", this, &VarResistor::getStep,&VarResistor::setStep ),
     },0 } );
+    addPropGroup( { tr("Dial"), Dialed::dialProps(), groupNoCopy } );
 }
 VarResistor::~VarResistor(){}
 
@@ -48,7 +49,7 @@ void VarResistor::updateStep()
 
     eResistor::setRes( m_value );
     if( m_propDialog ) m_propDialog->updtValues();
-    else if( m_showProperty == "Value_Ohm" ) setValLabelText( getPropStr( "Value_Ohm" ) );
+    else setValLabelText( getPropStr( showProp() ) );
 }
 
 void VarResistor::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
@@ -60,4 +61,6 @@ void VarResistor::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QW
     p->drawLine(-6, 6, 8,-8 );
     p->drawLine( 8,-6, 8,-8 );
     p->drawLine( 8,-8, 6,-8 );
+
+    Component::paintSelected( p );
 }

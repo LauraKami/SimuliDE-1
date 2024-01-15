@@ -61,6 +61,7 @@ void Mosfet::updateStep()
     if( !m_changed ) return;
     m_changed = false;
 
+    updateValues();
     voltChanged();
 }
 
@@ -107,4 +108,6 @@ void Mosfet::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget
         p->drawLine( 0,-9, 0,-5 );
         p->drawLine( 0,-2, 0, 2 );
         p->drawLine( 0, 5, 0, 9 );
-}   }
+    }
+    Component::paintSelected( p );
+}

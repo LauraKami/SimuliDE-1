@@ -84,11 +84,11 @@ Pin::~Pin()
     Circuit::self()->remPin( m_id );
 }
 
-void Pin::remove()
+void Pin::connectorRemoved()
 {
     setConnector( NULL );
     if( !Circuit::self()->undoRedo() ) m_component->pinMessage( 1 ); // Used by node to remove
-    m_component->remSignalPin( this );
+    /// m_component->remSignalPin( this ); after conn removed it can't auto-connect again
 }
 
 void Pin::setUnused( bool unused )
@@ -247,6 +247,8 @@ void Pin::setSpace( double s )
 
 void Pin::setLabelPos()
 {
+    if( m_labelText.isEmpty() ) return;
+
     QFontMetrics fm( m_label.font() );
 
     double xlabelpos = pos().x();
@@ -414,16 +416,11 @@ void Pin::paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWid
 
     if     ( m_unused  ) pen.setColor( QColor( 75, 120, 170 ));
     else if( m_isBus   ) pen.setColor( Qt::darkGreen );
-    else if( m_animate )
-    {
-        if( m_pinState == undef_state )
-            pen.setColor( (getVoltage() > 2.5) ? m_color[out_high] : m_color[out_low] );
-        else pen.setColor( m_color[m_pinState] );
-    }
+    else if( m_animate ) pen.setColor( m_color[m_pinState] );
 
     painter->setPen(pen);
-    if( m_length > 1 ) painter->drawLine( 0, 0, m_length-1, 0);
-    else               painter->drawLine( QPointF(-0.01, 0 ), QPointF( 0.03, 0 ));
+    if( m_length > 1 ) painter->drawLine( QPointF(0, 0), QPointF( m_length-0.7, 0) );
+    else               painter->drawLine( QPointF(-0.01, 0 ), QPointF( 0.03, 0 ) );
 
     if( m_inverted )
     {
