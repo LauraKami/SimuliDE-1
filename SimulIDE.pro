@@ -1,6 +1,6 @@
 
-VERSION = ""
-RELEASE = ""
+VERSION = "1.1.0"
+RELEASE = "-RC1"
 
 TEMPLATE = app
 TARGET = simulide
@@ -89,7 +89,7 @@ QMAKE_CXXFLAGS_DEBUG += -O0
 win32 {
     OS = Windows
     QMAKE_LIBS += -lwsock32
-    RC_ICONS += ../src/icons/simulide.ico
+    RC_ICONS += ../resources/icons/simulide.ico
 }
 linux {
     OS = Linux
@@ -98,7 +98,7 @@ linux {
 macx {
     OS = MacOs
     QMAKE_LFLAGS += -no-pie
-    ICON = ../src/icons/simulide.icns
+    ICON = ../resources/icons/simulide.icns
 }
 
 CONFIG += qt 
@@ -108,8 +108,6 @@ CONFIG *= c++11
 
 REV_NO = $$system( bzr revno )
 DEFINES += REVNO=\\\"$$REV_NO\\\"
-
-DEFINES += MAINMODULE_EXPORT=
 DEFINES += APP_VERSION=\\\"$$VERSION$$RELEASE\\\"
 
 BUILD_DATE = $$system($(which date) +\"\\\"%d-%m-%y\\\"\")
