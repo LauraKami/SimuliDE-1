@@ -45,11 +45,11 @@ InoDebugger::InoDebugger( CodeEditor* parent, OutPanelText* outPane )
 
     addFilePropHead();
 
-    addProperty( "Compiler Settings",
+    addProperty( tr("Compiler Settings"),
     new StrProp<InoDebugger>( "Board", tr("Board"),"", this
                           , &InoDebugger::getBoard,&InoDebugger::setBoard, 0,"enum") );
 
-    addProperty( "Compiler Settings",
+    addProperty( tr("Compiler Settings"),
     new StrProp<InoDebugger>( "CustomBoard", tr("Custom Board"),"", this, &InoDebugger::customBoard, &InoDebugger::setCustomBoard, 0 ) );
 }
 InoDebugger::~InoDebugger() {}
