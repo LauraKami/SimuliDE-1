@@ -1,6 +1,6 @@
 
 VERSION = "1.1.0"
-RELEASE = ""
+RELEASE = "-SR0"
 
 TEMPLATE = app
 TARGET = simulide
@@ -106,7 +106,7 @@ CONFIG += warn_on
 CONFIG += no_qml_debug
 CONFIG *= c++11
 
-REV_NO = 2278
+REV_NO = 1917
 DEFINES += REVNO=\\\"$$REV_NO\\\"
 DEFINES += APP_VERSION=\\\"$$VERSION$$RELEASE\\\"
 
