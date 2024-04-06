@@ -132,7 +132,7 @@ void SubPackage::setSubcTypeStr( QString s )
 
 void SubPackage::hoverMoveEvent( QGraphicsSceneHoverEvent* event ) 
 {
-    if( event->modifiers() & Qt::ShiftModifier) 
+    if( (event->modifiers() & Qt::ShiftModifier) && !(event->modifiers() & Qt::ControlModifier) )
     {
         m_fakePin = true;
         
