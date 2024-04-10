@@ -98,7 +98,9 @@ void eMcu::runEvent()
     else if( m_state >= mcuRunning && m_freq > 0 )
     {
         stepCpu();
-        Simulator::self()->addEvent( cyclesDone*m_psTick, this );
+        int cycles = cyclesDone;
+        if( cycles == 0 ) cycles = 1;                        // 8051: 2 Read cycles per Machine cycle
+        Simulator::self()->addEvent( cycles*m_psTick, this );
     }
 }
 
@@ -203,7 +205,7 @@ void eMcu::setFreq( double freq )
     if( freq > 0 )
     {
         m_psInst = 1e12*(m_cPerInst/freq); // Set Simulation cycles per Instruction cycle
-        m_psTick = 1e12*(m_cPerTick/freq); // Set Simulation cycles per Instruction cycle
+        m_psTick = 1e12*(m_cPerTick/freq); // Set Simulation cycles per Read cycle
         if( m_freq == 0 && m_state >= mcuRunning )// Previously stopped by freq = 0
         {
             Simulator::self()->cancelEvents( this );
