@@ -34,6 +34,8 @@ class SubCircuit : public Chip
     protected:
         void loadSubCircuit( QString file );
 
+        void addMainCompsMenu( QMenu* menu );
+
         virtual Pin* addPin( QString id, QString type, QString label,
                             int pos, int xpos, int ypos, int angle, int length=8, int space=0 ) override;
 

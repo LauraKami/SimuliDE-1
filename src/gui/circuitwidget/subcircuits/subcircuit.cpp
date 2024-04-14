@@ -269,6 +269,8 @@ void SubCircuit::loadSubCircuit( QString file )
                 else                 comp = circ->createItem( type, newUid, false );
 
                 if( comp ){
+                    comp->setIdLabel( uid ); // Avoid parent Uids in label
+
                     QString propName = "";
                     for( QStringRef prop : properties )
                     {
@@ -457,21 +459,20 @@ void SubCircuit::contextMenu( QGraphicsSceneContextMenuEvent* event, QMenu* menu
 {
     event->accept();
 
+    addMainCompsMenu( menu );
+
+    Component::contextMenu( event, menu );
+}
+
+void SubCircuit::addMainCompsMenu( QMenu* menu )
+{
     for( Component* mainComp : m_mainComponents.values() )
     {
         QString name = mainComp->idLabel();
-        int pos = 0;
-        if( name.contains("@") ) pos = name.lastIndexOf("@")+1;
-
-        int len  = name.length()-pos;
-        name = name.mid( pos, len );
-
         QMenu* submenu = menu->addMenu( QIcon(":/subc.png"), name );
-
         mainComp->contextMenu( NULL, submenu );
     }
     menu->addSeparator();
-    Component::contextMenu( event, menu );
 }
 
 QString SubCircuit::toString()
