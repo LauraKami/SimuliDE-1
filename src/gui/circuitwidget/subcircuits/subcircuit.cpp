@@ -43,7 +43,7 @@ Component* SubCircuit::construct( QString type, QString id )
     }
 
     int rev = MainWindow::self()->revision();
-    if( rev >= 2220 ){ if( name.contains("@") ) list = name.split("@");}
+    if( rev >= 1916 ){ if( name.contains("@") ) list = name.split("@");}
     else if( name.contains("_") ) list = name.split("_");
 
     if( list.size() > 1 )  // Subcircuit inside Subcircuit: 1_74HC00 to 74HC00
@@ -442,10 +442,20 @@ void SubCircuit::setLogicSymbol( bool ls )
     }
 }
 
-Component* SubCircuit::getMainComp( QString name )
+Component* SubCircuit::getMainComp( QString uid )
 {
-    if( name.isEmpty() && m_mainComponents.size() ) return m_mainComponents.value( m_mainComponents.keys().first() );
-    return m_mainComponents.value(name);
+    if( m_mainComponents.contains( uid ) )        // Found in list
+        return m_mainComponents.value( uid );
+
+    QString type = uid.split("-").last();
+    for( QString cUid : m_mainComponents.keys() ) // Not found by Uid, search by type
+        if( cUid.split("-").last() == type )
+            return m_mainComponents.value( cUid );
+
+    if( m_mainComponents.size() )
+        return m_mainComponents.values().first(); // Not found by type, return the first one
+
+    return nullptr;                               // Not found at all
 }
 
 void SubCircuit::remove()
