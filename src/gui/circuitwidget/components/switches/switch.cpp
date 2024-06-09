@@ -65,7 +65,7 @@ void Switch::stamp()
 
 void Switch::keyEvent( QString key, bool pressed )
 {
-    if( key.toUpper() == m_key )
+    if( key == m_key )
     {
         if( !pressed )
         {
