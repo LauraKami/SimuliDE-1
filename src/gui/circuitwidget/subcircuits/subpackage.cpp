@@ -460,10 +460,21 @@ QString SubPackage::package()
 
 void SubPackage::setPackage( QString package )
 {
-    m_pkgeFile = package;
+    if( !QFile::exists( package ) )
+    {
+        qDebug() << "SubPackage::setPackage: ERROR: File doesn't exist:"<< endl << package;
+        return;
+    }
+
+    Circuit::self()->saveCompChange( m_id, "Package_File", package );
+
+    QDir pdir = QFileInfo( Circuit::self()->getFilePath() ).absoluteDir();
+    m_pkgeFile = pdir.relativeFilePath( package );
+    m_lastPkg = package;
 
     m_pkgePins.clear();
     for( Pin* pin : m_pin ) deletePin( pin );
+    m_pin.clear();
 
     Chip::initChip();
 
@@ -522,14 +533,7 @@ void SubPackage::loadPackage()
     QString fileName = QFileDialog::getOpenFileName( 0l, tr("Load Package File"), dir,
                        tr("Packages (*.package);;All files (*.*)"));
 
-    if( fileName.isEmpty() ) return; // User cancels loading
-
-    Circuit::self()->saveCompChange( m_id, "Package_File", fileName );
-    setPackage( fileName );
-
-    QDir pdir = QFileInfo( Circuit::self()->getFilePath() ).absoluteDir();
-    m_pkgeFile = pdir.relativeFilePath( fileName );
-    m_lastPkg = fileName;
+    if( !fileName.isEmpty() ) setPackage( fileName );
 }
 
 void SubPackage::savePackage( QString fileName )
