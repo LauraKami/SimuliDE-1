@@ -42,7 +42,7 @@ class SubPackage : public Chip, public Linker
 
         virtual void compSelected( Component* comp ) override;  // Use link mechanism to select main components
 
-        virtual void paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget ) override;
+        virtual void paint( QPainter* p, const QStyleOptionGraphicsItem* o, QWidget* w ) override;
 
     //public slots:
         void invertPin( bool invert );

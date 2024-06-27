@@ -460,7 +460,11 @@ QString SubPackage::package()
 
 void SubPackage::setPackage( QString package )
 {
-    if( !QFile::exists( package ) )
+    if( package.isEmpty() ) return;
+    QDir circuitDir = QFileInfo( Circuit::self()->getFilePath() ).absoluteDir();
+    QString fileNameAbs = circuitDir.absoluteFilePath( package );
+
+    if( !QFile::exists( fileNameAbs ) )
     {
         qDebug() << "SubPackage::setPackage: ERROR: File doesn't exist:"<< endl << package;
         return;
@@ -468,8 +472,7 @@ void SubPackage::setPackage( QString package )
 
     Circuit::self()->saveCompChange( m_id, "Package_File", package );
 
-    QDir pdir = QFileInfo( Circuit::self()->getFilePath() ).absoluteDir();
-    m_pkgeFile = pdir.relativeFilePath( package );
+    m_pkgeFile = circuitDir.relativeFilePath( package );
     m_lastPkg = package;
 
     m_pkgePins.clear();
@@ -533,7 +536,7 @@ void SubPackage::loadPackage()
     QString fileName = QFileDialog::getOpenFileName( 0l, tr("Load Package File"), dir,
                        tr("Packages (*.package);;All files (*.*)"));
 
-    if( !fileName.isEmpty() ) setPackage( fileName );
+    setPackage( fileName );
 }
 
 void SubPackage::savePackage( QString fileName )
@@ -586,8 +589,8 @@ QString SubPackage::pinEntry( Pin* pin )
     QString ypos   = "ypos=\""+QString::number( pin->y() )+"\"";
     QString angle  = "angle=\""+QString::number( pin->pinAngle() )+"\"";
     QString length = "length=\""+QString::number( pin->length() )+"\"";
-    QString id     = "id=\""+pin->pinId().split( "-" ).last().replace( " ", "" )+"\"";
-    QString label  = "label=\""+pin->getLabelText().replace("<","&#x3C;").replace("=","&#x3D;").replace(">","&#x3E;")+"\"";
+    QString id     = "id=\""+pin->pinId().split( "-" ).last().replace("<","&lt;").replace( " ", "" )+"\"";
+    QString label  = "label=\""+pin->getLabelText().replace("<","&lt;")+"\""; //.replace("<","&#x3C;").replace("=","&#x3D;").replace(">","&#x3E;")+"\"";
     QString space  = "space=\""+QString::number( pin->space() )+"\"";
     QString type;
     if     ( pin->unused()   ) type = "nc";
@@ -603,7 +606,7 @@ QString SubPackage::pinEntry( Pin* pin )
             +adjustSize( angle, 12 )
             +adjustSize( length, 12 )
             +adjustSize( space, 12 )
-            +adjustSize( id, 10 )
+            +adjustSize( id, 12 )
             +adjustSize( label, 12 )
             +"/>\n";
 }
@@ -613,11 +616,12 @@ QString SubPackage::adjustSize( QString str, int size )
     while( str.length() < size ) str.append(" ");
     return str;
 }
-void SubPackage::paint( QPainter* p, const QStyleOptionGraphicsItem* option, QWidget* widget )
+void SubPackage::paint( QPainter* p, const QStyleOptionGraphicsItem* o, QWidget* w )
 {
-    Chip::paint( p, option, widget );
+    Chip::paint( p, o, w);
 
-    if( m_background != "" ) p->setBrush( Qt::transparent );
+    //if( m_background != "" )
+        p->setBrush( Qt::transparent );
     p->drawRoundedRect( m_area, 1, 1);
 
     if( m_fakePin )
