@@ -41,6 +41,7 @@ IoPin::IoPin( int angle, const QPoint pos, QString id, int index, Component* par
 
     m_pinMode = undef_mode;
     setPinMode( mode );
+    animate( Circuit::self()->animate() );
 }
 IoPin::~IoPin(){}
 

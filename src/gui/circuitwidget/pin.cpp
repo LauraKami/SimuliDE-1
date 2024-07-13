@@ -75,7 +75,6 @@ Pin::Pin( int angle, const QPoint pos, QString id, int index, Component* parent,
     setFlag( QGraphicsItem::ItemIsSelectable, false );
 
     Circuit::self()->addPin( this, id );
-    animate( Circuit::self()->animate() );
 
     m_component->addSignalPin( this );
 }
@@ -335,7 +334,6 @@ void Pin::setLength( int length )
 void Pin::setIsBus( bool bus )
 {
     if( m_isBus == bus ) return;
-    /// if( !bus ) return;          // Why?
     m_isBus = bus;
     
     if( my_connector ) my_connector->setIsBus( true );
@@ -368,20 +366,19 @@ void Pin::animate( bool an )
     if     (  m_animate ) Simulator::self()->addToUpdateList( this );
     else if( !m_warning ) Simulator::self()->remFromUpdateList( this );
 
-    update();
+    if( !Simulator::self()->isRunning() ) updateStep();
+    else                                  update();
 }
 
 void Pin::updateStep()
 {
     if( m_unused ) return;
-    //if( m_PinChanged )
-        update();
+    update();
 }
 
 void Pin::paint( QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget )
 {
     if( !isVisible() ) return;
-    //m_PinChanged = false;
 
     /*QPen pen0( m_color[0], 0, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin );
     painter->setPen(pen0);

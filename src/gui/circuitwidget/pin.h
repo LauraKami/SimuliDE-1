@@ -98,8 +98,6 @@ class Pin : public QGraphicsItem, public ePin, public Updatable
 
         void setDataChannel( LaChannel* ch ) { m_dataCannel = ch; }
 
-        //inline void setPinState( pinState_t st ) { m_pinState = st; /*m_PinChanged = true;*/ }
-
         void warning( bool w );
         void animate( bool an );
         virtual void updateStep() override;
@@ -141,7 +139,7 @@ class Pin : public QGraphicsItem, public ePin, public Updatable
         Connector* my_connector;
         Component* m_component;
         LaChannel* m_dataCannel;    // connect to Logic Analyzer
-        Pin*       m_conPin;          // Pin at the other side of connector
+        Pin*       m_conPin;        // Pin at the other side of connector
 
         QGraphicsSimpleTextItem m_label;
 };
