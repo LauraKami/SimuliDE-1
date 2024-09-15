@@ -233,12 +233,11 @@ bool MemData::loadBin( QVector<int>* toData, QString fileName, bool resize, int 
             qDebug() << "\nMemData::loadBin: Data doesn't fit in Memory"<<dataEnd<<"\n";
             return false;
         }
-        int data = 0;
+        uint data = 0;
         for( int by=0; by<bytes; by++ )  // Join bytes little-endian
         {
-            int val = ba.at( i*bytes+by );
-            if( by>0 ) val <<= 8*by;
-            data += val;
+            uint8_t val = ba.at( i*bytes+by );
+            data |= val << 8*by;
         }
         toData->replace( i, data );
     }
