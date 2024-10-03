@@ -42,10 +42,11 @@ Component* SubCircuit::construct( QString type, QString id )
         list.takeLast();
     }
 
-    int rev = MainWindow::self()->revision();
-    if( rev >= 1916 ){ if( name.contains("@") ) list = name.split("@");}
-    else if( name.contains("_") ) list = name.split("_");
-
+    if( Circuit::self()->getSubcircuit() ){
+        int rev = MainWindow::self()->revision();
+        if( rev >= 1916 ){ if( name.contains("@") ) list = name.split("@");}
+        else if( name.contains("_") ) list = name.split("_");
+    }
     if( list.size() > 1 )  // Subcircuit inside Subcircuit: 1_74HC00 to 74HC00
     {
         QString n = list.first();
