@@ -35,6 +35,7 @@ ScriptCpu::ScriptCpu( eMcu* mcu )
     }
 
     // Script functions
+    m_initialize  = NULL;
     m_reset       = NULL;
     m_voltChanged = NULL;
     m_runEvent    = NULL;
@@ -180,19 +181,22 @@ int ScriptCpu::compileScript()
     int r = ScriptModule::compileScript();
     if( r < 0 ) return r;
 
-    m_reset       = m_aEngine->GetModule(0)->GetFunctionByDecl("void reset()");
-    m_voltChanged = m_aEngine->GetModule(0)->GetFunctionByDecl("void voltChanged()");
-    m_updateStep  = m_aEngine->GetModule(0)->GetFunctionByDecl("void updateStep()");
-    m_runEvent    = m_aEngine->GetModule(0)->GetFunctionByDecl("void runEvent()");
-    m_INTERRUPT   = m_aEngine->GetModule(0)->GetFunctionByDecl("void INTERRUPT( uint vector )");
-    m_runStep     = m_aEngine->GetModule(0)->GetFunctionByDecl("void runStep()");
-    m_extClock    = m_aEngine->GetModule(0)->GetFunctionByDecl("void extClock( bool clkState )");
-    m_extClockF   = m_aEngine->GetModule(0)->GetFunctionByDecl("void extClock()");
-    m_getCpuReg   = m_aEngine->GetModule(0)->GetFunctionByDecl("int getCpuReg( string reg )");
-    m_getStrReg   = m_aEngine->GetModule(0)->GetFunctionByDecl("string getStrReg( string reg )");
-    m_command     = m_aEngine->GetModule(0)->GetFunctionByDecl("void command( string c )");
-    m_setLinkedVal= m_aEngine->GetModule(0)->GetFunctionByDecl("void setLinkedValue( double v, int i )");
-    m_setLinkedStr= m_aEngine->GetModule(0)->GetFunctionByDecl("void setLinkedString( string str, int i )");
+    asIScriptModule* module = m_aEngine->GetModule( 0 );
+
+    m_initialize  = module->GetFunctionByDecl("void initialize()");
+    m_reset       = module->GetFunctionByDecl("void reset()");
+    m_voltChanged = module->GetFunctionByDecl("void voltChanged()");
+    m_updateStep  = module->GetFunctionByDecl("void updateStep()");
+    m_runEvent    = module->GetFunctionByDecl("void runEvent()");
+    m_INTERRUPT   = module->GetFunctionByDecl("void INTERRUPT( uint vector )");
+    m_runStep     = module->GetFunctionByDecl("void runStep()");
+    m_extClock    = module->GetFunctionByDecl("void extClock( bool clkState )");
+    m_extClockF   = module->GetFunctionByDecl("void extClock()");
+    m_getCpuReg   = module->GetFunctionByDecl("int getCpuReg( string reg )");
+    m_getStrReg   = module->GetFunctionByDecl("string getStrReg( string reg )");
+    m_command     = module->GetFunctionByDecl("void command( string c )");
+    m_setLinkedVal= module->GetFunctionByDecl("void setLinkedValue( double v, int i )");
+    m_setLinkedStr= module->GetFunctionByDecl("void setLinkedString( string str, int i )");
 
     m_vChangedCtx = m_voltChanged ? m_aEngine->CreateContext() : NULL;
     m_runEventCtx = m_runEvent    ? m_aEngine->CreateContext() : NULL;
@@ -224,6 +228,11 @@ int ScriptCpu::compileScript()
     if( func ) callFunction( func );
 
     return 0;
+}
+
+void ScriptCpu::initialize()
+{
+    if( m_initialize ) callFunction( m_initialize );
 }
 
 void ScriptCpu::updateStep()

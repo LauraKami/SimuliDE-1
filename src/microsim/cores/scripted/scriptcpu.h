@@ -21,6 +21,7 @@ class ScriptCpu : public ScriptModule, public McuCpu
         ScriptCpu( eMcu* mcu );
         ~ScriptCpu();
 
+        virtual void initialize() override;
         virtual void voltChanged() override;
         virtual void runEvent() override;
 
@@ -76,6 +77,7 @@ class ScriptCpu : public ScriptModule, public McuCpu
         uint m_progWordMask;
 
         Mcu* m_mcuComp;
+        asIScriptFunction* m_initialize;
         asIScriptFunction* m_reset;
         asIScriptFunction* m_voltChanged;
         asIScriptFunction* m_updateStep;
