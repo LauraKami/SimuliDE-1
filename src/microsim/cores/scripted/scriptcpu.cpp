@@ -384,9 +384,9 @@ QString ScriptCpu::getStrReg( QString val )
     return QString::fromStdString( str );
 }
 
-ComProperty* ScriptCpu::addProperty( QString name, QString type, QString unit )
+ComProperty* ScriptCpu::addProperty( QString name, QString label, QString type, QString unit )
 {
-    ComProperty* p = new ScriptProp<ScriptCpu>( name, name, unit, this
+    ComProperty* p = new ScriptProp<ScriptCpu>( name, label, unit, this
                                               , &ScriptCpu::getProp, &ScriptCpu::setProp, type );
     m_scriptProps.push_back( p );
 

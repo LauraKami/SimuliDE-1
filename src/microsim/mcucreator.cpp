@@ -229,14 +229,17 @@ int McuCreator::processFile( QString fileName, bool main )
 
                         if( el.tagName() == "property" )
                         {
-                            QString name = el.attribute("name");
-                            QString type = el.attribute("type");
-                            QString unit = el.attribute("unit");
+                            QString name  = el.attribute("name");
+                            QString label = el.attribute("label");
+                            QString type  = el.attribute("type");
+                            QString unit  = el.attribute("unit");
 
-                            ComProperty* p = cpu->addProperty( name, type, unit );
+                            if( label.isEmpty() ) label = name;
 
-                            if( el.attribute("add") == "true" ) subProps.append( p );
-                            else                                mcuProps.append( p );
+                            ComProperty* p = cpu->addProperty( name, label, type, unit );
+
+                            if( subC && el.attribute("add") == "true" ) subProps.append( p );
+                            else                                        mcuProps.append( p );
                         }
                         node = node.nextSibling();
                     }
