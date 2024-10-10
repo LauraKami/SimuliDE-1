@@ -233,17 +233,21 @@ void MainWindow::createWidgets()
 
     m_sidepanel = new QTabWidget( this );
     m_sidepanel->setTabPosition( QTabWidget::West );
-    QString fontSize = QString::number( int(11*m_fontScale) );
+    QString fontSize = QString::number( int(11.5*m_fontScale) );
     m_sidepanel->tabBar()->setStyleSheet("QTabBar { font-size:"+fontSize+"px; }");
     m_Centralsplitter->addWidget( m_sidepanel );
 
     m_componentWidget = new QWidget( this );
     m_componentWidgetLayout = new QVBoxLayout( m_componentWidget );
-    m_componentWidgetLayout->setSpacing(0);
-    m_componentWidgetLayout->setContentsMargins(0, 0, 0, 0);
+    m_componentWidgetLayout->setSpacing( 6 );
+    m_componentWidgetLayout->setContentsMargins(0, 2, 0, 0);
 
     m_searchComponent = new QLineEdit( this );
-    m_searchComponent->setPlaceholderText( tr( "Search Components" ));
+    QFont font = m_searchComponent->font();
+    font.setPixelSize( 12*m_fontScale );
+    m_searchComponent->setFont( font );
+    m_searchComponent->setFixedHeight( 24*m_fontScale );
+    m_searchComponent->setPlaceholderText( " "+tr("Search Components"));
     m_componentWidgetLayout->addWidget( m_searchComponent );
     connect( m_searchComponent, SIGNAL( editingFinished() ),
              this,               SLOT(  searchChanged()), Qt::UniqueConnection);
