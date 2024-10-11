@@ -31,7 +31,7 @@ MainWindow::MainWindow()
 {
     setWindowIcon( QIcon(":/simulide.png") );
     m_pSelf   = this;
-    m_circuit = NULL;
+    m_circuit = nullptr;
     m_autoBck = 15;
     m_state = "■";
     m_revision = QString( REVNO ).remove("R").toInt();
@@ -50,22 +50,22 @@ MainWindow::MainWindow()
     m_settings     = new QSettings( getConfigPath("simulide.ini"), QSettings::IniFormat, this );
     m_compSettings = new QSettings( getConfigPath("compList.ini"), QSettings::IniFormat, this );
 
-    m_userDir = m_settings->value( "userPath" ).toString();
+    m_userDir = m_settings->value("userPath").toString();
     if( m_userDir.isEmpty() || !QDir( m_userDir ).exists() )
         m_userDir = getConfigPath("addons");
 
     // Fonts --------------------------------------
-    QFontDatabase::addApplicationFont( ":/Ubuntu-R.ttf" );
-    QFontDatabase::addApplicationFont( ":/Ubuntu-B.ttf" );
-    QFontDatabase::addApplicationFont( ":/UbuntuMono-B.ttf" );
-    QFontDatabase::addApplicationFont( ":/UbuntuMono-BI.ttf" );
-    QFontDatabase::addApplicationFont( ":/UbuntuMono-R.ttf" );
-    QFontDatabase::addApplicationFont( ":/UbuntuMono-RI.ttf" );
+    QFontDatabase::addApplicationFont(":/Ubuntu-R.ttf" );
+    QFontDatabase::addApplicationFont(":/Ubuntu-B.ttf" );
+    QFontDatabase::addApplicationFont(":/UbuntuMono-B.ttf" );
+    QFontDatabase::addApplicationFont(":/UbuntuMono-BI.ttf" );
+    QFontDatabase::addApplicationFont(":/UbuntuMono-R.ttf" );
+    QFontDatabase::addApplicationFont(":/UbuntuMono-RI.ttf" );
 
     float scale = 1.0;
-    if( m_settings->contains( "fontScale" ) )
+    if( m_settings->contains("fontScale") )
     {
-        scale = m_settings->value( "fontScale" ).toFloat();
+        scale = m_settings->value("fontScale").toFloat();
     }else{
         float dpiX = qApp->desktop()->logicalDpiX();
         scale = dpiX/96.0;
@@ -74,7 +74,7 @@ MainWindow::MainWindow()
     //----------------------------------------------
 
     QString fontName = "Ubuntu";
-    if( m_settings->contains( "fontName" ) ) fontName = m_settings->value( "fontName" ).toString();
+    if( m_settings->contains("fontName") ) fontName = m_settings->value( "fontName" ).toString();
     setDefaultFontName( fontName );
 
     QFont df=qApp->font();
@@ -127,9 +127,9 @@ void MainWindow::closeEvent( QCloseEvent *event )
 
 void MainWindow::readSettings()
 {
-    restoreGeometry(                 m_settings->value( "geometry" ).toByteArray());
-    restoreState(                    m_settings->value( "windowState" ).toByteArray());
-    m_Centralsplitter->restoreState( m_settings->value( "Centralsplitter/geometry" ).toByteArray());
+    restoreGeometry(                 m_settings->value("geometry" ).toByteArray());
+    restoreState(                    m_settings->value("windowState" ).toByteArray());
+    m_Centralsplitter->restoreState( m_settings->value("Centralsplitter/geometry" ).toByteArray());
     CircuitWidget::self()->splitter()->restoreState( m_settings->value( "Circsplitter/geometry" ).toByteArray());
 
     m_autoBck = 15;
@@ -139,13 +139,13 @@ void MainWindow::readSettings()
 
 void MainWindow::writeSettings()
 {
-    m_settings->setValue( "autoBck",   m_autoBck );
-    m_settings->setValue( "fontName", m_fontName );
-    m_settings->setValue( "fontScale", m_fontScale );
-    m_settings->setValue( "geometry",  saveGeometry() );
-    m_settings->setValue( "windowState", saveState() );
-    m_settings->setValue( "Centralsplitter/geometry", m_Centralsplitter->saveState() );
-    m_settings->setValue( "Circsplitter/geometry", CircuitWidget::self()->splitter()->saveState() );
+    m_settings->setValue("autoBck",   m_autoBck );
+    m_settings->setValue("fontName", m_fontName );
+    m_settings->setValue("fontScale", m_fontScale );
+    m_settings->setValue("geometry",  saveGeometry() );
+    m_settings->setValue("windowState", saveState() );
+    m_settings->setValue("Centralsplitter/geometry", m_Centralsplitter->saveState() );
+    m_settings->setValue("Circsplitter/geometry", CircuitWidget::self()->splitter()->saveState() );
 
     for( QString name : m_components->getCategories() )
     {

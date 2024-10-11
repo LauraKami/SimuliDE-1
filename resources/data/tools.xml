@@ -2,7 +2,7 @@
 
 <itemlib>
     
-  <itemset category="Logic/Tools" type="Subcircuit" folder="tools" icon="subc.png" >
+  <itemset category="Logic/Tools" type="Subcircuit" folder="tools" icon="subc2.png" >
 
     <item name="ENCODER_BCD"     info="10 State Thumbwheel Switch" />
     <item name="ENCODER_HEX"     info="16 State Thumbwheel Switch" /> 

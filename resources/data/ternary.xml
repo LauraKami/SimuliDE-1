@@ -2,7 +2,7 @@
 
 <itemlib>
     
-  <itemset category="Logic/Ternary" type="Subcircuit" folder="ICs" icon="subc.png">
+  <itemset category="Logic/Ternary" type="Subcircuit" folder="ICs" icon="subc2.png">
       
     <item name="T_NOT"    info="ternary logic NOT" /> 
     <item name="T_Buffer" info="ternary logic buffer" /> 
