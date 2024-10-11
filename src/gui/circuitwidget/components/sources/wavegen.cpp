@@ -59,7 +59,7 @@ WaveGen::WaveGen( QString type, QString id )
     setSteps( 100 );
     setDuty( 50 );
 
-    Simulator::self()->addToUpdateList( this );
+    //Simulator::self()->addToUpdateList( this );
 
     remPropGroup( tr("Main") );
 
@@ -288,12 +288,12 @@ void WaveGen::setWaveType( QString type )
 
     QString pixmapPath;
 
-    if     ( type == "Sine"    ) { pixmapPath = ":/sin.png"; m_waveType = Sine;}
-    else if( type == "Saw"     ) { pixmapPath = ":/saw.png"; m_waveType = Saw;}
-    else if( type == "Triangle") { pixmapPath = ":/tri.png"; m_waveType = Triangle;}
-    else if( type == "Square"  ) { pixmapPath = ":/sqa.png"; m_waveType = Square;}
-    else if( type == "Random"  ) { pixmapPath = ":/rnd.png"; m_waveType = Random;}
-    else if( type == "Wav"     ) { pixmapPath = ":/wav.png"; m_waveType = Wav;}
+    if     ( type == "Saw"      || type == "1") { pixmapPath = ":/saw.png"; m_waveType = Saw;}
+    else if( type == "Triangle" || type == "2") { pixmapPath = ":/tri.png"; m_waveType = Triangle;}
+    else if( type == "Square"   || type == "3") { pixmapPath = ":/sqa.png"; m_waveType = Square;}
+    else if( type == "Random"   || type == "4") { pixmapPath = ":/rnd.png"; m_waveType = Random;}
+    else if( type == "Wav"      || type == "5") { pixmapPath = ":/wav.png"; m_waveType = Wav;}
+    else                                        { pixmapPath = ":/sin.png"; m_waveType = Sine;} // Sine and other
 
     if( m_wavePixmap ) delete m_wavePixmap;
     m_wavePixmap = new QPixmap( pixmapPath );
