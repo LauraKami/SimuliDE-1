@@ -1,28 +1,28 @@
-<circuit version="" rev="2224" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+<circuit version="1.1.0-SR0" rev="1981" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
 
 <item itemtype="Subcircuit" CircId="74HC4511-1" mainComp="false" Show_id="true" Show_Val="false" Pos="84,-28" rotation="0" hflip="1" vflip="1" label="74HC4511" idLabPos="-4.7848,-15.2152" labelrot="0" valLabPos="0,0" valLabRot="0" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1e+09 Ω" Out_High_V="5 V" Out_Low_V="0 V" Out_Imped="40 Ω" Tpd_ps="10000 ps" Tr_ps="3000 ps" Tf_ps="4000 ps" Logic_Symbol="true" />
 
 <item itemtype="BcdToDec" CircId="Bcd To Dec.-13" mainComp="false" Show_id="false" Show_Val="false" Pos="60,76" rotation="0" hflip="1" vflip="1" label="Bcd To Dec.-13" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" _16_Bits="false" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1e+14 Ω" Invert_Inputs="false" Out_High_V="5 V" Out_Low_V="0 V" Out_Imped="1 Ω" Inverted="true" Open_Collector="false" pd_n="1 _Gates" Tpd_ps="10000 ps" Tr_ps="3000 ps" Tf_ps="4000 ps" />
 
-<item itemtype="Clock" CircId="Clock-17" mainComp="false" Show_id="false" Show_Val="true" Pos="-340,56" rotation="0" hflip="1" vflip="1" label="Clock-17" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Out="true" Running="true" Voltage="5 V" Freq="160 Hz" Always_On="true" />
+<item itemtype="Clock" CircId="Clock-17" mainComp="false" ShowProp="Freq" Show_id="false" Show_Val="true" Pos="-340,56" rotation="0" hflip="1" vflip="1" label="Clock-17" idLabPos="-64,-24" labelrot="0" valLabPos="-16,-20.0266" valLabRot="0" Out="true" Running="true" Voltage="5 V" Freq="160 Hz" Always_On="true" />
 
 <item itemtype="Mux" CircId="Mux-25" mainComp="false" Show_id="true" Show_Val="false" Pos="-244,-92" rotation="0" hflip="1" vflip="1" label="0" idLabPos="-5.61849,-57.2029" labelrot="0" valLabPos="0,0" valLabRot="0" Address_Bits="3 _bits" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1e+14 Ω" Invert_Inputs="false" Out_High_V="5 V" Out_Low_V="0 V" Out_Imped="40 Ω" pd_n="1 _Gates" Tpd_ps="10000 ps" Tr_ps="3000 ps" Tf_ps="4000 ps" />
 
 <item itemtype="Mux" CircId="Mux-31" mainComp="false" Show_id="true" Show_Val="false" Pos="20,-92" rotation="0" hflip="1" vflip="1" label="3" idLabPos="-2.9929,-57.5354" labelrot="0" valLabPos="0,0" valLabRot="0" Address_Bits="3 _bits" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1e+14 Ω" Invert_Inputs="false" Out_High_V="5 V" Out_Low_V="0 V" Out_Imped="40 Ω" pd_n="1 _Gates" Tpd_ps="10000 ps" Tr_ps="3000 ps" Tf_ps="4000 ps" />
 
-<item itemtype="7-Seg BCD" CircId="7 Seg BCD-33" mainComp="false" Show_id="false" Show_Val="false" Pos="380,-116" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-33" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7 Seg BCD-33" mainComp="false" Show_id="false" Show_Val="false" Pos="384,-188" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-33" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
 
-<item itemtype="7-Seg BCD" CircId="7 Seg BCD-49" mainComp="false" Show_id="false" Show_Val="false" Pos="316,-116" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-49" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7 Seg BCD-49" mainComp="false" Show_id="false" Show_Val="false" Pos="320,-188" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-49" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
 
-<item itemtype="7-Seg BCD" CircId="7 Seg BCD-50" mainComp="false" Show_id="false" Show_Val="false" Pos="284,-116" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-50" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7 Seg BCD-50" mainComp="false" Show_id="false" Show_Val="false" Pos="288,-188" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-50" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
 
-<item itemtype="7-Seg BCD" CircId="7 Seg BCD-55" mainComp="false" Show_id="false" Show_Val="false" Pos="348,-116" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-55" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7 Seg BCD-55" mainComp="false" Show_id="false" Show_Val="false" Pos="352,-188" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-55" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
 
-<item itemtype="7-Seg BCD" CircId="7 Seg BCD-56" mainComp="false" Show_id="false" Show_Val="false" Pos="252,-116" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-56" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7 Seg BCD-56" mainComp="false" Show_id="false" Show_Val="false" Pos="256,-188" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-56" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
 
-<item itemtype="7-Seg BCD" CircId="7 Seg BCD-62" mainComp="false" Show_id="false" Show_Val="false" Pos="220,-116" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-62" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7 Seg BCD-62" mainComp="false" Show_id="false" Show_Val="false" Pos="224,-188" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-62" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
 
-<item itemtype="7-Seg BCD" CircId="7 Seg BCD-69" mainComp="false" Show_id="false" Show_Val="false" Pos="156,-116" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-69" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7 Seg BCD-69" mainComp="false" Show_id="false" Show_Val="false" Pos="160,-188" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-69" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
 
 <item itemtype="Mux" CircId="Mux-84" mainComp="false" Show_id="true" Show_Val="false" Pos="-68,-92" rotation="0" hflip="1" vflip="1" label="2" idLabPos="-5.88677,-57.8404" labelrot="0" valLabPos="0,0" valLabRot="0" Address_Bits="3 _bits" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1e+14 Ω" Invert_Inputs="false" Out_High_V="5 V" Out_Low_V="0 V" Out_Imped="40 Ω" pd_n="1 _Gates" Tpd_ps="10000 ps" Tr_ps="3000 ps" Tf_ps="4000 ps" />
 
@@ -30,19 +30,23 @@
 
 <item itemtype="Subcircuit" CircId="74XX93-99" mainComp="false" Show_id="true" Show_Val="false" Pos="-308,16" rotation="0" hflip="1" vflip="1" label="74XX93" idLabPos="-2.39088,-14.1675" labelrot="0" valLabPos="0,0" valLabRot="0" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1e+09 Ω" Out_High_V="5 V" Out_Low_V="0 V" Out_Imped="40 Ω" Tpd_ps="10000 ps" Tr_ps="3000 ps" Tf_ps="4000 ps" Logic_Symbol="true" />
 
-<item itemtype="Seven Segment" CircId="7 Segment-104" mainComp="false" Show_id="false" Show_Val="false" Pos="156,4" rotation="0" hflip="1" vflip="1" label="7 Segment-108" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Color="Yellow" NumDisplays="8 _7seg" Vertical_Pins="false" CommonCathode="true" Threshold="2.4 V" MaxCurrent="0.007 A" Resistance="1 Ω" />
+<item itemtype="Seven Segment" CircId="7 Segment-104" mainComp="false" Show_id="false" Show_Val="false" Pos="156,4" rotation="0" hflip="1" vflip="1" label="7 Segment-108" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Color="Yellow" NumDisplays="8" Vertical_Pins="false" CommonCathode="true" Threshold="2.4 V" MaxCurrent="0.007 A" Resistance="1 Ω" />
 
-<item itemtype="Rail" CircId="Rail.-105" mainComp="false" ShowProp="Voltage" Show_id="false" Show_Val="true" Pos="68,-76" rotation="90" hflip="1" vflip="1" label="Rail.-109" idLabPos="-64,-24" labelrot="0" valLabPos="-14.8751,6.40507" valLabRot="-90" Voltage="5 V" />
+<item itemtype="Rail" CircId="Rail.-105" mainComp="false" ShowProp="Voltage" Show_id="false" Show_Val="true" Pos="68,-140" rotation="90" hflip="1" vflip="1" label="Rail.-109" idLabPos="-64,-24" labelrot="0" valLabPos="-14.8751,6.40507" valLabRot="-90" Voltage="5 V" />
 
-<item itemtype="7-Seg BCD" CircId="7 Seg BCD-79" mainComp="false" Show_id="false" Show_Val="false" Pos="188,-116" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-79" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7 Seg BCD-79" mainComp="false" Show_id="false" Show_Val="false" Pos="192,-188" rotation="0" hflip="1" vflip="1" label="7 Seg BCD-79" idLabPos="-16,-24" labelrot="0" valLabPos="0,0" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
 
-<item itemtype="Bus" CircId="Bus-179" mainComp="false" Show_id="false" Show_Val="false" Pos="392,-84" rotation="90" hflip="-1" vflip="1" label="Bus-179" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Num_Bits="32 _bits" Start_Bit="0" />
+<item itemtype="Bus" CircId="Bus-179" mainComp="false" Show_id="false" Show_Val="false" Pos="396,-156" rotation="90" hflip="-1" vflip="1" label="Bus-179" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Num_Bits="32 _bits" Start_Bit="0" />
 
 <item itemtype="Bus" CircId="Bus-180" mainComp="false" Show_id="false" Show_Val="false" Pos="4,-412" rotation="0" hflip="1" vflip="-1" label="Bus-180" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Num_Bits="32 _bits" Start_Bit="0" />
 
-<item itemtype="SwitchDip" CircId="SwitchDip-182" mainComp="false" Show_id="false" Show_Val="false" Pos="168,-60" rotation="-90" hflip="1" vflip="1" label="SwitchDip-182" idLabPos="-16,-44" labelrot="0" valLabPos="-16,20" valLabRot="0" Size="32" Exclusive="false" CommonPin="true" State="510274632" />
+<item itemtype="SwitchDip" CircId="SwitchDip-182" mainComp="false" Show_id="false" Show_Val="false" Pos="172,-132" rotation="-90" hflip="1" vflip="1" label="SwitchDip-182" idLabPos="-16,-44" labelrot="0" valLabPos="-16,20" valLabRot="0" Size="32" Exclusive="false" CommonPin="true" State="510274632" />
 
-<item itemtype="Bus" CircId="Bus-181" mainComp="false" Show_id="false" Show_Val="false" Pos="392,-80" rotation="90" hflip="-1" vflip="-1" label="Bus-181" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Num_Bits="32 _bits" Start_Bit="0" />
+<item itemtype="Bus" CircId="Bus-181" mainComp="false" Show_id="false" Show_Val="false" Pos="396,-152" rotation="90" hflip="-1" vflip="-1" label="Bus-181" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Num_Bits="32 _bits" Start_Bit="0" />
+
+<item itemtype="TextComponent" CircId="TextComponent-192" mainComp="false" Show_id="false" Show_Val="false" Pos="252,-248" rotation="0" hflip="1" vflip="1" label="TextComponent-192" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Margin="5 _px" Border="1 _px" Color="#ffffdc" Opacity="1" Font="Helvetica [Cronyx]" Font_Color="#000080" Font_Size="10 _px" Fixed_Width="true" Text="INPUT" />
+
+<item itemtype="TextComponent" CircId="TextComponent-193" mainComp="false" Show_id="false" Show_Val="false" Pos="244,-60" rotation="0" hflip="1" vflip="1" label="TextComponent-193" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Margin="5 _px" Border="1 _px" Color="#ffffdc" Opacity="1" Font="Helvetica [Cronyx]" Font_Color="#000080" Font_Size="10 _px" Fixed_Width="true" Text="Display" />
 
 <item itemtype="Node" CircId="Node-7" mainComp="false" Pos="-76,16" />
 
@@ -64,7 +68,7 @@
 
 <item itemtype="Node" CircId="Node-106" mainComp="false" Pos="68,12" />
 
-<item itemtype="Node" CircId="Node-183" mainComp="false" Pos="68,-52" />
+<item itemtype="Node" CircId="Node-183" mainComp="false" Pos="68,-116" />
 
 <item itemtype="Node" CircId="Node-187" mainComp="false" Pos="28,32" />
 
@@ -186,11 +190,11 @@
 
 <item itemtype="Connector" uid="Connector-664" startpinid="Bus-180-ePin32" endpinid="Mux-25-in7" pointList="-4,-412,-300,-412,-300,-68,-268,-68" />
 
-<item itemtype="Connector" uid="Connector-697" startpinid="SwitchDip-182-switch0-pinP" endpinid="Node-183-1" pointList="144,-52,68,-52" />
+<item itemtype="Connector" uid="Connector-697" startpinid="SwitchDip-182-switch0-pinP" endpinid="Node-183-1" pointList="148,-124,148,-116,68,-116" />
 
-<item itemtype="Connector" uid="Connector-698" startpinid="Rail.-105-outnod" endpinid="Node-183-0" pointList="68,-60,68,-52" />
+<item itemtype="Connector" uid="Connector-698" startpinid="Rail.-105-outnod" endpinid="Node-183-0" pointList="68,-124,68,-116" />
 
-<item itemtype="Connector" uid="Connector-699" startpinid="Node-183-2" endpinid="Node-106-0" pointList="68,-52,68,12" />
+<item itemtype="Connector" uid="Connector-699" startpinid="Node-183-2" endpinid="Node-106-0" pointList="68,-116,68,12" />
 
 <item itemtype="Connector" uid="Connector-702" startpinid="Bcd To Dec.-13-out0" endpinid="7 Segment-104-pin_commona" pointList="84,44,164,44,164,36" />
 
@@ -208,137 +212,137 @@
 
 <item itemtype="Connector" uid="Connector-709" startpinid="Bcd To Dec.-13-out7" endpinid="7 Segment-104-pin_commonh" pointList="84,100,388,100,388,36" />
 
-<item itemtype="Connector" uid="Connector-806" startpinid="Bus-179-ePin32" endpinid="7 Seg BCD-33-in0" pointList="392,-92,392,-84" />
+<item itemtype="Connector" uid="Connector-806" startpinid="Bus-179-ePin32" endpinid="7 Seg BCD-33-in0" pointList="396,-164,396,-156" />
 
-<item itemtype="Connector" uid="Connector-805" startpinid="Bus-179-ePin31" endpinid="7 Seg BCD-33-in1" pointList="384,-92,384,-84" />
+<item itemtype="Connector" uid="Connector-805" startpinid="Bus-179-ePin31" endpinid="7 Seg BCD-33-in1" pointList="388,-164,388,-156" />
 
-<item itemtype="Connector" uid="Connector-804" startpinid="Bus-179-ePin30" endpinid="7 Seg BCD-33-in2" pointList="376,-92,376,-84" />
+<item itemtype="Connector" uid="Connector-804" startpinid="Bus-179-ePin30" endpinid="7 Seg BCD-33-in2" pointList="380,-164,380,-156" />
 
-<item itemtype="Connector" uid="Connector-803" startpinid="Bus-179-ePin29" endpinid="7 Seg BCD-33-in3" pointList="368,-92,368,-84" />
+<item itemtype="Connector" uid="Connector-803" startpinid="Bus-179-ePin29" endpinid="7 Seg BCD-33-in3" pointList="372,-164,372,-156" />
 
-<item itemtype="Connector" uid="Connector-802" startpinid="Bus-179-ePin28" endpinid="7 Seg BCD-55-in0" pointList="360,-92,360,-84" />
+<item itemtype="Connector" uid="Connector-802" startpinid="Bus-179-ePin28" endpinid="7 Seg BCD-55-in0" pointList="364,-164,364,-156" />
 
-<item itemtype="Connector" uid="Connector-801" startpinid="Bus-179-ePin27" endpinid="7 Seg BCD-55-in1" pointList="352,-92,352,-84" />
+<item itemtype="Connector" uid="Connector-801" startpinid="Bus-179-ePin27" endpinid="7 Seg BCD-55-in1" pointList="356,-164,356,-156" />
 
-<item itemtype="Connector" uid="Connector-800" startpinid="Bus-179-ePin26" endpinid="7 Seg BCD-55-in2" pointList="344,-92,344,-84" />
+<item itemtype="Connector" uid="Connector-800" startpinid="Bus-179-ePin26" endpinid="7 Seg BCD-55-in2" pointList="348,-164,348,-156" />
 
-<item itemtype="Connector" uid="Connector-799" startpinid="Bus-179-ePin25" endpinid="7 Seg BCD-55-in3" pointList="336,-92,336,-84" />
+<item itemtype="Connector" uid="Connector-799" startpinid="Bus-179-ePin25" endpinid="7 Seg BCD-55-in3" pointList="340,-164,340,-156" />
 
-<item itemtype="Connector" uid="Connector-798" startpinid="Bus-179-ePin24" endpinid="7 Seg BCD-49-in0" pointList="328,-92,328,-84" />
+<item itemtype="Connector" uid="Connector-798" startpinid="Bus-179-ePin24" endpinid="7 Seg BCD-49-in0" pointList="332,-164,332,-156" />
 
-<item itemtype="Connector" uid="Connector-797" startpinid="Bus-179-ePin23" endpinid="7 Seg BCD-49-in1" pointList="320,-92,320,-84" />
+<item itemtype="Connector" uid="Connector-797" startpinid="Bus-179-ePin23" endpinid="7 Seg BCD-49-in1" pointList="324,-164,324,-156" />
 
-<item itemtype="Connector" uid="Connector-796" startpinid="Bus-179-ePin22" endpinid="7 Seg BCD-49-in2" pointList="312,-92,312,-84" />
+<item itemtype="Connector" uid="Connector-796" startpinid="Bus-179-ePin22" endpinid="7 Seg BCD-49-in2" pointList="316,-164,316,-156" />
 
-<item itemtype="Connector" uid="Connector-795" startpinid="Bus-179-ePin21" endpinid="7 Seg BCD-49-in3" pointList="304,-92,304,-84" />
+<item itemtype="Connector" uid="Connector-795" startpinid="Bus-179-ePin21" endpinid="7 Seg BCD-49-in3" pointList="308,-164,308,-156" />
 
-<item itemtype="Connector" uid="Connector-794" startpinid="Bus-179-ePin20" endpinid="7 Seg BCD-50-in0" pointList="296,-92,296,-84" />
+<item itemtype="Connector" uid="Connector-794" startpinid="Bus-179-ePin20" endpinid="7 Seg BCD-50-in0" pointList="300,-164,300,-156" />
 
-<item itemtype="Connector" uid="Connector-793" startpinid="Bus-179-ePin19" endpinid="7 Seg BCD-50-in1" pointList="288,-92,288,-84" />
+<item itemtype="Connector" uid="Connector-793" startpinid="Bus-179-ePin19" endpinid="7 Seg BCD-50-in1" pointList="292,-164,292,-156" />
 
-<item itemtype="Connector" uid="Connector-792" startpinid="Bus-179-ePin18" endpinid="7 Seg BCD-50-in2" pointList="280,-92,280,-84" />
+<item itemtype="Connector" uid="Connector-792" startpinid="Bus-179-ePin18" endpinid="7 Seg BCD-50-in2" pointList="284,-164,284,-156" />
 
-<item itemtype="Connector" uid="Connector-791" startpinid="Bus-179-ePin17" endpinid="7 Seg BCD-50-in3" pointList="272,-92,272,-84" />
+<item itemtype="Connector" uid="Connector-791" startpinid="Bus-179-ePin17" endpinid="7 Seg BCD-50-in3" pointList="276,-164,276,-156" />
 
-<item itemtype="Connector" uid="Connector-790" startpinid="Bus-179-ePin16" endpinid="7 Seg BCD-56-in0" pointList="264,-92,264,-84" />
+<item itemtype="Connector" uid="Connector-790" startpinid="Bus-179-ePin16" endpinid="7 Seg BCD-56-in0" pointList="268,-164,268,-156" />
 
-<item itemtype="Connector" uid="Connector-789" startpinid="Bus-179-ePin15" endpinid="7 Seg BCD-56-in1" pointList="256,-92,256,-84" />
+<item itemtype="Connector" uid="Connector-789" startpinid="Bus-179-ePin15" endpinid="7 Seg BCD-56-in1" pointList="260,-164,260,-156" />
 
-<item itemtype="Connector" uid="Connector-788" startpinid="Bus-179-ePin14" endpinid="7 Seg BCD-56-in2" pointList="248,-92,248,-84" />
+<item itemtype="Connector" uid="Connector-788" startpinid="Bus-179-ePin14" endpinid="7 Seg BCD-56-in2" pointList="252,-164,252,-156" />
 
-<item itemtype="Connector" uid="Connector-787" startpinid="Bus-179-ePin13" endpinid="7 Seg BCD-56-in3" pointList="240,-92,240,-84" />
+<item itemtype="Connector" uid="Connector-787" startpinid="Bus-179-ePin13" endpinid="7 Seg BCD-56-in3" pointList="244,-164,244,-156" />
 
-<item itemtype="Connector" uid="Connector-786" startpinid="Bus-179-ePin12" endpinid="7 Seg BCD-62-in0" pointList="232,-92,232,-84" />
+<item itemtype="Connector" uid="Connector-786" startpinid="Bus-179-ePin12" endpinid="7 Seg BCD-62-in0" pointList="236,-164,236,-156" />
 
-<item itemtype="Connector" uid="Connector-785" startpinid="Bus-179-ePin11" endpinid="7 Seg BCD-62-in1" pointList="224,-92,224,-84" />
+<item itemtype="Connector" uid="Connector-785" startpinid="Bus-179-ePin11" endpinid="7 Seg BCD-62-in1" pointList="228,-164,228,-156" />
 
-<item itemtype="Connector" uid="Connector-784" startpinid="Bus-179-ePin10" endpinid="7 Seg BCD-62-in2" pointList="216,-92,216,-84" />
+<item itemtype="Connector" uid="Connector-784" startpinid="Bus-179-ePin10" endpinid="7 Seg BCD-62-in2" pointList="220,-164,220,-156" />
 
-<item itemtype="Connector" uid="Connector-783" startpinid="Bus-179-ePin9" endpinid="7 Seg BCD-62-in3" pointList="208,-92,208,-84" />
+<item itemtype="Connector" uid="Connector-783" startpinid="Bus-179-ePin9" endpinid="7 Seg BCD-62-in3" pointList="212,-164,212,-156" />
 
-<item itemtype="Connector" uid="Connector-782" startpinid="Bus-179-ePin8" endpinid="7 Seg BCD-79-in0" pointList="200,-92,200,-84" />
+<item itemtype="Connector" uid="Connector-782" startpinid="Bus-179-ePin8" endpinid="7 Seg BCD-79-in0" pointList="204,-164,204,-156" />
 
-<item itemtype="Connector" uid="Connector-781" startpinid="Bus-179-ePin7" endpinid="7 Seg BCD-79-in1" pointList="192,-92,192,-84" />
+<item itemtype="Connector" uid="Connector-781" startpinid="Bus-179-ePin7" endpinid="7 Seg BCD-79-in1" pointList="196,-164,196,-156" />
 
-<item itemtype="Connector" uid="Connector-780" startpinid="Bus-179-ePin6" endpinid="7 Seg BCD-79-in2" pointList="184,-92,184,-84" />
+<item itemtype="Connector" uid="Connector-780" startpinid="Bus-179-ePin6" endpinid="7 Seg BCD-79-in2" pointList="188,-164,188,-156" />
 
-<item itemtype="Connector" uid="Connector-779" startpinid="Bus-179-ePin5" endpinid="7 Seg BCD-79-in3" pointList="176,-92,176,-84" />
+<item itemtype="Connector" uid="Connector-779" startpinid="Bus-179-ePin5" endpinid="7 Seg BCD-79-in3" pointList="180,-164,180,-156" />
 
-<item itemtype="Connector" uid="Connector-778" startpinid="Bus-179-ePin4" endpinid="7 Seg BCD-69-in0" pointList="168,-92,168,-84" />
+<item itemtype="Connector" uid="Connector-778" startpinid="Bus-179-ePin4" endpinid="7 Seg BCD-69-in0" pointList="172,-164,172,-156" />
 
-<item itemtype="Connector" uid="Connector-777" startpinid="Bus-179-ePin3" endpinid="7 Seg BCD-69-in1" pointList="160,-92,160,-84" />
+<item itemtype="Connector" uid="Connector-777" startpinid="Bus-179-ePin3" endpinid="7 Seg BCD-69-in1" pointList="164,-164,164,-156" />
 
-<item itemtype="Connector" uid="Connector-776" startpinid="Bus-179-ePin2" endpinid="7 Seg BCD-69-in2" pointList="152,-92,152,-84" />
+<item itemtype="Connector" uid="Connector-776" startpinid="Bus-179-ePin2" endpinid="7 Seg BCD-69-in2" pointList="156,-164,156,-156" />
 
-<item itemtype="Connector" uid="Connector-775" startpinid="Bus-179-ePin1" endpinid="7 Seg BCD-69-in3" pointList="144,-92,144,-84" />
+<item itemtype="Connector" uid="Connector-775" startpinid="Bus-179-ePin1" endpinid="7 Seg BCD-69-in3" pointList="148,-164,148,-156" />
 
-<item itemtype="Connector" uid="Connector-838" startpinid="Bus-181-ePin32" endpinid="SwitchDip-182-switch31-pinN" pointList="392,-72,392,-76" />
+<item itemtype="Connector" uid="Connector-838" startpinid="Bus-181-ePin32" endpinid="SwitchDip-182-switch31-pinN" pointList="396,-144,396,-148" />
 
-<item itemtype="Connector" uid="Connector-837" startpinid="Bus-181-ePin31" endpinid="SwitchDip-182-switch30-pinN" pointList="384,-72,384,-76" />
+<item itemtype="Connector" uid="Connector-837" startpinid="Bus-181-ePin31" endpinid="SwitchDip-182-switch30-pinN" pointList="388,-144,388,-148" />
 
-<item itemtype="Connector" uid="Connector-836" startpinid="Bus-181-ePin30" endpinid="SwitchDip-182-switch29-pinN" pointList="376,-72,376,-76" />
+<item itemtype="Connector" uid="Connector-836" startpinid="Bus-181-ePin30" endpinid="SwitchDip-182-switch29-pinN" pointList="380,-144,380,-148" />
 
-<item itemtype="Connector" uid="Connector-835" startpinid="Bus-181-ePin29" endpinid="SwitchDip-182-switch28-pinN" pointList="368,-72,368,-76" />
+<item itemtype="Connector" uid="Connector-835" startpinid="Bus-181-ePin29" endpinid="SwitchDip-182-switch28-pinN" pointList="372,-144,372,-148" />
 
-<item itemtype="Connector" uid="Connector-834" startpinid="Bus-181-ePin28" endpinid="SwitchDip-182-switch27-pinN" pointList="360,-72,360,-76" />
+<item itemtype="Connector" uid="Connector-834" startpinid="Bus-181-ePin28" endpinid="SwitchDip-182-switch27-pinN" pointList="364,-144,364,-148" />
 
-<item itemtype="Connector" uid="Connector-833" startpinid="Bus-181-ePin27" endpinid="SwitchDip-182-switch26-pinN" pointList="352,-72,352,-76" />
+<item itemtype="Connector" uid="Connector-833" startpinid="Bus-181-ePin27" endpinid="SwitchDip-182-switch26-pinN" pointList="356,-144,356,-148" />
 
-<item itemtype="Connector" uid="Connector-832" startpinid="Bus-181-ePin26" endpinid="SwitchDip-182-switch25-pinN" pointList="344,-72,344,-76" />
+<item itemtype="Connector" uid="Connector-832" startpinid="Bus-181-ePin26" endpinid="SwitchDip-182-switch25-pinN" pointList="348,-144,348,-148" />
 
-<item itemtype="Connector" uid="Connector-831" startpinid="Bus-181-ePin25" endpinid="SwitchDip-182-switch24-pinN" pointList="336,-72,336,-76" />
+<item itemtype="Connector" uid="Connector-831" startpinid="Bus-181-ePin25" endpinid="SwitchDip-182-switch24-pinN" pointList="340,-144,340,-148" />
 
-<item itemtype="Connector" uid="Connector-830" startpinid="Bus-181-ePin24" endpinid="SwitchDip-182-switch23-pinN" pointList="328,-72,328,-76" />
+<item itemtype="Connector" uid="Connector-830" startpinid="Bus-181-ePin24" endpinid="SwitchDip-182-switch23-pinN" pointList="332,-144,332,-148" />
 
-<item itemtype="Connector" uid="Connector-829" startpinid="Bus-181-ePin23" endpinid="SwitchDip-182-switch22-pinN" pointList="320,-72,320,-76" />
+<item itemtype="Connector" uid="Connector-829" startpinid="Bus-181-ePin23" endpinid="SwitchDip-182-switch22-pinN" pointList="324,-144,324,-148" />
 
-<item itemtype="Connector" uid="Connector-828" startpinid="Bus-181-ePin22" endpinid="SwitchDip-182-switch21-pinN" pointList="312,-72,312,-76" />
+<item itemtype="Connector" uid="Connector-828" startpinid="Bus-181-ePin22" endpinid="SwitchDip-182-switch21-pinN" pointList="316,-144,316,-148" />
 
-<item itemtype="Connector" uid="Connector-827" startpinid="Bus-181-ePin21" endpinid="SwitchDip-182-switch20-pinN" pointList="304,-72,304,-76" />
+<item itemtype="Connector" uid="Connector-827" startpinid="Bus-181-ePin21" endpinid="SwitchDip-182-switch20-pinN" pointList="308,-144,308,-148" />
 
-<item itemtype="Connector" uid="Connector-826" startpinid="Bus-181-ePin20" endpinid="SwitchDip-182-switch19-pinN" pointList="296,-72,296,-76" />
+<item itemtype="Connector" uid="Connector-826" startpinid="Bus-181-ePin20" endpinid="SwitchDip-182-switch19-pinN" pointList="300,-144,300,-148" />
 
-<item itemtype="Connector" uid="Connector-825" startpinid="Bus-181-ePin19" endpinid="SwitchDip-182-switch18-pinN" pointList="288,-72,288,-76" />
+<item itemtype="Connector" uid="Connector-825" startpinid="Bus-181-ePin19" endpinid="SwitchDip-182-switch18-pinN" pointList="292,-144,292,-148" />
 
-<item itemtype="Connector" uid="Connector-824" startpinid="Bus-181-ePin18" endpinid="SwitchDip-182-switch17-pinN" pointList="280,-72,280,-76" />
+<item itemtype="Connector" uid="Connector-824" startpinid="Bus-181-ePin18" endpinid="SwitchDip-182-switch17-pinN" pointList="284,-144,284,-148" />
 
-<item itemtype="Connector" uid="Connector-823" startpinid="Bus-181-ePin17" endpinid="SwitchDip-182-switch16-pinN" pointList="272,-72,272,-76" />
+<item itemtype="Connector" uid="Connector-823" startpinid="Bus-181-ePin17" endpinid="SwitchDip-182-switch16-pinN" pointList="276,-144,276,-148" />
 
-<item itemtype="Connector" uid="Connector-822" startpinid="Bus-181-ePin16" endpinid="SwitchDip-182-switch15-pinN" pointList="264,-72,264,-76" />
+<item itemtype="Connector" uid="Connector-822" startpinid="Bus-181-ePin16" endpinid="SwitchDip-182-switch15-pinN" pointList="268,-144,268,-148" />
 
-<item itemtype="Connector" uid="Connector-821" startpinid="Bus-181-ePin15" endpinid="SwitchDip-182-switch14-pinN" pointList="256,-72,256,-76" />
+<item itemtype="Connector" uid="Connector-821" startpinid="Bus-181-ePin15" endpinid="SwitchDip-182-switch14-pinN" pointList="260,-144,260,-148" />
 
-<item itemtype="Connector" uid="Connector-820" startpinid="Bus-181-ePin14" endpinid="SwitchDip-182-switch13-pinN" pointList="248,-72,248,-76" />
+<item itemtype="Connector" uid="Connector-820" startpinid="Bus-181-ePin14" endpinid="SwitchDip-182-switch13-pinN" pointList="252,-144,252,-148" />
 
-<item itemtype="Connector" uid="Connector-819" startpinid="Bus-181-ePin13" endpinid="SwitchDip-182-switch12-pinN" pointList="240,-72,240,-76" />
+<item itemtype="Connector" uid="Connector-819" startpinid="Bus-181-ePin13" endpinid="SwitchDip-182-switch12-pinN" pointList="244,-144,244,-148" />
 
-<item itemtype="Connector" uid="Connector-818" startpinid="Bus-181-ePin12" endpinid="SwitchDip-182-switch11-pinN" pointList="232,-72,232,-76" />
+<item itemtype="Connector" uid="Connector-818" startpinid="Bus-181-ePin12" endpinid="SwitchDip-182-switch11-pinN" pointList="236,-144,236,-148" />
 
-<item itemtype="Connector" uid="Connector-817" startpinid="Bus-181-ePin11" endpinid="SwitchDip-182-switch10-pinN" pointList="224,-72,224,-76" />
+<item itemtype="Connector" uid="Connector-817" startpinid="Bus-181-ePin11" endpinid="SwitchDip-182-switch10-pinN" pointList="228,-144,228,-148" />
 
-<item itemtype="Connector" uid="Connector-816" startpinid="Bus-181-ePin10" endpinid="SwitchDip-182-switch9-pinN" pointList="216,-72,216,-76" />
+<item itemtype="Connector" uid="Connector-816" startpinid="Bus-181-ePin10" endpinid="SwitchDip-182-switch9-pinN" pointList="220,-144,220,-148" />
 
-<item itemtype="Connector" uid="Connector-815" startpinid="Bus-181-ePin9" endpinid="SwitchDip-182-switch8-pinN" pointList="208,-72,208,-76" />
+<item itemtype="Connector" uid="Connector-815" startpinid="Bus-181-ePin9" endpinid="SwitchDip-182-switch8-pinN" pointList="212,-144,212,-148" />
 
-<item itemtype="Connector" uid="Connector-814" startpinid="Bus-181-ePin8" endpinid="SwitchDip-182-switch7-pinN" pointList="200,-72,200,-76" />
+<item itemtype="Connector" uid="Connector-814" startpinid="Bus-181-ePin8" endpinid="SwitchDip-182-switch7-pinN" pointList="204,-144,204,-148" />
 
-<item itemtype="Connector" uid="Connector-813" startpinid="Bus-181-ePin7" endpinid="SwitchDip-182-switch6-pinN" pointList="192,-72,192,-76" />
+<item itemtype="Connector" uid="Connector-813" startpinid="Bus-181-ePin7" endpinid="SwitchDip-182-switch6-pinN" pointList="196,-144,196,-148" />
 
-<item itemtype="Connector" uid="Connector-812" startpinid="Bus-181-ePin6" endpinid="SwitchDip-182-switch5-pinN" pointList="184,-72,184,-76" />
+<item itemtype="Connector" uid="Connector-812" startpinid="Bus-181-ePin6" endpinid="SwitchDip-182-switch5-pinN" pointList="188,-144,188,-148" />
 
-<item itemtype="Connector" uid="Connector-811" startpinid="Bus-181-ePin5" endpinid="SwitchDip-182-switch4-pinN" pointList="176,-72,176,-76" />
+<item itemtype="Connector" uid="Connector-811" startpinid="Bus-181-ePin5" endpinid="SwitchDip-182-switch4-pinN" pointList="180,-144,180,-148" />
 
-<item itemtype="Connector" uid="Connector-810" startpinid="Bus-181-ePin4" endpinid="SwitchDip-182-switch3-pinN" pointList="168,-72,168,-76" />
+<item itemtype="Connector" uid="Connector-810" startpinid="Bus-181-ePin4" endpinid="SwitchDip-182-switch3-pinN" pointList="172,-144,172,-148" />
 
-<item itemtype="Connector" uid="Connector-809" startpinid="Bus-181-ePin3" endpinid="SwitchDip-182-switch2-pinN" pointList="160,-72,160,-76" />
+<item itemtype="Connector" uid="Connector-809" startpinid="Bus-181-ePin3" endpinid="SwitchDip-182-switch2-pinN" pointList="164,-144,164,-148" />
 
-<item itemtype="Connector" uid="Connector-808" startpinid="Bus-181-ePin2" endpinid="SwitchDip-182-switch1-pinN" pointList="152,-72,152,-76" />
+<item itemtype="Connector" uid="Connector-808" startpinid="Bus-181-ePin2" endpinid="SwitchDip-182-switch1-pinN" pointList="156,-144,156,-148" />
 
-<item itemtype="Connector" uid="Connector-807" startpinid="Bus-181-ePin1" endpinid="SwitchDip-182-switch0-pinN" pointList="144,-72,144,-76" />
+<item itemtype="Connector" uid="Connector-807" startpinid="Bus-181-ePin1" endpinid="SwitchDip-182-switch0-pinN" pointList="148,-144,148,-148" />
 
-<item itemtype="Connector" uid="Connector-839" startpinid="Bus-181-ePin0" endpinid="Bus-179-ePin0" pointList="392,-80,392,-84" />
+<item itemtype="Connector" uid="Connector-839" startpinid="Bus-181-ePin0" endpinid="Bus-179-ePin0" pointList="396,-152,396,-156" />
 
-<item itemtype="Connector" uid="Connector-840" startpinid="Bus-179-busPinI" endpinid="Bus-180-busPinI" pointList="144,-84,108,-84,108,-156,4,-156,4,-164" />
+<item itemtype="Connector" uid="Connector-840" startpinid="Bus-179-busPinI" endpinid="Bus-180-busPinI" pointList="148,-156,4,-156,4,-164" />
 
 <item itemtype="Connector" uid="Connector-918" startpinid="Mux-31-in8" endpinid="Node-187-0" pointList="28,-44,28,32" />
 
