@@ -322,6 +322,10 @@ void IoPin::registerScript( asIScriptEngine* engine )
                                    , asMETHODPR( IoPin, setVoltage, (double), void)
                                    , asCALL_THISCALL );
 
+    engine->RegisterObjectMethod("IoPin", "void setOutHighV(double v)"
+                                   , asMETHODPR( IoPin, setOutHighV, (double), void)
+                                   , asCALL_THISCALL );
+
     engine->RegisterObjectMethod("IoPin", "void setImpedance( double imp )"
                                    , asMETHODPR( IoPin, setImpedance, (double), void)
                                    , asCALL_THISCALL );
