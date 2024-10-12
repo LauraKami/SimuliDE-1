@@ -8,6 +8,7 @@
 #include "scriptmodule.h"
 #include "scriptstdstring.h"
 #include "scriptarray.h"
+#include "mainwindow.h"
 #include "editorwindow.h"
 #include "utils.h"
 
@@ -36,6 +37,7 @@ ScriptModule::ScriptModule( QString name )
 {
     m_aEngine = NULL;
     m_context = NULL;
+    m_aEngine = NULL;
 
     m_aEngine = asCreateScriptEngine();
     if( m_aEngine == 0 ) { qDebug() << "Failed to create script engine."; return; }
@@ -69,7 +71,9 @@ ScriptModule::~ScriptModule()
 
 void ScriptModule::setScriptFile( QString scriptFile, bool )
 {
-    m_script = fileToString( scriptFile, "ScriptModule::setScriptFile" );
+    m_scriptFile = scriptFile;
+    m_scriptFolder = QFileInfo( scriptFile ).absolutePath();
+    setScript( fileToString( scriptFile, "ScriptBase::setScriptFile" ) );
 }
 
 void ScriptModule::setScript( QString script )
@@ -81,20 +85,56 @@ int ScriptModule::compileScript()
 {
     if( !m_aEngine ) return -1;
 
-    std::string script = m_script.toStdString();
-    int len = m_script.size();
-
     m_aEngine->GarbageCollect( asGC_FULL_CYCLE );
+    m_asModule = m_aEngine->GetModule( 0, asGM_ALWAYS_CREATE );
 
-    asIScriptModule* mod = m_aEngine->GetModule( 0, asGM_ALWAYS_CREATE );
-    int r = mod->AddScriptSection("script", &script[0], len );
-    if( r < 0 ) { qDebug() << "\nScriptModule::compileScript: AddScriptSection() failed\n"; return -1; }
+    int r = compileSection( m_scriptFile, m_script );
+    if( r < 0 ) return -1;
 
-    r = mod->Build();
-    if( r < 0 ) { qDebug() << endl << m_elmId+" ScriptModule::compileScript Error"<< endl; return -1; }
+    r = m_asModule->Build();
+    if( r < 0 ) { qDebug() << endl << m_elmId+" ScriptBase::compileScript Error"<< endl; return -1; }
 
-    //qDebug() << "\nScriptModule::compileScript: Build() Success\n";
+    //qDebug() << "\nScriptBase::compileScript: Build() Success\n";
     return 0;
+}
+
+int ScriptModule::compileSection( QString sriptFile, QString text )
+{
+    int ok = 0;
+
+    QStringList lines = text.split("\n");
+    text.clear();
+    for( QString line : lines )                // Get includes
+    {
+        if( line.contains("#include") )
+        {
+            QString file = line.remove("#include").remove(" ");
+            while( file.startsWith(" ") ) file = file.right( file.length()-1 );
+
+            if( file.startsWith("\"") )
+            {
+                file = file.right( file.length()-1 );
+                file = file.split("\"").first();
+                file.prepend( m_scriptFolder+"/" );
+            }
+            else if( file.startsWith("<") )
+            {
+                file = file.remove("<").split(">").first();
+                file.prepend( MainWindow::self()->getDataFilePath("scriptlib")+"/" );
+            }
+            line = fileToString( file, "ScriptBase::compileScript" );
+            int r = compileSection( file, line );
+            if( r < 0 ) ok = r;
+            line.clear();
+        }
+        text.append( line+"\n");
+    }
+    std::string script = text.toStdString();
+
+    int r = m_asModule->AddScriptSection( sriptFile.toLocal8Bit().data(), &script[0], script.size() );
+    if( r < 0 ) { qDebug() << "\nScriptBase::compileSection: AddScriptSection() failed\n"; return -1; }
+
+    return ok;
 }
 
 /*int ScriptModule::SaveBytecode(asIScriptEngine *engine, const char *outputFile)

@@ -34,13 +34,17 @@ class ScriptModule : public eElement
 
     protected:
         void printError( asIScriptContext* context );
+        int compileSection( QString sriptFile, QString text );
 
         int m_status;
 
         QString m_script;
+        QString m_scriptFile;
+        QString m_scriptFolder;
 
         asCJITCompiler* m_jit;
         asIScriptEngine* m_aEngine;
+        asIScriptModule* m_asModule;
         asIScriptContext* m_context;
 };
 #endif
