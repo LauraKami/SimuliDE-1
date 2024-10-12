@@ -19,6 +19,7 @@ Display::Display( uint w, uint h, QString name, QWidget* parent )
 
     m_background= 0;
     m_changed = false;
+    m_embed = false;
 
     updtImageSize();
 }
@@ -157,6 +158,8 @@ void Display::updtImageSize()
 
 void Display::paintEvent( QPaintEvent* )
 {
+    if( m_embed ) return;
+
     QPainter p(this);
 
     for( uint x=0; x<m_width; x++ )
