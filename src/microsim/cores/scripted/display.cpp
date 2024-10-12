@@ -84,6 +84,44 @@ void Display::setBackground( int b )
     updtImageSize();
 }
 
+void Display::clear()
+{
+    for( uint x=0; x<m_width; ++x )
+        for( uint y=0; y<m_height; ++y )
+            setPixel( x, y, m_background );
+}
+
+void Display::drawLine( uint x0, uint y0, uint x1, uint y1, int color )
+{
+    if( x0 > x1 ) {
+        uint temp = x0;
+        x0 = x1;
+        x1 = temp;
+    }
+    if( y0 > y1 ) {
+        uint temp = y0;
+        y0 = y1;
+        y1 = temp;
+    }
+    uint xDelta = x1-x0;
+    uint yDelta = y1-y0;
+
+    uint stepY = xDelta ? yDelta/xDelta : yDelta;
+    uint endX  = xDelta ? x1-1 : x1;
+
+    uint y;
+    for( uint x=x0; x<=endX; ++x )
+    {
+        if( x >= m_width ) break;
+        for( y=y0; y<=y0+stepY; ++y )
+        {
+            if( y >= m_height ) break;
+            setPixel( x, y, color );
+        }
+        if( yDelta > 0 ) y0 = y;
+    }
+}
+
 /*void Display::setLine( std::vector<int> line )
 {
     for( uint x=0; x<line.size(); x++ )
