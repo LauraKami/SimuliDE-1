@@ -1271,6 +1271,8 @@ void McuCreator::createDisplay( QDomElement* e )
         double scale = e->attribute("scale").toDouble();
         display->setMonitorScale( scale );
     }
+
+    if( e->hasAttribute("margins") ) m_mcuComp->setMargins( e->attribute("margins") );
 }
 
 void McuCreator::createStack( QDomElement* s )
