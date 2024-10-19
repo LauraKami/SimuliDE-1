@@ -17,6 +17,7 @@ class AvrSpi : public McuSpi
         ~AvrSpi();
 
         virtual void setMode( spiMode_t mode ) override;
+        virtual void ssChanged( bool enable ) override;
         virtual void configureA( uint8_t newSPCR ) override;
         virtual void writeStatus( uint8_t newSPSR ) override;
         virtual void writeSpiReg( uint8_t newSPDR ) override;
