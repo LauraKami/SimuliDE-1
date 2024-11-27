@@ -102,13 +102,8 @@
     <register  name="SPMCSR"  addr="0x0037"  reset=""  mask="" 
                bits="SELFPRGEN,PGERS,PGWRT,BLBSET,RWWSRE,0,RWWSB,SPMIE" />
 
-    <register  name="SPL"     addr="0x003D"  reset=""  mask="" 
-               bits="SP0,SP1,SP2,SP3,SP4,SP5,SP6,SP7" />
-    <register  name="SPH"     addr="0x003E"  reset=""  mask="" 
-               bits="SP8,SP9,SP10,SP11,0,0,0,0" />
-    <refister  name="SREG"    addr="0x003F"  reset=""  mask="" 
-               bits="I,T,H,S,V,N,Z,C" />
-  
+    <register  name="SPL"     addr="0x003D"  reset=""  mask="" bits="" />
+    <register  name="SPH"     addr="0x003E"  reset=""  mask="" bits="" />
   </regblock>
   
   <regblock  name="EXT_I/O_REG" start="0x0060" end="0x00FF" offset="0">

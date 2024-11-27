@@ -52,6 +52,7 @@ void AvrTimer::addOcUnit( McuOcUnit* ocUnit )
     if     ( ocUnit->getId().endsWith("A") ) m_OCA = ocUnit;
     else if( ocUnit->getId().endsWith("B") ) m_OCB = ocUnit;
     else if( ocUnit->getId().endsWith("C") ) m_OCC = ocUnit;
+    else if( !m_OCA )                        m_OCA = ocUnit;
 }
 
 McuOcUnit* AvrTimer::getOcUnit( QString name )

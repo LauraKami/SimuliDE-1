@@ -24,14 +24,13 @@
 
   <intosc name="intosc" />
 
-  <!-- timer0-2 8 bit, 1-2 16bit -->
   <timer name="TIMER0"  type="821" configregsA="TCCR0"
                         counter="TCNT0"
                         interrupt="T0_OVF"
                         prescalers="0,1,8,32,64,128,256,1024" 
                         prselect="CS00,CS01,CS02" >
 
-    <ocunit name="OC0" pin="PORTB4" ocreg="OCR0" bits="COM00,COM01" interrupt="T0CO" />
+    <ocunit name="OC0A" pin="PORTB4" ocreg="OCR0" bits="COM00,COM01" interrupt="T0CO" />
   </timer>
 
   <timer name="TIMER1"  type="160" configregsA="TCCR1A" configregsB="TCCR1B"
@@ -53,7 +52,7 @@
                         prescalers="0,1,8,32,64,128,256,1024"
                         prselect="CS20,CS21,CS22" >
 
-    <ocunit name="OC2" pin="PORTB7" ocreg="OCR2" bits="COM20,COM21" interrupt="T2CO" />
+    <ocunit name="OC2A" pin="PORTB7" ocreg="OCR2" bits="COM20,COM21" interrupt="T2CO" />
   </timer>
 
   <timer name="TIMER3" type="160" counter="TCNT3L,TCNT3H" configregsA="TCCR3A" configregsB="TCCR3B"
