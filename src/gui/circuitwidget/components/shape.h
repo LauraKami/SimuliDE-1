@@ -13,8 +13,10 @@ class Shape : public Component
     public:
         Shape( QString type, QString id );
         ~Shape();
+
+        void updateStep() override;
         
-        QRectF boundingRect() const {
+        QRectF boundingRect() const override {
             return QRectF( m_area.x()-m_border/2-1, m_area.y()-m_border/2-1, 
                            m_area.width()+m_border+2, m_area.height()+m_border+2 ); 
         }
@@ -45,6 +47,8 @@ class Shape : public Component
         int m_border;
 
         double m_opac;
+
+        bool m_changed;
 };
 
 #endif
