@@ -69,8 +69,8 @@ void AvrUsart::configureA( uint8_t newUCSRnA )
 
 void AvrUsart::configureB( uint8_t newUCSRnB ) // UCSRnB changed
 {
-    m_ucsz2 =  getRegBitsVal( newUCSRnB, m_UCSZ2 ) <<2;
-    m_dataBits = m_ucsz01+m_ucsz2+5;
+    m_ucsz2 =  getRegBitsVal( newUCSRnB, m_UCSZ2 ) << 2;
+    setDataBits( m_ucsz01+m_ucsz2+5 );
 
     uint8_t txEn = getRegBitsVal( newUCSRnB, m_txEn );
     if( txEn != m_sender->isEnabled() )
@@ -113,7 +113,7 @@ void AvrUsart::configureC( uint8_t newUCSRnC ) // UCSRnC changed
     m_mode     = getRegBitsVal( newUCSRnC, m_modeRB );    // UMSELn1, UMSELn0
     m_stopBits = getRegBitsVal( newUCSRnC, m_stopRB )+1;  // UPMn1, UPMno
     m_ucsz01   = getRegBitsVal( newUCSRnC, m_UCSZ01 );
-    m_dataBits = m_ucsz01+m_ucsz2+5;
+    setDataBits( m_ucsz01+m_ucsz2+5 );
 
     uint8_t par = getRegBitsVal( newUCSRnC, m_pariRB );
     if( par > 0 ) m_parity = (parity_t)(par-1);
@@ -174,7 +174,7 @@ void AvrUsart::frameSent( uint8_t data )
 
 void AvrUsart::setRxFlags( uint16_t frame )
 {
-    if( m_dataBits == 9 ) setBit9Rx( ( frame & (1<<8) ) ? 1 : 0 );
+    if( dataBits() == 9 ) setBit9Rx( ( frame & (1<<8) ) ? 1 : 0 );
 
     writeRegBits( m_FE, frame & frameError );   // frameError
     writeRegBits( m_DOR, frame & dataOverrun ); // overrun error

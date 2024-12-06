@@ -45,7 +45,7 @@ void ScriptUsart::registerScript( ScriptCpu* cpu )
                                    , asCALL_THISCALL );
 
     engine->RegisterObjectMethod("Uart", "void setDataBits(uint8 b)"
-                                   , asMETHODPR( ScriptUsart, setDataBits, (uint8_t), void)
+                                   , asMETHODPR( ScriptUsart, setDataBits, (int), void)
                                    , asCALL_THISCALL );
 
     engine->RegisterObjectMethod("Uart", "void sendByte(uint8 b)"

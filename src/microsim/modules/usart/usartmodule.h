@@ -11,10 +11,10 @@
 #include "mcumodule.h"
 #include "e-element.h"
 
-#define mSTOPBITS m_usart->m_stopBits
-#define mDATABITS m_usart->m_dataBits
-#define mDATAMASK m_usart->m_dataMask
-#define mPARITY   m_usart->m_parity
+#define mSTOPBITS m_usart->stopBits()
+#define mDATABITS m_usart->dataBits()
+#define mDATAMASK m_usart->dataMask()
+#define mPARITY   m_usart->parity()
 
 enum parity_t{
     parNONE=0,
@@ -42,7 +42,17 @@ class UsartModule
 
         int baudRate() { return m_baudRate; }
         void setBaudRate( int br );
-        void setDataBits( uint8_t b );
+
+        int dataBits() { return m_dataBits; }
+        void setDataBits( int b );
+
+        uint8_t dataMask() { return m_dataMask; }
+
+        int stopBits() { return m_stopBits; }
+        void setStopBits( int sb ) { m_stopBits = sb; }
+
+        parity_t parity() { return m_parity; }
+        void setParity( int par ) { m_parity = (parity_t)par; }
 
         bool serialMon() { return m_serialMon; }
 
@@ -60,11 +70,6 @@ class UsartModule
         void setMonitorTittle( QString t );
         virtual void monitorClosed();
 
-        uint8_t m_mode;
-        uint8_t m_stopBits;
-        uint8_t m_dataBits;
-        uint8_t m_dataMask;
-        parity_t m_parity;
 
     protected:
         void setPeriod( uint64_t period );
@@ -78,6 +83,14 @@ class UsartModule
         bool m_serialMon;
 
         int m_baudRate;
+
+        uint8_t m_mode;
+        uint8_t m_stopBits;
+        parity_t m_parity;
+
+    private:
+        uint8_t m_dataBits;
+        uint8_t m_dataMask;
 };
 
 class Interrupt;

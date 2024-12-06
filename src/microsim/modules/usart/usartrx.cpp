@@ -49,6 +49,7 @@ void UartRx::voltChanged()
     if     ( !m_startHigh &&  bit ) m_startHigh = true;
     else if(  m_startHigh && !bit )                     // Start bit detected
     {
+        m_framesize = 1+mDATABITS+mPARITY+mSTOPBITS;
         m_state = usartRECEIVE;
         m_ioPin->changeCallBack( this, false );
         if( m_period ) Simulator::self()->addEvent( m_period/2, this ); // Shedule reception
