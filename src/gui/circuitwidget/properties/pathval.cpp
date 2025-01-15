@@ -35,7 +35,7 @@ void PathVal::on_value_editingFinished()
 {
     QString path = value->text();
 
-    if( !path.endsWith("/") || !path.endsWith("\\") ) path.append("/");
+    if( !path.isEmpty() && !path.endsWith("/") && !path.endsWith("\\") ) path.append("/");
     m_property->setValStr( path );
     updtValues();
     m_propDialog->changed();
