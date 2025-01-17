@@ -13,6 +13,9 @@ AboutDialog::AboutDialog( QWidget* parent )
 {
     setupUi(this);
 
+    setWindowFlags( Qt::Window | Qt::WindowTitleHint | Qt::Tool
+                   | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint );
+
     version->setText( QString( APP_VERSION )+" at Rev "+QString( REVNO ) );
     compiled->setText( QString( BUILDDATE )+" (dd-MM-yy)" );
     icon->setPixmap( QPixmap(":/simulide.png") );

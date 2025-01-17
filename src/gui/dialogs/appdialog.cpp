@@ -15,7 +15,9 @@ AppDialog::AppDialog( QWidget* parent )
          : QDialog( parent )
 {
     setupUi( this );
-    //this->setWindowFlags( Qt::Dialog | Qt::WindowTitleHint );
+
+    setWindowFlags( Qt::Window | Qt::WindowTitleHint | Qt::Tool
+                   | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint );
 
     // App Settings
     m_scale = MainWindow::self()->fontScale();

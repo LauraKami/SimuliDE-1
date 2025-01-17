@@ -23,7 +23,9 @@ PropDialog::PropDialog( QWidget* parent, QString help )
           : QDialog( parent )
 {
     setupUi( this );
-    //this->setWindowFlags( Qt::Dialog | Qt::WindowTitleHint );
+
+    setWindowFlags( Qt::Window | Qt::WindowTitleHint | Qt::Tool
+                  | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint );
 
     m_component = NULL;
 

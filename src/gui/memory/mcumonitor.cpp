@@ -20,6 +20,10 @@ MCUMonitor::MCUMonitor( QWidget* parent, eMcu* mcu )
 {
     setupUi(this);
     hide();
+
+    setWindowFlags( Qt::Window | Qt::WindowTitleHint | Qt::Tool
+                  | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint );
+
     m_processor = mcu;
 
     m_jumpToAddress = false;

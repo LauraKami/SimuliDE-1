@@ -17,6 +17,9 @@ LaWidget::LaWidget( QWidget* parent , LAnalizer* la )
 {
     setupUi(this);
 
+    setWindowFlags( Qt::Window | Qt::WindowTitleHint | Qt::Tool
+                   | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint );
+
     m_analizer = la;
     m_blocked = false;
     m_action = actNone;

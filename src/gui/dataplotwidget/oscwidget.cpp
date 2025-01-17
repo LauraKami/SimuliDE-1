@@ -15,6 +15,9 @@ OscWidget::OscWidget( QWidget* parent , Oscope* oscope )
 {
     setupUi(this);
 
+    setWindowFlags( Qt::Window | Qt::WindowTitleHint | Qt::Tool
+                   | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint );
+
     m_oscope = oscope;
     m_blocked = false;
     m_action = actNone;

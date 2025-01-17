@@ -12,6 +12,9 @@ FindReplace::FindReplace( QWidget* parent )
 {
     setupUi(this);
     m_editor = NULL;
+
+    setWindowFlags( Qt::Window | Qt::WindowTitleHint | Qt::Tool
+                   | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint );
 }
 
 void FindReplace::on_prevButton_clicked()
