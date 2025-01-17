@@ -102,6 +102,7 @@ void Simulator::timerEvent( QTimerEvent* e )  //update at m_timerTick_ms rate (5
         m_CircuitFuture.waitForFinished();
         m_state = state;
     }
+    if( m_debug && m_state == SIM_PAUSED ) CircuitWidget::self()->debugPaused();
 
     for( Updatable* el : m_updateList ) el->updateStep();
     EditorWindow::self()->outPane()->updateStep(); // OutPanel in Editor can be created before this simulator.

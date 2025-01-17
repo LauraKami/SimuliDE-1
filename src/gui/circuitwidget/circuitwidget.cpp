@@ -413,16 +413,24 @@ void CircuitWidget::powerCircDebug()
 
 void CircuitWidget::pauseDebug()
 {
+    m_paused = false;
     Simulator::self()->pauseSim();
+}
+
+void CircuitWidget::debugPaused()
+{
+    if( m_paused ) return;
+    m_paused = true;
+
     setMsg( " "+tr("Debug")+"❚❚", 3 );
     MainWindow::self()->setState("❚❚");
 }
 
 void CircuitWidget::resumeDebug()
 {
-    Simulator::self()->resumeSim();
     setMsg( " "+tr("Debug")+"  ▶ ", 4 );
     MainWindow::self()->setState("▶");
+    Simulator::self()->resumeSim();
 }
 
 void CircuitWidget::pauseCirc()

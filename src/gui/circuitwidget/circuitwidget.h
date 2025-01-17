@@ -38,6 +38,7 @@ class CircuitWidget : public QWidget
         void powerCircOff();
         void powerCircDebug();
         void pauseDebug();
+        void debugPaused();
         void resumeDebug();
 
         void simDebugMessage( QString msg ) { m_outPane.appendLine( msg.remove("\"") ); }
@@ -70,6 +71,8 @@ class CircuitWidget : public QWidget
         enum { MaxRecentFiles = 10 };
         void updateRecentFiles();
         void updateRecentFileActions();
+
+        bool m_paused;
 
         QVBoxLayout  m_verticalLayout;
         CircuitView  m_circView;
