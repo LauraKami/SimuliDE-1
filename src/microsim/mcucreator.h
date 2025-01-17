@@ -6,8 +6,6 @@
 #ifndef MCUCREATOR_H
 #define MCUCREATOR_H
 
-#include <QHash>
-
 class Mcu;
 class eMcu;
 class Component;
@@ -24,8 +22,6 @@ class Display;
 class McuCreator
 {
     public:
-        McuCreator();
-        ~McuCreator();
 
         static int createMcu( Mcu* mcuComp, QString name );
 

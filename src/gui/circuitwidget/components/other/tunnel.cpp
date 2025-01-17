@@ -112,7 +112,6 @@ void Tunnel::setGroupName( QString name, bool single )
 {
     if( name == m_name ) return;
     if( single && Simulator::self()->isRunning() )  CircuitWidget::self()->powerCircOff();
-
     removeTunnel(); // Remove old name before setting new one
 
     m_name = name;

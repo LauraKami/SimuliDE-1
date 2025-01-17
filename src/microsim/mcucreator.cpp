@@ -101,8 +101,6 @@ bool    McuCreator::m_newStack;
 QDomElement McuCreator::m_stackEl;
 std::vector<ScriptPerif*> McuCreator::m_scriptPerif;
 
-McuCreator::McuCreator(){}
-McuCreator::~McuCreator(){}
 
 int McuCreator::createMcu( Mcu* mcuComp, QString name )
 {

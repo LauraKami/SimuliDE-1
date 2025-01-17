@@ -28,10 +28,10 @@ class DataSpace
         uint8_t* getRam() { return m_dataMem.data(); }  // Get pointer to Ram data
         uint16_t getMapperAddr( uint16_t addr ) { return m_addrMap[addr]; } // Get mapped addresses in Data space
 
-        uint16_t getRegAddress( QString reg );  // Get Reg address by name
+        uint16_t getRegAddress( QString reg );     // Get Reg address by name
         uint8_t* getReg( QString reg );            // Get pointer to Reg data by name
         bool     regExist( QString reg ) { return m_regInfo.contains( reg ); }
-        uint8_t  readReg( uint16_t addr );         // Read Register (call watchers)
+        uint8_t  readReg( uint16_t addr );                            // Read Register (call watchers)
         void     writeReg(uint16_t addr, uint8_t v, bool masked=true);// Write Register (call watchers)
 
         RamTable* getRamTable() { return m_ramTable; }
