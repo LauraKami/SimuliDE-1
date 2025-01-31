@@ -111,7 +111,7 @@ void Hd44780_Base::C_D_Shift( int data )
     int dir = 1;                    // Move Right/Left
     if( data & 4 ) dir = -1;
 
-    if( data & 8 )                  // Shift Cursor/Display
+    if( data & 8 )                  // Shift Display
     {
         m_shiftPos += dir;
         int lineEnd = m_lineLength-1;
@@ -119,7 +119,13 @@ void Hd44780_Base::C_D_Shift( int data )
         if( m_shiftPos>lineEnd ) m_shiftPos = 0;
         if( m_shiftPos<0 )       m_shiftPos = lineEnd;
     }
-    else m_cursPos  += dir;
+    else                            // Shift Cursor
+    {
+        m_DDaddr += dir;
+
+        if( m_DDaddr > 79 ) m_DDaddr = 0;
+        if( m_DDaddr < 0 )  m_DDaddr = 79;
+    }
 }
 
 void Hd44780_Base::dispControl( int data )
