@@ -35,7 +35,7 @@ BJT::BJT( QString type, QString id )
    : Component( type, id )
    , eBJT( id )
 {
-    m_area =  QRectF( -12, -14, 28, 28 );
+    m_area = QRectF( -12, -14, 28, 28 );
     setLabelPos(18, 0, 0);
 
     m_pin.resize( 3 );
@@ -61,7 +61,7 @@ BJT::~BJT(){}
 void BJT::updateStep()
 {
     if( Circuit::self()->animate() ) update();
-    if( m_changed ) voltChanged(); // m_changed cleared at eDiode::voltChanged
+    if( m_changed ) eBJT::voltChanged(); // m_changed cleared at eBJT::voltChanged
 }
 
 void BJT::setPnp( bool pnp )

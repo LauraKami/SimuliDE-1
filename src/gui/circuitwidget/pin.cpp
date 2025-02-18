@@ -339,7 +339,7 @@ void Pin::setIsBus( bool bus )
     if( my_connector ) my_connector->setIsBus( true );
     if( m_conPin ) m_conPin->setIsBus( true );
     
-    m_component->pinMessage( 2 );         // Propagate Is Bus (Node)
+    if( bus ) m_component->pinMessage( 2 );         // Propagate Is Bus (Node)
 
     update();
 }

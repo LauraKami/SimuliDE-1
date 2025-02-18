@@ -1092,13 +1092,13 @@ void Circuit::keyPressEvent( QKeyEvent* event )
         if( key == Qt::Key_C )
         {
             QRectF itemsRect = m_graphicView->selectedRect();
-            copy( itemsRect.topLeft() );
+            copy( itemsRect.center() );
             clearSelection();
         }
         if( key == Qt::Key_X )
         {
             QRectF itemsRect = m_graphicView->selectedRect();
-            copy( itemsRect.topLeft() );
+            copy( itemsRect.center() );
             removeItems();
         }
         else if( key == Qt::Key_V )
