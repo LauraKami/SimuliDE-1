@@ -233,6 +233,8 @@ void SubCircuit::loadSubCircuit( QString file )
             {
                 startPin->setConPin( endPin );
                 endPin->setConPin( startPin );
+                if( startPin->isBus() ) endPin->setIsBus( true );
+                if( endPin->isBus()   ) startPin->setIsBus( true );
             }
             else // Start or End pin not found
             {
