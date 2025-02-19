@@ -170,12 +170,17 @@ void WaveGen::runEvent()
         }
         else m_outpin->setVoltage( m_voltBase+m_voltage*m_vOut );
     }
+
+    if( m_isRunning )
+        Simulator::self()->addEvent( m_nextStep, this );
+}
+
+uint64_t WaveGen::remainerInt()
+{
     m_remainder += m_fstepsPC-(double)m_stepsPC;
     uint64_t remainerInt = m_remainder;
     m_remainder -= remainerInt;
-
-    if( m_isRunning )
-        Simulator::self()->addEvent( m_nextStep+remainerInt, this );
+    return remainerInt;
 }
 
 void WaveGen::genSine()
@@ -188,14 +193,14 @@ void WaveGen::genSine()
 void WaveGen::genSaw()
 {
     m_vOut = m_time/m_fstepsPC;
-    m_nextStep = m_qSteps;
+    m_nextStep = m_qSteps+remainerInt();
 }
 
 void WaveGen::genTriangle()
 {
     if( m_time >= m_halfW ) m_vOut = 1-(m_time-m_halfW)/(m_fstepsPC-m_halfW);
     else                    m_vOut = m_time/m_halfW;
-    m_nextStep = m_qSteps;
+    m_nextStep = m_qSteps+remainerInt();
 }
 
 void WaveGen::genSquare()
@@ -207,7 +212,9 @@ void WaveGen::genSquare()
     }else{
         m_vOut = 1;
         m_nextStep = m_halfW;
-}   }
+    }
+    m_nextStep += remainerInt();
+}
 
 void WaveGen::genRandom()
 {

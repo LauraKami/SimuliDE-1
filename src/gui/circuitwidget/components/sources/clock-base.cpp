@@ -56,7 +56,7 @@ void ClockBase::updateStep()
     if( m_isRunning )
     {
         m_lastTime = Simulator::self()->circTime();
-        Simulator::self()->addEvent( 1, this );
+        Simulator::self()->addEvent( 0, this );
     }
 }
 

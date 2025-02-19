@@ -78,6 +78,7 @@ class WaveGen : public ClockBase
         void genSquare();
         void genRandom();
         void genWav();
+        inline uint64_t remainerInt();
 
         void updtProperties();
 
