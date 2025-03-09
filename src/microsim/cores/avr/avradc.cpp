@@ -249,25 +249,27 @@ void AvrAdc03::startConversion()
 
 void AvrAdc03::specialConv()
 {
-    if     ( m_channel == 30) m_adcValue = 1.22*512/m_vRefP;
-    else if( m_channel == 31) m_adcValue = 0;
+    m_converting = true;
+
+    if     ( m_channel == 30 ) m_adcValue = 1.22*512/m_vRefP;
+    else if( m_channel == 31 ) m_adcValue = 0;
     else{
         updtVref();
 
         int chP,chN;
-        int gain = 1;
+        double gain = 1;
 
         if( m_channel < 16 )
         {
             switch( m_channel ) {
-                case  8: chP = 0; chN = 0; gain = 10;  break;
-                case  9: chP = 1; chN = 0; gain = 10;  break;
-                case 10: chP = 0; chN = 0; gain = 200; break;
-                case 11: chP = 1; chN = 0; gain = 200; break;
-                case 12: chP = 2; chN = 2; gain = 10;  break;
-                case 13: chP = 3; chN = 2; gain = 10;  break;
-                case 14: chP = 2; chN = 2; gain = 200; break;
-                case 15: chP = 3; chN = 2; gain = 200; break;
+            case  8: chP = 0; chN = 0; gain = 10;  break;
+            case  9: chP = 1; chN = 0; gain = 10;  break;
+            case 10: chP = 0; chN = 0; gain = 200; break;
+            case 11: chP = 1; chN = 0; gain = 200; break;
+            case 12: chP = 2; chN = 2; gain = 10;  break;
+            case 13: chP = 3; chN = 2; gain = 10;  break;
+            case 14: chP = 2; chN = 2; gain = 200; break;
+            case 15: chP = 3; chN = 2; gain = 200; break;
             }
         }else{
             chP = m_channel & 3;
@@ -279,7 +281,9 @@ void AvrAdc03::specialConv()
         if( voltP < 0 ) voltP = 0;
         if( voltN < 0 ) voltN = 0;
         m_adcValue = (voltP-voltN)*gain*512/m_vRefP;
+        if( m_adcValue > m_maxValue ) m_adcValue = m_maxValue;
     }
+    Simulator::self()->addEvent( m_convTime, this );
 }
 
 //------------------------------------------------------
