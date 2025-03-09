@@ -10,6 +10,7 @@
 #include "mcupin.h"
 #include "e_mcu.h"
 #include "datautils.h"
+#include "simulator.h"
 
 AvrAdc* AvrAdc::createAdc( eMcu* mcu, QString name, int type )
 {
@@ -336,19 +337,73 @@ void AvrAdc10::updtVref()
 //-- AVR ADC Type 11 -----------------------------------
 
 AvrAdc11::AvrAdc11( eMcu* mcu, QString name )
-        : AvrAdc10( mcu, name )
+    : AvrAdc10( mcu, name )
 {
-    m_MUX = getRegBits( "MUX0,MUX1,MUX2,MUX3", mcu );
+    m_MUX   = getRegBits("MUX0,MUX1,MUX2,MUX3", m_mcu );
+    m_REFS2 = getRegBits("REFS2", m_mcu );
 }
 AvrAdc11::~AvrAdc11(){}
 
+void AvrAdc11::setChannel( uint8_t newADMUX )  // ADMUX
+{
+    AvrAdc::setChannel( newADMUX );
+    uint8_t refSel2 = getRegBitsVal( newADMUX, m_REFS2 );
+    m_refSelect |= refSel2 << 2;
+}
+
+void AvrAdc11::startConversion()
+{
+    if( !m_enabled ) return;
+
+    m_adcValue = 0;
+    int chP = -1;
+    int chN = -1;
+    double gain = 1;
+
+    switch( m_channel ) {
+    case  0:
+    case  1:
+    case  2:
+    case  3: McuAdc::startConversion();     return;
+    case  4: chP = 2; chN = 2; gain =  1;   break;
+    case  5: chP = 2; chN = 2; gain = 20;   break;
+    case  6: chP = 2; chN = 3; gain =  1;   break;
+    case  7: chP = 2; chN = 3; gain = 20;   break;
+    case  8: chP = 0; chN = 0; gain =  1;   break;
+    case  9: chP = 0; chN = 0; gain = 20;   break;
+    case 10: chP = 0; chN = 1; gain =  1;   break;
+    case 11: chP = 0; chN = 1; gain = 20;   break;
+    case 12: m_adcValue = 1024*1.1/m_vRefP; break; // V BG
+    case 13:                                       // Gnd
+    case 14: m_adcValue = 0;                break; // N/A
+    case 15: m_adcValue = 325*2;            break; //ADC4 temp;
+    }
+
+    m_converting = true;
+    updtVref();
+
+    if( chP >= 0 )
+    {
+        double voltP = m_adcPin[chP]->getVoltage();
+        double voltN = m_adcPin[chN]->getVoltage();
+        if( voltP < 0 ) voltP = 0;
+        if( voltN < 0 ) voltN = 0;
+
+        m_adcValue = (voltP-voltN)*gain*512/m_vRefP;
+        if( m_adcValue > m_maxValue ) m_adcValue = m_maxValue;
+    }
+    Simulator::self()->addEvent( m_convTime, this );
+}
+
 void AvrAdc11::updtVref()
 {
-    m_vRefP = m_mcu->vdd();
     switch( m_refSelect ){
-        case 1: m_vRefP = m_pRefPin->getVoltage(); break; // External voltage reference at PB0 (AREF)
-        case 2: m_vRefP = 1.1;  break;  // Internal Vref. 1.1 Volt
-        case 4:                         // Internal 2.56V Voltage Reference without external capacitor
-        case 5: m_vRefP = 2.56; break;  // Internal 2.56V Voltage Reference with external capacitor
-}   }
-
+    case 0: m_vRefP = m_mcu->vdd();            break; // Vdd
+    case 1: m_vRefP = m_pRefPin->getVoltage(); break; // External voltage reference at PB0 (AREF)
+    case 2: m_vRefP = 1.1;                     break; // Internal Vref. 1.1 Volt
+    case 3: m_vRefP = 0;                       break; // Reserved
+    case 4: m_vRefP = m_mcu->vdd();            break; // Vdd
+    case 5: m_vRefP = m_pRefPin->getVoltage(); break; // External voltage reference at PB0 (AREF)
+    case 6:                                           // Internal 2.56V Voltage Reference without external capacitor
+    case 7: m_vRefP = 2.56;                    break; // Internal 2.56V Voltage Reference with external capacitor
+    }   }

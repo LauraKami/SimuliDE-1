@@ -147,7 +147,13 @@ class AvrAdc11 : public AvrAdc10
         AvrAdc11( eMcu* mcu, QString name );
         ~AvrAdc11();
 
+        virtual void setChannel( uint8_t newADMUX ) override;
+
+        virtual void startConversion() override;
+
     protected:
         virtual void updtVref() override;
+
+        regBits_t m_REFS2;
 };
 #endif
