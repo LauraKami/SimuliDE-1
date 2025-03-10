@@ -151,6 +151,7 @@ void EditorWindow::stop()
 
 void EditorWindow::initDebbuger()
 {
+    m_lastTime = 0;
     m_debugDoc = NULL;
     m_debugger = NULL;
     m_state = DBG_STOPPED;
