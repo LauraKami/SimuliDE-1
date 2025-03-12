@@ -412,7 +412,7 @@ void McuCreator::createRegisters( QDomElement* e )
     if( regEnd   > mcu->m_regEnd )
     {
         mcu->m_regEnd = regEnd;
-        mcu->m_regMask.resize( regEnd, 0xFF );
+        mcu->m_regMask.resize( regEnd+1, 0xFF );
     }
     getRegisters( e, offset );
 }
@@ -442,8 +442,8 @@ void McuCreator::getRegisters( QDomElement* e, uint16_t offset )
                 QString    wMask = el.attribute("mask");
                 QString     bits = el.attribute("bits");
 
-                if( !wMask.isEmpty() ) mcu->m_regMask[regAddr] = wMask.toUInt(0,2);
-                mcu->m_addrMap[regAddr] = regAddr;
+                if( !wMask.isEmpty() ) mcu->m_regMask.at(regAddr) = wMask.toUInt(0,2);
+                mcu->m_addrMap.at(regAddr) = regAddr;
 
                 regInfo_t regInfo = { regAddr, resetVal/*, writeMask*/ };
                 mcu->m_regInfo.insert( regName, regInfo );
