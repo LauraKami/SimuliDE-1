@@ -87,8 +87,9 @@ void McuPin::voltChanged()
 
 bool McuPin::getInpState()
 {
-    voltChanged();
-    return m_inpState;
+    //voltChanged();
+    if( m_pinMask ) return IoPin::getInpState();
+    return false;
 }
 
 void McuPin::setPortState( bool state ) // Port Is being witten

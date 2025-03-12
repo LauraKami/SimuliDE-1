@@ -25,13 +25,13 @@ void PicPort::configureA( uint8_t newANSEL ) // Analog pins
 void PicPort::outChanged( uint8_t val )
 {
     McuPort::outChanged( val );
-    if( m_interrupt ) m_interrupt->clearFlag(); // Clear interrupt fag
+    if( m_interrupt ) m_interrupt->clearFlag(); // Clear interrupt flag
 }
 
 void PicPort::readPort( uint8_t )
 {
-    m_mcu->m_regOverride = m_pinState;
-    if( m_interrupt ) m_interrupt->clearFlag(); // Clear interrupt fag
+    m_mcu->m_regOverride = McuPort::getInpState();
+    if( m_interrupt ) m_interrupt->clearFlag(); // Clear interrupt flag
 }
 
 McuPin* PicPort::createPin( int i, QString id , Component* mcu )
