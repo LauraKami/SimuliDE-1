@@ -348,7 +348,7 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <property name="font">
@@ -916,7 +916,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Pascal Cotret.</string>
+            <string>Jean Lindeman. Pascal Cotret.</string>
            </property>
           </widget>
          </item>
