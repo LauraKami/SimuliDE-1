@@ -440,18 +440,21 @@ void McuCreator::getRegisters( QDomElement* e, uint16_t offset )
                 qDebug() << "dataMemSize  = " << mcu->m_ramSize;
                 qDebug() << "Register Address = " << regAddr<<"\n";
             }
-            else if( regAddr >= mcu->m_regMask.size() )
-            {
-                qDebug() << "McuCreator::getRegisters  ERROR creating Register"<< regName ;
-                qDebug() << "regMask Size  = " << mcu->m_regMask.size();
-                qDebug() << "Register Address = " << regAddr<<"\n";
-            }
             else{
                 uint8_t resetVal = el.attribute("reset").toUInt(0,2);
                 QString    wMask = el.attribute("mask");
                 QString     bits = el.attribute("bits");
 
-                if( !wMask.isEmpty() ) mcu->m_regMask.at(regAddr) = wMask.toUInt(0,2);
+                if( !wMask.isEmpty() )
+                {
+                    if( regAddr >= mcu->m_regMask.size() )
+                    {
+                        qDebug() << "McuCreator::getRegisters  ERROR creating Register Mask"<< regName ;
+                        qDebug() << "regMask Size  = " << mcu->m_regMask.size();
+                        qDebug() << "Register Address = " << regAddr<<"\n";
+                    }
+                    else mcu->m_regMask.at(regAddr) = wMask.toUInt(0,2);
+                }
                 mcu->m_addrMap.at(regAddr) = regAddr;
 
                 regInfo_t regInfo = { regAddr, resetVal/*, writeMask*/ };
