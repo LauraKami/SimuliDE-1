@@ -66,7 +66,7 @@
     <datablock name="RAM1" start="0x00F0" end="0x00FF" mapto="0x0070"/>
     
     <!-- BANK 2 -->
-    <regblock name="SFR2" start="0x0100" end="0x010F">
+    <regblock name="SFR2" start="0x0100" end="0x011F">
         <mapped                  addr="0x100" mapto="0x00"/><!-- INDF -->
         <mapped                  addr="0x101" mapto="0x01"/><!-- TMR0 -->
         <mapped                  addr="0x102" mapto="0x02"/><!-- PCL -->
@@ -105,7 +105,7 @@
     <datablock name="RAM2" start="0x0170" end="0x017F"  mapto="0x0070"/>
     
     <!-- BANK 3 -->
-    <regblock name="SFR3" start="0x0180" end="0x018F">
+    <regblock name="SFR3" start="0x0180" end="0x019F">
         <mapped                  addr="0x180" mapto="0x00"/><!-- INDF -->
         <mapped                  addr="0x181" mapto="0x81"/><!-- OPTION -->
         <mapped                  addr="0x182" mapto="0x02"/><!-- PCL -->
