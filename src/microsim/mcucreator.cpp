@@ -389,7 +389,7 @@ void McuCreator::createDataBlock( QDomElement* d )
 
     for( int i=datStart; i<=datEnd; ++i )
     {
-        mcu->m_addrMap.at(i) = mapTo;
+        if( mcu->m_addrMap.at(i) == 0xFFFF ) mcu->m_addrMap.at(i) = mapTo; // Don't overwrite previous values
         mapTo++;
     }
     getRegisters( d );
@@ -414,7 +414,8 @@ void McuCreator::createRegisters( QDomElement* e )
         mcu->m_regEnd = regEnd;
         mcu->m_regMask.resize( regEnd+1, 0xFF );
     }
-    for( int i=regStart; i<=regEnd; ++i ) mcu->m_addrMap.at(i) = i;
+    for( int i=regStart; i<=regEnd; ++i )
+        if( mcu->m_addrMap.at(i) == 0xFFFF ) mcu->m_addrMap.at(i) = i; // Don't overwrite previous values
 
     getRegisters( e, offset );
 }
