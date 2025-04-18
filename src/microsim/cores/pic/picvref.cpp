@@ -48,20 +48,23 @@ void PicVref::configureA( uint8_t newVRCON )
     {
         // VDD-┬-8R-R-..16 Stages..-R-8R-┬-GND
         // VrP-┘                     -VRR┴-VrN
-        double vddResist = 0;
-        double gndResist = 0;
+        double vddAdmit = 0;
+        double gndAdmit = 0;
 
         if( vroe && m_enabled )
         {
+            double vddResist = 0;
+            double gndResist = 0;
             float R = 2e3;
             vddResist = R*(8+16-m_mode);
             if( vrr ) gndResist = vrr ? 1e-3 : 8;
             gndResist += m_mode;
             gndResist *= R;
+            if( vddResist ) vddAdmit = 1/vddResist;
+            if( gndResist ) gndAdmit = 1/gndResist;
         }
-        m_pinOut->setExtraSource( 1/vddResist, 1/gndResist );
+        m_pinOut->setExtraSource( vddAdmit, gndAdmit );
     }
-
     if( !m_callBacks.isEmpty() )
     { for( McuModule* mod : m_callBacks ) mod->callBackDoub( m_vref ); }
 }
