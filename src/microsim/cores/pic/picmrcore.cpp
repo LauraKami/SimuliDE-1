@@ -70,6 +70,7 @@ inline void PicMrCore::CLRWDT()
 {
     write_S_Bit( PD, true );
     write_S_Bit( TO, true );
+    m_mcu->wdr();
 }
 
 // ALU operations: dest ← OP(f,W)
