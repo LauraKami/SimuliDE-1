@@ -46,7 +46,7 @@
                   
         <register name="SPBRG"   addr="0x99" />
         <register name="SPBRGH"  addr="0x9A" />
-        <register name="BAUDCTL" addr="0x187" reset="01000010" mask="11011011"
+        <register name="BAUDCTL" addr="0x9B" reset="01000010" mask="11011011"
                   bits="ABDEN,WUE,0,BRG16,SCKP,0,RCIDL,ABDOVF"/>
       </regblock>
     
@@ -57,7 +57,7 @@
       </regblock>
     
     <!-- BANK 3 -->
-      <regblock name="SFR3" start="0x0180" end="0x018F">
+      <regblock name="SFR3" start="0x0180" end="0x019F">
         <register name="PSTRCON" addr="0x19D" reset="00000001" mask="00011111"
                   bits="STRA,STRB,STRC,STRD,STRSYNC"/>
       </regblock>

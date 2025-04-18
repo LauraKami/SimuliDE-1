@@ -97,7 +97,6 @@
         <register name="CM2CON1" addr="0x11B" mask="11110011"
                   bits="C2SYNC,T1GSS,0,0,0,0,MC2OUT,MC1OUT"/>
         
-        
         <register name="ANSEL"   addr="0x11E" reset="11111111" />
         <register name="ANSELH"  addr="0x11F" reset="00001111" mask="00001111"/>
     </regblock>

@@ -36,7 +36,7 @@
       </regblock>
     
     <!-- BANK 3 -->
-      <regblock name="SFR3" start="0x0180" end="0x018F">
+      <regblock name="SFR3" start="0x0180" end="0x019F">
         <register name="PSTRCON" addr="0x19D" reset="00000001" mask="00011111"
                   bits="STRA,STRB,STRC,STRD,STRSYNC"/>
       </regblock>
