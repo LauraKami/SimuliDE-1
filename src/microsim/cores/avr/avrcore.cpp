@@ -391,7 +391,7 @@ void AvrCore::runStep()
                     qDebug() <<"ERROR: AVR BREAK instruction not implemented";
                 }    break;
                 case 0x95a8: { // WDR -- Watchdog Reset -- 1001 0101 1010 1000
-                    m_mcu->wdr();
+                     m_mcu->wdr();
                 }    break;
                 case 0x95e8: { // SPM -- Store Program Memory -- 1001 0101 1110 1000
                     qDebug() <<"ERROR: AVR SPM instruction not implemented"; ////avr_ioctl(avr, AVR_IOCTL_FLASH_SPM, 0);
