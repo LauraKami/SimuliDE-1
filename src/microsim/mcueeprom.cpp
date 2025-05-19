@@ -27,7 +27,7 @@ void McuEeprom::initialize()
 
 void McuEeprom::readEeprom()
 {
-    *m_dataReg = m_mcu->getRomValue( m_address );
+    if( m_dataReg ) *m_dataReg = m_mcu->getRomValue( m_address );
 }
 
 void McuEeprom::writeEeprom()
@@ -43,6 +43,6 @@ void McuEeprom::addrWriteL( uint8_t val )
 
 void McuEeprom::addrWriteH( uint8_t val )
 {
-    m_address = (val << 8) + *m_addressL;
+    if( m_addressL ) m_address = (val << 8) + *m_addressL;
 }
 
