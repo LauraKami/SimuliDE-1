@@ -352,8 +352,10 @@ void McuCreator::createEeprom( QDomElement* e )
 
     setConfigRegs( e, eeprom );
 
-    if( e->hasAttribute("dataregs") )
-        eeprom->m_dataReg = mcu->getReg( e->attribute("dataregs") );
+    if( e->hasAttribute("dataregs") ){
+        QStringList regs = e->attribute("dataregs").split(",");
+        eeprom->m_dataReg = mcu->getReg( regs.value(0) );
+    }
 
     if( e->hasAttribute("addressreg") )
     {
