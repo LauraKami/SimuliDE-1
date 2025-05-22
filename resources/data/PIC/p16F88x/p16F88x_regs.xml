@@ -113,7 +113,7 @@
         <mapped                  addr="0x102" mapto="0x02"/><!-- PCL -->
         <mapped                  addr="0x103" mapto="0x03"/><!-- STATUS -->
         <mapped                  addr="0x104" mapto="0x04"/><!-- FSR -->
-        <register name="WDTCON"  addr="0x105" bits=""/>
+        <register name="WDTCON"  addr="0x105" reset="00001000" bits=""/>
         <mapped                  addr="0x106" mapto="0x04"/><!-- PORTB -->
         
         <register name="CM1CON0" addr="0x107" mask="11110111"

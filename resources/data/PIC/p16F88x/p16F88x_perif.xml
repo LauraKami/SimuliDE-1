@@ -80,6 +80,9 @@
                   addressreg="EEADR"
                   interrupt="EEPR"/>
 
+  <wdt name="WDT" type="01" configregsA="WDTCON"
+                  prescalers="32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,0,0,0,0"/>
+
   <configwords name="cfgWord" type="00">
     <word name="COINFIG1" address="0x2007" value="0xFF" />
     <word name="COINFIG2" address="0x2008" value="0xFF" />

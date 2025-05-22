@@ -19,9 +19,6 @@ class McuWdt : public McuPrescaled, public eElement
         McuWdt( eMcu* mcu, QString name );
         ~McuWdt();
 
-        virtual void initialize() override;
-        virtual void runEvent() override;
-
         bool enabled() { return m_wdtFuse; }
         void enable( bool en ) { m_wdtFuse = en; }
 

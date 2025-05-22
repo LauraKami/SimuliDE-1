@@ -9,20 +9,16 @@
 #include "simulator.h"
 #include "datautils.h"
 
-AvrWdt* AvrWdt::createWdt( eMcu* mcu, QString name )
+AvrWdt* AvrWdt::createWdt( eMcu* mcu, QString name, int type )
 {
-    int type = name.right(2).toInt();
     switch ( type ){
-        case 00: return new AvrWdt00( mcu, name ); break;
         case 01: return new AvrWdt01( mcu, name ); break;
-        default: return NULL;
+        default: return new AvrWdt00( mcu, name ); break;
 }   }
 
 AvrWdt::AvrWdt( eMcu* mcu, QString name )
       : McuWdt( mcu, name )
 {
-    //m_WDTCSR = mcu->getReg( "WDTCSR" );
-
     m_WDCE = getRegBits( "WDCE", mcu );
     m_WDE  = getRegBits( "WDE", mcu );
     m_WDP02 = getRegBits( "WDP0,WDP1,WDP2", mcu );
@@ -33,7 +29,8 @@ AvrWdt::~AvrWdt(){}
 
 void AvrWdt::initialize()
 {
-    McuWdt::initialize();
+    m_ovfInter = false;
+    m_ovfReset = false;
     m_disabled = true;
     m_allowChanges = false;
     m_prescaler = 0;
@@ -49,7 +46,7 @@ void AvrWdt::runEvent()
         clearRegBits( m_WDCE );
         m_allowChanges = false;
     }
-    else // McuWdt::runEvent();
+    else
     {
         if( m_ovfInter ) m_interrupt->raise();
         else if( m_ovfReset ) // No interrupt, just Reset

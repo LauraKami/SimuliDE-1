@@ -1231,11 +1231,13 @@ void McuCreator::createUsi( QDomElement* e )
 void McuCreator::createWdt( QDomElement* e )
 {
     QString name = e->attribute( "name" );
-    McuWdt* wdt;
-    if     ( m_core == "AVR" )   wdt = AvrWdt::createWdt( mcu, name );
-    else if( m_core == "Pic14" ) wdt = new PicWdt( mcu, name );
-    else if( m_core == "Pic14e") wdt = new PicWdt( mcu, name );
-    else return;
+    int type = e->attribute("type").toInt();
+    McuWdt* wdt = NULL;
+    if     ( m_core == "AVR" )   wdt = AvrWdt::createWdt( mcu, name, type );
+    else if( m_core == "Pic14" ) wdt = PicWdt::createWdt( mcu, name, type );
+    else if( m_core == "Pic14e") wdt = PicWdt::createWdt( mcu, name, type );
+
+    if( !wdt ) return;
 
     mcu->m_modules.emplace_back( wdt );
     mcu->m_wdt = wdt;

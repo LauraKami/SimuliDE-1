@@ -73,7 +73,7 @@
                     prescalers="4,16,64,128,2,8,32,64"
                     pins="PORTB3,PORTB4,PORTB5,PORTB2" /><!-- "MOSI,MISO,SCK,SS" -->
 
-  <wdt name="WDT01" configregsA="WDTCR"
+  <wdt name="WDT" type="01" configregsA="WDTCR"
                     prescalers="128,64,32,16,8,4,2,1"/>
 
   <rom  name="ROM"  configregsA="EECR"
