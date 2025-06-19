@@ -63,6 +63,7 @@ uint m_addr;
 
 bool m_nextClock;  // Clock State
 bool m_read;
+bool m_CS;
 
 bool m_latchA;
 bool m_latchB;
@@ -91,8 +92,13 @@ void reset() // Executed at Simulation start
     dataPort.setPinMode( input );
     
     ca2Pin.setPortState( true );
+    csPort.changeCallBack( element, true );
+    rwPin.changeCallBack( element, true );
     
     m_nextClock = true; // Wait for first rising edge
+    
+    m_read = false;
+    m_CS = false;
     
     m_pulseCA2 = false;
     m_pulseCB2 = false;
@@ -118,11 +124,23 @@ void reset() // Executed at Simulation start
     PCR  = 0;
 }
 
+void voltChanged()
+{
+    m_CS = csPort.getInpState() == 1;
+    m_read = rwPin.getInpState();
+    
+    bool clkHigh = !m_nextClock;
+    bool dataOut = m_CS && m_read && clkHigh;
+    
+    if( dataOut ) dataPort.setPinMode( output );
+    else          dataPort.setPinMode( input );
+}
+
 void extClock( bool clkState )  // Function called al clockPin change
 {
     if( m_nextClock != clkState ) return;
     
-    if( csPort.getInpState() == 1 ) // Chip Selected
+    if( m_CS ) // Chip Selected
     {
         if( m_nextClock ) risingEdge();
         else              fallingEdge();
