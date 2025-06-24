@@ -6,6 +6,8 @@
 #ifndef MCUTIMER_H
 #define MCUTIMER_H
 
+#include <QStringList>
+
 #include "mcuprescaled.h"
 #include "e-element.h"
 
@@ -46,6 +48,7 @@ class McuTimer : public McuPrescaled, public eElement
 
         virtual void topReg0Changed( uint8_t val ){;}
 
+        virtual void setClockPins( QStringList pinList ){;}
         void enableExtClock( bool en );
         bool extClocked() { return m_extClock; }
 
@@ -92,10 +95,9 @@ class McuTimer : public McuPrescaled, public eElement
         uint8_t* m_topReg0L;   // Register used as Top Low byte
         uint8_t* m_topReg0H;   // Register used as Top High byte
 
-        //clkSource_t m_clkSrc;   // Source of Timer clock
-        uint8_t     m_clkEdge;  // Clock edge in ext pin clock
-        bool        m_clkState; // Lask Clock state
-        McuPin*     m_clockPin; // External Clock pin
+        uint8_t m_clkEdge;     // Clock edge in ext pin clock
+        bool    m_clkState;    // Lask Clock state
+        McuPin* m_clockPin;    // External Clock pin
 
         McuIcUnit* m_ICunit;    // Input Capture unit;
         std::vector<McuOcUnit*> m_ocUnit; // Output Compare Units
