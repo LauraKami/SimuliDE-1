@@ -763,6 +763,12 @@ void McuCreator::createTimer( QDomElement* t )
     if( t->hasAttribute("clockpin") )
         timer->m_clockPin = mcu->getMcuPin( t->attribute("clockpin") );
 
+    if( t->hasAttribute("clockpins") )
+    {
+        QStringList pinList = t->attribute("clockpins").split(",");
+        timer->setClockPins( pinList );
+    }
+
     QString topReg0 = "";
     if( t->hasAttribute("topreg0") ) /// Still done in AvrTimer16bit
     {
@@ -1315,6 +1321,7 @@ void McuCreator::createInterrupts( QDomElement* i )
         mcu->m_interrupts.m_enGlobalFlag = getRegBits( enable, mcu );
         watchBitNames( enable, R_WRITE, mcu, &eMcu::enableInterrupts, mcu );
     }
+
     QDomNode node = i->firstChild();
     while( !node.isNull() )
     {

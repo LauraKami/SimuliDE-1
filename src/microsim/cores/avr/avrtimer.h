@@ -125,6 +125,26 @@ class AvrTimer821 : public AvrTimer8bit
         virtual void configureA( uint8_t newTCCRx ) override;
 };
 
+class AvrTimer822 : public AvrTimer821
+{
+    public:
+        AvrTimer822( eMcu* mcu, QString name );
+        ~AvrTimer822();
+
+        virtual void voltChanged() override;
+
+        virtual void configureB( uint8_t newASSR ) override;
+
+        virtual void setClockPins( QStringList pinList ) override;
+
+    private:
+        bool m_async;
+
+        regBits_t m_AS2;
+
+        McuPin* m_outputClk;
+};
+
 
 class AvrTimer16bit : public AvrTimer
 {
