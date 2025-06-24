@@ -146,12 +146,14 @@ void Interrupt::exitCallBack( McuModule* mod, bool call )
 Interrupts::Interrupts( eMcu* mcu )
 {
     m_mcu = mcu;
+    m_enabled = 0;
 }
 Interrupts::~Interrupts(){}
 
 void Interrupts::resetInts()
 {
-    m_enabled = 0;
+    if( m_enGlobalFlag.regAddr ) m_enabled = 0;
+    else                         m_enabled = 1; // keep enabled if no enable flag
     m_reti    = false;
     m_active  = NULL;
     m_pending = NULL;
@@ -203,7 +205,7 @@ void Interrupts::runInterrupts()
 
 void Interrupts::writeGlobalFlag( uint8_t flag )
 {
-    writeRegBits( m_enGlobalFlag, flag );   // Set/Clear Enable Global Interrupts flag
+    if( m_enGlobalFlag.regAddr ) writeRegBits( m_enGlobalFlag, flag );   // Set/Clear Enable Global Interrupts flag
 
     m_enabled = flag;                       // Enable/Disable interrupts
 }

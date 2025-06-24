@@ -71,6 +71,7 @@ class ScriptCpu : public ScriptModule, public McuCpu
         void setLinkedVal( double v, int i=0 );                       // Called from C++
         void setLinkedStr( QString s, int i );                        // Called from C++
 
+        void RETI();
         virtual void INTERRUPT( uint vector ) override;
 
     protected:

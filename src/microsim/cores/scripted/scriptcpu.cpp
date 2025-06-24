@@ -139,6 +139,10 @@ ScriptCpu::ScriptCpu( eMcu* mcu )
                                    , asMETHODPR( ScriptCpu, INTERRUPT, (uint32_t), void)
                                    , asCALL_THISCALL );
 
+    m_aEngine->RegisterObjectMethod("ScriptCpu", "void RETI()"
+                                    , asMETHODPR( ScriptCpu, RETI, (), void)
+                                    , asCALL_THISCALL );
+
     m_aEngine->RegisterObjectMethod("ScriptCpu", "string getPropStr( int index, const string p )"
                                    , asMETHODPR( ScriptCpu, getPropStr, (int,const string), string)
                                    , asCALL_THISCALL );
@@ -257,6 +261,7 @@ void ScriptCpu::reset()
 
     if( m_reset ) callFunction( m_reset );
 }
+
 void ScriptCpu::voltChanged()
 {
     if( !m_voltChanged ) return;
@@ -288,6 +293,11 @@ void ScriptCpu::INTERRUPT( uint vector )
     execute();
 }
 
+void ScriptCpu::RETI()
+{
+    m_mcu->m_interrupts.retI();
+}
+
 void ScriptCpu::runStep()
 {
     if( !m_runStep ) return;
@@ -310,12 +320,16 @@ void ScriptCpu::extClock( bool clkState )
         m_status = callFunction0( m_extClockF , m_extClockCtx );
 #endif
         if( m_status != asEXECUTION_FINISHED ) printError( m_extClockCtx );
+
+        m_mcu->m_interrupts.runInterrupts();
     }
     if( !m_extClock ) return;
 
     prepare( m_extClock );
     m_context->SetArgByte( 0, clkState );
     execute();
+
+    if( clkState ) m_mcu->m_interrupts.runInterrupts();
 }
 
 void ScriptCpu::command( QString c )
