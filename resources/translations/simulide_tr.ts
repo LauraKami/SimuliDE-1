@@ -5,23 +5,23 @@
     <name>ADC</name>
     <message>
         <source>ADC</source>
-        <translation type="unfinished">ADC</translation>
+        <translation>AVR</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Reference Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Referans Gerilimi</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
@@ -44,195 +44,195 @@
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished">Etiket</translation>
+        <translation>MetinEtiketi</translation>
     </message>
     <message>
         <source> Version:</source>
-        <translation type="unfinished"></translation>
+        <translation> Sürüm:</translation>
     </message>
     <message>
         <source> Compiled:</source>
-        <translation type="unfinished"></translation>
+        <translation> Derlendi:</translation>
     </message>
     <message>
         <source>About SimulIDE</source>
-        <translation type="unfinished">SimulIDE Hakkında</translation>
+        <translation>SimulIDE Hakkında</translation>
     </message>
     <message>
         <source>&lt;a href=&quot;https://www.patreon.com/simulide/&quot;&gt;https://www.patreon.com/simulide&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;a href=&quot;https://www.patreon.com/simulide/&quot;&gt;https://www.patreon.com/simulide&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Website:</source>
-        <translation type="unfinished"></translation>
+        <translation>İnternet sayfası:</translation>
     </message>
     <message>
         <source>Patreon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Patreon:</translation>
     </message>
     <message>
         <source>Author:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazar:</translation>
     </message>
     <message>
         <source>Santiago González</source>
-        <translation type="unfinished"></translation>
+        <translation>Santiago González</translation>
     </message>
     <message>
         <source>Contributors</source>
-        <translation type="unfinished"></translation>
+        <translation>Katkıda Bulunanlar</translation>
     </message>
     <message>
         <source>       Jarda Vrana</source>
-        <translation type="unfinished"></translation>
+        <translation>       Jarda Vrana</translation>
     </message>
     <message>
         <source>Sergey Roenko.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sergey Roenko.</translation>
     </message>
     <message>
         <source>       Benoit ZERR.</source>
-        <translation type="unfinished"></translation>
+        <translation>       Benoit ZERR.</translation>
     </message>
     <message>
         <source>       Tim Fischer.</source>
-        <translation type="unfinished"></translation>
+        <translation>       Tim Fischer.</translation>
     </message>
     <message>
         <source>n3645.</source>
-        <translation type="unfinished"></translation>
+        <translation>n3645.</translation>
     </message>
     <message>
         <source>Roy Qu</source>
-        <translation type="unfinished"></translation>
+        <translation>Roy Qu</translation>
     </message>
     <message>
         <source>       Alex Salishchev.</source>
-        <translation type="unfinished"></translation>
+        <translation>       Alex Salishchev.</translation>
     </message>
     <message>
         <source>Jan K. S.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jan K. S.</translation>
     </message>
     <message>
         <source>       P. de Francisco</source>
-        <translation type="unfinished"></translation>
+        <translation>       P. de Francisco</translation>
     </message>
     <message>
         <source>tfrei.</source>
-        <translation type="unfinished"></translation>
+        <translation>tfrei.</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Çeviriler</translation>
     </message>
     <message>
         <source>Maico Smaniotto.</source>
-        <translation type="unfinished"></translation>
+        <translation>Maico Smaniotto.</translation>
     </message>
     <message>
         <source>Pt. Brasil:       </source>
-        <translation type="unfinished"></translation>
+        <translation>Pt. Brasil:       </translation>
     </message>
     <message>
         <source>@rkanoid.</source>
-        <translation type="unfinished"></translation>
+        <translation>@rkanoid.</translation>
     </message>
     <message>
         <source>Doğu Kocatepe.</source>
-        <translation type="unfinished"></translation>
+        <translation>Doğu Kocatepe.</translation>
     </message>
     <message>
         <source>Turkish:       </source>
-        <translation type="unfinished"></translation>
+        <translation>Türkçe:       </translation>
     </message>
     <message>
         <source>Italian:       </source>
-        <translation type="unfinished"></translation>
+        <translation>İtalyanca:       </translation>
     </message>
     <message>
         <source>Dutch       </source>
-        <translation type="unfinished"></translation>
+        <translation>Felemenkçe       </translation>
     </message>
     <message>
         <source>Santiago Gonzalez.</source>
-        <translation type="unfinished"></translation>
+        <translation>Santiago Gonzalez.</translation>
     </message>
     <message>
         <source>French:       </source>
-        <translation type="unfinished"></translation>
+        <translation>Fransızca:       </translation>
     </message>
     <message>
         <source>Spanish:       </source>
-        <translation type="unfinished"></translation>
+        <translation>İspanyolca:       </translation>
     </message>
     <message>
         <source>Tim Fischer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tim Fischer.</translation>
     </message>
     <message>
         <source>Chinese:       </source>
-        <translation type="unfinished"></translation>
+        <translation>Çince:       </translation>
     </message>
     <message>
         <source>Czech:       </source>
-        <translation type="unfinished"></translation>
+        <translation>Çekçe:       </translation>
     </message>
     <message>
         <source>Russian:       </source>
-        <translation type="unfinished"></translation>
+        <translation>Rusça:       </translation>
     </message>
     <message>
         <source>labf2121</source>
-        <translation type="unfinished"></translation>
+        <translation>labf2121</translation>
     </message>
     <message>
         <source>Jarda Vrana</source>
-        <translation type="unfinished"></translation>
+        <translation>Jarda Vrana</translation>
     </message>
     <message>
         <source>German:       </source>
-        <translation type="unfinished"></translation>
+        <translation>Almanca:       </translation>
     </message>
     <message>
         <source>mvandorp</source>
-        <translation type="unfinished"></translation>
+        <translation>mvandorp</translation>
     </message>
     <message>
         <source>Slovak:       </source>
-        <translation type="unfinished"></translation>
+        <translation>Slovakça:       </translation>
     </message>
     <message>
         <source>Portuguese:       </source>
-        <translation type="unfinished"></translation>
+        <translation>Portekizce:       </translation>
     </message>
     <message>
         <source>Pascal Cotret.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pascal Cotret.</translation>
     </message>
     <message>
         <source>tomas714</source>
-        <translation type="unfinished"></translation>
+        <translation>tomas714</translation>
     </message>
     <message>
         <source>Main contributors:</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlıca katkıda bulunanlar:</translation>
     </message>
     <message>
         <source>       Bastien Jacquot.</source>
-        <translation type="unfinished"></translation>
+        <translation>       Bastien Jacquot.</translation>
     </message>
     <message>
         <source>Giordano.</source>
-        <translation type="unfinished"></translation>
+        <translation>Giordano.</translation>
     </message>
     <message>
         <source>       Kai Kellner.</source>
-        <translation type="unfinished"></translation>
+        <translation>       Kai Kellner.</translation>
     </message>
     <message>
         <source>A. Cebrian.</source>
-        <translation type="unfinished"></translation>
+        <translation>A. Cebrian.</translation>
     </message>
 </context>
 <context>
@@ -243,41 +243,41 @@
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Rows</source>
-        <translation type="unfinished">Satırlar</translation>
+        <translation>Satırlar</translation>
     </message>
     <message>
         <source>Columns</source>
-        <translation type="unfinished">Sütunlar</translation>
+        <translation>Sütunlar</translation>
     </message>
     <message>
         <source>I2C Address</source>
-        <translation type="unfinished">I2C Adresi</translation>
+        <translation>I2C Adresi</translation>
     </message>
     <message>
         <source>I2C Frequency</source>
-        <translation type="unfinished">I2C Frekansı</translation>
+        <translation>I2C Frekansı</translation>
     </message>
     <message>
         <source>Aip31068 I2C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>Amperimeter</name>
     <message>
         <source>Ampmeter</source>
-        <translation type="unfinished"></translation>
+        <translation>Ampermetre</translation>
     </message>
 </context>
 <context>
     <name>AndGate</name>
     <message>
         <source>And Gate</source>
-        <translation type="unfinished">VE Kapısı</translation>
+        <translation>VE Kapısı</translation>
     </message>
     <message>
         <source>Logic/Gates</source>
@@ -289,7 +289,7 @@
     </message>
     <message>
         <source>Input Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Giriş Boyutu</translation>
     </message>
     <message>
         <source>Open Drain</source>
@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -309,11 +309,11 @@
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
@@ -331,19 +331,19 @@
     <name>AppDialog</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ayarlar</translation>
+        <translation>Ayarlar</translation>
     </message>
     <message>
         <source>App Settings</source>
-        <translation type="unfinished">Uygulama Ayarları</translation>
+        <translation>Uygulama Ayarları</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished">Yardım</translation>
+        <translation>Yardım</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished">Dil</translation>
+        <translation>Dil</translation>
     </message>
     <message>
         <source>English</source>
@@ -379,51 +379,51 @@
     </message>
     <message>
         <source>Font Scale</source>
-        <translation type="unfinished">Font büyüklüğü</translation>
+        <translation>Font büyüklüğü</translation>
     </message>
     <message>
         <source>Circuit</source>
-        <translation type="unfinished">Devre</translation>
+        <translation>Devre</translation>
     </message>
     <message>
         <source>Circuit Canvas</source>
-        <translation type="unfinished">Devre Kanvas</translation>
+        <translation>Devre Kanvas</translation>
     </message>
     <message>
         <source>Draw Grid</source>
-        <translation type="unfinished">Izgarayı Çiz</translation>
+        <translation>Izgarayı Çiz</translation>
     </message>
     <message>
         <source>Show ScrollBars</source>
-        <translation type="unfinished">Scrolları Göster</translation>
+        <translation>Kaydırma Çubuklarını Göster</translation>
     </message>
     <message>
         <source>Animate</source>
-        <translation type="unfinished">Animasyon</translation>
+        <translation>Animasyon</translation>
     </message>
     <message>
         <source>Canvas Refresh</source>
-        <translation type="unfinished">Kanvas Yenileme</translation>
+        <translation>Kanvas Yenileme</translation>
     </message>
     <message>
         <source>FPS</source>
-        <translation type="unfinished">FPS</translation>
+        <translation>FPS</translation>
     </message>
     <message>
         <source>Other</source>
-        <translation type="unfinished">Diğer</translation>
+        <translation>Diğer</translation>
     </message>
     <message>
         <source>Auto Backup</source>
-        <translation type="unfinished">Otomatik Yedekleme</translation>
+        <translation>Otomatik Yedekleme</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation type="unfinished">Saniye</translation>
+        <translation>Saniye</translation>
     </message>
     <message>
         <source>Simulation</source>
-        <translation type="unfinished">Simülasyon</translation>
+        <translation>Simülasyon</translation>
     </message>
     <message>
         <source>Simulation Speed</source>
@@ -443,71 +443,72 @@
     </message>
     <message>
         <source>NonLinear</source>
-        <translation type="unfinished">Lineer olmayan</translation>
+        <translation>Lineer olmayan</translation>
     </message>
     <message>
         <source>App</source>
-        <translation type="unfinished"></translation>
+        <translation>Uygulama</translation>
     </message>
     <message>
         <source> 0%</source>
-        <translation type="unfinished"></translation>
+        <translation> % 0</translation>
     </message>
     <message>
         <source>0%</source>
-        <translation type="unfinished"></translation>
+        <translation>% 0</translation>
     </message>
     <message>
         <source>50%</source>
-        <translation type="unfinished"></translation>
+        <translation>%50</translation>
     </message>
     <message>
         <source>100%</source>
-        <translation type="unfinished"></translation>
+        <translation>%100</translation>
     </message>
     <message>
         <source>Steps per Second    </source>
-        <translation type="unfinished"></translation>
+        <translation>Saniyedeki Adım Sayısı    </translation>
     </message>
     <message>
         <source>ps</source>
-        <translation type="unfinished"></translation>
+        <translation>güç kaynağı</translation>
     </message>
     <message>
         <source>ns</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>nanosaniye</translatorcomment>
+        <translation>ns</translation>
     </message>
     <message>
         <source>µs</source>
-        <translation type="unfinished"></translation>
+        <translation>µs</translation>
     </message>
     <message>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation>s</translation>
     </message>
     <message>
         <source>Max. Iterations</source>
-        <translation type="unfinished"></translation>
+        <translation>Maks. İterasyon Sayısı</translation>
     </message>
     <message>
         <source>Reactive</source>
-        <translation type="unfinished"></translation>
+        <translation>Reaktif</translation>
     </message>
     <message>
         <source>Reactive Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Reaktif Adım</translation>
     </message>
     <message>
         <source>Logic Outputs Edges</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantık Çıkış Kenarları</translation>
     </message>
     <message>
         <source>Slope Steps</source>
-        <translation type="unfinished"></translation>
+        <translation>Eğim Adımları</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -515,42 +516,46 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>User data folder:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı veri klasörü:</translation>
     </message>
     <message>
         <source>Select tool path</source>
-        <translation type="unfinished"></translation>
+        <translation>Araç yolu seç</translation>
     </message>
     <message>
         <source>Speed</source>
-        <translation type="unfinished"></translation>
+        <translation>Hız</translation>
     </message>
     <message>
         <source>简体中文</source>
-        <translation type="unfinished"></translation>
+        <translation>简体中文</translation>
     </message>
     <message>
         <source>Slovenčina</source>
-        <translation type="unfinished"></translation>
+        <translation>Slovenčina</translation>
     </message>
     <message>
         <source>Font</source>
-        <translation type="unfinished">Font</translation>
+        <translation>Font</translation>
     </message>
     <message>
         <source>Restart required to apply new settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni ayarları uygulamak için yeniden başlatma gerekiyor.</translation>
     </message>
 </context>
 <context>
     <name>AudioOut</name>
     <message>
         <source>Audio Out</source>
-        <translation type="unfinished">Ses Çıkışı</translation>
+        <translation>Ses Çıkışı</translation>
     </message>
     <message>
         <source>Outputs</source>
@@ -558,26 +563,26 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Buzzer</source>
-        <translation type="unfinished">Buzzer</translation>
+        <translation>Buzzer</translation>
     </message>
     <message>
         <source>Impedance</source>
-        <translation type="unfinished">Empedans</translation>
+        <translation>Empedans</translation>
     </message>
     <message>
         <source>Frequency</source>
-        <translation type="unfinished">Frekans</translation>
+        <translation>Frekans</translation>
     </message>
 </context>
 <context>
     <name>BJT</name>
     <message>
         <source>BJT</source>
-        <translation type="unfinished">BJT</translation>
+        <translation>BJT</translation>
     </message>
     <message>
         <source>Active</source>
@@ -585,49 +590,49 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>PNP</source>
-        <translation type="unfinished">PNP</translation>
+        <translation>PNP</translation>
     </message>
     <message>
         <source>Gain</source>
-        <translation type="unfinished">Gain</translation>
+        <translation>Kazanç</translation>
     </message>
     <message>
         <source>Threshold</source>
-        <translation type="unfinished">Eşik</translation>
+        <translation>Eşik</translation>
     </message>
 </context>
 <context>
     <name>BaseDebugger</name>
     <message>
         <source>Error: Hex file doesn&apos;t exist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata: Hex dosyası mevcut değil:</translation>
     </message>
     <message>
         <source>Error: No Mcu in Simulator... </source>
-        <translation type="unfinished">Hata : Simülatörde MCU yok... </translation>
+        <translation>Hata : Simülatörde Mcu yok... </translation>
     </message>
     <message>
         <source>FirmWare Uploaded to </source>
-        <translation type="unfinished">Firmware yüklendi </translation>
+        <translation>Donanım Yazılımı Yüklendi </translation>
     </message>
     <message>
         <source>Error uploading firmware to </source>
-        <translation type="unfinished"></translation>
+        <translation>Donanım yazılımı yüklenirken hata oluştu </translation>
     </message>
     <message>
         <source>Warning: lst file doesn&apos;t exist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı: lst dosyası mevcut değil:</translation>
     </message>
 </context>
 <context>
     <name>Battery</name>
     <message>
         <source>Battery</source>
-        <translation type="unfinished">Pil</translation>
+        <translation>Pil</translation>
     </message>
     <message>
         <source>Sources</source>
@@ -635,22 +640,22 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Voltage</source>
-        <translation type="unfinished">Gerilim</translation>
+        <translation>Gerilim</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
 </context>
 <context>
     <name>BcdTo7S</name>
     <message>
         <source>Bcd To 7S.</source>
-        <translation type="unfinished">BCD 7 Segment Dönüştürücü.</translation>
+        <translation>BCD 7 Segment Dönüştürücü.</translation>
     </message>
     <message>
         <source>Logic/Converters</source>
@@ -666,7 +671,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -678,18 +683,18 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri ters çevir</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>BcdToDec</name>
     <message>
         <source>Decoder(4 to 10/16)</source>
-        <translation type="unfinished">Dekoder (4 -&gt; 10/16)</translation>
+        <translation>Dekoder (4 -&gt; 10/16)</translation>
     </message>
     <message>
         <source>Logic/Converters</source>
@@ -697,11 +702,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>16 Bits</source>
-        <translation type="unfinished">16 Bit</translation>
+        <translation>16 Bit</translation>
     </message>
     <message>
         <source>Invert Outputs</source>
@@ -709,7 +714,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -721,11 +726,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
@@ -740,27 +745,27 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Use Set Pin</source>
-        <translation type="unfinished">Set Pinini Kullan</translation>
+        <translation>Pin Ayarını Kullan</translation>
     </message>
     <message>
         <source>Clock Inverted</source>
-        <translation type="unfinished">Ters Çevrilmiş Saat</translation>
+        <translation>Ters Çevrilmiş Saat</translation>
     </message>
     <message>
         <source>Set/Reset Inverted</source>
-        <translation type="unfinished"></translation>
+        <translation>Ters Çevrilmiş Ayarla/Sıfırla</translation>
     </message>
     <message>
         <source>Count to</source>
-        <translation type="unfinished">Say</translation>
+        <translation>Say</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -772,18 +777,18 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Binary Counter</source>
-        <translation type="unfinished"></translation>
+        <translation>İkili Sayıcı</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>Buffer</name>
     <message>
         <source>Buffer</source>
-        <translation type="unfinished">Buffer</translation>
+        <translation>Tampon</translation>
     </message>
     <message>
         <source>Logic/Gates</source>
@@ -791,11 +796,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Tristate</source>
-        <translation type="unfinished">Üç Durumlu</translation>
+        <translation>Üç Durumlu</translation>
     </message>
     <message>
         <source>Open Drain</source>
@@ -803,7 +808,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -815,60 +820,60 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>Bus</name>
     <message>
         <source>Bus</source>
-        <translation type="unfinished">Veri Yolu</translation>
+        <translation>Veriyolu</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Start Bit</source>
-        <translation type="unfinished">Başlangıç Biti</translation>
+        <translation>Başlangıç Biti</translation>
     </message>
 </context>
 <context>
     <name>Capacitor</name>
     <message>
         <source>Capacitor</source>
-        <translation type="unfinished">Kondansatör</translation>
+        <translation>Kondansatör</translation>
     </message>
 </context>
 <context>
     <name>CapacitorBase</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Capacitance</source>
-        <translation type="unfinished">Kapasite</translation>
+        <translation>Kapasitans</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Initial Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlangıç Gerilimi</translation>
     </message>
     <message>
         <source>Reactive Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Reaktif Adım</translation>
     </message>
 </context>
 <context>
@@ -887,11 +892,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Cannot write file %1:
 %2.</source>
-        <translation type="unfinished">%1 dosyasına yazılamıyor: %2.</translation>
+        <translation>Dosya yazılamıyor %1:
+%2.</translation>
     </message>
     <message>
         <source>Circuits (*.sim*);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Devreler (*.sim*);;Tüm dosyalar (*.*)</translation>
     </message>
     <message>
         <source>Bill Of Materials</source>
@@ -899,7 +905,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Import Circuit</source>
-        <translation type="unfinished">Devre içe aktar</translation>
+        <translation>Devre İçe Aktar</translation>
     </message>
 </context>
 <context>
@@ -910,23 +916,23 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Paste</source>
-        <translation type="unfinished">Yapıştır</translation>
+        <translation>Yapıştır</translation>
     </message>
     <message>
         <source>Undo</source>
-        <translation type="unfinished">Geri al</translation>
+        <translation>Geri al</translation>
     </message>
     <message>
         <source>Redo</source>
-        <translation type="unfinished">İşlemi yinele</translation>
+        <translation>İşlemi yinele</translation>
     </message>
     <message>
         <source>Import Circuit</source>
-        <translation type="unfinished">Devre içe aktar</translation>
+        <translation>Devre İçe Aktar</translation>
     </message>
     <message>
         <source>Save Circuit as Image</source>
-        <translation type="unfinished">Devreyi resim olarak kaydet</translation>
+        <translation>Devreyi Resim Olarak Kaydet</translation>
     </message>
     <message>
         <source>Bill of Materials</source>
@@ -934,7 +940,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Save as Image</source>
-        <translation type="unfinished">Resim olarak kaydet</translation>
+        <translation>Resim Olarak Kaydet</translation>
     </message>
     <message>
         <source>Circuit Name</source>
@@ -949,35 +955,35 @@ p, li { white-space: pre-wrap; }
     <name>CircuitWidget</name>
     <message>
         <source>New C&amp;ircuit	Ctrl+N</source>
-        <translation type="unfinished">Ye&amp;ni Devre Ctrl+N</translation>
+        <translation>Ye&amp;ni Devre Ctrl+N</translation>
     </message>
     <message>
         <source>Create a new Circuit</source>
-        <translation type="unfinished">Yeni devre oluştur</translation>
+        <translation>Yeni Devre Oluştur</translation>
     </message>
     <message>
         <source>&amp;Open Circuit	Ctrl+O</source>
-        <translation type="unfinished">&amp;Devre Aç Ctrl+O</translation>
+        <translation>&amp;Devre Aç	Ctrl+O</translation>
     </message>
     <message>
         <source>Open an existing Circuit</source>
-        <translation type="unfinished">Varolan bir devre aç</translation>
+        <translation>Varolan Bir Devre Aç</translation>
     </message>
     <message>
         <source>&amp;Save Circuit	Ctrl+S</source>
-        <translation type="unfinished">Devreyi &amp;Kaydet Ctrl+S</translation>
+        <translation>&amp;Devreyi Kaydet	Ctrl+S</translation>
     </message>
     <message>
         <source>Save the Circuit to disk</source>
-        <translation type="unfinished">Devreyi diske kaydet</translation>
+        <translation>Devreyi Diske Kaydet</translation>
     </message>
     <message>
         <source>Save Circuit &amp;As...	Ctrl+Shift+S</source>
-        <translation type="unfinished">Devreyi &amp;Farklı Kaydet	Ctrl+Shift+S</translation>
+        <translation>Devreyi &amp;Farklı Kaydet	Ctrl+Shift+S</translation>
     </message>
     <message>
         <source>Save the Circuit under a new name</source>
-        <translation type="unfinished">Devreyi yeni bir isimle kaydet</translation>
+        <translation>Devreyi yeni bir isimle kaydet</translation>
     </message>
     <message>
         <source>Power Circuit</source>
@@ -989,53 +995,53 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Pause Simulation</source>
-        <translation type="unfinished">Simülasyonu durdur</translation>
+        <translation>Simülasyonu Duraklat</translation>
     </message>
     <message>
         <source>About SimulIDE</source>
-        <translation type="unfinished">SimulIDE Hakkında</translation>
+        <translation>SimulIDE Hakkında</translation>
     </message>
     <message>
         <source>About Qt</source>
-        <translation type="unfinished">Qt Hakkında</translation>
+        <translation>Qt Hakkında</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ayarlar</translation>
+        <translation>Ayarlar</translation>
     </message>
     <message>
         <source>Last Circuits</source>
-        <translation type="unfinished">Son Devreler</translation>
+        <translation>Son Devreler</translation>
     </message>
     <message>
         <source>Info</source>
-        <translation type="unfinished">Bilgi</translation>
+        <translation>Bilgi</translation>
     </message>
     <message>
         <source>
 Circuit has been modified.
 Do you want to save your changes?
 </source>
-        <translation type="unfinished">
+        <translation>
 Devre değişti.
 Değişiklikler kaydedilsin mi?
 </translation>
     </message>
     <message>
         <source>New Circuit</source>
-        <translation type="unfinished">Yeni Devre</translation>
+        <translation>Yeni Devre</translation>
     </message>
     <message>
         <source>Load Circuit</source>
-        <translation type="unfinished"></translation>
+        <translation>Devre Yükle</translation>
     </message>
     <message>
         <source>Circuits (*.sim*);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Devreler (*.sim*);;Tüm dosyalar (*.*)</translation>
     </message>
     <message>
         <source>Save Circuit</source>
-        <translation type="unfinished">Devreyi Kaydet</translation>
+        <translation>Devreyi Kaydet</translation>
     </message>
     <message>
         <source>Circuit ERROR!!!</source>
@@ -1047,7 +1053,7 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>&amp;%1 %2</source>
-        <translation type="unfinished">&amp;%1 %2</translation>
+        <translation>&amp;%1 %2</translation>
     </message>
     <message>
         <source>All files (*.*)</source>
@@ -1055,81 +1061,84 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>SimulIDE Website</source>
-        <translation type="unfinished"></translation>
+        <translation>SimulIDE İnternet sayfası</translation>
     </message>
     <message>
         <source>
 Can&apos;t find file:
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+Dosya bulunamıyor:
+</translation>
     </message>
     <message>
         <source>Do you want to remove it from Recent Circuits?
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Son Devreler&apos;den kaldırmak ister misiniz?
+</translation>
     </message>
     <message>
         <source>Circuits (*.sim1);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Devreler (*.sim1);;Tüm dosyalar (*.*)</translation>
     </message>
     <message>
         <source>Zoom to fit</source>
-        <translation type="unfinished"></translation>
+        <translation>Sığdırmak için yakınlaştır</translation>
     </message>
     <message>
         <source>Zoom Circuit to fit all components</source>
-        <translation type="unfinished"></translation>
+        <translation>Devreyi tüm bileşenleri sığacak şekilde yakınlaştır</translation>
     </message>
     <message>
         <source>Zoom to selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçileni yakınlaştır</translation>
     </message>
     <message>
         <source>Zoom Circuit to fit all selected components</source>
-        <translation type="unfinished"></translation>
+        <translation>Devreyi seçili tüm bileşenleri sığacak şekilde yakınlaştır</translation>
     </message>
     <message>
         <source>Zoom to Scale 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ölçeğe Yakınlaştır 1</translation>
     </message>
     <message>
         <source>Zoom Circuit to Scale 1:1</source>
-        <translation type="unfinished"></translation>
+        <translation>Devreyi 1:1 Ölçeğe Yakınlaştır</translation>
     </message>
     <message>
         <source>Debug</source>
-        <translation type="unfinished">Hata ayıkla</translation>
+        <translation>Hata ayıkla</translation>
     </message>
     <message>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation>Duraklatıldı</translation>
     </message>
     <message>
         <source>Running</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalışıyor</translation>
     </message>
     <message>
         <source>Start Simulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Simülasyonu Başlat</translation>
     </message>
     <message>
         <source>Stop Simulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Simülasyonu Durdur</translation>
     </message>
     <message>
         <source>Resume Simulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Simülasyonu Sürdür</translation>
     </message>
     <message>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Durduruldu</translation>
     </message>
 </context>
 <context>
     <name>Clock</name>
     <message>
         <source>Clock</source>
-        <translation type="unfinished">Saat</translation>
+        <translation>Saat</translation>
     </message>
     <message>
         <source>Sources</source>
@@ -1137,102 +1146,102 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Voltage</source>
-        <translation type="unfinished">Gerilim</translation>
+        <translation>Gerilim</translation>
     </message>
     <message>
         <source>Frequency</source>
-        <translation type="unfinished">Frekans</translation>
+        <translation>Frekans</translation>
     </message>
     <message>
         <source>Always On</source>
-        <translation type="unfinished"></translation>
+        <translation>Her Zaman Açık</translation>
     </message>
 </context>
 <context>
     <name>CodeEditor</name>
     <message>
         <source> File: </source>
-        <translation type="unfinished"> Dosya: </translation>
+        <translation> Dosya: </translation>
     </message>
     <message>
         <source>File recognized as: </source>
-        <translation type="unfinished">Algılanan dosya tipi: </translation>
+        <translation>Algılanan dosya tipi: </translation>
     </message>
     <message>
         <source>Found Compiler definition in file: </source>
-        <translation type="unfinished"></translation>
+        <translation>Derleyici tanımı şu dosyada bulundu: </translation>
     </message>
     <message>
         <source>Reload Document</source>
-        <translation type="unfinished"></translation>
+        <translation>Belgeyi Yeniden Yükle</translation>
     </message>
     <message>
         <source>     WARNING: Compilation Not Done</source>
-        <translation type="unfinished"></translation>
+        <translation>     UYARI: Derleme Yapılmadı</translation>
     </message>
     <message>
         <source>Undo</source>
-        <translation type="unfinished">Geri al</translation>
+        <translation>Geri al</translation>
     </message>
     <message>
         <source>Redo</source>
-        <translation type="unfinished">İşlemi yinele</translation>
+        <translation>Yeniden yap</translation>
     </message>
     <message>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kes</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="unfinished">Kopyala</translation>
+        <translation>Kopyala</translation>
     </message>
     <message>
         <source>Paste</source>
-        <translation type="unfinished">Yapıştır</translation>
+        <translation>Yapıştır</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiçbiri</translation>
     </message>
     <message>
         <source>File Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya Ayarları</translation>
     </message>
     <message>
         <source>Compiler</source>
-        <translation type="unfinished"></translation>
+        <translation>Derleyici</translation>
     </message>
     <message>
         <source>Save Settings at file close</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya kapatıldığında ayarları kaydet</translation>
     </message>
     <message>
         <source>Actions after opening this file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu dosya açıldıktan sonraki eylemler:</translation>
     </message>
     <message>
         <source>Load Compiler</source>
-        <translation type="unfinished"></translation>
+        <translation>Derleyiciyi Yükle</translation>
     </message>
     <message>
         <source>Load Breakpoints</source>
-        <translation type="unfinished"></translation>
+        <translation>Kesme Noktalarını Yükle</translation>
     </message>
     <message>
         <source>Restore files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosyaları geri yükle</translation>
     </message>
     <message>
         <source>Cannot write file</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya yazılamıyor</translation>
     </message>
 </context>
 <context>
@@ -1240,23 +1249,24 @@ Can&apos;t find file:
     <message>
         <source> Compiler successfully loaded.
 </source>
-        <translation type="unfinished"></translation>
+        <translation> Derleyici başarıyla yüklendi.
+</translation>
     </message>
     <message>
         <source>     No Compiler Defined</source>
-        <translation type="unfinished"></translation>
+        <translation>     Derleyici Tanımlanmadı</translation>
     </message>
     <message>
         <source>     No command Defined</source>
-        <translation type="unfinished"></translation>
+        <translation>     Komut Tanımlanmadı</translation>
     </message>
     <message>
         <source>     Error: Family not defined</source>
-        <translation type="unfinished"></translation>
+        <translation>     Hata: Aile tanımlanmadı</translation>
     </message>
     <message>
         <source>     Error: Device not defined</source>
-        <translation type="unfinished"></translation>
+        <translation>     Hata: Cihaz tanımlanmadı</translation>
     </message>
     <message>
         <source>     SUCCESS!!! Compilation Ok</source>
@@ -1268,43 +1278,43 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Executable not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalıştırılabilir dosya bulunamadı</translation>
     </message>
     <message>
         <source>Check that Tool Path is correct</source>
-        <translation type="unfinished"></translation>
+        <translation>Araç Yolunun doğru olduğunu kontrol edin</translation>
     </message>
     <message>
         <source>Compiler Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Derleyici Ayarları</translation>
     </message>
     <message>
         <source>For this compiler type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu derleyici tipi için:</translation>
     </message>
     <message>
         <source>Tool Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Araç Yolu</translation>
     </message>
     <message>
         <source>Include Path</source>
-        <translation type="unfinished"></translation>
+        <translation>İçerme Yolu</translation>
     </message>
     <message>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Cihaz</translation>
     </message>
     <message>
         <source>Family</source>
-        <translation type="unfinished"></translation>
+        <translation>Aile</translation>
     </message>
     <message>
         <source>For this file:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu dosya için:</translation>
     </message>
     <message>
         <source>Extra build arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>Ek derleme argümanları</translation>
     </message>
 </context>
 <context>
@@ -1350,39 +1360,39 @@ Can&apos;t find file:
     <name>Component</name>
     <message>
         <source>Copy</source>
-        <translation type="unfinished">Kopyala</translation>
+        <translation>Kopyala</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil</translation>
     </message>
     <message>
         <source>Properties</source>
-        <translation type="unfinished">Özellikler</translation>
+        <translation>Özellikler</translation>
     </message>
     <message>
         <source>Rotate CW</source>
-        <translation type="unfinished">Saat yönünde döndür</translation>
+        <translation>Saat yönünde döndür</translation>
     </message>
     <message>
         <source>Rotate CCW</source>
-        <translation type="unfinished">Saat yönünün tersine döndür</translation>
+        <translation>Saat yönünün tersine döndür</translation>
     </message>
     <message>
         <source>Rotate 180</source>
-        <translation type="unfinished">180 derece döndür</translation>
+        <translation>180 derece döndür</translation>
     </message>
     <message>
         <source>Horizontal Flip</source>
-        <translation type="unfinished">Yan Döndür</translation>
+        <translation>Yan Döndür</translation>
     </message>
     <message>
         <source>Vertical Flip</source>
-        <translation type="unfinished">Dikey Döndür</translation>
+        <translation>Dikey Döndür</translation>
     </message>
     <message>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kes</translation>
     </message>
 </context>
 <context>
@@ -1396,51 +1406,52 @@ Can&apos;t find file:
     <name>ComponentSelector</name>
     <message>
         <source>    Loading Component sets at:</source>
-        <translation type="unfinished">    Eleman seti şuraya yükleniyor:</translation>
+        <translation>    Eleman setleri şu konumdan yükleniyor:</translation>
     </message>
     <message>
         <source>Cannot read file %1:
 %2.</source>
-        <translation type="unfinished">%1 dosyası okunamıyor:
+        <translation>%1 dosyası okunamıyor:
 %2.</translation>
     </message>
     <message>
         <source>Error parsing file (itemlib):
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya ayrıştırma hatası (itemlib):
+%1</translation>
     </message>
     <message>
         <source>        Loaded Component set:           </source>
-        <translation type="unfinished">        Eleman seti yüklendi:           </translation>
+        <translation>        Eleman seti yüklendi:           </translation>
     </message>
     <message>
         <source>Manage Components</source>
-        <translation type="unfinished">Elemanları ayarla</translation>
+        <translation>Elemanları Ayarla</translation>
     </message>
 </context>
 <context>
     <name>ConnBase</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
 </context>
 <context>
     <name>ConnectorLine</name>
     <message>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil</translation>
     </message>
 </context>
 <context>
     <name>Csource</name>
     <message>
         <source>Controlled Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrollü Kaynak</translation>
     </message>
     <message>
         <source>Sources</source>
@@ -1448,38 +1459,38 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Current Source</source>
-        <translation type="unfinished">Akım Kaynağı</translation>
+        <translation>Akım Kaynağı</translation>
     </message>
     <message>
         <source>Current Controlled</source>
-        <translation type="unfinished"></translation>
+        <translation>Akım Kontrollü</translation>
     </message>
     <message>
         <source>Use Control Pins</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrol Pinlerini Kullan</translation>
     </message>
     <message>
         <source>Gain</source>
-        <translation type="unfinished">Gain</translation>
+        <translation>Kazanç</translation>
     </message>
     <message>
         <source>Voltage</source>
-        <translation type="unfinished">Gerilim</translation>
+        <translation>Gerilim</translation>
     </message>
     <message>
         <source>Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Akım</translation>
     </message>
 </context>
 <context>
     <name>CurrSource</name>
     <message>
         <source>Current Source</source>
-        <translation type="unfinished">Akım Kaynağı</translation>
+        <translation>Akım Kaynağı</translation>
     </message>
     <message>
         <source>Sources</source>
@@ -1487,38 +1498,38 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Max. Current</source>
-        <translation type="unfinished">Max. Akım</translation>
+        <translation>Max. Akım</translation>
     </message>
     <message>
         <source>Current Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Akım Değeri</translation>
     </message>
 </context>
 <context>
     <name>DAC</name>
     <message>
         <source>DAC</source>
-        <translation type="unfinished">DAC</translation>
+        <translation>DAC</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Reference Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Referans Gerilimi</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -1530,29 +1541,29 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>DS1307</name>
     <message>
         <source>Set current time at start</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlangıçta akım zamanını ayarla</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
 </context>
 <context>
     <name>DS1621</name>
     <message>
         <source>DS1621</source>
-        <translation type="unfinished"></translation>
+        <translation>DS1621</translation>
     </message>
     <message>
         <source>Sensors</source>
@@ -1560,22 +1571,22 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Temperature</source>
-        <translation type="unfinished">Sıcaklık</translation>
+        <translation>Sıcaklık</translation>
     </message>
     <message>
         <source>Temp. increment</source>
-        <translation type="unfinished"></translation>
+        <translation>Sıcaklık artışı</translation>
     </message>
 </context>
 <context>
     <name>DataLaWidget</name>
     <message>
         <source>Expand</source>
-        <translation type="unfinished">Genişlet</translation>
+        <translation>Genişlet</translation>
     </message>
 </context>
 <context>
@@ -1589,7 +1600,7 @@ Can&apos;t find file:
     <name>DcMotor</name>
     <message>
         <source>Dc Motor</source>
-        <translation type="unfinished">DC Motor</translation>
+        <translation>Dc Motor</translation>
     </message>
     <message>
         <source>Motors</source>
@@ -1597,26 +1608,26 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Nominal Speed</source>
-        <translation type="unfinished">Nominal Hız</translation>
+        <translation>Nominal Hız</translation>
     </message>
     <message>
         <source>Nominal Voltage</source>
-        <translation type="unfinished">Nominal Gerilim</translation>
+        <translation>Nominal Gerilim</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
 </context>
 <context>
     <name>DecToBcd</name>
     <message>
         <source>Encoder(10/16 to 4)</source>
-        <translation type="unfinished">Enkoder(10/16 -&gt; 4)</translation>
+        <translation>Kodlayıcı (10/16&apos;dan 4&apos;e)</translation>
     </message>
     <message>
         <source>Logic/Converters</source>
@@ -1624,19 +1635,19 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>16 Bits</source>
-        <translation type="unfinished">16 Bit</translation>
+        <translation>16 Bit</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -1648,14 +1659,14 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>Demux</name>
     <message>
         <source>Demux</source>
-        <translation type="unfinished">Demultiplexer</translation>
+        <translation>Demux</translation>
     </message>
     <message>
         <source>Logic/Converters</source>
@@ -1663,11 +1674,11 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Address Size</source>
-        <translation type="unfinished">Adres Boyutu</translation>
+        <translation>Adres Boyutu</translation>
     </message>
     <message>
         <source>Invert Outputs</source>
@@ -1675,7 +1686,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -1687,7 +1698,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
@@ -1698,131 +1709,131 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Model</source>
-        <translation type="unfinished"></translation>
+        <translation>Model</translation>
     </message>
     <message>
         <source>Temp. increment</source>
-        <translation type="unfinished"></translation>
+        <translation>Sıcaklık artışı</translation>
     </message>
     <message>
         <source>Humid. increment</source>
-        <translation type="unfinished"></translation>
+        <translation>Nem artışı</translation>
     </message>
 </context>
 <context>
     <name>Diac</name>
     <message>
         <source>Diac</source>
-        <translation type="unfinished"></translation>
+        <translation>Diyak</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>On Resistance</source>
-        <translation type="unfinished"></translation>
+        <translation>Açık Direnç</translation>
     </message>
     <message>
         <source>Off Resistance</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapalı Direnç</translation>
     </message>
     <message>
         <source>Breakdown Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Kırılma Gerilimi</translation>
     </message>
     <message>
         <source>Hold Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutma Akımı</translation>
     </message>
 </context>
 <context>
     <name>Dial</name>
     <message>
         <source>Dial</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirici</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Minimum Value</source>
-        <translation type="unfinished">Min. Değer</translation>
+        <translation>Minimum. Değer</translation>
     </message>
     <message>
         <source>Maximum Value</source>
-        <translation type="unfinished">Max. Değer</translation>
+        <translation>Maksimum. Değer</translation>
     </message>
     <message>
         <source>Link to Component</source>
-        <translation type="unfinished"></translation>
+        <translation>Bileşene Bağlantı</translation>
     </message>
     <message>
         <source>Steps</source>
-        <translation type="unfinished"></translation>
+        <translation>Adımlar</translation>
     </message>
 </context>
 <context>
     <name>Dialed</name>
     <message>
         <source>Slider</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaydırıcı</translation>
     </message>
     <message>
         <source>Scale</source>
-        <translation type="unfinished"></translation>
+        <translation>Ölçek</translation>
     </message>
 </context>
 <context>
     <name>Diode</name>
     <message>
         <source>Diode</source>
-        <translation type="unfinished">Diyot</translation>
+        <translation>Diyot</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Model</source>
-        <translation type="unfinished"></translation>
+        <translation>Model</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Forward Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>İleri Yön Gerilimi</translation>
     </message>
     <message>
         <source>Max Current</source>
-        <translation type="unfinished">Max. Akım</translation>
+        <translation>Maks. Akım</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelişmiş</translation>
     </message>
     <message>
         <source>Breakdown Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Kırılma Gerilimi</translation>
     </message>
     <message>
         <source>Saturation Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Doyma Akımı</translation>
     </message>
     <message>
         <source>Emission Coefficient</source>
-        <translation type="unfinished"></translation>
+        <translation>Emisyon Katsayısı</translation>
     </message>
 </context>
 <context>
@@ -1833,46 +1844,46 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Temperature</source>
-        <translation type="unfinished">Sıcaklık</translation>
+        <translation>Sıcaklık</translation>
     </message>
     <message>
         <source>Temp. increment</source>
-        <translation type="unfinished"></translation>
+        <translation>Sıcaklık artışı</translation>
     </message>
 </context>
 <context>
     <name>DynamicMemory</name>
     <message>
         <source>Dynamic Ram</source>
-        <translation type="unfinished"></translation>
+        <translation>Dinamik Ram</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Row Address Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Satır Adres Boyutu</translation>
     </message>
     <message>
         <source>Column Address Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Sütun Adres Boyutu</translation>
     </message>
     <message>
         <source>Data Size</source>
-        <translation type="unfinished">Veri Boyutu</translation>
+        <translation>Veri Boyutu</translation>
     </message>
     <message>
         <source>Refresh period</source>
-        <translation type="unfinished"></translation>
+        <translation>Yenileme periyodu</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -1880,26 +1891,26 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Load data</source>
-        <translation type="unfinished">Veri yükle</translation>
+        <translation>Veri yükle</translation>
     </message>
     <message>
         <source>Save data</source>
-        <translation type="unfinished">Veriyi kaydet</translation>
+        <translation>Veriyi kaydet</translation>
     </message>
     <message>
         <source>Show Memory Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek Tablosunu Göster</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>EditDialog</name>
     <message>
         <source>Pin Name:</source>
-        <translation type="unfinished">Pin Adı:</translation>
+        <translation>Pin Adı:</translation>
     </message>
     <message>
         <source>Pin Id:</source>
@@ -1907,51 +1918,51 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Invert Pin</source>
-        <translation type="unfinished">Pini ters çevir</translation>
+        <translation>Pini ters çevir</translation>
     </message>
     <message>
         <source>Unused Pin</source>
-        <translation type="unfinished">Kullanılmayan Pin</translation>
+        <translation>Kullanılmayan Pin</translation>
     </message>
     <message>
         <source>Point Pin</source>
-        <translation type="unfinished">Nokta Pini</translation>
+        <translation>Nokta Pini</translation>
     </message>
     <message>
         <source>Edit Pin </source>
-        <translation type="unfinished">Pini Düzenle </translation>
+        <translation>Pini Düzenle </translation>
     </message>
     <message>
         <source>Pin Id:   </source>
-        <translation type="unfinished"></translation>
+        <translation>Pin ID:</translation>
     </message>
     <message>
         <source>Pin Angle:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pin Açısı:</translation>
     </message>
     <message>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Sağ</translation>
     </message>
     <message>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Sol</translation>
     </message>
     <message>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Üst</translation>
     </message>
     <message>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <source>Space to Label:</source>
-        <translation type="unfinished"></translation>
+        <translation>Etikete Boşluk:</translation>
     </message>
     <message>
         <source>Bus Pin</source>
-        <translation type="unfinished"></translation>
+        <translation>Veri Yolu Pini</translation>
     </message>
 </context>
 <context>
@@ -1997,74 +2008,75 @@ Can&apos;t find file:
     <name>EditorWidget</name>
     <message>
         <source>Load File</source>
-        <translation type="unfinished">Dosya yükle</translation>
+        <translation>Dosya Yükle</translation>
     </message>
     <message>
         <source>All files</source>
-        <translation type="unfinished">Tüm dosyalar</translation>
+        <translation>Tüm dosyalar</translation>
     </message>
     <message>
         <source>Save Document As</source>
-        <translation type="unfinished">Belgeyi farklı kaydet</translation>
+        <translation>Belgeyi farklı kaydet</translation>
     </message>
     <message>
         <source>Cannot write file %1:
 %2.</source>
-        <translation type="unfinished">%1 dosyasına yazılamıyor: %2.</translation>
+        <translation>Dosya yazılamıyor %1:
+%2.</translation>
     </message>
     <message>
         <source>
 The Document has been modified.
 Do you want to save your changes?
 </source>
-        <translation type="unfinished">
+        <translation>
 Belge değiştirildi.
 Değişiklikler kaydedilsin mi?
 </translation>
     </message>
     <message>
         <source>&amp;%1 %2</source>
-        <translation type="unfinished">&amp;%1 %2</translation>
+        <translation>&amp;%1 %2</translation>
     </message>
     <message>
         <source>Editor Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Düzenleyici Ayarları</translation>
     </message>
     <message>
         <source>Compiler Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Derleyici Ayarları</translation>
     </message>
     <message>
         <source>&amp;New	Ctrl+N</source>
-        <translation type="unfinished">&amp;Yeni	Ctrl+N</translation>
+        <translation>&amp;Yeni	Ctrl+N</translation>
     </message>
     <message>
         <source>Create a new file</source>
-        <translation type="unfinished">Yeni dosya oluştur</translation>
+        <translation>Yeni dosya oluştur</translation>
     </message>
     <message>
         <source>&amp;Open...	Ctrl+O</source>
-        <translation type="unfinished">&amp;Aç...	Ctrl+O</translation>
+        <translation>&amp;Aç...	Ctrl+O</translation>
     </message>
     <message>
         <source>Open an existing file</source>
-        <translation type="unfinished">Varolan dosya aç</translation>
+        <translation>Varolan bir dosyayı aç</translation>
     </message>
     <message>
         <source>&amp;Save	Ctrl+S</source>
-        <translation type="unfinished">Kayd&amp;et	Ctrl+S</translation>
+        <translation>Kayd&amp;et	Ctrl+S</translation>
     </message>
     <message>
         <source>Save the document to disk</source>
-        <translation type="unfinished">Belgeyi diske kaydet</translation>
+        <translation>Belgeyi diske kaydet</translation>
     </message>
     <message>
         <source>Save &amp;As...	Ctrl+Shift+S</source>
-        <translation type="unfinished">Farklı Kayde&amp;t...	Ctrl+Shift+S</translation>
+        <translation>Farklı Kayde&amp;t...	Ctrl+Shift+S</translation>
     </message>
     <message>
         <source>Save the document under a new name</source>
-        <translation type="unfinished">Belgeyi yeni bir adla kaydet</translation>
+        <translation>Belgeyi yeni bir adla kaydet</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -2076,123 +2088,123 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Cu&amp;t	Ctrl+X</source>
-        <translation type="unfinished">K&amp;es	Ctrl+X</translation>
+        <translation>K&amp;es	Ctrl+X</translation>
     </message>
     <message>
         <source>Cut the current selection&apos;s contents to the clipboard</source>
-        <translation type="unfinished">Seçili içeriği kes ve panoya kopyala</translation>
+        <translation>Seçili içeriği kes ve panoya kopyala</translation>
     </message>
     <message>
         <source>&amp;Copy	Ctrl+C</source>
-        <translation type="unfinished">&amp;Kopyala Ctrl+C</translation>
+        <translation>&amp;Kopyala Ctrl+C</translation>
     </message>
     <message>
         <source>Copy the current selection&apos;s contents to the clipboard</source>
-        <translation type="unfinished">Seçili içeriği panoya kopyala</translation>
+        <translation>Seçili içeriği panoya kopyala</translation>
     </message>
     <message>
         <source>&amp;Paste	Ctrl+V</source>
-        <translation type="unfinished">Ya&amp;pıştır	Ctrl+V</translation>
+        <translation>Ya&amp;pıştır	Ctrl+V</translation>
     </message>
     <message>
         <source>Paste the clipboard&apos;s contents into the current selection</source>
-        <translation type="unfinished">Pano içeriğini seçili yere yapıştır</translation>
+        <translation>Pano içeriğini seçili yere yapıştır</translation>
     </message>
     <message>
         <source>Undo	Ctrl+Z</source>
-        <translation type="unfinished">Geri al	Ctrl+Z</translation>
+        <translation>Geri al	Ctrl+Z</translation>
     </message>
     <message>
         <source>Undo the last action</source>
-        <translation type="unfinished">Son işlemi geri al</translation>
+        <translation>Son işlemi geri al</translation>
     </message>
     <message>
         <source>Redo	Ctrl+Shift+Z</source>
-        <translation type="unfinished">Yinele	Ctrl+Shift+Z</translation>
+        <translation>Yinele	Ctrl+Shift+Z</translation>
     </message>
     <message>
         <source>Redo the last action</source>
-        <translation type="unfinished">Son işlemi yeniden yap</translation>
+        <translation>Son işlemi yeniden yap</translation>
     </message>
     <message>
         <source>Run To Breakpoint</source>
-        <translation type="unfinished">Breakpointe kadar çalıştır</translation>
+        <translation>Kesme Noktasına Kadar Çalıştır</translation>
     </message>
     <message>
         <source>Run to next breakpoint</source>
-        <translation type="unfinished">Sonraki breakpointe kadar çalıştır</translation>
+        <translation>Sonraki kesme noktasına kadar çalıştır</translation>
     </message>
     <message>
         <source>Step</source>
-        <translation type="unfinished">Bir adım ileri</translation>
+        <translation>Bir adım ileri</translation>
     </message>
     <message>
         <source>Step debugger</source>
-        <translation type="unfinished">Hata ayıklayıcıyı bir adım çalıştır</translation>
+        <translation>Hata ayıklayıcıyı bir adım çalıştır</translation>
     </message>
     <message>
         <source>StepOver</source>
-        <translation type="unfinished">Bir adım atla</translation>
+        <translation>BirAdımAtla</translation>
     </message>
     <message>
         <source>Step Over</source>
-        <translation type="unfinished">Bir adım atla</translation>
+        <translation>Bir Adım Atla</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Duraklat</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Pause debugger</source>
-        <translation type="unfinished">Hata ayıklayıcıyı duraklat</translation>
+        <translation>Hata ayıklayıcıyı duraklat</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished">Sıfırla</translation>
+        <translation>Sıfırla</translation>
     </message>
     <message>
         <source>Reset debugger</source>
-        <translation type="unfinished">Hata ayıklayıcıyı sıfırla</translation>
+        <translation>Hata ayıklayıcıyı sıfırla</translation>
     </message>
     <message>
         <source>Stop Debugger</source>
-        <translation type="unfinished">Hata Ayıklayıcıyı Durdur</translation>
+        <translation>Hata Ayıklayıcıyı Durdur</translation>
     </message>
     <message>
         <source>Stop debugger</source>
-        <translation type="unfinished">Hata ayıklayıcıyı durdur</translation>
+        <translation>Hata ayıklayıcıyı durdur</translation>
     </message>
     <message>
         <source>Compile</source>
-        <translation type="unfinished">Derle</translation>
+        <translation>Derle</translation>
     </message>
     <message>
         <source>Compile Source</source>
-        <translation type="unfinished">Kaynağı Derle</translation>
+        <translation>Kaynağı Derle</translation>
     </message>
     <message>
         <source>UpLoad</source>
-        <translation type="unfinished">Yükle</translation>
+        <translation>Yükle</translation>
     </message>
     <message>
         <source>Load Firmware</source>
-        <translation type="unfinished">Firmware Yükle</translation>
+        <translation>Ürün Yazılımını Yükle</translation>
     </message>
     <message>
         <source>Find Replace</source>
-        <translation type="unfinished">Bul Değiştir</translation>
+        <translation>Bul Değiştir</translation>
     </message>
     <message>
         <source>Debug</source>
-        <translation type="unfinished">Hata ayıkla</translation>
+        <translation>Hata ayıkla</translation>
     </message>
     <message>
         <source>Start Debugger</source>
-        <translation type="unfinished">Hata ayıklayıcıyı başlat</translation>
+        <translation>Hata Ayıklayıcıyı Başlat</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ayarlar</translation>
+        <translation>Ayarlar</translation>
     </message>
     <message>
         <source>Last Circuits</source>
@@ -2202,94 +2214,97 @@ Değişiklikler kaydedilsin mi?
         <source>
 Can&apos;t find file:
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+Dosya bulunamıyor:
+</translation>
     </message>
     <message>
         <source>Do you want to remove it from Recent Files?
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Son Kullanılan Dosyalardan kaldırmak istiyor musunuz?
+</translation>
     </message>
     <message>
         <source>File doesn&apos;t exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya mevcut değil:</translation>
     </message>
     <message>
         <source>Last Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Son Dosyalar</translation>
     </message>
     <message>
         <source>Font Size</source>
-        <translation type="unfinished">Font Boyutu</translation>
+        <translation>Font Boyutu</translation>
     </message>
     <message>
         <source>Tab Size</source>
-        <translation type="unfinished">Tab Boyutu</translation>
+        <translation>Tab Boyutu</translation>
     </message>
     <message>
         <source>Tabs as spaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Space olarak tab</translation>
     </message>
     <message>
         <source>Show Spaces and Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Boşlukları ve Tabları Göster</translation>
     </message>
     <message>
         <source>NEW</source>
-        <translation type="unfinished"></translation>
+        <translation>YENİ</translation>
     </message>
     <message>
         <source>File Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya Ayarları</translation>
     </message>
 </context>
 <context>
     <name>EditorWindow</name>
     <message>
         <source>Starting Debbuger...</source>
-        <translation type="unfinished">Hata ayıklayıcı başlatılıyor...</translation>
+        <translation>Hata Ayıklayıcı Başlatılıyor...</translation>
     </message>
     <message>
         <source>Debugger Started</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata Ayıklayıcı Başlatıldı</translation>
     </message>
     <message>
         <source>Error Starting Debugger</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata Ayıklayıcı Başlatılırken Hata Oluştu</translation>
     </message>
     <message>
         <source>Clock Cycles: </source>
-        <translation type="unfinished">Saat Çevrimi: </translation>
+        <translation>Saat Döngüleri:</translation>
     </message>
     <message>
         <source>Debugger Stopped </source>
-        <translation type="unfinished">Hata ayıklayıcı durduruldu </translation>
+        <translation>Hata Ayıklayıcı Durduruldu </translation>
     </message>
     <message>
         <source>    Loading Compilers at:</source>
-        <translation type="unfinished"></translation>
+        <translation>    Derleyiciler Yükleniyor:</translation>
     </message>
     <message>
         <source>        Found Compiler: </source>
-        <translation type="unfinished"></translation>
+        <translation>        Derleyici Bulundu:</translation>
     </message>
     <message>
         <source>Error Loading Compiler at:</source>
-        <translation type="unfinished"></translation>
+        <translation>Derleyici Yüklenirken Hata Oluştu:</translation>
     </message>
     <message>
         <source>Time us: </source>
-        <translation type="unfinished"></translation>
+        <translation>Saatimiz:</translation>
     </message>
     <message>
         <source>Line </source>
-        <translation type="unfinished"></translation>
+        <translation>Satır </translation>
     </message>
 </context>
 <context>
     <name>Ellipse</name>
     <message>
         <source>Ellipse</source>
-        <translation type="unfinished">Elip</translation>
+        <translation>Elips</translation>
     </message>
 </context>
 <context>
@@ -2300,45 +2315,45 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Baudrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Baud Hızı</translation>
     </message>
     <message>
         <source>Show Debug messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata Ayıklama mesajlarını göster</translation>
     </message>
     <message>
         <source>Open Serial Monitor.</source>
-        <translation type="unfinished">Seri Monitörü Aç.</translation>
+        <translation>Seri Monitörü Aç.</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
 </context>
 <context>
     <name>FileBrowser</name>
     <message>
         <source>Add Bookmark</source>
-        <translation type="unfinished">Yer İmi Ekle</translation>
+        <translation>Yer İmi Ekle</translation>
     </message>
     <message>
         <source>Open in editor</source>
-        <translation type="unfinished">Editörde aç</translation>
+        <translation>Editörde aç</translation>
     </message>
     <message>
         <source>Show Hidden</source>
-        <translation type="unfinished">Gizli dosyaları göster</translation>
+        <translation>Gizli Dosyaları Göster</translation>
     </message>
 </context>
 <context>
     <name>FileWidget</name>
     <message>
         <source>cd Up</source>
-        <translation type="unfinished">Üst klasöre geç</translation>
+        <translation>Üst Dizine Git</translation>
     </message>
     <message>
         <source>Remove Bookmark</source>
-        <translation type="unfinished">Yer İmini kaldır</translation>
+        <translation>Yer İmini Kaldır</translation>
     </message>
 </context>
 <context>
@@ -2353,66 +2368,66 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Önceki</translation>
     </message>
     <message>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonraki</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapat</translation>
     </message>
     <message>
         <source>Replace</source>
-        <translation type="unfinished"></translation>
+        <translation>Değiştir</translation>
     </message>
     <message>
         <source>Replace All</source>
-        <translation type="unfinished"></translation>
+        <translation>Tümünü Değiştir</translation>
     </message>
     <message>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>Hepsi</translation>
     </message>
     <message>
         <source>Find:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bul:</translation>
     </message>
     <message>
         <source>Replace:</source>
-        <translation type="unfinished"></translation>
+        <translation>Değiştir:</translation>
     </message>
     <message>
         <source>Case sensitive.</source>
-        <translation type="unfinished"></translation>
+        <translation>Büyük küçük harfe duyarlı.</translation>
     </message>
     <message>
         <source>Whole words only.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sadece tüm kelimeler.</translation>
     </message>
     <message>
         <source>Regular Expression.</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal İfade.</translation>
     </message>
     <message>
         <source>Replace + Find </source>
-        <translation type="unfinished"></translation>
+        <translation>Değiştir + Bul </translation>
     </message>
     <message>
         <source>Search and Replace</source>
-        <translation type="unfinished"></translation>
+        <translation>Ara ve Değiştir</translation>
     </message>
     <message numerus="yes">
         <source>Found %n occurrence(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n eşleşme bulundu</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>Replaced %n occurrence(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n eşleşme değiştirildi</numerusform>
         </translation>
     </message>
 </context>
@@ -2428,34 +2443,34 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Voltage</source>
-        <translation type="unfinished">Gerilim</translation>
+        <translation>Gerilim</translation>
     </message>
     <message>
         <source>Fixed Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Sabit Gerilim</translation>
     </message>
 </context>
 <context>
     <name>FlipFlopBase</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Clock Inverted</source>
-        <translation type="unfinished">Ters Çevrilmiş Saat</translation>
+        <translation>Ters Çevrilmiş Saat</translation>
     </message>
     <message>
         <source>Trigger Type</source>
-        <translation type="unfinished">Tetikleme Tipi</translation>
+        <translation>Tetikleyici Tipi</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -2463,15 +2478,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Use Set/Reset Pins</source>
-        <translation type="unfinished"></translation>
+        <translation>Pinleri Ayarla/Sıfırla&apos;yı Kullan</translation>
     </message>
     <message>
         <source>Set/Reset Inverted</source>
-        <translation type="unfinished"></translation>
+        <translation>Ters Çevrilmiş Ayarla/Sıfırla</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
@@ -2490,14 +2505,14 @@ Can&apos;t find file:
     </message>
     <message>
         <source>FlipFlopD</source>
-        <translation type="unfinished"></translation>
+        <translation>FlipFlop D</translation>
     </message>
 </context>
 <context>
     <name>FlipFlopJK</name>
     <message>
         <source>FlipFlop JK</source>
-        <translation type="unfinished">FlipFlop JK</translation>
+        <translation>FlipFlop JK</translation>
     </message>
     <message>
         <source>Logic/Memory</source>
@@ -2512,7 +2527,7 @@ Can&apos;t find file:
     <name>FlipFlopRS</name>
     <message>
         <source>FlipFlop RS</source>
-        <translation type="unfinished">FlipFlop RS</translation>
+        <translation>FlipFlop RS</translation>
     </message>
     <message>
         <source>Logic/Memory</source>
@@ -2539,7 +2554,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>FlipFlop T</source>
-        <translation type="unfinished"></translation>
+        <translation>FlipFlop T</translation>
     </message>
 </context>
 <context>
@@ -2550,22 +2565,22 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Filter</source>
-        <translation type="unfinished">Filtre</translation>
+        <translation>Filtre</translation>
     </message>
     <message>
         <source>Frequency Meter</source>
-        <translation type="unfinished"></translation>
+        <translation>Frekans Metre</translation>
     </message>
 </context>
 <context>
     <name>FullAdder</name>
     <message>
         <source>Full Adder</source>
-        <translation type="unfinished">Tam Toplayıcı</translation>
+        <translation>Tam Toplayıcı</translation>
     </message>
     <message>
         <source>Logic/Arithmetic</source>
@@ -2573,7 +2588,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -2585,14 +2600,14 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>Function</name>
     <message>
         <source>Function</source>
-        <translation type="unfinished">Fonksiyon</translation>
+        <translation>Fonksiyon</translation>
     </message>
     <message>
         <source>Logic/Arithmetic</source>
@@ -2600,15 +2615,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Input Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Giriş Boyutu</translation>
     </message>
     <message>
         <source>Output Size</source>
-        <translation type="unfinished">Çıktı Boyutu</translation>
+        <translation>Çıktı Boyutu</translation>
     </message>
     <message>
         <source>Invert Outputs</source>
@@ -2616,11 +2631,11 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Functions</source>
-        <translation type="unfinished">Fonksiyonlar</translation>
+        <translation>Fonksiyonlar</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -2628,24 +2643,24 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Load Functions</source>
-        <translation type="unfinished">Fonksiyonları Yükle</translation>
+        <translation>Fonksiyonları Yükle</translation>
     </message>
     <message>
         <source>Save Functions</source>
-        <translation type="unfinished">Fonksiyonları Kaydet</translation>
+        <translation>Fonksiyonları Kaydet</translation>
     </message>
     <message>
         <source>Set Function</source>
-        <translation type="unfinished">Fonksiyonu Ayarla</translation>
+        <translation>Fonksiyonu Ayarla</translation>
     </message>
     <message>
         <source> Function:</source>
-        <translation type="unfinished"> Fonksiyon:</translation>
+        <translation> Fonksiyon:</translation>
     </message>
     <message>
         <source>Cannot write file %1:
 %2.</source>
-        <translation type="unfinished">%1 dosyasına yazılamıyor: %2.</translation>
+        <translation>%1 dosyasına yazılamıyor: %2.</translation>
     </message>
     <message>
         <source>Arithmetic</source>
@@ -2653,25 +2668,25 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>Gate</name>
     <message>
         <source>Initial High State</source>
-        <translation type="unfinished"></translation>
+        <translation>İlk Yüksek Durum</translation>
     </message>
 </context>
 <context>
     <name>Ground</name>
     <message>
         <source>Ground (0 V)</source>
-        <translation type="unfinished">Toprak (0 V)</translation>
+        <translation>Toprak (0 V)</translation>
     </message>
 </context>
 <context>
@@ -2682,52 +2697,52 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Rows</source>
-        <translation type="unfinished">Satırlar</translation>
+        <translation>Satırlar</translation>
     </message>
     <message>
         <source>Columns</source>
-        <translation type="unfinished">Sütunlar</translation>
+        <translation>Sütunlar</translation>
     </message>
 </context>
 <context>
     <name>Header</name>
     <message>
         <source>Header</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlık</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Downwards</source>
-        <translation type="unfinished"></translation>
+        <translation>Aşağı doğru</translation>
     </message>
 </context>
 <context>
     <name>HeaderWidget</name>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Ad</translation>
+        <translation>Ad</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation type="unfinished">Değer</translation>
+        <translation>Değer</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Tür</translation>
+        <translation>Tür</translation>
     </message>
 </context>
 <context>
     <name>I2CRam</name>
     <message>
         <source>I2C Ram</source>
-        <translation type="unfinished">I2C RAM</translation>
+        <translation>I2C RAM</translation>
     </message>
     <message>
         <source>Logic/Memory</source>
@@ -2735,11 +2750,11 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Control_Code</source>
@@ -2747,23 +2762,23 @@ Can&apos;t find file:
     </message>
     <message>
         <source>I2C Frequency</source>
-        <translation type="unfinished">I2C Frekansı</translation>
+        <translation>I2C Frekansı</translation>
     </message>
     <message>
         <source>Persistent</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıcı</translation>
     </message>
     <message>
         <source>Load data</source>
-        <translation type="unfinished">Veri yükle</translation>
+        <translation>Veri yükle</translation>
     </message>
     <message>
         <source>Save data</source>
-        <translation type="unfinished">Veriyi kaydet</translation>
+        <translation>Veriyi kaydet</translation>
     </message>
     <message>
         <source>Show Memory Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek Tablosunu Göster</translation>
     </message>
     <message>
         <source>Memory</source>
@@ -2771,14 +2786,14 @@ Can&apos;t find file:
     </message>
     <message>
         <source>I2C Address</source>
-        <translation type="unfinished">I2C Adresi</translation>
+        <translation>I2C Adresi</translation>
     </message>
 </context>
 <context>
     <name>I2CToParallel</name>
     <message>
         <source>I2C to Parallel</source>
-        <translation type="unfinished">I2C -&gt; Paralel</translation>
+        <translation>I2C&apos;den Paralele</translation>
     </message>
     <message>
         <source>Logic/Converters</source>
@@ -2786,7 +2801,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Control_Code</source>
@@ -2794,7 +2809,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>I2C Frequency</source>
-        <translation type="unfinished">I2C Frekansı</translation>
+        <translation>I2C Frekansı</translation>
     </message>
     <message>
         <source>Converters</source>
@@ -2802,14 +2817,14 @@ Can&apos;t find file:
     </message>
     <message>
         <source>I2C Address</source>
-        <translation type="unfinished">I2C Adresi</translation>
+        <translation>I2C Adresi</translation>
     </message>
 </context>
 <context>
     <name>Image</name>
     <message>
         <source>Image</source>
-        <translation type="unfinished">Resim</translation>
+        <translation>Resim</translation>
     </message>
     <message>
         <source>Graphical</source>
@@ -2817,142 +2832,142 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Image File</source>
-        <translation type="unfinished">Resim Dosyası</translation>
+        <translation>Resim Dosyası</translation>
     </message>
     <message>
         <source>Load Image</source>
-        <translation type="unfinished">Resim Yükle</translation>
+        <translation>Resim Yükle</translation>
     </message>
     <message>
         <source>All files (*.*)</source>
-        <translation type="unfinished">Tüm dosyalar (*.*)</translation>
+        <translation>Tüm dosyalar (*.*)</translation>
     </message>
 </context>
 <context>
     <name>Inductor</name>
     <message>
         <source>Inductor</source>
-        <translation type="unfinished">İndüktör</translation>
+        <translation>İndüktör</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Inductance</source>
-        <translation type="unfinished">İndüktans</translation>
+        <translation>İndüktans</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Initial Current</source>
-        <translation type="unfinished"></translation>
+        <translation>İlk Akım</translation>
     </message>
     <message>
         <source>Reactive Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Reaktif Adım</translation>
     </message>
 </context>
 <context>
     <name>InfoWidget</name>
     <message>
         <source>Speed: Debugger</source>
-        <translation type="unfinished"></translation>
+        <translation>Hız: Hata Ayıklayıcı</translation>
     </message>
     <message>
         <source>Circuit ERROR!!!</source>
-        <translation type="unfinished">Devre Hatası!!!</translation>
+        <translation>Devre HATASI!!!</translation>
     </message>
 </context>
 <context>
     <name>InoDebugger</name>
     <message>
         <source>Compiler Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Derleyici Ayarları</translation>
     </message>
     <message>
         <source>Board</source>
-        <translation type="unfinished">Kart</translation>
+        <translation>Kart</translation>
     </message>
     <message>
         <source>Custom Board</source>
-        <translation type="unfinished">Özel kart</translation>
+        <translation>Özel Kart</translation>
     </message>
     <message>
         <source>Custom Library Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Özel Kütüphane Yolu</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation type="unfinished">Özel</translation>
+        <translation>Özel</translation>
     </message>
 </context>
 <context>
     <name>IoComponent</name>
     <message>
         <source>Inputs:</source>
-        <translation type="unfinished">Girişler:</translation>
+        <translation>Girişler:</translation>
     </message>
     <message>
         <source>Low to High Threshold</source>
-        <translation type="unfinished"></translation>
+        <translation>Düşükten Yükseğe Eşik</translation>
     </message>
     <message>
         <source>High to Low Threshold</source>
-        <translation type="unfinished"></translation>
+        <translation>Yüksekten Düşüğe Eşik</translation>
     </message>
     <message>
         <source>Input Impedance</source>
-        <translation type="unfinished">Giriş Empedansı</translation>
+        <translation>Giriş Empedansı</translation>
     </message>
     <message>
         <source>Outputs:</source>
-        <translation type="unfinished">Çıkışlar:</translation>
+        <translation>Çıkışlar:</translation>
     </message>
     <message>
         <source>Output High Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Yüksek Gerilimi</translation>
     </message>
     <message>
         <source>Output Low Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Düşük Gerilimi</translation>
     </message>
     <message>
         <source>Output Impedance</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Empedansı</translation>
     </message>
     <message>
         <source>Rise Time</source>
-        <translation type="unfinished">Yükselme Süresi</translation>
+        <translation>Yükselme Süresi</translation>
     </message>
     <message>
         <source>Fall Time</source>
-        <translation type="unfinished">Düşme Süresi</translation>
+        <translation>Düşme Süresi</translation>
     </message>
     <message>
         <source>Propagation delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Yayılım gecikmesi</translation>
     </message>
     <message>
         <source>Gate Delay</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapı Gecikmesi</translation>
     </message>
     <message>
         <source>Invert Outputs</source>
-        <translation type="unfinished">Çıktıları Ters Çevir</translation>
+        <translation>Çıktıları Ters Çevir</translation>
     </message>
     <message>
         <source>Open Drain</source>
-        <translation type="unfinished">Açık Drain</translation>
+        <translation>Açık Drenaj</translation>
     </message>
 </context>
 <context>
     <name>KY023</name>
     <message>
         <source>KY-023</source>
-        <translation type="unfinished">KY-023</translation>
+        <translation>KY-023</translation>
     </message>
     <message>
         <source>Peripherals</source>
@@ -2963,7 +2978,7 @@ Can&apos;t find file:
     <name>KY040</name>
     <message>
         <source>Rotary Encoder (relative)</source>
-        <translation type="unfinished"></translation>
+        <translation>Döner Kodlayıcı (göreceli)</translation>
     </message>
     <message>
         <source>Peripherals</source>
@@ -2971,45 +2986,45 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Steps per Rotation</source>
-        <translation type="unfinished">Step/dönme</translation>
+        <translation>Tur Başına Adım</translation>
     </message>
 </context>
 <context>
     <name>KeyPad</name>
     <message>
         <source>KeyPad</source>
-        <translation type="unfinished">Tuş Takımı</translation>
+        <translation>Tuş Takımı</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Rows</source>
-        <translation type="unfinished">Satırlar</translation>
+        <translation>Satırlar</translation>
     </message>
     <message>
         <source>Columns</source>
-        <translation type="unfinished">Sütunlar</translation>
+        <translation>Sütunlar</translation>
     </message>
     <message>
         <source>Key Labels</source>
-        <translation type="unfinished">Etiketler</translation>
+        <translation>Tuş Etiketleri</translation>
     </message>
 </context>
 <context>
     <name>Ks0108</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>CS Active Low</source>
-        <translation type="unfinished"></translation>
+        <translation>CS Aktif Düşük</translation>
     </message>
 </context>
 <context>
@@ -3024,26 +3039,26 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Dışa Aktar</translation>
     </message>
     <message>
         <source>Base Time Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Temel Zaman Adımı</translation>
     </message>
     <message>
         <source>Export at pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Duraklatıldığında dışa aktar</translation>
     </message>
     <message>
         <source>Logic Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantık Analizörü</translation>
     </message>
 </context>
 <context>
     <name>LaWidget</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished">Diyalog</translation>
+        <translation>Diyalog</translation>
     </message>
     <message>
         <source>Save Circuit</source>
@@ -3051,85 +3066,86 @@ Can&apos;t find file:
     </message>
     <message>
         <source>VCD files (*.vcd);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>VCD dosyaları (*.vcd);;Tüm dosyalar (*.*)</translatorcomment>
+        <translation>VCD files (*.vcd);;All files (*.*)</translation>
     </message>
     <message>
         <source>Ch 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal 1</translation>
     </message>
     <message>
         <source>Ch 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal 2</translation>
     </message>
     <message>
         <source>Ch 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal 3</translation>
     </message>
     <message>
         <source>Ch 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal 4</translation>
     </message>
     <message>
         <source>Ch 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal 5</translation>
     </message>
     <message>
         <source>Ch 6</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal 6</translation>
     </message>
     <message>
         <source>Ch 7</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal 7</translation>
     </message>
     <message>
         <source>Ch 8</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal 8</translation>
     </message>
     <message>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Koşul</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiçbiri</translation>
     </message>
     <message>
         <source>Export Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Veriyi Dışa Aktar</translation>
     </message>
     <message>
         <source>Trigger:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tetikleyici:</translation>
     </message>
     <message>
         <source>Time Div</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaman Bölücü</translation>
     </message>
     <message>
         <source>Time Pos</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaman Konumu</translation>
     </message>
     <message>
         <source>Threshold</source>
-        <translation type="unfinished">Eşik</translation>
+        <translation>Eşik</translation>
     </message>
     <message>
         <source>Bus</source>
-        <translation type="unfinished">Veri Yolu</translation>
+        <translation>Veri Yolu</translation>
     </message>
 </context>
 <context>
     <name>LabelVal</name>
     <message>
         <source>TextLabel</source>
-        <translation>Etiket</translation>
+        <translation>MetinEtiketi</translation>
     </message>
 </context>
 <context>
     <name>Lamp</name>
     <message>
         <source>Incandescent lamp</source>
-        <translation type="unfinished"></translation>
+        <translation>Akkor lamba</translation>
     </message>
     <message>
         <source>Outputs</source>
@@ -3137,22 +3153,22 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Max Current</source>
-        <translation type="unfinished">Max. Akım</translation>
+        <translation>Maks Akım</translation>
     </message>
 </context>
 <context>
     <name>LatchD</name>
     <message>
         <source>Latch</source>
-        <translation type="unfinished">Flip Flop</translation>
+        <translation>Flip-Flop (Mandal)</translation>
     </message>
     <message>
         <source>Logic/Memory</source>
@@ -3160,15 +3176,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Trigger Type</source>
-        <translation type="unfinished">Tetikleme Tipi</translation>
+        <translation>Tetikleyici Tipi</translation>
     </message>
     <message>
         <source>Invert Outputs</source>
@@ -3176,11 +3192,11 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Tristate</source>
-        <translation type="unfinished">Üç Durumlu</translation>
+        <translation>Üç Durumlu</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -3192,18 +3208,18 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>Ldr</name>
     <message>
         <source>LDR</source>
-        <translation type="unfinished">LDR</translation>
+        <translation>LDR</translation>
     </message>
     <message>
         <source>Resistive Sensors</source>
@@ -3211,57 +3227,57 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Current Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Akım Değeri</translation>
     </message>
     <message>
         <source>Minimum Value</source>
-        <translation type="unfinished">Min. Değer</translation>
+        <translation>Minimum. Değer</translation>
     </message>
     <message>
         <source>Maximum Value</source>
-        <translation type="unfinished">Max. Değer</translation>
+        <translation>Maksimum Değer</translation>
     </message>
     <message>
         <source>Dial Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirmeli Adım</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametreler</translation>
     </message>
     <message>
         <source>Gamma</source>
-        <translation type="unfinished">Gamma</translation>
+        <translation>Gama</translation>
     </message>
     <message>
         <source>R1</source>
-        <translation type="unfinished">R1</translation>
+        <translation>R1</translation>
     </message>
     <message>
         <source>Dial</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirici</translation>
     </message>
 </context>
 <context>
     <name>Led</name>
     <message>
         <source>Led</source>
-        <translation type="unfinished">Led</translation>
+        <translation>Led</translation>
     </message>
     <message>
         <source>Link to Component</source>
-        <translation type="unfinished"></translation>
+        <translation>Bileşene Bağlantı</translation>
     </message>
 </context>
 <context>
     <name>LedBar</name>
     <message>
         <source>Led Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Led Bar</translation>
     </message>
     <message>
         <source>Leds</source>
@@ -3269,101 +3285,101 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation type="unfinished">Renk</translation>
+        <translation>Renk</translation>
     </message>
     <message>
         <source>Grounded</source>
-        <translation type="unfinished">Topraklanmış</translation>
+        <translation>Topraklanmış</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Forward Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>İleri Yön Gerilimi</translation>
     </message>
     <message>
         <source>Max Current</source>
-        <translation type="unfinished">Max. Akım</translation>
+        <translation>Maks. Akım</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
 </context>
 <context>
     <name>LedBase</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation type="unfinished">Renk</translation>
+        <translation>Renk</translation>
     </message>
     <message>
         <source>Grounded</source>
-        <translation type="unfinished">Topraklanmış</translation>
+        <translation>Topraklanmış</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Forward Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>İleri Yön Gerilimi</translation>
     </message>
     <message>
         <source>Max Current</source>
-        <translation type="unfinished">Max. Akım</translation>
+        <translation>Maks. Akım</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Sarı</translation>
     </message>
     <message>
         <source>Red</source>
-        <translation type="unfinished"></translation>
+        <translation>Kırmızı</translation>
     </message>
     <message>
         <source>Green</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeşil</translation>
     </message>
     <message>
         <source>Blue</source>
-        <translation type="unfinished"></translation>
+        <translation>Mavi</translation>
     </message>
     <message>
         <source>Orange</source>
-        <translation type="unfinished"></translation>
+        <translation>Turuncu</translation>
     </message>
     <message>
         <source>Purple</source>
-        <translation type="unfinished"></translation>
+        <translation>Mor</translation>
     </message>
     <message>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation>Beyaz</translation>
     </message>
 </context>
 <context>
     <name>LedMatrix</name>
     <message>
         <source>LedMatrix</source>
-        <translation type="unfinished"></translation>
+        <translation>LED Matris</translation>
     </message>
     <message>
         <source>Leds</source>
@@ -3371,46 +3387,46 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Rows</source>
-        <translation type="unfinished">Satırlar</translation>
+        <translation>Satırlar</translation>
     </message>
     <message>
         <source>Columns</source>
-        <translation type="unfinished">Sütunlar</translation>
+        <translation>Sütunlar</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation type="unfinished">Renk</translation>
+        <translation>Renk</translation>
     </message>
     <message>
         <source>Vertical Pins</source>
-        <translation type="unfinished">Dikey Pinler</translation>
+        <translation>Dikey Pinler</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Forward Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>İleri Yön Gerilimi</translation>
     </message>
     <message>
         <source>Max Current</source>
-        <translation type="unfinished">Max. Akım</translation>
+        <translation>Maks. Akım</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
 </context>
 <context>
     <name>LedRgb</name>
     <message>
         <source>Led Rgb</source>
-        <translation type="unfinished"></translation>
+        <translation>Led RGB</translation>
     </message>
     <message>
         <source>Leds</source>
@@ -3418,64 +3434,64 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Common Cathode</source>
-        <translation type="unfinished">Ortak Katod</translation>
+        <translation>Ortak Katod</translation>
     </message>
     <message>
         <source>Red:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kırmızı:</translation>
     </message>
     <message>
         <source>Forward Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>İleri Yön Gerilimi</translation>
     </message>
     <message>
         <source>Max Current</source>
-        <translation type="unfinished">Max. Akım</translation>
+        <translation>Maks Akım</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Green:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeşil:</translation>
     </message>
     <message>
         <source>Blue:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mavi:</translation>
     </message>
 </context>
 <context>
     <name>Line</name>
     <message>
         <source>Line</source>
-        <translation type="unfinished">Çizgi</translation>
+        <translation>Çizgi</translation>
     </message>
 </context>
 <context>
     <name>LineNumberArea</name>
     <message>
         <source>Add BreakPoint</source>
-        <translation type="unfinished">BreakPoint Ekle</translation>
+        <translation>Kesme Noktası Ekle</translation>
     </message>
     <message>
         <source>Remove BreakPoint</source>
-        <translation type="unfinished">BreakPoint kaldır</translation>
+        <translation>Kesme Noktasını Kaldır</translation>
     </message>
     <message>
         <source>Clear All BreakPoints</source>
-        <translation type="unfinished"></translation>
+        <translation>Kesme Noktalarını Temizle</translation>
     </message>
 </context>
 <context>
     <name>LinkerComponent</name>
     <message>
         <source>Link to Component</source>
-        <translation type="unfinished"></translation>
+        <translation>Bileşene Bağlantı</translation>
     </message>
 </context>
 <context>
@@ -3493,15 +3509,15 @@ Can&apos;t find file:
     <name>LogicComponent</name>
     <message>
         <source>Clock</source>
-        <translation type="unfinished">Saat</translation>
+        <translation>Saat</translation>
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiçbiri</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Etkinleştir</translation>
     </message>
 </context>
 <context>
@@ -3516,39 +3532,39 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Inputs:</source>
-        <translation type="unfinished">Girişler:</translation>
+        <translation>Girişler:</translation>
     </message>
     <message>
         <source>Low to High Threshold</source>
-        <translation type="unfinished"></translation>
+        <translation>Düşükten Yükseğe Eşik</translation>
     </message>
     <message>
         <source>High to Low Threshold</source>
-        <translation type="unfinished"></translation>
+        <translation>Yüksekten Düşüğe Eşik</translation>
     </message>
     <message>
         <source>Input Impedance</source>
-        <translation type="unfinished">Giriş Empedansı</translation>
+        <translation>Giriş Empedansı</translation>
     </message>
     <message>
         <source>Outputs:</source>
-        <translation type="unfinished">Çıkışlar:</translation>
+        <translation>Çıkışlar:</translation>
     </message>
     <message>
         <source>Output High Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Yüksek Gerilimi</translation>
     </message>
     <message>
         <source>Output Low Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Düşük Gerilimi</translation>
     </message>
     <message>
         <source>Output Impedance</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Empedansı</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -3556,70 +3572,70 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Gate Delay </source>
-        <translation type="unfinished"></translation>
+        <translation>Kapı Gecikmesi</translation>
     </message>
     <message>
         <source>Rise Time</source>
-        <translation type="unfinished">Yükselme Süresi</translation>
+        <translation>Yükselme Süresi</translation>
     </message>
     <message>
         <source>Fall Time</source>
-        <translation type="unfinished">Düşme Süresi</translation>
+        <translation>Düşme Süresi</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>MCUMonitor</name>
     <message>
         <source>Watch</source>
-        <translation type="unfinished"></translation>
+        <translation>İzleme</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
         <source>Looks like SimulIDE crashed...</source>
-        <translation type="unfinished"></translation>
+        <translation>SimulIDE çökmüş gibi görünüyor...</translation>
     </message>
     <message>
         <source>There is an auto-saved copy of the Circuit
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Bir Devreye ait otomatik kaydedilmiş bir kopya var </translation>
     </message>
     <message>
         <source>You must save it with any other name if you want to keep it</source>
-        <translation type="unfinished"></translation>
+        <translation>Eğer saklamak istiyorsan, başka bir isimle kaydetmelisin.</translation>
     </message>
     <message>
         <source>This file will be auto-deleted!!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu dosya otomatik olarak silinecek!</translation>
     </message>
     <message>
         <source>Do you want to open the auto-saved copy of the Circuit?</source>
-        <translation type="unfinished"></translation>
+        <translation>Devrenin otomatik kaydedilmiş kopyasını açmak ister misin?</translation>
     </message>
     <message>
         <source>Search Components</source>
-        <translation type="unfinished">Eleman Ara</translation>
+        <translation>Eleman Ara</translation>
     </message>
     <message>
         <source>Components</source>
-        <translation type="unfinished">Elemanlar</translation>
+        <translation>Elemanlar</translation>
     </message>
     <message>
         <source>File explorer</source>
-        <translation type="unfinished">Dosyalar</translation>
+        <translation>Dosya gezgini</translation>
     </message>
     <message>
         <source>No help available</source>
-        <translation type="unfinished"></translation>
+        <translation>Yardım bulunmuyor</translation>
     </message>
     <message>
         <source>Select User data directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı veri dizinini seç</translation>
     </message>
 </context>
 <context>
@@ -3630,54 +3646,54 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation type="unfinished">Renk</translation>
+        <translation>Renk</translation>
     </message>
     <message>
         <source>Max72xx matrix</source>
-        <translation type="unfinished"></translation>
+        <translation>MAX72xx Matris</translation>
     </message>
 </context>
 <context>
     <name>Mcu</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Frequency</source>
-        <translation type="unfinished">Frekans</translation>
+        <translation>Frekans</translation>
     </message>
     <message>
         <source>Firmware</source>
-        <translation type="unfinished"></translation>
+        <translation>Ürün Yazılımı</translation>
     </message>
     <message>
         <source>Config</source>
-        <translation type="unfinished"></translation>
+        <translation>Yapılandırma</translation>
     </message>
     <message>
         <source>Enable Reset Pin</source>
-        <translation type="unfinished"></translation>
+        <translation>Sıfırlama Pinini Etkinleştir</translation>
     </message>
     <message>
         <source>External Oscillator</source>
-        <translation type="unfinished"></translation>
+        <translation>Harici Osilatör</translation>
     </message>
     <message>
         <source>Enable WatchDog</source>
-        <translation type="unfinished"></translation>
+        <translation>WatchDog&apos;u Etkinleştir</translation>
     </message>
     <message>
         <source>Load Firmware</source>
-        <translation type="unfinished">Firmware Yükle</translation>
+        <translation>Ürün Yazılımını Yükle</translation>
     </message>
     <message>
         <source>All files (*.*);;ELF Files (*.elf);;Hex Files (*.hex)</source>
@@ -3689,35 +3705,35 @@ Can&apos;t find file:
     </message>
     <message>
         <source>No File to reload </source>
-        <translation type="unfinished">Yükleme için dosya yok </translation>
+        <translation>Yeniden yüklenecek dosya yok </translation>
     </message>
     <message>
         <source>Main Mcu</source>
-        <translation type="unfinished">Ana MCU</translation>
+        <translation>Ana Mikrodenetleyici</translation>
     </message>
     <message>
         <source>Load firmware</source>
-        <translation type="unfinished">Firmware yükle</translation>
+        <translation>Ürün Yazılımını Yükle</translation>
     </message>
     <message>
         <source>Reload firmware</source>
-        <translation type="unfinished">Firmware verisini yeniden yükle</translation>
+        <translation>Ürün yazılımını yeniden yükle</translation>
     </message>
     <message>
         <source>Load EEPROM data from file</source>
-        <translation type="unfinished"></translation>
+        <translation>EEPROM verilerini dosyadan yükle</translation>
     </message>
     <message>
         <source>Save EEPROM data to file</source>
-        <translation type="unfinished"></translation>
+        <translation>EEPROM verilerini dosyaya kaydet</translation>
     </message>
     <message>
         <source>Open Mcu Monitor.</source>
-        <translation type="unfinished"></translation>
+        <translation>MCU Monitörünü Aç.</translation>
     </message>
     <message>
         <source>Open Serial Monitor.</source>
-        <translation type="unfinished">Seri Monitörü Aç.</translation>
+        <translation>Seri Monitörü Aç.</translation>
     </message>
     <message>
         <source>Properties</source>
@@ -3725,46 +3741,46 @@ Can&apos;t find file:
     </message>
     <message>
         <source>All files (*.*);;Hex Files (*.hex)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm dosyalar (*.*);;Hex Dosyaları (*.hex)</translation>
     </message>
     <message>
         <source>Logic Symbol</source>
-        <translation type="unfinished">Mantık Sembolü</translation>
+        <translation>Mantık Sembolü</translation>
     </message>
     <message>
         <source>EEPROM persitent</source>
-        <translation type="unfinished"></translation>
+        <translation>EEPROM kalıcılığı</translation>
     </message>
     <message>
         <source>Changes applied after Simulation Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Simülasyon Yeniden Başlatıldıktan sonra uygulanan değişiklikler</translation>
     </message>
     <message>
         <source>Clock Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Saat Çıkışı</translation>
     </message>
     <message>
         <source>Link to Component</source>
-        <translation type="unfinished"></translation>
+        <translation>Bileşene Bağlantı</translation>
     </message>
     <message>
         <source>Reload hex at Simulation Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Simülasyon Başlangıcında Hex&apos;i Yeniden Yükle</translation>
     </message>
 </context>
 <context>
     <name>McuMonitor</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished">Diyalog</translation>
+        <translation>Diyalog</translation>
     </message>
     <message>
         <source>Byte PC</source>
-        <translation type="unfinished"></translation>
+        <translation>Byte PC</translation>
     </message>
     <message>
         <source>Jump to active Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktif adrese atla</translation>
     </message>
 </context>
 <context>
@@ -3783,22 +3799,22 @@ Can&apos;t find file:
     <name>MemTable</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Save Data</source>
-        <translation type="unfinished">Veriyi Kaydet</translation>
+        <translation>Veriyi Kaydet</translation>
     </message>
     <message>
         <source>Load Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Veri Yükle</translation>
     </message>
 </context>
 <context>
     <name>Memory</name>
     <message>
         <source>Ram/Rom</source>
-        <translation type="unfinished">RAM/ROM</translation>
+        <translation>RAM/ROM</translation>
     </message>
     <message>
         <source>Logic/Memory</source>
@@ -3806,19 +3822,19 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Address Size</source>
-        <translation type="unfinished">Adres Boyutu</translation>
+        <translation>Adres Boyutu</translation>
     </message>
     <message>
         <source>Data Size</source>
-        <translation type="unfinished">Veri Boyutu</translation>
+        <translation>Veri Boyutu</translation>
     </message>
     <message>
         <source>Persistent</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıcı</translation>
     </message>
     <message>
         <source>Invert Outputs</source>
@@ -3826,7 +3842,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -3834,19 +3850,19 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Load data</source>
-        <translation type="unfinished">Veri yükle</translation>
+        <translation>Veri yükle</translation>
     </message>
     <message>
         <source>Save data</source>
-        <translation type="unfinished">Veriyi kaydet</translation>
+        <translation>Veriyi kaydet</translation>
     </message>
     <message>
         <source>Show Memory Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek Tablosunu Göster</translation>
     </message>
     <message>
         <source>Asynchronous</source>
-        <translation type="unfinished"></translation>
+        <translation>Asenkron</translation>
     </message>
     <message>
         <source>Memory</source>
@@ -3854,7 +3870,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
@@ -3868,18 +3884,18 @@ Can&apos;t find file:
     <name>ModuleSubc</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Z Value</source>
-        <translation type="unfinished">Z Değeri</translation>
+        <translation>Z Değeri</translation>
     </message>
 </context>
 <context>
     <name>Mosfet</name>
     <message>
         <source>Mosfet</source>
-        <translation type="unfinished">Mosfet</translation>
+        <translation>Mosfet</translation>
     </message>
     <message>
         <source>Active</source>
@@ -3887,34 +3903,34 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>P Channel</source>
-        <translation type="unfinished">P Kanal</translation>
+        <translation>P Kanal</translation>
     </message>
     <message>
         <source>Depletion</source>
-        <translation type="unfinished">Tüketme</translation>
+        <translation>Tükenme</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>RDSon</source>
-        <translation type="unfinished">Rds(on)</translation>
+        <translation>Rds(on)</translation>
     </message>
     <message>
         <source>Threshold</source>
-        <translation type="unfinished">Eşik</translation>
+        <translation>Eşik</translation>
     </message>
 </context>
 <context>
     <name>Mux</name>
     <message>
         <source>Mux</source>
-        <translation type="unfinished">Sinyal Çoklayıcı</translation>
+        <translation>Sinyal Çoklayıcı</translation>
     </message>
     <message>
         <source>Logic/Converters</source>
@@ -3922,19 +3938,19 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Address Size</source>
-        <translation type="unfinished">Adres Boyutu</translation>
+        <translation>Adres Boyutu</translation>
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -3946,14 +3962,14 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>MuxAnalog</name>
     <message>
         <source>Analog Mux</source>
-        <translation type="unfinished">Analog Sinyal Çoklayıcı</translation>
+        <translation>Analog Sinyal Çoklayıcı</translation>
     </message>
     <message>
         <source>Active</source>
@@ -3961,22 +3977,22 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Address Size</source>
-        <translation type="unfinished">Adres Boyutu</translation>
+        <translation>Adres Boyutu</translation>
     </message>
     <message>
         <source>Impedance</source>
-        <translation type="unfinished">Empedans</translation>
+        <translation>Empedans</translation>
     </message>
 </context>
 <context>
     <name>OpAmp</name>
     <message>
         <source>OpAmp</source>
-        <translation type="unfinished">OpAmp</translation>
+        <translation>OpAmp</translation>
     </message>
     <message>
         <source>Active</source>
@@ -3984,42 +4000,42 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Gain</source>
-        <translation type="unfinished">Gain</translation>
+        <translation>Kazanç</translation>
     </message>
     <message>
         <source>Output Impedance</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Empedansı</translation>
     </message>
     <message>
         <source>Supply</source>
-        <translation type="unfinished">Besleme</translation>
+        <translation>Besleme</translation>
     </message>
     <message>
         <source>V+</source>
-        <translation type="unfinished">V+</translation>
+        <translation>V+</translation>
     </message>
     <message>
         <source>V-</source>
-        <translation type="unfinished">V-</translation>
+        <translation>V-</translation>
     </message>
     <message>
         <source>Switch Supply Pins</source>
-        <translation type="unfinished"></translation>
+        <translation>Anahtarlama Besleme Pinleri</translation>
     </message>
     <message>
         <source>Use Supply Pins</source>
-        <translation type="unfinished"></translation>
+        <translation>Besleme Pinlerini Kullan</translation>
     </message>
 </context>
 <context>
     <name>OrGate</name>
     <message>
         <source>Or Gate</source>
-        <translation type="unfinished">Veya Kapısı</translation>
+        <translation>Veya Kapısı</translation>
     </message>
     <message>
         <source>Logic/Gates</source>
@@ -4031,7 +4047,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Input Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Giriş Boyutu</translation>
     </message>
     <message>
         <source>Open Drain</source>
@@ -4039,7 +4055,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -4051,11 +4067,11 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
@@ -4066,46 +4082,46 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Time Div</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaman Bölücü</translation>
     </message>
     <message>
         <source>Time Pos</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaman Konumu</translation>
     </message>
     <message>
         <source>Volt Div</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerilim Bölücü</translation>
     </message>
     <message>
         <source>Volt Pos</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozitif Voltaj</translation>
     </message>
     <message>
         <source>Filter</source>
-        <translation type="unfinished">Filtre</translation>
+        <translation>Filtre</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Otomatik</translation>
     </message>
     <message>
         <source>Trigger</source>
-        <translation type="unfinished"></translation>
+        <translation>Tetikleyici</translation>
     </message>
     <message>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Gizle</translation>
     </message>
     <message>
         <source>Tracks</source>
-        <translation type="unfinished"></translation>
+        <translation>İzler</translation>
     </message>
 </context>
 <context>
     <name>Oscope</name>
     <message>
         <source>Oscope</source>
-        <translation type="unfinished">Osiloskop</translation>
+        <translation>Osiloskop</translation>
     </message>
     <message>
         <source>Meters</source>
@@ -4120,45 +4136,45 @@ Can&apos;t find file:
     <name>PathVal</name>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished">Etiket</translation>
+        <translation>MetinEtiketi</translation>
     </message>
     <message>
         <source>Select directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Dizin seç</translation>
     </message>
 </context>
 <context>
     <name>PlotBase</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Buffer Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampon Boyutu</translation>
     </message>
     <message>
         <source>Screen Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran Genişliği</translation>
     </message>
     <message>
         <source>Screen Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran Boyutu</translation>
     </message>
     <message>
         <source>Connect to ground</source>
-        <translation type="unfinished"></translation>
+        <translation>Toprağa bağla</translation>
     </message>
     <message>
         <source>Impedance</source>
-        <translation type="unfinished">Empedans</translation>
+        <translation>Empedans</translation>
     </message>
 </context>
 <context>
     <name>Potentiometer</name>
     <message>
         <source>Potentiometer</source>
-        <translation type="unfinished">Potansiyometre</translation>
+        <translation>Potansiyometre</translation>
     </message>
     <message>
         <source>Resistors</source>
@@ -4166,26 +4182,26 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Current Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Akım Değeri</translation>
     </message>
     <message>
         <source>Dial</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirici</translation>
     </message>
 </context>
 <context>
     <name>Probe</name>
     <message>
         <source>Probe</source>
-        <translation type="unfinished">Prob</translation>
+        <translation>Prob</translation>
     </message>
     <message>
         <source>Meters</source>
@@ -4193,15 +4209,15 @@ Can&apos;t find file:
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Show Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Voltajı Göster</translation>
     </message>
     <message>
         <source>Threshold</source>
-        <translation type="unfinished">Eşik</translation>
+        <translation>Eşik</translation>
     </message>
 </context>
 <context>
@@ -4228,7 +4244,7 @@ Can&apos;t find file:
     </message>
     <message>
         <source>    Show</source>
-        <translation type="unfinished"></translation>
+        <translation>    Göster</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -4236,58 +4252,62 @@ Can&apos;t find file:
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>Push</name>
     <message>
         <source>Push</source>
-        <translation type="unfinished">Basmalı Anahtar</translation>
+        <translation>Basmalı Anahtar</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Normally Closed</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalde Kapalı</translation>
     </message>
     <message>
         <source>Poles</source>
-        <translation type="unfinished">Kutuplar</translation>
+        <translation>Kutuplar</translation>
     </message>
     <message>
         <source>Key</source>
-        <translation type="unfinished">Anahtar</translation>
+        <translation>Anahtar</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <source>Sources</source>
-        <translation type="unfinished">Kaynaklar</translation>
+        <translation>Kaynaklar</translation>
     </message>
     <message>
         <source>Logic</source>
-        <translation type="unfinished">Mantık</translation>
+        <translation>Mantık</translation>
     </message>
     <message>
         <source>Cannot write file %1:
 %2.</source>
-        <translation type="unfinished">%1 dosyasına yazılamıyor: %2.</translation>
+        <translation>%1 dosyasına yazılamıyor: %2.</translation>
     </message>
     <message>
         <source>Sensors</source>
-        <translation type="unfinished">Sensörler</translation>
+        <translation>Sensörler</translation>
     </message>
     <message>
         <source>Peripherals</source>
-        <translation type="unfinished">Periferik</translation>
+        <translation>Çevrebirimler</translation>
     </message>
     <message>
         <source>Meters</source>
-        <translation type="unfinished">Ölçerler</translation>
+        <translation>Ölçü Aletleri</translation>
     </message>
     <message>
         <source>Ellipse</source>
@@ -4295,7 +4315,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Graphical</source>
-        <translation type="unfinished">Grafik</translation>
+        <translation>Grafiksel</translation>
     </message>
     <message>
         <source>Line</source>
@@ -4307,11 +4327,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Outputs</source>
-        <translation type="unfinished">Çıktılar</translation>
+        <translation>Çıktılar</translation>
     </message>
     <message>
         <source>Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Göstergeler</translation>
     </message>
     <message>
         <source>Led</source>
@@ -4319,11 +4339,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Leds</source>
-        <translation type="unfinished">Ledler</translation>
+        <translation>Ledler</translation>
     </message>
     <message>
         <source>Motors</source>
-        <translation type="unfinished">Motorlar</translation>
+        <translation>Motorlar</translation>
     </message>
     <message>
         <source>Capacitor</source>
@@ -4331,7 +4351,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Reactive</source>
-        <translation type="unfinished"></translation>
+        <translation>Reaktif</translation>
     </message>
     <message>
         <source>Electrolytic Capacitor</source>
@@ -4339,7 +4359,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Resistive Sensors</source>
-        <translation type="unfinished">Direnç Sensörler</translation>
+        <translation>Direnç Sensörler</translation>
     </message>
     <message>
         <source>Thermistor</source>
@@ -4347,7 +4367,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Resistors</source>
-        <translation type="unfinished">Dirençler</translation>
+        <translation>Dirençler</translation>
     </message>
     <message>
         <source>Ground (0 V)</source>
@@ -4355,7 +4375,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Passive</source>
-        <translation type="unfinished">Pasif</translation>
+        <translation>Pasif</translation>
     </message>
     <message>
         <source>AVR</source>
@@ -4363,7 +4383,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Micro</source>
-        <translation type="unfinished">Mikro</translation>
+        <translation>Mikro</translation>
     </message>
     <message>
         <source>I51</source>
@@ -4371,47 +4391,48 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Arduino</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Arduino</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <source>Shields</source>
-        <translation type="unfinished"></translation>
+        <translation>Koruyucular</translation>
     </message>
     <message>
         <source>Gates</source>
-        <translation type="unfinished">Mantık Kapıları</translation>
+        <translation>Kapılar</translation>
     </message>
     <message>
         <source>Arithmetic</source>
-        <translation type="unfinished">Aritmetik</translation>
+        <translation>Aritmetik</translation>
     </message>
     <message>
         <source>Memory</source>
-        <translation type="unfinished">Bellek</translation>
+        <translation>Bellek</translation>
     </message>
     <message>
         <source>Converters</source>
-        <translation type="unfinished">Dönüştürücüler</translation>
+        <translation>Dönüştürücüler</translation>
     </message>
     <message>
         <source>Other Logic</source>
-        <translation type="unfinished">Diğer Mantık</translation>
+        <translation>Diğer Mantık</translation>
     </message>
     <message>
         <source>Warning: elf file doesn&apos;t exist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı: elf dosyası mevcut değil:</translation>
     </message>
     <message>
         <source>Rectifiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Doğrultucular</translation>
     </message>
     <message>
         <source>Active</source>
-        <translation type="unfinished">Aktif</translation>
+        <translation>Aktif</translation>
     </message>
     <message>
         <source>Error: list file doesn&apos;t exist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata: list dosyası mevcut değil:</translation>
     </message>
     <message>
         <source>Clock</source>
@@ -4423,110 +4444,110 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Cpu</source>
-        <translation type="unfinished"></translation>
+        <translation>CPU</translation>
     </message>
     <message>
         <source>Producer</source>
-        <translation type="unfinished"></translation>
+        <translation>Üretici</translation>
     </message>
     <message>
         <source>CMOS</source>
-        <translation type="unfinished"></translation>
+        <translation>CMOS</translation>
     </message>
     <message>
         <source>Single cycle I/O</source>
-        <translation type="unfinished"></translation>
+        <translation>Tek çevrim G/Ç</translation>
     </message>
     <message>
         <source>Interrupt Vector 0xFF</source>
-        <translation type="unfinished"></translation>
+        <translation>Kesme Vektörü 0xFF</translation>
     </message>
     <message>
         <source>Switches</source>
-        <translation type="unfinished"></translation>
+        <translation>Anahtarlar</translation>
     </message>
     <message>
         <source>Connectors</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlayıcılar</translation>
     </message>
     <message>
         <source>Other</source>
-        <translation type="unfinished">Diğer</translation>
+        <translation>Diğer</translation>
     </message>
     <message>
         <source>Ternary</source>
-        <translation type="unfinished"></translation>
+        <translation>Üçlü</translation>
     </message>
     <message>
         <source>Digital Potentiometer</source>
-        <translation type="unfinished"></translation>
+        <translation>Dijital Potansiyometre</translation>
     </message>
     <message>
         <source>IC 74</source>
-        <translation type="unfinished"></translation>
+        <translation>IC 74</translation>
     </message>
     <message>
         <source>IC CD</source>
-        <translation type="unfinished"></translation>
+        <translation>IC CD</translation>
     </message>
     <message>
         <source>USSR IC</source>
-        <translation type="unfinished"></translation>
+        <translation>USSR IC</translation>
     </message>
     <message>
         <source>Other IC</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer TÇ (Tümleşik Devre)</translation>
     </message>
     <message>
         <source>Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuşlar</translation>
     </message>
     <message>
         <source>Led display</source>
-        <translation type="unfinished"></translation>
+        <translation>LED gösterge</translation>
     </message>
     <message>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Araçlar</translation>
     </message>
     <message>
         <source>Transistors</source>
-        <translation type="unfinished"></translation>
+        <translation>Transistörler</translation>
     </message>
     <message>
         <source>Other Active</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer Aktifler</translation>
     </message>
     <message>
         <source>Other Outputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer Çıkışlar</translation>
     </message>
     <message>
         <source>Edit Pin </source>
-        <translation type="unfinished">Pini Düzenle </translation>
+        <translation>Pini Düzenle </translation>
     </message>
     <message>
         <source>Delete Pin </source>
-        <translation type="unfinished">Pini Sil </translation>
+        <translation>Pini Sil </translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Tür</translation>
+        <translation>Tür</translation>
     </message>
     <message>
         <source>Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran</translation>
     </message>
 </context>
 <context>
     <name>RTD</name>
     <message>
         <source>RTD</source>
-        <translation type="unfinished">Direnç Sıcaklık Dedektörü</translation>
+        <translation>Direnç Sıcaklık Dedektörü</translation>
     </message>
     <message>
         <source>Resistive Sensors</source>
@@ -4534,11 +4555,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametreler</translation>
     </message>
     <message>
         <source>Dial</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirici</translation>
     </message>
 </context>
 <context>
@@ -4549,30 +4570,30 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Voltage</source>
-        <translation type="unfinished">Gerilim</translation>
+        <translation>Gerilim</translation>
     </message>
     <message>
         <source>Rail</source>
-        <translation type="unfinished"></translation>
+        <translation>Ray</translation>
     </message>
 </context>
 <context>
     <name>RamTable</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Ad</translation>
+        <translation>Ad</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Tür</translation>
+        <translation>Tür</translation>
     </message>
     <message>
         <source>Dec</source>
@@ -4580,7 +4601,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Value</source>
-        <translation type="unfinished">Değer</translation>
+        <translation>Değer</translation>
     </message>
     <message>
         <source>Load Variables</source>
@@ -4588,90 +4609,90 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Clear Selected</source>
-        <translation type="unfinished">Seçili Satırı Temizle</translation>
+        <translation>Seçili Satırı Temizle</translation>
     </message>
     <message>
         <source>Clear Table</source>
-        <translation type="unfinished">Tabloyu Temizle</translation>
+        <translation>Tabloyu Temizle</translation>
     </message>
     <message>
         <source>Load VarSet</source>
-        <translation type="unfinished">Değişken Listesi Yükle</translation>
+        <translation>VarSet‘i Yükle</translation>
     </message>
     <message>
         <source>Save VarSet</source>
-        <translation type="unfinished">Değişken listesini kaydet</translation>
+        <translation>Değişken Listesini Kaydet</translation>
     </message>
     <message>
         <source>VarSets (*.vst);;All files (*.*)</source>
-        <translation type="unfinished">Değişken listeleri (*.vst);;Tüm dosyalar (*.*)</translation>
+        <translation>Değişken listeleri (*.vst);;Tüm dosyalar (*.*)</translation>
     </message>
     <message>
         <source>Cannot write file %1:
 %2.</source>
-        <translation type="unfinished">%1 dosyasına yazılamıyor: %2.</translation>
+        <translation>%1 dosyasına yazılamıyor: %2.</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adres</translation>
     </message>
 </context>
 <context>
     <name>Rectangle</name>
     <message>
         <source>Rectangle</source>
-        <translation type="unfinished">Dikdörtgen</translation>
+        <translation>Dikdörtgen</translation>
     </message>
 </context>
 <context>
     <name>Relay</name>
     <message>
         <source>Relay (all)</source>
-        <translation type="unfinished">Röleler (Tümü)</translation>
+        <translation>Röleler (tümü)</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Normally Closed</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalde Kapalı</translation>
     </message>
     <message>
         <source>Double Throw</source>
-        <translation type="unfinished"></translation>
+        <translation>Çift Konumlu</translation>
     </message>
     <message>
         <source>Poles</source>
-        <translation type="unfinished">Kutuplar</translation>
+        <translation>Kutuplar</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>IOn</source>
-        <translation type="unfinished"></translation>
+        <translation>IOn</translation>
     </message>
     <message>
         <source>IOff</source>
-        <translation type="unfinished"></translation>
+        <translation>IOff</translation>
     </message>
     <message>
         <source>Coil</source>
-        <translation type="unfinished"></translation>
+        <translation>Bobin</translation>
     </message>
     <message>
         <source>Inductance</source>
-        <translation type="unfinished">İndüktans</translation>
+        <translation>Endüktans</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Reactive Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Reaktif Adım</translation>
     </message>
 </context>
 <context>
@@ -4705,7 +4726,7 @@ p, li { white-space: pre-wrap; }
     <name>Resistor</name>
     <message>
         <source>Resistor</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Resistors</source>
@@ -4713,18 +4734,18 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
 </context>
 <context>
     <name>ResistorDip</name>
     <message>
         <source>ResistorDip</source>
-        <translation type="unfinished">Direnç Dip</translation>
+        <translation>DirençDip</translation>
     </message>
     <message>
         <source>Resistors</source>
@@ -4732,46 +4753,46 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Pullup</source>
-        <translation type="unfinished"></translation>
+        <translation>Yukarı Çekme</translation>
     </message>
     <message>
         <source>Pullup Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Yukarı Çekme Voltajı</translation>
     </message>
 </context>
 <context>
     <name>SCR</name>
     <message>
         <source>SCR</source>
-        <translation type="unfinished"></translation>
+        <translation>SCR</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Gate Resistance</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapı Direnci</translation>
     </message>
     <message>
         <source>Trigger Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Tetikleme Akımı</translation>
     </message>
     <message>
         <source>Holding Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutma Akımı</translation>
     </message>
 </context>
 <context>
@@ -4822,62 +4843,62 @@ p, li { white-space: pre-wrap; }
     <name>SdccDebugger</name>
     <message>
         <source>Warning: lst file doesn&apos;t exist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı: lst dosyası mevcut değil:</translation>
     </message>
 </context>
 <context>
     <name>SerialMonitor</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished">Diyalog</translation>
+        <translation>Diyalog</translation>
     </message>
     <message>
         <source>Send Text:</source>
-        <translation type="unfinished">Yazı gönder:</translation>
+        <translation>Yazı Gönder:</translation>
     </message>
     <message>
         <source>Send Value:</source>
-        <translation type="unfinished"></translation>
+        <translation>Değer Gönder:</translation>
     </message>
     <message>
         <source>Print:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazdır:</translation>
     </message>
     <message>
         <source> Input</source>
-        <translation type="unfinished"></translation>
+        <translation> Giriş</translation>
     </message>
     <message>
         <source> Output</source>
-        <translation type="unfinished"></translation>
+        <translation> Çıktı</translation>
     </message>
     <message>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII</translation>
     </message>
     <message>
         <source>HEX</source>
-        <translation type="unfinished"></translation>
+        <translation>HEX</translation>
     </message>
     <message>
         <source>DEC</source>
-        <translation type="unfinished"></translation>
+        <translation>DEC</translation>
     </message>
     <message>
         <source>OCT</source>
-        <translation type="unfinished"></translation>
+        <translation>OCT</translation>
     </message>
     <message>
         <source>BIN</source>
-        <translation type="unfinished"></translation>
+        <translation>BIN</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished">Duraklat</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Resume</source>
-        <translation type="unfinished"></translation>
+        <translation>Sürdür</translation>
     </message>
 </context>
 <context>
@@ -4885,7 +4906,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Cannot Open Port %1:
 %2.</source>
-        <translation type="unfinished">Port açılamadı : %1
+        <translation>Port açılamadı : %1
 %2.</translation>
     </message>
     <message>
@@ -4894,82 +4915,82 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Port Name</source>
-        <translation type="unfinished">Port Adı</translation>
+        <translation>Port Adı</translation>
     </message>
     <message>
         <source>Baudrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Baud hızı</translation>
     </message>
     <message>
         <source>Data Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Veri Bitleri</translation>
     </message>
     <message>
         <source>Stop Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Dur Bitleri</translation>
     </message>
     <message>
         <source>Open Serial Monitor.</source>
-        <translation type="unfinished">Seri Monitörü Aç.</translation>
+        <translation>Seri Monitörü Aç.</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Aç</translation>
     </message>
     <message>
         <source>Serial Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Seri Port</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Auto Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Otomatik Aç</translation>
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapat</translation>
     </message>
     <message>
         <source>Config</source>
-        <translation type="unfinished"></translation>
+        <translation>Yapılandırma</translation>
     </message>
 </context>
 <context>
     <name>SerialTerm</name>
     <message>
         <source>Serial Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Seri Terminal</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Baudrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Baud Hızı</translation>
     </message>
     <message>
         <source>Data Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Veri Bitleri</translation>
     </message>
     <message>
         <source>Stop Bits</source>
-        <translation type="unfinished"></translation>
+        <translation>Dur Bitleri</translation>
     </message>
     <message>
         <source>Open Serial Monitor.</source>
-        <translation type="unfinished">Seri Monitörü Aç.</translation>
+        <translation>Seri Monitörü Aç.</translation>
     </message>
     <message>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Aç</translation>
     </message>
     <message>
         <source>Config</source>
-        <translation type="unfinished"></translation>
+        <translation>Yapılandırma</translation>
     </message>
 </context>
 <context>
@@ -4984,34 +5005,34 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Speed </source>
-        <translation type="unfinished">Hız </translation>
+        <translation>Hız</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Min. Pulse Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Min. Darbe Genişliği</translation>
     </message>
     <message>
         <source>Max. Pulse Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Maks. Darbe Genişliği</translation>
     </message>
     <message>
         <source>Servo Motor</source>
-        <translation type="unfinished"></translation>
+        <translation>Servo Motor</translation>
     </message>
 </context>
 <context>
     <name>SevenSegment</name>
     <message>
         <source>7 Segment</source>
-        <translation type="unfinished"></translation>
+        <translation>7 Segment</translation>
     </message>
     <message>
         <source>Leds</source>
@@ -5019,46 +5040,46 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation type="unfinished">Renk</translation>
+        <translation>Renk</translation>
     </message>
     <message>
         <source>Vertical Pins</source>
-        <translation type="unfinished">Dikey Pinler</translation>
+        <translation>Dikey Pinler</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Common Cathode</source>
-        <translation type="unfinished">Ortak Katod</translation>
+        <translation>Ortak Katod</translation>
     </message>
     <message>
         <source>Forward Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>İleri Yön Gerilimi</translation>
     </message>
     <message>
         <source>Max Current</source>
-        <translation type="unfinished">Max. Akım</translation>
+        <translation>Maks. Akım</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
 </context>
 <context>
     <name>SevenSegmentBCD</name>
     <message>
         <source>7 Seg BCD</source>
-        <translation type="unfinished">7 Seg BCD</translation>
+        <translation>7 Seg BCD</translation>
     </message>
     <message>
         <source>Other Logic</source>
@@ -5066,57 +5087,57 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Show Point Pin</source>
-        <translation type="unfinished"></translation>
+        <translation>Nokta Pinini Göster</translation>
     </message>
     <message>
         <source>Show Enable Pin</source>
-        <translation type="unfinished"></translation>
+        <translation>Etkinleştirme Pinini Göster</translation>
     </message>
 </context>
 <context>
     <name>Shape</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size X</source>
-        <translation type="unfinished">X Boyutu</translation>
+        <translation>X Boyutu</translation>
     </message>
     <message>
         <source>Size Y</source>
-        <translation type="unfinished">Y Boyutu</translation>
+        <translation>Y Boyutu</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation type="unfinished">Kenar</translation>
+        <translation>Kenarlık</translation>
     </message>
     <message>
         <source>Z Value</source>
-        <translation type="unfinished">Z Değeri</translation>
+        <translation>Z Değeri</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation type="unfinished">Renk</translation>
+        <translation>Renk</translation>
     </message>
     <message>
         <source>Opacity</source>
-        <translation type="unfinished">Saydamlık</translation>
+        <translation>Saydamlık</translation>
     </message>
 </context>
 <context>
     <name>ShieldSubc</name>
     <message>
         <source>Detach</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayır</translation>
     </message>
     <message>
         <source>Attach</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekle</translation>
     </message>
 </context>
 <context>
@@ -5131,19 +5152,19 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Clock Inverted</source>
-        <translation type="unfinished">Ters Çevrilmiş Saat</translation>
+        <translation>Ters Çevrilmiş Saat</translation>
     </message>
     <message>
         <source>Reset Inverted</source>
-        <translation type="unfinished">Ters Çevrilmiş Reset</translation>
+        <translation>Ters Çevrilmiş Sıfırlama</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -5155,29 +5176,29 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Shift Register</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaydırma Yazmacı</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
     <name>Simulator</name>
     <message>
         <source>Running</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalışıyor</translation>
     </message>
     <message>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Durdu</translation>
     </message>
 </context>
 <context>
     <name>Socket</name>
     <message>
         <source>Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Soket</translation>
     </message>
     <message>
         <source>Main</source>
@@ -5188,54 +5209,54 @@ p, li { white-space: pre-wrap; }
     <name>Ssd1306</name>
     <message>
         <source>Blue</source>
-        <translation type="unfinished"></translation>
+        <translation>Mavi</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation type="unfinished">Renk</translation>
+        <translation>Renk</translation>
     </message>
     <message>
         <source>I2C Address</source>
-        <translation type="unfinished">I2C Adresi</translation>
+        <translation>I2C Adresi</translation>
     </message>
     <message>
         <source>I2C Frequency</source>
-        <translation type="unfinished">I2C Frekansı</translation>
+        <translation>I2C Frekansı</translation>
     </message>
     <message>
         <source>White</source>
-        <translation type="unfinished"></translation>
+        <translation>Beyaz</translation>
     </message>
     <message>
         <source>Yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Sarı</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="unfinished">Genişlik</translation>
+        <translation>Genişlik</translation>
     </message>
     <message>
         <source>Height</source>
-        <translation type="unfinished">Yükseklik</translation>
+        <translation>Yükseklik</translation>
     </message>
     <message>
         <source>Rotate</source>
-        <translation type="unfinished"></translation>
+        <translation>Döndür</translation>
     </message>
     <message>
         <source>I2C</source>
-        <translation type="unfinished">l2C</translation>
+        <translation>l2C</translation>
     </message>
 </context>
 <context>
     <name>Stepper</name>
     <message>
         <source>Stepper</source>
-        <translation type="unfinished">Step motor</translation>
+        <translation>Adım Motoru</translation>
     </message>
     <message>
         <source>Motors</source>
@@ -5243,33 +5264,33 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Bipolar</source>
-        <translation type="unfinished">Bipolar</translation>
+        <translation>Bipolar</translation>
     </message>
     <message>
         <source>Steps per Rotation</source>
-        <translation type="unfinished">Step/dönme</translation>
+        <translation>Tur Başına Adım</translation>
     </message>
     <message>
         <source>Resistance</source>
-        <translation type="unfinished">Direnç</translation>
+        <translation>Direnç</translation>
     </message>
 </context>
 <context>
     <name>StrVal</name>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished">Etiket</translation>
+        <translation>MetinEtiketi</translation>
     </message>
 </context>
 <context>
     <name>Strain</name>
     <message>
         <source>Force Strain Gauge</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuvvet Gerinim Ölçer</translation>
     </message>
     <message>
         <source>Resistive Sensors</source>
@@ -5277,39 +5298,39 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Current Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Akım Değeri</translation>
     </message>
     <message>
         <source>Minimum Value</source>
-        <translation type="unfinished">Min. Değer</translation>
+        <translation>Minimum. Değer</translation>
     </message>
     <message>
         <source>Maximum Value</source>
-        <translation type="unfinished">Max. Değer</translation>
+        <translation>Maksimum Değer</translation>
     </message>
     <message>
         <source>Dial Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirmeli Adım</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametreler</translation>
     </message>
     <message>
         <source>Ref. Temperature</source>
-        <translation type="unfinished">Referans Sıcaklığı</translation>
+        <translation>Referans Sıcaklık</translation>
     </message>
     <message>
         <source>Temperature</source>
-        <translation type="unfinished">Sıcaklık</translation>
+        <translation>Sıcaklık</translation>
     </message>
     <message>
         <source>Dial</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirici</translation>
     </message>
 </context>
 <context>
@@ -5323,7 +5344,7 @@ p, li { white-space: pre-wrap; }
     <name>SubCircuit</name>
     <message>
         <source>Subcircuit</source>
-        <translation type="unfinished">Alt devre</translation>
+        <translation>Alt devre</translation>
     </message>
     <message>
         <source>There are no data files for </source>
@@ -5331,11 +5352,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Logic Symbol</source>
-        <translation type="unfinished">Mantık Sembolü</translation>
+        <translation>Mantık Sembolü</translation>
     </message>
     <message>
         <source>Electric</source>
@@ -5358,7 +5379,7 @@ p, li { white-space: pre-wrap; }
     <name>SubPackage</name>
     <message>
         <source>Package</source>
-        <translation type="unfinished">Paket</translation>
+        <translation>Kılıf</translation>
     </message>
     <message>
         <source>Other</source>
@@ -5366,39 +5387,39 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Board Mode</source>
-        <translation type="unfinished">Kart Türü</translation>
+        <translation>Kart Modu</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Tür</translation>
+        <translation>Tür</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="unfinished">Genişlik</translation>
+        <translation>Genişlik</translation>
     </message>
     <message>
         <source>Height</source>
-        <translation type="unfinished">Yükseklik</translation>
+        <translation>Yükseklik</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Ad</translation>
+        <translation>Ad</translation>
     </message>
     <message>
         <source>Package File</source>
-        <translation type="unfinished">Paket Dosyası</translation>
+        <translation>Kılıf Dosyası</translation>
     </message>
     <message>
         <source>Background</source>
-        <translation type="unfinished">Zemin</translation>
+        <translation>Arka Plan</translation>
     </message>
     <message>
         <source>Logic Symbol</source>
-        <translation type="unfinished">Mantık Sembolü</translation>
+        <translation>Mantık Sembolü</translation>
     </message>
     <message>
         <source>Move Pin </source>
@@ -5414,11 +5435,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Load Package</source>
-        <translation type="unfinished">Paketi yükle</translation>
+        <translation>Kılıf Yükle</translation>
     </message>
     <message>
         <source>Save Package</source>
-        <translation type="unfinished">Paketi Kaydet</translation>
+        <translation>Kılıfı Kaydet</translation>
     </message>
     <message>
         <source>Select Main Component</source>
@@ -5429,84 +5450,84 @@ p, li { white-space: pre-wrap; }
 Package has been modified.
 Do you want to save your changes?
 </source>
-        <translation type="unfinished">
-Paket değiştirildi.
+        <translation>
+Kılıf değiştirildi.
 Değişiklikler kaydedilsin mi?
 </translation>
     </message>
     <message>
         <source>Packages (*.package);;All files (*.*)</source>
-        <translation type="unfinished">Paketler (*.package);;Tüm dosyalar (*.*)</translation>
+        <translation>Kılıflar (*.package);;Tüm dosyalar (*.*)</translation>
     </message>
     <message>
         <source>Load Package File</source>
-        <translation type="unfinished">Paket Dosyasını Aç</translation>
+        <translation>Kılıf Dosyası Yükle</translation>
     </message>
     <message>
         <source>Cannot write file %1:
 %2.</source>
-        <translation type="unfinished">%1 dosyasına yazılamıyor: %2.</translation>
+        <translation>%1 dosyasına yazılamıyor: %2.</translation>
     </message>
     <message>
         <source>Select Exposed Components</source>
-        <translation type="unfinished"></translation>
+        <translation>Açığa Çıkan Elemanları Seç</translation>
     </message>
 </context>
 <context>
     <name>Switch</name>
     <message>
         <source>Switch (all)</source>
-        <translation type="unfinished">Anahtarlar (tümü)</translation>
+        <translation>Anahtarlar (tümü)</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Normally Closed</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalde Kapalı</translation>
     </message>
     <message>
         <source>Double Throw</source>
-        <translation type="unfinished"></translation>
+        <translation>Çift Konumlu</translation>
     </message>
     <message>
         <source>Poles</source>
-        <translation type="unfinished">Kutuplar</translation>
+        <translation>Kutuplar</translation>
     </message>
     <message>
         <source>Key</source>
-        <translation type="unfinished">Anahtar</translation>
+        <translation>Anahtar</translation>
     </message>
 </context>
 <context>
     <name>SwitchDip</name>
     <message>
         <source>Switch Dip</source>
-        <translation type="unfinished">Anahtar Dip</translation>
+        <translation>Anahtar Dip</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut</translation>
     </message>
     <message>
         <source>Exclusive</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçmeli</translation>
     </message>
     <message>
         <source>Common Pin</source>
-        <translation type="unfinished"></translation>
+        <translation>Ortak Pin</translation>
     </message>
 </context>
 <context>
     <name>TextComponent</name>
     <message>
         <source>Text</source>
-        <translation type="unfinished">Yazı</translation>
+        <translation>Metin</translation>
     </message>
     <message>
         <source>Graphical</source>
@@ -5514,39 +5535,39 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Margin</source>
-        <translation type="unfinished"></translation>
+        <translation>Kenar Boşluğu</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation type="unfinished">Kenar</translation>
+        <translation>Kenarlık</translation>
     </message>
     <message>
         <source>Opacity</source>
-        <translation type="unfinished">Saydamlık</translation>
+        <translation>Saydamlık</translation>
     </message>
     <message>
         <source>Font</source>
-        <translation type="unfinished">Font</translation>
+        <translation>Font</translation>
     </message>
     <message>
         <source>Font Size</source>
-        <translation type="unfinished">Font Boyutu</translation>
+        <translation>Font Boyutu</translation>
     </message>
     <message>
         <source>Fixed_Width</source>
-        <translation type="unfinished">Sabit genişlik</translation>
+        <translation>Sabit Genişlik</translation>
     </message>
     <message>
         <source>Background Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Arka Plan Rengi</translation>
     </message>
     <message>
         <source>Font Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Font Rengi</translation>
     </message>
 </context>
 <context>
@@ -5579,45 +5600,45 @@ Değişiklikler kaydedilsin mi?
     <name>Thermistor</name>
     <message>
         <source>Thermistor</source>
-        <translation type="unfinished">Termistör</translation>
+        <translation>Termistör</translation>
     </message>
     <message>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametreler</translation>
     </message>
     <message>
         <source>Dial</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirici</translation>
     </message>
 </context>
 <context>
     <name>ThermistorBase</name>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Current Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Akım Değeri</translation>
     </message>
     <message>
         <source>Minimum Value</source>
-        <translation type="unfinished">Min. Değer</translation>
+        <translation>Minimum Değer</translation>
     </message>
     <message>
         <source>Maximum Value</source>
-        <translation type="unfinished">Max. Değer</translation>
+        <translation>Maksimum. Değer</translation>
     </message>
     <message>
         <source>Dial Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirmeli Adım</translation>
     </message>
 </context>
 <context>
     <name>TouchPad</name>
     <message>
         <source>TouchPad (Resistive)</source>
-        <translation type="unfinished"></translation>
+        <translation>Dokunmatik Yüzey (Rezistif)</translation>
     </message>
     <message>
         <source>Peripherals</source>
@@ -5625,104 +5646,104 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Width</source>
-        <translation type="unfinished">Genişlik</translation>
+        <translation>Genişlik</translation>
     </message>
     <message>
         <source>Height</source>
-        <translation type="unfinished">Yükseklik</translation>
+        <translation>Yükseklik</translation>
     </message>
     <message>
         <source>Transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>Saydam</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>RxMin</source>
-        <translation type="unfinished"></translation>
+        <translation>Asgari Rx</translation>
     </message>
     <message>
         <source>RxMax</source>
-        <translation type="unfinished"></translation>
+        <translation>Azami Rx</translation>
     </message>
     <message>
         <source>RyMin</source>
-        <translation type="unfinished"></translation>
+        <translation>Asgari Ry</translation>
     </message>
     <message>
         <source>RyMax</source>
-        <translation type="unfinished"></translation>
+        <translation>Azami Ry</translation>
     </message>
 </context>
 <context>
     <name>Transformer</name>
     <message>
         <source>Transformer</source>
-        <translation type="unfinished"></translation>
+        <translation>Transformatör</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Coupling Coefficient</source>
-        <translation type="unfinished"></translation>
+        <translation>Eşleştirme Katsayısı</translation>
     </message>
     <message>
         <source>Base Inductance</source>
-        <translation type="unfinished"></translation>
+        <translation>Taban Endüktansı</translation>
     </message>
     <message>
         <source>Primary</source>
-        <translation type="unfinished"></translation>
+        <translation>Primer</translation>
     </message>
     <message>
         <source>Secondary</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekonder</translation>
     </message>
 </context>
 <context>
     <name>Triac</name>
     <message>
         <source>Triac</source>
-        <translation type="unfinished"></translation>
+        <translation>Triyak</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Gate Resistance</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapı Direnci</translation>
     </message>
     <message>
         <source>Trigger Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Tetikleme Akımı</translation>
     </message>
     <message>
         <source>Holding Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutma Akımı</translation>
     </message>
 </context>
 <context>
     <name>Tunnel</name>
     <message>
         <source>Tunnel.</source>
-        <translation type="unfinished">Tünel.</translation>
+        <translation>Tünel.</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Id</source>
-        <translation type="unfinished"></translation>
+        <translation>Id</translation>
     </message>
     <message>
         <source>Rotated</source>
@@ -5730,45 +5751,45 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Bus</source>
-        <translation type="unfinished">Veri Yolu</translation>
+        <translation>Veri Yolu</translation>
     </message>
     <message>
         <source>Hide group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grubu gizle</translation>
     </message>
     <message>
         <source>Show group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grubu göster</translation>
     </message>
     <message>
         <source>Rename Tunnels</source>
-        <translation type="unfinished"></translation>
+        <translation>Tünelleri Yeniden Adlandır</translation>
     </message>
     <message>
         <source>New name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni ad:</translation>
     </message>
     <message>
         <source>Rename group</source>
-        <translation type="unfinished"></translation>
+        <translation>Grubu yeniden adlandır</translation>
     </message>
 </context>
 <context>
     <name>ValueWidget</name>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Ad</translation>
+        <translation>Ad</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Tür</translation>
+        <translation>Tür</translation>
     </message>
 </context>
 <context>
     <name>VarResistor</name>
     <message>
         <source>Variable Resistor</source>
-        <translation type="unfinished">Ayarlanabilir direnç</translation>
+        <translation>Ayarlanabilir Direnç</translation>
     </message>
     <message>
         <source>Resistors</source>
@@ -5776,34 +5797,34 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Current Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Akım Değeri</translation>
     </message>
     <message>
         <source>Minimum Resistance</source>
-        <translation type="unfinished">Min. Direnç</translation>
+        <translation>Minimum Direnç</translation>
     </message>
     <message>
         <source>Maximum Resistance</source>
-        <translation type="unfinished">Max. Direnç</translation>
+        <translation>Maksimum Direnç</translation>
     </message>
     <message>
         <source>Dial Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirmeli Adım</translation>
     </message>
     <message>
         <source>Dial</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirici</translation>
     </message>
 </context>
 <context>
     <name>VoltReg</name>
     <message>
         <source>Volt. Regulator</source>
-        <translation type="unfinished">Voltaj regülatörü</translation>
+        <translation>Gerilim Regülatörü</translation>
     </message>
     <message>
         <source>Active</source>
@@ -5811,11 +5832,11 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Output Voltage</source>
-        <translation type="unfinished">Çıkış voltajı</translation>
+        <translation>Çıkış Gerilimi</translation>
     </message>
 </context>
 <context>
@@ -5826,37 +5847,37 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Max. Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Maksimum Gerilim</translation>
     </message>
     <message>
         <source>Current Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Akım Değeri</translation>
     </message>
     <message>
         <source>Voltage Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerilim Kaynağı</translation>
     </message>
     <message>
         <source>Min. Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Minimum Gerilim</translation>
     </message>
 </context>
 <context>
     <name>Voltimeter</name>
     <message>
         <source>Voltmeter</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerilimölçer</translation>
     </message>
 </context>
 <context>
     <name>WS2812</name>
     <message>
         <source>WS2812 Led</source>
-        <translation type="unfinished">WS2812 Led</translation>
+        <translation>WS2812 Led</translation>
     </message>
     <message>
         <source>Leds</source>
@@ -5864,69 +5885,69 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Rows</source>
-        <translation type="unfinished">Satırlar</translation>
+        <translation>Satırlar</translation>
     </message>
     <message>
         <source>Columns</source>
-        <translation type="unfinished">Sütunlar</translation>
+        <translation>Sütunlar</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
     <message>
         <source>Minimum Reset pulse</source>
-        <translation type="unfinished"></translation>
+        <translation>En Düşük Sıfırlama darbesi</translation>
     </message>
     <message>
         <source>0, High time</source>
-        <translation type="unfinished"></translation>
+        <translation>0, Yüksek süre</translation>
     </message>
     <message>
         <source>0, Low time</source>
-        <translation type="unfinished"></translation>
+        <translation>0, Düşük süre</translation>
     </message>
     <message>
         <source>1, High time</source>
-        <translation type="unfinished"></translation>
+        <translation>1, Yüksek süre</translation>
     </message>
     <message>
         <source>1, Low time</source>
-        <translation type="unfinished"></translation>
+        <translation>1, Düşük süre</translation>
     </message>
 </context>
 <context>
     <name>Watcher</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
 </context>
 <context>
     <name>WaveGen</name>
     <message>
         <source>Sine</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinüs</translation>
     </message>
     <message>
         <source>Saw</source>
-        <translation type="unfinished"></translation>
+        <translation>Testere</translation>
     </message>
     <message>
         <source>Triangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Üçgen</translation>
     </message>
     <message>
         <source>Square</source>
-        <translation type="unfinished"></translation>
+        <translation>Kare</translation>
     </message>
     <message>
         <source>Random</source>
-        <translation type="unfinished"></translation>
+        <translation>Rastgele</translation>
     </message>
     <message>
         <source>Wave Gen.</source>
@@ -5938,78 +5959,78 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Wave Type</source>
-        <translation type="unfinished">Dalga Türü</translation>
+        <translation>Dalga Türü</translation>
     </message>
     <message>
         <source>Frequency</source>
-        <translation type="unfinished">Frekans</translation>
+        <translation>Frekans</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation type="unfinished">Kalite</translation>
+        <translation>Kalite</translation>
     </message>
     <message>
         <source>Duty</source>
-        <translation type="unfinished">Duty</translation>
+        <translation>Görev Oranı</translation>
     </message>
     <message>
         <source>Always On</source>
-        <translation type="unfinished"></translation>
+        <translation>Her Zaman Açık</translation>
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Semi Amplitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Yarı Genlik</translation>
     </message>
     <message>
         <source>Middle Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Orta Gerilim</translation>
     </message>
     <message>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya</translation>
     </message>
     <message>
         <source>Load Wav File</source>
-        <translation type="unfinished"></translation>
+        <translation>Wav Dosyası Yükle</translation>
     </message>
     <message>
         <source>Load Image</source>
-        <translation type="unfinished">Resim Yükle</translation>
+        <translation>Resim Yükle</translation>
     </message>
     <message>
         <source>Wav files (*.wav);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wav dosyaları (.wav);;Tüm dosyalar (.*)</translation>
     </message>
     <message>
         <source>Bipolar</source>
-        <translation type="unfinished">Bipolar</translation>
+        <translation>Bipolar</translation>
     </message>
     <message>
         <source>Floating</source>
-        <translation type="unfinished"></translation>
+        <translation>Boşta</translation>
     </message>
     <message>
         <source>Phase shift</source>
-        <translation type="unfinished"></translation>
+        <translation>Faz kayması</translation>
     </message>
     <message>
         <source>Wave Generator</source>
-        <translation type="unfinished"></translation>
+        <translation>Dalga Üreteci</translation>
     </message>
 </context>
 <context>
     <name>XorGate</name>
     <message>
         <source>Xor Gate</source>
-        <translation type="unfinished">XOR Kapısı</translation>
+        <translation>XOR Kapısı</translation>
     </message>
     <message>
         <source>Logic/Gates</source>
@@ -6025,7 +6046,7 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Electric</source>
-        <translation type="unfinished">Elektrik</translation>
+        <translation>Elektrik</translation>
     </message>
     <message>
         <source>Edges</source>
@@ -6037,11 +6058,11 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Invert Inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Girişleri Ters Çevir</translation>
     </message>
     <message>
         <source>Timing</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamanlama</translation>
     </message>
 </context>
 <context>
@@ -6067,88 +6088,88 @@ Değişiklikler kaydedilsin mi?
     <name>Zener</name>
     <message>
         <source>Zener Diode</source>
-        <translation type="unfinished"></translation>
+        <translation>Zener Diyot</translation>
     </message>
     <message>
         <source>Main</source>
-        <translation type="unfinished">Temel</translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <source>Model</source>
-        <translation type="unfinished"></translation>
+        <translation>Model</translation>
     </message>
 </context>
 <context>
     <name>asDebugger</name>
     <message>
         <source>Error uploading Script to </source>
-        <translation type="unfinished"></translation>
+        <translation>Betik şu konuma yüklenirken hata oluştu </translation>
     </message>
     <message>
         <source>Script Uploaded to </source>
-        <translation type="unfinished"></translation>
+        <translation>Betik Şuraya Yüklendi </translation>
     </message>
     <message>
         <source>Error: script file doesn&apos;t exist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata: betik dosyası mevcut değil:</translation>
     </message>
     <message>
         <source>Error: No Scripted Device Found... </source>
-        <translation type="unfinished"></translation>
+        <translation>Hata: Betiklenmiş Birim Bulunamadı... </translation>
     </message>
     <message>
         <source>     SUCCESS!!! Compilation Ok</source>
-        <translation type="unfinished">     Başarılı! Derleme tamamlandı</translation>
+        <translation>     Başarılı! Derleme tamamlandı</translation>
     </message>
     <message>
         <source>     ERROR!!! Compilation Failed</source>
-        <translation type="unfinished">     Hata! Derlenemedi</translation>
+        <translation>     Hata! Derlenemedi</translation>
     </message>
 </context>
 <context>
     <name>elCapacitor</name>
     <message>
         <source>Electrolytic Capacitor</source>
-        <translation type="unfinished">Elektrolitik Kondansatör</translation>
+        <translation>Elektrolitik Kondansatör</translation>
     </message>
 </context>
 <context>
     <name>infoWidget</name>
     <message>
         <source>Simulation Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Simülasyon Süresi:</translation>
     </message>
     <message>
         <source>Target Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hedef Hız:</translation>
     </message>
     <message>
         <source>Main MCU:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ana Mikrodenetleyici:</translation>
     </message>
     <message>
         <source>Engine Load:</source>
-        <translation type="unfinished"></translation>
+        <translation>Motor Yükü:</translation>
     </message>
     <message>
         <source>Update Load:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yükü Güncelle:</translation>
     </message>
     <message>
         <source>Real FPS:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerçek FPS:</translation>
     </message>
     <message>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <source>GUI overload:</source>
-        <translation type="unfinished"></translation>
+        <translation>Arayüz aşırı yüklenmesi:</translation>
     </message>
     <message>
         <source>Real Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerçek Hız:</translation>
     </message>
 </context>
 <context>
@@ -6159,15 +6180,15 @@ Değişiklikler kaydedilsin mi?
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Ad</translation>
+        <translation>Ad</translation>
     </message>
     <message>
         <source>ShortCut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kısayol</translation>
     </message>
     <message>
         <source>Manage Components</source>
-        <translation type="unfinished">Elemanları ayarla</translation>
+        <translation>Elemanları Yönet</translation>
     </message>
 </context>
 </TS>
