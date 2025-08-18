@@ -102,16 +102,22 @@ macx {
     ICON = ../resources/icons/simulide.icns
 }
 
+contains( QMAKE_HOST.os, Windows ) {
+    REV_NO = $$system("echo  %date:~10,4%%date:~4,2%%date:~7,2%")       # year-month-day
+    BUILD_DATE = $$system("echo  %date:~7,2%-%date:~4,2%-%date:~10,4%") # day-month-year
+}
+else {
+    REV_NO = $$system($(which date) +\"\\\"%y%m%d\\\"\")
+    BUILD_DATE = $$system($(which date) +\"\\\"%d-%m-%y\\\"\")
+}
+
 CONFIG += qt 
 CONFIG += warn_on
 CONFIG += no_qml_debug
 CONFIG *= c++11
 
-REV_NO = $$system( bzr revno )
 DEFINES += REVNO=\\\"$$REV_NO\\\"
 DEFINES += APP_VERSION=\\\"$$VERSION$$RELEASE\\\"
-
-BUILD_DATE = $$system($(which date) +\"\\\"%d-%m-%y\\\"\")
 DEFINES += BUILDDATE=\\\"$$BUILD_DATE\\\"
 
 TARGET_NAME   = SimulIDE_$$VERSION$$RELEASE
@@ -130,6 +136,8 @@ win32 | linux {
         $(COPY_DIR) ../resources/examples $$TARGET_PREFIX; \
 }
 macx {
+# To use gcc in MacOs you must force it.
+# Edit to match your system:
 QMAKE_CC = /usr/local/Cellar/gcc@7/7.5.0_4/bin/gcc-7
 QMAKE_CXX = /usr/local/Cellar/gcc@7/7.5.0_4/bin/g++-7
 QMAKE_LINK = /usr/local/Cellar/gcc@7/7.5.0_4/bin/g++-7
@@ -159,6 +167,7 @@ message( "-----------------------------------")
 message( "    "                               )
 message( "    "$$TARGET_NAME for $$OS         )
 message( "    "                               )
+message( "    Host:      "$$QMAKE_HOST.os     )
 message( "    Date:      "$$BUILD_DATE        )
 message( "    Qt version: "$$QT_VERSION       )
 message( "    "                               )
