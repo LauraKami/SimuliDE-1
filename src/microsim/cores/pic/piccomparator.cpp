@@ -130,7 +130,7 @@ void PicComp01::setMode( uint8_t mode )
         case 3:                    connect( m_pins[0], m_pins[2], NULL      ); break;
         case 4:                    connect( m_pins[0], m_pins[1], NULL      ); break;
         case 5: m_enabled = false; connect( NULL     , NULL     , NULL      ); break;
-        case 6:                    connect( m_pins[0], NULL     , m_pins[1] ); break;
+        case 6:                    connect( m_pins[0], m_pins[2], m_pins[1] ); break;
         case 7: m_enabled = false; connect( NULL     , NULL     , NULL      ); break;
     }
 }
