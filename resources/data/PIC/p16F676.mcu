@@ -16,7 +16,7 @@
         <regblock name="SFR1" start="0x009E" end="0x0009F" >
             <register name="ADRESL" addr="0x9E" bits="" />
             <register name="ANSEL"  addr="0x91" reset="11111111" />
-            <register name="ADCON1" addr="0x1F"  mask="01110000"
+            <register name="ADCON1" addr="0x9F"  mask="01110000"
                       bits="0,0,0,0,ADCS0,ADCS1,ADCS2"/>
         </regblock>
         
