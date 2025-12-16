@@ -29,7 +29,7 @@
     <register  name="EEDR"    addr="0x001D" />
     <register  name="EEARL"   addr="0x001E" />
     <register  name="WDTCR"   addr="0x0021" 
-               bits="WDP0,WDP1,WDP2,WDE,WDCE,WDP3,WDTIE,WDTIF" />
+               bits="WDP0,WDP1,WDP2,WDE,WDCE,WDP3,WDTIE|WDIE,WDTIF|WDIF" />
                
     <register  name="CLKPR"   addr="0x0026" mask="00001111"
                bits="CLKPS0,CLKPS1,CLKPS2,CLKPS3,0,0,0,CLKPCE" />
