@@ -82,6 +82,7 @@ class McuTimer : public McuPrescaled, public eElement
         uint8_t* m_countL; // Actual ram for counter Low byte
         uint8_t* m_countH; // Actual ram for counter High byte
 
+        uint32_t m_prescVal;   // Value of prescaler
         uint32_t m_countVal;   // Value of counter
         uint32_t m_countStart; // Value of counter after ovf
 

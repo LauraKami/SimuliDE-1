@@ -37,6 +37,7 @@ void McuTimer::initialize()
     m_reverse = false;
     m_extClock = false;
 
+
     m_countVal   = 0;
     m_countStart = 0;
     m_ovfMatch   = 0;
@@ -44,9 +45,10 @@ void McuTimer::initialize()
     m_ovfCycle   = 0;
     m_mode       = 0;
 
-    m_circTime = 0;
+    m_circTime   = 0;
     m_timeOffset = 0;
 
+    m_prescVal  = 0;
     m_prescaler = 1;
     m_prIndex = 0;
 
@@ -89,9 +91,12 @@ void McuTimer::sleep( int mode )
 
 void McuTimer::clockStep()  // Timer driven by external clock
 {
+    m_prescVal++;
+    if( m_prescVal < m_prescaler ) return;
+    m_prescVal = 0;
     m_countVal++;
     for( McuOcUnit* ocUnit : m_ocUnit ) ocUnit->clockStep( m_countVal ); ///
-    if( m_countVal == m_ovfMatch+1 ) runEvent();
+    if( m_countVal > m_ovfMatch ) runEvent();
 }
 
 void McuTimer::runEvent()            // Overflow
