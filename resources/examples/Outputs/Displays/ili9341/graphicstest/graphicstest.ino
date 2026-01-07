@@ -61,7 +61,7 @@ delay(500);
 tft.fillCircle( 170, 180, 18, ILI9341_BLUE );
 delay(500);*/
 //return;
-  
+  //tft.setRotation( 0 );
   Serial.println(F("Benchmark                Time (microseconds)"));
   delay(10);
   Serial.print(F("Screen fill              "));

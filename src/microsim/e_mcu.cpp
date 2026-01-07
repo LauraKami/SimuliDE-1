@@ -200,7 +200,7 @@ void eMcu::setFreq( double freq )
     freq = extFreq ? extFreq : freq;         // Use property if Mcu freq Property is set
 
     if     ( freq < 0       ) freq = 0;
-    else if( freq > 100*1e6 ) freq = 100*1e6;
+    else if( freq > 500*1e6 ) freq = 500*1e6;
 
     if( freq > 0 )
     {

@@ -77,8 +77,6 @@ QMAKE_CXXFLAGS += -fno-strict-aliasing      #AngelScript
 QMAKE_CXXFLAGS += -Wno-cast-function-type   #AngelScript
 QMAKE_CXXFLAGS += -Wno-deprecated-copy      #AngelScript
 QMAKE_CXXFLAGS += -Wno-invalid-offsetof     #AngelScript
-QMAKE_CXXFLAGS -= -fPIC
-QMAKE_CXXFLAGS += -fno-pic
 QMAKE_CXXFLAGS += -Ofast
 QMAKE_CXXFLAGS_DEBUG += -D_GLIBCXX_ASSERTIONS
 QMAKE_CXXFLAGS_DEBUG -= -O
@@ -94,7 +92,6 @@ win32 {
 }
 linux {
     OS = Linux
-    QMAKE_LFLAGS += -no-pie
 }
 macx {
     OS = MacOs
