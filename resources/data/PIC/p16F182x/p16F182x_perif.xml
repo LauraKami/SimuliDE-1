@@ -62,7 +62,7 @@
                      interrupt="COMP2"
                      pins="PORTA1,PORTA2,PORTA4" />
 
-  <wdt name="WDT" configregsA="WDTCON"
+  <wdt name="WDT" type="01" configregsA="WDTCON"
                   prescalers="1,2,4,8,16,32,64,128"/>
 
   <configwords name="cfgWord" type="04">
