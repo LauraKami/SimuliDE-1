@@ -17,6 +17,8 @@
 
 #define tr(str) simulideTr("Csource",str)
 
+#define zero_d 1e-9
+
 Component* Csource::construct( QString type, QString id )
 { return new Csource( type, id ); }
 
@@ -63,6 +65,8 @@ Csource::Csource( QString type, QString id )
     m_curr = 1;
     m_gain = 1;
 
+    m_accuracy = 5e-14;
+
     setLabelPos( 4,-28, 0 );
     setValLabelPos( 4, 18, 0 ); // x, y, rot
 
@@ -92,8 +96,8 @@ Csource::~Csource() {}
 
 void Csource::stamp()
 {
-    if( m_currControl ) m_admit = 1/cero_doub;
-    else                m_admit = cero_doub;
+    if( m_currControl ) m_admit = 1/zero_d;
+    else                m_admit = zero_d;
     eResistor::stamp();
 
     m_pin[2]->setEnodeComp( m_pin[3]->getEnode() );
@@ -101,7 +105,9 @@ void Csource::stamp()
     m_pin[2]->createCurrent();
     m_pin[3]->createCurrent();
 
-    m_lastCurr = 0;
+    m_step = 0;
+    m_lastIn  = 0;
+    m_lastOut = 0;
     m_changed = true;
     updateStep();
 }
@@ -126,11 +132,11 @@ void Csource::updateStep()
 
     if( m_currControl )
     {
-        m_admit = 1/cero_doub;
+        m_admit = 1/zero_d;
         m_pin[0]->setLabelText( "" );
         m_pin[1]->setLabelText( "" );
     }else{
-        m_admit = cero_doub;
+        m_admit = zero_d;
         m_pin[0]->setLabelText("+");
         m_pin[1]->setLabelText("–");  // U+2013
     }
@@ -141,8 +147,8 @@ void Csource::updateStep()
         m_pin[2]->stampAdmitance( 0 );
         m_pin[3]->stampAdmitance( 0 );
     }else{
-        m_pin[2]->stampAdmitance( 1/cero_doub );
-        m_pin[3]->stampAdmitance( 1/cero_doub );
+        m_pin[2]->stampAdmitance( 1/zero_d );
+        m_pin[3]->stampAdmitance( 1/zero_d );
     }
 
     if( !m_controlPins && !m_linkedTo )
@@ -155,31 +161,66 @@ void Csource::updateStep()
             m_pin[2]->stampCurrent(-m_curr );
             m_pin[3]->stampCurrent( m_curr );
         }else{
-            m_pin[2]->stampCurrent( m_volt/cero_doub );
-            m_pin[3]->stampCurrent(-m_volt/cero_doub );
+            m_pin[2]->stampCurrent( m_volt/zero_d );
+            m_pin[3]->stampCurrent(-m_volt/zero_d );
         }
     }
     else voltChanged();
 
-    bool connected = m_pin[0]->isConnected() && m_pin[1]->isConnected();
-    m_pin[0]->changeCallBack( this, connected && m_controlPins );
-    m_pin[1]->changeCallBack( this, connected && m_controlPins );
+   bool connected = m_pin[0]->isConnected() && m_pin[1]->isConnected();
+   m_pin[0]->changeCallBack( this, connected && m_controlPins );
+   m_pin[1]->changeCallBack( this, connected && m_controlPins );
+
+    //if( m_pin[0]->isConnected() ) m_pin[0]->getEnode()->addToNoLinList(this);
+    //if( m_pin[1]->isConnected() ) m_pin[1]->getEnode()->addToNoLinList(this);
+    //if( m_pin[2]->isConnected() ) m_pin[2]->getEnode()->addToNoLinList(this);
+    //if( m_pin[3]->isConnected() ) m_pin[3]->getEnode()->addToNoLinList(this);
+
     update();
 }
 
 void Csource::setVoltage( double v )
 {
-    double curr = v;
-    //if( qFabs( curr - m_lastCurr ) < 1e-5 ) return;
-    m_lastCurr = curr;
+    double out = v*m_gain;
 
-    if( m_currSource   ) curr = -curr;      // Current source
-    else if( curr != 0 ) curr /= cero_doub; // Voltage source
-    if( m_currControl  ) curr *= m_admit;   // Current controlled
 
-    curr *= m_gain;
-    m_pin[2]->stampCurrent( curr );
-    m_pin[3]->stampCurrent(-curr );
+
+    //if( m_step==0 && qFabs(m_lastIn-v) < m_accuracy
+    //              && qFabs(m_lastOut-out) < m_accuracy )
+    //    return; // Converged
+
+
+    //Simulator::self()->notCorverged();
+    //static double k = 1e-14;
+
+    //if( m_step==0 )                  // First step after a convergence
+    //{
+    //    double dOut = ( v>0 ) ? k :-k;         // Do a tiny step to se what happens
+
+    //    out = m_lastOut + dOut;
+    //    m_step = 1;
+    //} else {
+    //    if( m_lastIn != v ) // We problably are in a close loop configuration
+    //    {
+    //        qDebug() << v << out << "...";
+    //        double dIn  = qFabs(m_lastIn-v); // Input diff with last step
+    //        out = (m_lastOut*dIn + v*k)/(dIn + k/m_gain); // Guess next converging output:
+    //        qDebug() << dIn  << out;
+    //    }
+    //    m_step = 0;
+
+    //}
+    //m_lastIn = v;
+    //m_lastOut = out;
+
+    if     ( m_currSource  ) out = -out;       // Current source
+    else if( out != 0      ) out /= zero_d; // Voltage source
+    if     ( m_currControl ) out *= m_admit;   // Current controlled
+
+
+
+    m_pin[2]->stampCurrent( out );
+    m_pin[3]->stampCurrent(-out );
 }
 
 bool Csource::setLinkedTo( Linker* li )
@@ -248,10 +289,11 @@ void Csource::updtProperties()
     if( !m_propDialog ) return;
     bool controlled = m_controlPins || m_linkedTo; // Controlled by pins or Linked
 
-    m_propDialog->showProp("Voltage"    , !controlled && !m_currSource );
-    m_propDialog->showProp("Current"    , !controlled &&  m_currSource );
-    m_propDialog->showProp("CurrControl",  controlled );
-    m_propDialog->showProp("Gain"       ,  controlled );
+    m_propDialog->showProp("Control_Pins", !m_linkedTo );
+    m_propDialog->showProp("Voltage"     , !controlled && !m_currSource );
+    m_propDialog->showProp("Current"     , !controlled &&  m_currSource );
+    m_propDialog->showProp("CurrControl" ,  m_controlPins && !m_linkedTo );
+    m_propDialog->showProp("Gain"        ,  controlled );
 
     m_propDialog->adjustWidgets();
 }
