@@ -173,7 +173,7 @@ void AvrTimer8bit::updtWgm()
 
 void AvrTimer8bit::topReg0Changed( uint8_t val )
 {
-    calcCounter();
+    updtCount();
 
     *m_topReg0L = val;
 
