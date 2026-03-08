@@ -1,20 +1,22 @@
-<circuit version="" rev="2224" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="1" >
+<circuit version="1.1.0-SR1" rev="260117" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="1" >
 
 <item itemtype="DS1307" CircId="DS1307-738" mainComp="false" Show_id="true" Show_Val="false" Pos="-664,-488" rotation="90" hflip="1" vflip="1" label="DS1307" idLabPos="30,17" labelrot="-90" valLabPos="0,0" valLabRot="0" Time_Updtd="true" />
 
 <item itemtype="Subcircuit" CircId="Uno-21" mainComp="false" Show_id="true" Show_Val="false" Pos="-868,-564" rotation="0" hflip="1" vflip="1" label="Uno" idLabPos="10.7914,-4.58368" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
-<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="Clock.hex" Auto_Load="false" saveEepr="true" SerialMon="-1" />
+<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="Clock.hex" Auto_Load="false" saveEepr="true" MainMcu="true" SerialMon="-1" />
 </item>
 
 <item itemtype="Hd44780" CircId="Hd44780-855" mainComp="false" Show_id="true" Show_Val="false" Pos="-972,-588" rotation="0" hflip="1" vflip="1" label="Hd44780" idLabPos="89.0135,-80.9722" labelrot="0" valLabPos="0,0" valLabRot="0" Rows="2" Cols="16" />
 
-<item itemtype="LAnalizer" CircId="LAnalizer-863" mainComp="false" Show_id="false" Show_Val="false" Pos="-516,-500" rotation="0" hflip="1" vflip="1" label="LAnalizer-863" idLabPos="-90,-100" labelrot="0" valLabPos="-16,20" valLabRot="0" Basic_X="135 _Px" Basic_Y="135 _Px" BufferSize="100000" connectGnd="true" InputImped="1e+07 Ω" TimDiv="100000000000" TimPos="0" VolDiv="0.15" Conds="CH8R" Tunnels=",,,,,,,," Trigger="9" TimeStep="1000 _ps" AutoExport="false" TresholdR="2.5 V" Bus="false,false,false,false,false,false,false,false," TresholdF="2.5 V" />
+<item itemtype="LAnalizer" CircId="LAnalizer-863" mainComp="false" Show_id="false" Show_Val="false" Pos="-516,-500" rotation="0" hflip="1" vflip="1" label="LAnalizer-863" idLabPos="-90,-100" labelrot="0" valLabPos="-16,20" valLabRot="0" Basic_X="135 _px" Basic_Y="135 _px" BufferSize="100000" connectGnd="true" InputImped="1e+07 Ω" TimDiv="100000000000" TimPos="0" VolDiv="0.15" Conds="CH8R" Tunnels=",,,,,,,," Trigger="9" TimeStep="1000 _ps" AutoExport="false" TresholdR="2.5 V" Bus="false,false,false,false,false,false,false,false," TresholdF="2.5 V" />
 
 <item itemtype="Rail" CircId="Rail-873" mainComp="false" ShowProp="Voltage" Show_id="false" Show_Val="true" Pos="-676,-644" rotation="90" hflip="1" vflip="1" label="Rail-873" idLabPos="-16,-24" labelrot="0" valLabPos="-12.4029,4.91674" valLabRot="-90" Voltage="5 V" />
 
 <item itemtype="Resistor" CircId="Resistor-874" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-676,-604" rotation="90" hflip="1" vflip="1" label="Resistor-874" idLabPos="-16,-24" labelrot="0" valLabPos="-10.8612,-15.5828" valLabRot="0" Resistance="10 kΩ" />
 
 <item itemtype="FreqMeter" CircId="FreqMeter-880" mainComp="false" Show_id="false" Show_Val="false" Pos="-564,-596" rotation="0" hflip="1" vflip="1" label="FreqMeter-880" idLabPos="-32,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Filter="0.1 V" />
+
+<item itemtype="Ground" CircId="Ground-882" mainComp="false" Show_id="false" Show_Val="false" Pos="-948,-540" rotation="0" hflip="1" vflip="1" label="Ground-882" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
 
 <item itemtype="Node" CircId="Node-864" mainComp="false" Pos="-652,-540" />
 
@@ -61,5 +63,7 @@
 <item itemtype="Connector" uid="connector-18" startpinid="Node-881-2" endpinid="LAnalizer-863-Pin2" pointList="-628,-532,-604,-532" />
 
 <item itemtype="Connector" uid="connector-19" startpinid="Node-881-1" endpinid="FreqMeter-880-lPin" pointList="-628,-532,-628,-596,-604,-596" />
+
+<item itemtype="Connector" uid="Connector-20" startpinid="Ground-882-Gnd" endpinid="Hd44780-855-PinRW" pointList="-948,-556,-948,-580" />
 
 </circuit>

@@ -189,7 +189,7 @@ void McuTimer::updtCount( uint8_t )       // Write counter values to Ram
     if( m_countH ) *m_countH = (countVal>>8) & 0xFF;
 }
 
-void McuTimer::calcCounter()
+void McuTimer::calcCounter() // Should be called only from updtCount()
 {
     if( m_extClock ) return;
 

@@ -155,7 +155,7 @@ void PicTimer16bit::configureA( uint8_t NewT1CON )
     m_t1sync = getRegBitsVal( NewT1CON, m_T1SYNC ) ? 0 : 1; // Used for sleep mode
 
     uint8_t ps = getRegBitsVal( NewT1CON, m_T1CKPS );
-    setPrescIndex(  ps );
+    setPrescIndex( ps );
 
     m_mode  = getRegBitsVal(  NewT1CON, m_TMR1CS );
     m_t1Osc = getRegBitsBool( NewT1CON, m_T1OSCEN ) && m_mode; // T1 osc depends on TMR1CS

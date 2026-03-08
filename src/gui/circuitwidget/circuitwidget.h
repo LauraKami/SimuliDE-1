@@ -59,8 +59,8 @@ class CircuitWidget : public QWidget
         void openInfo();
         void about();
 
-    signals:
-        void dataAvailable( int uart, const QByteArray &data );
+    //signals:
+    //    void dataAvailable( int uart, const QByteArray &data );
         
     private:
         void createActions();
@@ -68,7 +68,7 @@ class CircuitWidget : public QWidget
 
  static CircuitWidget* m_pSelf;
 
-        enum { MaxRecentFiles = 10 };
+        enum { MaxRecentFiles = 20 };
         void updateRecentFiles();
         void updateRecentFileActions();
 

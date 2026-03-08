@@ -85,7 +85,7 @@
                   
         <register name="PR2"     addr="0x92" bits="" reset="11111111"/>
         <register name="SSPADD"  addr="0x93" />
-        <register name="SSPSTAT" addr="0x94" 
+        <register name="SSPSTAT" addr="0x94" mask="11000100"
                   bits="BF,UA,RW,S,P,DA,CKE,SMP" />
                   
         <register name="WPUB"    addr="0x95" reset="11111111" bits=""/>

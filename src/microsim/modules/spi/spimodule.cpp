@@ -163,8 +163,8 @@ void SpiModule::setMode( spiMode_t mode )
         m_dataOutPin = m_MISO;
         m_dataInPin  = m_MOSI;
         m_clkPin->changeCallBack( this, true );
-        if( m_useSS && m_SS )
-        {
+
+        if( m_useSS && m_SS ) {
             m_SS->changeCallBack( this, true );
             SpiModule::voltChanged();
         }
