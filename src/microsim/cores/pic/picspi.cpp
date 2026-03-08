@@ -38,6 +38,9 @@ void PicSpi::setMode( spiMode_t mode )
         m_MISO->controlPin( false, false );
         m_clkPin->controlPin( false, false );
         m_SS->controlPin( false, false );
+
+        m_clkPin->changeCallBack( this, false );
+        m_SS->changeCallBack( this, false );
         return;
     }
     m_dataOutPin->controlPin( true, false );
@@ -53,10 +56,13 @@ void PicSpi::setMode( spiMode_t mode )
     else if( mode == SPI_SLAVE )
     {
         m_clkPin->controlPin( false, false );
-        //m_clkPin->changeCallBack( this, true );
-        if( m_useSS && m_SS ) m_SS->changeCallBack( this, true );
+        m_clkPin->changeCallBack( this, true );
+
+        if( m_useSS && m_SS ) {
+            m_SS->changeCallBack( this, true );
+            SpiModule::voltChanged();
+        }
     }
-    SpiModule::setMode( mode );
 }
 
 void PicSpi::configureA( uint8_t newSSPCON ) // SSPCON is being written
