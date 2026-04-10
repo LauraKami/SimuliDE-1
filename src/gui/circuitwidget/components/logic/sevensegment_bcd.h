@@ -6,6 +6,8 @@
 #ifndef SEVENSEGMENTBCD_H
 #define SEVENSEGMENTBCD_H
 
+#include <QColor>
+
 #include "bcdbase.h"
 
 class LibraryItem;
@@ -22,23 +24,32 @@ class SevenSegmentBCD : public BcdBase
         virtual void updateStep() override;
         virtual void voltChanged() override;
 
-        bool isShowEnablePin() { return m_showEnablePin; }
-        void setShowEnablePin( bool show );
+        bool miniSize() { return m_miniSize; }
+        void setOrientation();
 
-        bool isShowDotPin() { return m_showDotPin; }
-        void setShowDotPin( bool show );
+        QString segmentColor() { return m_segColorStr; }
+        void setSegmentColor( QString color );
+
+        QString backgroundColor() { return m_backColorStr; }
+        void setBackgroundColor( QString color );
 
         virtual bool setLinkedTo( Linker* li ) override;
         virtual void setLinkedValue( double v, int i=0  ) override;
 
         void paint( QPainter* p, const QStyleOptionGraphicsItem* o, QWidget* w ) override;
 
-    private:
-        bool m_showEnablePin;
-        bool m_showDotPin;
+        virtual void setAngle( double angle ) override;
+        virtual void rotateAngle( double a ) override;
 
-        IoPin *m_dotPin;
-        IoPin *m_enablePin;
+    private:
+        void checkHorizontalMiniSize();
+        bool m_miniSize; 
+
+        QString m_segColorStr;
+        QString m_backColorStr;
+        QColor  m_segColor;
+        QColor  m_backColor;
+
 };
 
 #endif
