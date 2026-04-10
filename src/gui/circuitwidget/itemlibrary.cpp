@@ -38,6 +38,7 @@
 #include "ellipse.h"
 #include "esp01.h"
 #include "fixedvolt.h"
+#include "logicsource.h"
 #include "flipflopd.h"
 #include "flipflopjk.h"
 #include "flipfloprs.h"
@@ -145,6 +146,7 @@ void ItemLibrary::loadItems()
     addItem( LAnalizer::libraryItem() );
     // Sources
     addItem( new LibraryItem( QObject::tr("Sources"), "", "","Sources", NULL ) );
+    addItem( LogicSource::libraryItem() );
     addItem( FixedVolt::libraryItem() );
     addItem( Clock::libraryItem() );
     addItem( WaveGen::libraryItem() );

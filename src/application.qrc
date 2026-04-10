@@ -115,6 +115,7 @@
         <file alias="zener.png">../src/icons/components/zener.png</file>
         <file alias="scr.png">../src/icons/components/scr.png</file>
         <file alias="probe.png">../src/icons/components/probe.png</file>
+        <file alias="logicsource.png">../src/icons/components/logicsource.png</file>
         <file alias="resistor.png">../src/icons/components/resistor.png</file>
         <file alias="varresistor.png">../src/icons/components/varresistor.png</file>
         <file alias="thermistor.png">../src/icons/components/thermistor.png</file>
