@@ -29,7 +29,10 @@ class SevenSegment : public Component, public eElement
 
         bool verticalPins() { return m_verticalPins; }
         void setVerticalPins( bool v );
-        
+
+        bool miniSize() { return m_miniSize; }
+        void setMiniSize( bool mini );
+
         bool isComCathode() { return m_commonCathode; }
         void setComCathode( bool isCommonCathode );
         
@@ -43,6 +46,7 @@ class SevenSegment : public Component, public eElement
         void   setResistance( double res );
 
         virtual void stamp() override;
+        virtual void updateStep() override;
 
         virtual void setHidden( bool hid, bool hidArea=false, bool hidLabel=false ) override;
 
@@ -55,7 +59,8 @@ class SevenSegment : public Component, public eElement
 
         bool m_commonCathode;
         bool m_verticalPins;
-        
+        bool m_miniSize;
+
         int  m_numDisplays;
         double m_threshold;
         double m_maxCurrent;
