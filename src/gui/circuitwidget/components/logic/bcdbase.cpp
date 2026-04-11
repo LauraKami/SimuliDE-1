@@ -42,7 +42,8 @@ void BcdBase::initialize()
 void BcdBase::stamp()
 {
     LogicComponent::stamp();
-    for( uint i=0; i<m_inPin.size(); ++i ) m_inPin[i]->changeCallBack( this );
+    for( uint i=0; i<m_inPin.size(); ++i )
+        if( m_inPin[i] ) m_inPin[i]->changeCallBack( this );
 
     m_changed = true;
 }
@@ -51,10 +52,12 @@ void BcdBase::voltChanged()
 {
     m_changed = true;
 
-    bool a = m_inPin[0]->getInpState();
-    bool b = m_inPin[1]->getInpState();
-    bool c = m_inPin[2]->getInpState();
-    bool d = m_inPin[3]->getInpState();
+    if( m_inPin.size() < 4 ) return;  // Need at least 4 pins
+
+    bool a = m_inPin[0] ? m_inPin[0]->getInpState() : false;
+    bool b = m_inPin[1] ? m_inPin[1]->getInpState() : false;
+    bool c = m_inPin[2] ? m_inPin[2]->getInpState() : false;
+    bool d = m_inPin[3] ? m_inPin[3]->getInpState() : false;
 
     m_digit = m_values[a*1+b*2+c*4+d*8];
 }
